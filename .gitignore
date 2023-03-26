@@ -1,0 +1,20 @@
+constantDb.*
+constantDb.php
+*.pdf
+pub/
+views/pub/
+views/public/
+config.php
+/module/profe/views/_faltaSeq/nbproject/private/
+/module/profe/views/_faltaSeq/vendor/
+ge.sql
+/module/profe (cópia)/views/_faltaSeq/nbproject/private/
+/module/profe (cópia)/views/_faltaSeq/vendor/
+.DS_Store
+vendor/*
+nbproject/
+
+#Docker
+.env
+docker-compose.yml
+

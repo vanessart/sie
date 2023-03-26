@@ -1,0 +1,78 @@
+version: '3'
+services:
+  apache:
+    container_name: '${FRONT_NAMESUFIX}'
+    build: ./site/
+    volumes:
+      #- ./site/php.ini:/usr/local/etc/php/php.ini
+      - ../_data/logs/:/var/log/
+      #- ${FRONT_DIR_HOST}:/var/www/html/
+      #- ${FRONT_DIR_HOST}:/Users/vanessa/www/ge/
+      - ${FRONT_DIR_HOST}:/var/www/html/ge/
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT_IMG}"
+    networks:
+      net_portaleduc:
+        ipv4_address: ${NETWORK_RANGE}${FRONT_SUFIX_IP}
+  mysql:
+    image: mysql:5.6.35
+    container_name: '${DB_MYSQL_NAMESUFIX}'
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --sql_mode=""
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=${DB_MYSQL_DATABASE}
+      - MYSQL_USER=${DB_MYSQL_USER}
+      - MYSQL_PASSWORD=${DB_MYSQL_PASS}
+    volumes:
+      - ${DB_MYSQL_DIR}:/var/lib/mysql
+    ports:
+      - "${DB_MYSQL_PORT}:${DB_MYSQL_PORT_IMG}"
+    networks:
+      net_portaleduc:
+        ipv4_address: ${NETWORK_RANGE}${DB_MYSQL_SUFIX_IP}
+  mongo:
+    image: mongo:4.2
+    container_name: ${DB_MONGO_NAMESUFIX}
+    restart: always
+    ports:
+      - ${DB_MONGO_PORT}:${DB_MONGO_PORT_IMG}
+    volumes:  
+      - ${DB_MONGO_DIR_HOST}:${DB_MONGO_DIR_IMG}
+    environment: 
+      MONGO_INITDB_DATABASE: ${DB_MONGO_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_MONGO_PASS}
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "10m"
+        max-file: "5"
+    networks:
+      net_portaleduc:
+        ipv4_address: ${NETWORK_RANGE}${DB_MONGO_SUFIX_IP}
+        # conectar :===> mongo -uportaleduc_user -pportaleduc_pwd mongodb://portaleduc_db
+  mongo-express:
+    image: mongo-express
+    container_name: mexpress
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${DB_MONGO_USER}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${DB_MONGO_PASS}
+      - ME_CONFIG_MONGODB_URL=mongodb://${DB_MONGO_USER}:${DB_MONGO_PASS}@mongo:27017/?authSource=admin
+      - ME_CONFIG_BASICAUTH_USERNAME=mexpress
+      - ME_CONFIG_BASICAUTH_PASSWORD=mexpress
+    links:
+      - mongo
+    restart: unless-stopped
+    ports:
+      - "8081:8081"    
+    networks:
+      net_portaleduc:
+        ipv4_address: ${NETWORK_RANGE}${DB_MONGO_SUFIX_IP_express}
+        # conectar :===> mongo -uportaleduc_user -pportaleduc_pwd mongodb://portaleduc_db
+networks:
+  net_portaleduc:
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NETWORK_RANGE}0/16

@@ -1,0 +1,203 @@
+[15-May-2017 18:20:26 UTC] PHP Notice:  Use of undefined constant HOSTNAME - assumed 'HOSTNAME' in /var/www/html/ge/views/vagas/classificar.php on line 123
+[15-May-2017 18:20:26 UTC] PHP Notice:  Use of undefined constant DB_NAME - assumed 'DB_NAME' in /var/www/html/ge/views/vagas/classificar.php on line 123
+[15-May-2017 18:20:26 UTC] PHP Notice:  Use of undefined constant DB_USER - assumed 'DB_USER' in /var/www/html/ge/views/vagas/classificar.php on line 123
+[15-May-2017 18:20:26 UTC] PHP Notice:  Use of undefined constant DB_PASSWORD - assumed 'DB_PASSWORD' in /var/www/html/ge/views/vagas/classificar.php on line 123
+[15-May-2017 18:20:26 UTC] PHP Fatal error:  Uncaught PDOException: PDO::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/html/ge/views/vagas/classificar.php:123
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(123): PDO->__construct('mysql:host=HOST...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(76): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#3 {main}
+
+Next PDOException: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known in /var/www/html/ge/views/vagas/classificar.php:123
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(123): PDO->__construct('mysql:host=HOST...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(76): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 123
+[15-May-2017 18:21:59 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vaga' doesn't exist in /var/www/html/ge/views/vagas/classificar.php:76
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(76): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 76
+[15-May-2017 18:23:03 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dt_vaga' in 'field list' in /var/www/html/ge/views/vagas/classificar.php:76
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(76): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 76
+[15-May-2017 18:23:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dt_vaga' in 'field list' in /var/www/html/ge/views/vagas/classificar.php:76
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(76): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 76
+[15-May-2017 18:24:02 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dt_vaga' in 'field list' in /var/www/html/ge/views/vagas/classificar.php:76
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(76): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 76
+[15-May-2017 18:24:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dt_vaga' in 'field list' in /var/www/html/ge/views/vagas/classificar.php:76
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(76): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 76
+[15-May-2017 18:24:15 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cie' in 'field list' in /var/www/html/ge/views/vagas/classificar.php:76
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(76): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(82): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 76
+[15-May-2017 18:25:40 UTC] PHP Notice:  Undefined variable: model in /var/www/html/ge/views/vagas/classificar.php on line 110
+[15-May-2017 18:25:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function requerentesClass() on null in /var/www/html/ge/views/vagas/classificar.php:110
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 110
+[16-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[17-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[18-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[19-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[20-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[21-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[22-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[23-Apr-2019 00:00:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[23-Apr-2019 10:25:02 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ge.vagas' doesn't exist' in /var/www/html/ge/views/vagas/classificar.php:69
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(69): PDO->query('select criterio...')
+#1 /var/www/html/ge/views/vagas/classificar.php(75): sql()
+#2 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 69
+[08-Jul-2019 16:36:28 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=loca...', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[25-Jul-2019 18:56:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[25-Jul-2019 18:59:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[09-Aug-2019 19:49:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[12-Aug-2019 19:30:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[12-Aug-2019 19:31:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[12-Aug-2019 19:32:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[12-Aug-2019 19:33:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[12-Aug-2019 19:34:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[13-Aug-2019 19:38:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[13-Aug-2019 19:39:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[13-Aug-2019 19:40:01 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08004] [1040] Too many connections in /var/www/html/ge/views/vagas/classificar.php:116
+Stack trace:
+#0 /var/www/html/ge/views/vagas/classificar.php(116): PDO->__construct('mysql:host=187....', 'root', 'linkair2009@@@4...', Array)
+#1 /var/www/html/ge/views/vagas/classificar.php(71): Conexao::getInstance()
+#2 /var/www/html/ge/views/vagas/classificar.php(77): sql()
+#3 {main}
+  thrown in /var/www/html/ge/views/vagas/classificar.php on line 116
+[05-Jun-2022 19:00:01 America/Sao_Paulo] PHP Notice:  fwrite(): write of 3 bytes failed with errno=28 No space left on device in /var/www/html/ge/views/vagas/classificar.php on line 111
+[05-Jun-2022 19:00:01 America/Sao_Paulo] PHP Notice:  fwrite(): write of 19 bytes failed with errno=28 No space left on device in /var/www/html/ge/views/vagas/classificar.php on line 110
+[05-Jun-2022 19:00:01 America/Sao_Paulo] PHP Notice:  fwrite(): write of 76 bytes failed with errno=28 No space left on device in /var/www/html/ge/views/vagas/classificar.php on line 111
+[05-Jun-2022 19:00:01 America/Sao_Paulo] PHP Notice:  fwrite(): write of 19 bytes failed with errno=28 No space left on device in /var/www/html/ge/views/vagas/classificar.php on line 110
+[05-Jun-2022 19:00:01 America/Sao_Paulo] PHP Notice:  fwrite(): write of 76 bytes failed with errno=28 No space left on device in /var/www/html/ge/views/vagas/classificar.php on line 111
+[05-Jun-2022 19:00:01 America/Sao_Paulo] PHP N

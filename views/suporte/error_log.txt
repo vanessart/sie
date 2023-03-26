@@ -1,0 +1,30 @@
+[11-Sep-2017 01:56:19 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 01:59:18 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 05:10:20 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 05:12:52 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 05:54:30 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 05:54:30 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 05:54:30 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 05:58:05 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[11-Sep-2017 06:03:52 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[13-Sep-2017 08:57:09 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[17-Sep-2017 08:26:57 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[12-Oct-2017 15:38:35 America/Sao_Paulo] PHP Fatal error:  Class 'formulario' not found in /var/www/html/ge/views/suporte/func.php on line 54
+[22-Dec-2021 16:30:04 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on bool in /var/www/html/ge/views/suporte/func.php:200
+Stack trace:
+#0 /var/www/html/ge/controllers/suporte-controller.php(53): require_once()
+#1 /var/www/html/ge/class/MVC.php(117): suporteController->func()
+#2 /var/www/html/ge/loader.php(27): MVC->__construct()
+#3 /var/www/html/ge/config.php(58): require_once('/var/www/html/g...')
+#4 /var/www/html/ge/index.php(6): require_once('/var/www/html/g...')
+#5 {main}
+  thrown in /var/www/html/ge/views/suporte/func.php on line 200
+[27-May-2022 09:49:16 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on bool in /var/www/html/ge/views/suporte/func.php:200
+Stack trace:
+#0 /var/www/html/ge/controllers/suporte-controller.php(53): require_once()
+#1 /var/www/html/ge/class/MVC.php(117): suporteController->func()
+#2 /var/www/html/ge/loader.php(27): MVC->__construct()
+#3 /var/www/html/ge/config.php(58): require_once('/var/www/html/g...')
+#4 /var/www/html/ge/index.php(6): require_once('/var/www/html/g...')
+#5 {main}
+  thrown in /var/www/html/ge/views/suporte/func.php on line 200

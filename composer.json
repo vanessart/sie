@@ -1,0 +1,8 @@
+{
+    "name": "cristiano/sie",
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "ext-gd": "*",
+	"mpdf/mpdf": "^5.7"
+    }
+}

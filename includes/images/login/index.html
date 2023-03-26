@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-version="<?php echo VERSION; ?>">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Secretaria de Educação - Prefeitura de Barueri<?php echo $page_title ?></title>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	<!-- CSS -->
+	<link href="custom.css" rel="stylesheet">
+
+	<!-- CSS Libraries -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+	<div class="bg-login">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-7 bg-box">
+					<div class="row">
+						<div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 px-0 bg-card-inputs bg-card-gradient ">
+							<div class="bg-white px-3 " style="border-right: 2px solid #853769;border-radius: 4px 2px 0px 0px;">
+								<img src="logotipos/logo_Barueri_Educ_PNG.png" class="w-100 img-logo" alt="">
+							</div>
+							<div class="px-4">
+								<p class="text-white text-center mt-4 text-seja-bem ">
+									Seja bem vindo a Plataforma
+								</p>
+							</div>
+							<div class="text-center mb-2">
+								<img src="logotipos/logo-sieb.png" class="w-50 text-center img-logo-sieb" alt="">
+								<div class="d-block d-sm-none mb-4"></div>
+							</div>
+							<div class="px-4 mt-4 d-none d-sm-block">
+								<hr class="text-white " style="height: 2px;opacity: 1;">
+								<p class="text-white text-para-acessar mt-4 mb-1">
+									Para acessar a Plataforma com login do Google use seu e-mail nominal institucional:
+								</p>
+								<p class="text-white mt-2">
+									<small>
+										- nomesobrenome@educbarueri.sp.gov.br <br>
+										- nomesobrenome@professor.barueri.br 
+									</small>
+								</p>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 py-3">
+							<div class="">
+								<div class="d-flex justify-content-end">
+									<img src="<?php echo base_url('public/img/logotipos/logo-sieb-vertical.png'); ?>" class=" text-center img-logo-sieb-topo" alt="">
+								</div>
+
+								<a class="btn btn-erp btn-login-google text-white d-flex justify-content-between" href="">
+									<div class="bg-google">
+										<img src="icones/icone_google.webp" alt="Icone G Google" style="width: 30px;" class="">
+									</div>
+									<p class="text-login-google">
+										Fazer login com o Google
+									</p>
+								</a>
+								<div class="mt-5 mb-4 bg-color text-center">
+									<span style="background: #fff; top: -0.9em; position: relative; padding: 5px">ou</span>
+								</div>
+								<form>
+									<div class="form-group mt-3">
+										<!-- <label for="exampleInputEmail1" class="mb-1"><i class="fas fa-user"></i> E-mail</label> -->
+										<input type="email" class="form-control mt-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+									</div>
+									<div class="form-group mt-1" >
+										<!-- <label for="exampleInputPassword1" class="mt-3 mb-1"><i class="fas fa-lock"></i> Senha</label> -->
+										<input type="password" class="form-control mt-3" id="exampleInputPassword1" placeholder="Senha">
+									</div>
+									<button type="button" class="btn btn-erp w-100 py-3 mt-3">Acessar</button>
+								</form>
+								<p class="link-senha mt-4">	
+									<a href="#" class="" class="link" data-toggle="modal" data-target="#modal-recupera-senha" id="lnk_recuperar_senha">
+										Recuperar senha
+									</a>
+								</p>
+							</div>
+
+						</div>
+						<div class="col-12 col-md-6 bg-card-inputs">
+							<div class="px-4 mt-4 d-block d-sm-none">
+								<p class="text-white text-para-acessar mt-4 mb-1">
+									Para acessar a Plataforma com login do Google use seu e-mail nominal institucional:
+								</p>
+								<p class="text-white mt-2">
+									<small>
+										- nomesobrenome@educbarueri.sp.gov.br <br>
+										- nomesobrenome@professor.barueri.br 
+									</small>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="container-fluid bg-footer">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6 pt-2 text-center">
+					<p class="text-copyright">
+						© Copyright - <?php echo date('Y'); ?> - Prefeitura Municipal de Barueri - Secretaria de Educação.
+						<br>
+						SIEB - ERP  Educacional - Versão 3.0 - Abril/2022
+					</p>
+				</div>
+				<div class="col-md-1 pt-2 px-0 mt-2 align-logo-footer">
+					<img src="logotipos/logo-sieb-white.png" alt="Logotipo Sieb-ERP" class="logo-sieb-footer">
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/.Footer-->
+
+</body>
+</html>
