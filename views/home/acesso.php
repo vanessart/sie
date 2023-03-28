@@ -28,10 +28,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Secretaria de Educação - Prefeitura de Barueri - Sieb-ERP</title>
+        <title>Secretaria de Educação - <?= CLI_NOME ?> - <?= SISTEMA_NOME ?>-ERP</title>
 
         <!-- CSS -->
-        <link href="custom-sieb.css" rel="stylesheet">
+        <link href="custom-sie.css" rel="stylesheet">
 
         <script src="<?php echo HOME_URI; ?>/includes/js/jquery-3.6.0.min.js"></script>
         <script src="<?php echo HOME_URI; ?>/includes/js/popper.min.js"></script>
@@ -41,7 +41,7 @@
         <link rel="stylesheet" href="<?php echo HOME_URI; ?>/includes/css/bootstrap-select.min.css">
         <script src="<?php echo HOME_URI; ?>/includes/js/bootstrap-select.min.js"></script>
         <style>
-            .body-sieb-erp {
+            .body-sie-erp {
                 font-family: 'Roboto', sans-serif !important;
                 background-color: #fff !important;
                 position: absolute;
@@ -53,11 +53,11 @@
                 background-color: #853769 !important;
             }
 
-            .logo-sieb-footer{
+            .logo-sie-footer{
                 width: 100%;
             }
 
-            .align-mudar-sieb {
+            .align-mudar-sie {
                 justify-content: center;
             }
 
@@ -69,20 +69,20 @@
                 text-align: right;
             }
 
-            .text-usuario-sieb{
+            .text-usuario-sie{
                 font-size: 1em;
                 font-weight: 400;
                 text-align: right;
             }
 
-            .btn-sair-sieb{
+            .btn-sair-sie{
                 font-size: 0.8em !important;
                 color: #FFF !important;
                 background-color: #853769 !important;
                 border-radius: 0px 0px 4px 4px  !important;
             }
 
-            .bg-instancia-sieb{
+            .bg-instancia-sie{
                 background-color: #FFF;
                 border-radius: 5px 0 0 5px;
                 width: 100%;
@@ -97,7 +97,7 @@
                 padding: 8px !important;
             }
 
-            .text-icones-geral-sieb{
+            .text-icones-geral-sie{
                 font-size: 1.05em;
                 font-weight: 500;
                 color: #853769;
@@ -105,26 +105,26 @@
                 height: 89px !important;
             }
 
-            .text-icones-geral-sieb:hover{
+            .text-icones-geral-sie:hover{
                 font-size: 1.05em;
                 font-weight: 500;
                 color: #87ba33 !important;
                 text-decoration: none;
             }
 
-            .img-icone-geral-sieb{
+            .img-icone-geral-sie{
                 float: left;
                 width: 60px;
                 margin-right: 10px;
                 margin-left: 40px;
             }
 
-            .logo-sieb-faixa{
+            .logo-sie-faixa{
                 width: 50%;
                 margin-left: 18px;
             }
 
-            .img-logo-barueri-sieb{
+            .img-logo-sie{
                 margin-top: -26px;
                 margin-bottom: 20px;
                 width: 100%;
@@ -138,7 +138,7 @@
                 background-color: #853769 !important;
             }
 
-            .footer-sieb-erp {
+            .footer-sie-erp {
                 position: absolute;
                 bottom: 0 !important;
                 width: 100%;
@@ -150,10 +150,10 @@
             }
 
             @media screen and (max-width: 991px){
-                .logo-sieb-footer {
+                .logo-sie-footer {
                     width: 149%;
                 }
-                .logo-sieb-faixa {
+                .logo-sie-faixa {
                     width: 78%;
                 }
 
@@ -163,12 +163,12 @@
                     padding: 7px !important;
                     font-size: 0.9em;
                 }
-                .bg-instancia-sieb {
+                .bg-instancia-sie {
                     padding: 8px 0px;
                     font-size: 0.8em;
                 }
 
-                .text-icones-geral-sieb {
+                .text-icones-geral-sie {
                     font-size: 0.8em;
                     font-weight: 500;
                     color: #853769;
@@ -186,7 +186,7 @@
 
             @media screen and (max-width: 576px){
 
-                .logo-sieb-footer {
+                .logo-sie-footer {
                     width: 28%;
                     padding-bottom: 11px;
                     margin-right: 18px;
@@ -195,11 +195,11 @@
                     text-align: center;
                 }
 
-                .logo-sieb-faixa{
+                .logo-sie-faixa{
                     width: 100% !important;
                     margin-bottom: 23px;
                 }
-                .bg-instancia-sieb {
+                .bg-instancia-sie {
                     background-color: #FFF;
                     border-radius: 5px 5px 5px 5px;
                     width: 100%;
@@ -207,11 +207,11 @@
                     font-weight: bold;
                     padding: 7px 5px;
                 }
-                .align-mudar-sieb {
+                .align-mudar-sie {
                     justify-content: flex-start !important;
                     width: 100% !important;
                 }
-                .form-select-sieb {
+                .form-select-sie {
                     font-size: 0.9rem !important;
                     text-align: center;
                 }
@@ -220,13 +220,13 @@
                     padding: 4px !important;
                     width: 100% !important;
                 }
-                .text-icones-geral-sieb {
+                .text-icones-geral-sie {
                     font-size: 0.9em;
                 }
                 .align-logo-faixa{
                     text-align: center;
                 }
-                .logo-sieb-faixa {
+                .logo-sie-faixa {
                     width: 50% !important;
                 }
                 .text-acesso-integrado {
@@ -234,13 +234,13 @@
                     text-align: center;
                 }
 
-                .text-usuario-sieb {
+                .text-usuario-sie {
                     font-size: 0.8em !important;
                 }
-                .text-copyright-sieb{
+                .text-copyright-sie{
                     font-size: 0.9em !important;
                 }
-                .footer-space-sieb{
+                .footer-space-sie{
                     margin-top: 120px;
                 }
 
@@ -248,7 +248,7 @@
 
         </style>
     </head>
-    <body class="body-sieb-erp">
+    <body class="body-sie-erp">
         <?php
         if (!defined('ABSPATH'))
             exit();
@@ -262,15 +262,15 @@
         <div class="container mb-2 mt-5">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5 col-xl-4">
-                    <img src="<?= HOME_URI ?>/includes/images/logo_Educ_PNG.png" alt="Logotipo Prefeitura de Barueri" class="img-logo-barueri-sieb">
+                    <img src="<?= HOME_URI ?>/includes/images/logo_Educ_PNG.png" alt="Logotipo <?= CLI_NOME ?>" class="img-logo-sie">
                 </div>
                 <div class="col-8 col-sm-5 col-md-6 col-lg-5 col-xl-7 ">
                     <p class="text-acesso-integrado mb-0">Acesso Integrado Google For Education</p>
-                    <p class="text-usuario-sieb">Usuário:  <?php echo toolErp::n_pessoa() ?></p>
+                    <p class="text-usuario-sie">Usuário:  <?php echo toolErp::n_pessoa() ?></p>
                 </div>
                 <div class="col-3 col-sm-1 col-md-2 col-lg-1 col-xl-1">
                     <img src="<?= $foto ?>" alt="Foto do Perfil de Usuário" class="w-100">
-                    <a href="<?php echo HOME_URI ?>?logout=1" class="g_id_signout logout btn btn-sair-sieb w-100" >
+                    <a href="<?php echo HOME_URI ?>?logout=1" class="g_id_signout logout btn btn-sair-sie w-100" >
                         SAIR
                     </a>
                 </div>
@@ -295,7 +295,7 @@
             <div class="container">
                 <div class="row mb-0 py-4 ">
                     <div class="col-12 col-sm-3 col-md-2 col-lg-3 col-xl-3 align-logo-faixa  px-0 ">
-                        <img src="<?= HOME_URI ?>/includes/images/logo-sieb-white.png" alt="Logotipo Sieb-ERP" class="logo-sieb-faixa">
+                        <!-- <img src="<?= HOME_URI ?>/includes/images/logo-sie-white.png" alt="Logotipo sie-ERP" class="logo-sie-faixa"> -->
                     </div>
                     <?php
                     @$acesso = $model->listSistemas();
@@ -315,7 +315,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <select data-width="fit"  onchange="trInst.submit()" name="fk_id_inst" data-live-search="true"    class="selectpicker form-select-sieb bg-instancia-select">
+                                                <select data-width="fit"  onchange="trInst.submit()" name="fk_id_inst" data-live-search="true"    class="selectpicker form-select-sie bg-instancia-select">
                                                     <?php
                                                     foreach ($escolas as $k => $v) {
                                                         ?>
@@ -362,7 +362,7 @@
                                 $y = current($v);
                                 ?>
                                 <div class="col-md-4 my-1 px-1">
-                                    <a href="#" class="text-icones-geral-sieb d-flex align-items-center border py-3"  onclick="document.getElementById('<?php echo $k ?>').submit()">
+                                    <a href="#" class="text-icones-geral-sie d-flex align-items-center border py-3"  onclick="document.getElementById('<?php echo $k ?>').submit()">
                                         <?php
                                         if (file_exists(ABSPATH . '/views/_images/icones/sistema/' . current($v)['arquivo'] . '.png')) {
                                             ?>
@@ -396,7 +396,7 @@
                                 ?>
                                 <div class="col-md-4 my-1 px-1">
                                     <div class="dropdown">
-                                        <a href="#" class="text-icones-geral-sieb d-flex align-items-center border py-3 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a href="#" class="text-icones-geral-sie d-flex align-items-center border py-3 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <?php
                                             if (file_exists(ABSPATH . '/views/_images/icones/sistema/' . current($v)['arquivo'] . '.png')) {
                                                 ?>
@@ -431,7 +431,7 @@
                                                     $y['systemData'] = uniqid();
                                                     ?>
                                                     <a class="dropdown-item" href="#">
-                                                        <div style="width: 100%" class="text-icones-geral-sieb d-flex align-items-center border py-3 " onclick="document.getElementById('<?php echo ($y['id_fr'] == 1 ? $k : $y['fkid']) . '_' . $ky ?>').submit();" >
+                                                        <div style="width: 100%" class="text-icones-geral-sie d-flex align-items-center border py-3 " onclick="document.getElementById('<?php echo ($y['id_fr'] == 1 ? $k : $y['fkid']) . '_' . $ky ?>').submit();" >
                                                             Perfil: 
                                                             <?php echo $y['n_nivel'] ?>
                                                             <br />
@@ -477,19 +477,19 @@
 
             }
         </script>
-        <div class="mb-5 pb-2 footer-space-sieb"></div>
-        <footer class="footer-sieb-erp">
+        <div class="mb-5 pb-2 footer-space-sie"></div>
+        <footer class="footer-sie-erp">
             <div class="container-fluid bg-footer ">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 col-sm-6 col-md-10 col-lg-8 col-xl-6 pt-2 text-center">
-                        <p class="text-copyright-sieb">
-                            © Copyright - 2022 - Prefeitura Municipal de Barueri - Secretaria de Educação.
+                        <p class="text-copyright-sie">
+                            © Copyright - <?php echo date('Y'); ?> - <?= CLI_NOME ?> - Secretaria de Educação.
                             <br>
-                            SIEB - ERP  Educacional - Versão 3.0 - Abril/2022
+                            <?= SISTEMA_NOME ?> - ERP  Educacional - Versão 3.0 - Abril/2022
                         </p>
                     </div>
                     <div class="col-12 col-sm-2 col-md-1 col-lg-1 col-xl-1 pt-2 px-0 mt-2 align-logo-footer">
-                        <img src="<?= HOME_URI ?>/includes/images/logo-sieb-white.png" alt="Logotipo Sieb-ERP" class="logo-sieb-footer">
+                        <!-- <img src="<?= HOME_URI ?>/includes/images/logo-sie-white.png" alt="Logotipo sie-ERP" class="logo-sie-footer"> -->
                     </div>
                 </div>
             </div>

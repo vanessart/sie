@@ -180,7 +180,7 @@ label {
 	background-color: #853769 !important;
 }
 
-.logo-sieb-footer{
+.logo-sie-footer{
 	width: 100%;
 }
 
@@ -193,7 +193,7 @@ label {
 	}
 
 	@media screen and (max-width: 991px){
-		.logo-sieb-footer {
+		.logo-sie-footer {
 			width: 149%;
 		}
 	}
@@ -215,7 +215,7 @@ label {
 			padding-bottom: 147px;
 		}
 
-		.logo-sieb-footer {
+		.logo-sie-footer {
 			width: 28%;
 			padding-bottom: 11px;
 			margin-right: 18px;
@@ -232,7 +232,7 @@ label {
 		
 
 		/*GE*/
-		.logo-sieb-faixa{
+		.logo-sie-faixa{
 			width: 100% !important;
 			margin-bottom: 23px;
 		}
@@ -261,7 +261,7 @@ label {
 		.align-logo-faixa{
 			text-align: center;
 		}
-		.logo-sieb-faixa {
+		.logo-sie-faixa {
 			width: 50% !important;
 		}
 
@@ -294,11 +294,11 @@ label {
 	margin-bottom: 20px;
 }
 
-.img-logo-sieb{
+.img-logo-sie{
 	align-content: center;
 }
 
-.img-logo-sieb-topo{
+.img-logo-sie-topo{
 	align-content: center;
 	width: 70px !important;
 	margin-bottom: 15px;

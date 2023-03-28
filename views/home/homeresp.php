@@ -62,19 +62,16 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <div class="col-md-12"  style="text-align: center">
-                    <a style="font-weight: bold; font-size:  14px" href="https://www.educbarueri.sp.gov.br/">Voltar para o Portal da Educação</a>
+                    <a style="font-weight: bold; font-size:  14px" href="<?= CLI_URL ?>">Voltar para o Portal da Educação</a>
                 </div>
 
                 <div class="col-md-12"  style="text-align: center">
-                    <a style="font-weight: bold; font-size:  14px" target="_blank" href="https://portal.educ.net.br/ge/pub/calendarios/SIEB2020_Instrucoes_Pais.pdf">Manual de instrução para acesso</a>
+                    <a style="font-weight: bold; font-size:  14px" target="_blank" href="<?= BASE_URL ?>sie/pub/calendarios/SIEB2020_Instrucoes_Pais.pdf">Manual de instrução para acesso</a>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-
-
 
 <form method="post">
     <div id="email" class="row" style="display: none; ">

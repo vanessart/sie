@@ -45,7 +45,7 @@ $tel = @$_REQUEST['tel'];
         $email = urldecode($email);
         imagettftext($imagem, 13, 0, 240, 108, $cor, ABSPATH . $font, $email);
 
-        $site = 'www.educbarueri.sp.gov.br';
+        $site = CLI_URL;
         imagettftext($imagem, 13, 0, 240, 128, $cor, ABSPATH . $font, $site);
 
         /* @Parametros

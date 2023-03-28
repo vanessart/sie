@@ -217,12 +217,12 @@
                         </td>
                         <td>
                             <div style="font-size: 20px">
-                                Prefeitura Municipal de Barueri
+                                <?= CLI_NOME ?>
                                 <br />
                                 SE - Secretaria de Educação
                             </div>
                             <div>
-                                https://www.educbarueri.sp.gov.br/portal/ E-Mail: gabinete@educbarueri.sp.gov.br
+                                <?= CLI_URL ?> E-Mail: <?= CLI_MAIL ?>
                                 <br />
                             </div>
                             <div style="font-size: 16px">

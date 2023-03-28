@@ -33,9 +33,7 @@ $tel = @$_REQUEST['tel'];
                                 <br /><br />
                                 Só é possível utilizar os <span style="white-space: nowrap;">e-mails</span> institucionais:
                                 <br /><br />
-                                *@educbarueri.sp.gov.br
-                                <br /><br />
-                                *@professor.barueri.br
+                                *@<?= CLI_MAIL_DOMINIO ?>
                             </p>
                             <br />
                             <a id="desconect" class=" btn btn-warning" style="width: 100%; display: none" href="#" onclick="signOut();">Desconectar</a> 
@@ -109,7 +107,7 @@ $tel = @$_REQUEST['tel'];
 
             });
         } else {
-            document.getElementById('msg').innerHTML = 'Para o recadastro é necessário logar com o Google<br /><br />Só é possível utilizar os <span style="white-space: nowrap;">e-mails</span> institucionais:<br /><br />*@educbarueri.sp.gov.br<br /><br />*@professor.barueri.br';
+            document.getElementById('msg').innerHTML = 'Para o recadastro é necessário logar com o Google<br /><br />Só é possível utilizar os <span style="white-space: nowrap;">e-mails</span> institucionais:<br /><br />*@<?= CLI_MAIL_DOMINIO ?>';
             document.getElementById('desconect').style.display = 'none';
             document.getElementById('user-photo').src = 'https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg';
             document.getElementById('user-name').innerText = '';

@@ -807,7 +807,7 @@ class sedModel extends MainModel {
     }
 
     public function assinatura() {
-        $permitido = ['professor.barueri.br', 'educbarueri.sp.gov.br', 'tcpix.page', 'educacao.barueri.br'];
+        $permitido = [CLI_MAIL_DOMINIO];
         $email = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_STRING);
         $nome = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_STRING);
         $pessoa = sql::get('pessoa', 'n_pessoa', ['emailgoogle' => $email], 'fetch');

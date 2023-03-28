@@ -72,7 +72,6 @@ class avaliaModel extends MainModel {
         $em['fk_id_turma'] = $id_turma;
         $em['fk_id_pessoa'] = $id_pessoa;
         $this->db->insert('avalia_ementa', $em, 1);
-        //$superEmail = 'ti.marcoteixeira@educbarueri.sp.gov.br';
         mailer::enviaEmailAvalia('Prezad' . toolErp::sexoArt($superSexo) . ' ' . $superNome, $superEmail, $textTop . $texto);
         toolErp::alertModal('<p>Concluído.</p><p>Uma cópia da ementa foi eviada para ' . toolErp::sexoArt($superSexo) . ' supervisor' . ($superSexo == 'F' ? 'a' : '') . ' ' . $superNome . ' </p>');
     }
@@ -112,7 +111,7 @@ class avaliaModel extends MainModel {
             $query = pdoSis::getInstance()->query($sql);
         }
         ##################### escapar e-mail ##################################
-        $superEmail = 'ti.marcoteixeira@educbarueri.sp.gov.br';
+        $superEmail = CLI_MAIL_TEC;
         mailer::enviaEmailAvalia('Prezad' . toolErp::sexoArt($superSexo) . ' ' . $superNome, $superEmail, $textTop . $texto);
         toolErp::alertModal('<p>Concluído.</p><p>Uma cópia da ementa foi eviada para ' . toolErp::sexoArt($superSexo) . ' supervisor' . ($superSexo == 'F' ? 'a' : '') . ' ' . $superNome . ' </p>');
     }

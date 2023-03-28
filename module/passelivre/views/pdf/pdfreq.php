@@ -186,7 +186,7 @@ if (empty($dados['dt_requerimento'])) {
     ?>
     <tr>
         <td colspan="6" style="font-size: 8px">
-            R: Cabo PM José Maria Schiavelli, 125 -  - Jardim dos Camargo e-mail: dtcpte.guardap@educbarueri.sp.gov.br  Telefone: 4199-2900 
+            <?= CLI_END ?> - <?= CLI_BAIRRO ?> e-mail: <?= CLI_MAIL ?>  Telefone: <?= CLI_FONE ?> 
         </td>
     </tr>
 </table>

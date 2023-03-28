@@ -66,9 +66,7 @@ $token = DB::sqlKey('googleLogin');
                                     <p id='msg' style="font-weight: bold">
                                         Só é possível utilizar este método de login com os <span style="white-space: nowrap;">e-mails</span> institucionais:
                                         <br /><br />
-                                        *__*@professor.barueri.br
-                                        <br /><br />
-                                        *__*@educbarueri.sp.gov.br
+                                        *__*@<?= CLI_MAIL_DOMINIO ?>
                                     </p>
                                     <div id="user-email"></div>
                                     <br />

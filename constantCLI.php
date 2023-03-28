@@ -14,7 +14,7 @@ define('CLI_FONE', '(11) 4622-8600');
 
 define('CLI_MAIL_DOMINIO', 'santanadeparnaiba.sp.gov.br');
 define('CLI_MAIL', 'gabinete@'. CLI_MAIL_DOMINIO);
-define('CLI_MAIL_TEC', 'gabinete@'. CLI_MAIL_DOMINIO);
+define('CLI_MAIL_TEC', 'ti@'. CLI_MAIL_DOMINIO);
 define('CLI_MAIL_HOST', 'smtp.gmail.com');
 define('CLI_MAIL_USERNAME', 'sie@'. CLI_MAIL_DOMINIO);
 define('CLI_MAIL_PASSWORD', 'aptN@3@ui');
