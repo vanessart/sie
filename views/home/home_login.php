@@ -34,7 +34,7 @@ $token = DB::sqlKey('googleLogin');
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Secretaria de Educação - Prefeitura de Barueri</title>
+        <title>Secretaria de Educação - <?= CLI_NOME ?></title>
 
         <style>
             body {
@@ -409,8 +409,7 @@ $token = DB::sqlKey('googleLogin');
                                         </p>
                                         <p class="text-white mt-2">
                                             <small>
-                                                - nomesobrenome@educbarueri.sp.gov.br <br>
-                                                - nomesobrenome@professor.barueri.br 
+                                                - nomesobrenome@<?= CLI_MAIL_DOMINIO ?>
                                             </small>
                                         </p>
                                         <?php
@@ -475,13 +474,13 @@ $token = DB::sqlKey('googleLogin');
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-6 pt-2 text-center">
                         <p class="text-copyright">
-                            © Copyright - <?php echo date('Y'); ?> - Prefeitura Municipal de Barueri - Secretaria de Educação.
+                            © Copyright - <?php echo date('Y'); ?> - <?= CLI_NOME ?> - Secretaria de Educação.
                             <br>
-                            SIEB - ERP  Educacional - Versão 3.0 - Abril/2022
+                            <?= SISTEMA_NOME ?> - ERP  Educacional - Versão 3.0 - Abril/2022
                         </p>
                     </div>
                     <div class="col-md-1 pt-2 px-0 mt-2 align-logo-footer">
-                        <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-white.png" alt="Logotipo Sieb-ERP" class="logo-sieb-footer">
+                        <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sieb-footer">
                     </div>
                 </div>
             </div>
