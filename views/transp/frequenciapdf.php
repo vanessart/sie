@@ -356,7 +356,7 @@ if (!empty($dados)) {
             <thead>
                 <tr>
                     <td colspan="3" style="font-size: 8pt; text-align: right; width: 100%">
-                        Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
+                        <?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
                     </td>
                 </tr>
             <br /><br /><br /><br /><br />

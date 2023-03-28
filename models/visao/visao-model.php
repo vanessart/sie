@@ -80,7 +80,7 @@ class visaoModel extends MainModel {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".CLI_CIDADE.", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");

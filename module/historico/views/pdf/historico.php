@@ -235,7 +235,7 @@ $pdf->mgt = 0;
             </td>
             <td style="padding-top: 5px; width: 80%; text-align: center">
                 <div style="font-size: 22px; font-weight: bold">
-                    Prefeitura Municipal de Barueri
+                    <?= CLI_NOME ?>
                     <br />
                     SE - Secretaria de Educação
                 </div>

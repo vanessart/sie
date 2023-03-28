@@ -128,7 +128,7 @@ if (!empty($proximaFolha)) {
     ?>       
 </table>
 
-<div style="font-size: 7pt; text-align: center">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+<div style="font-size: 7pt; text-align: center"><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
 <br /><br /><br /><br />
 <div style="font-size: 7pt; text-align: center">_____________________________________________</div>
 <div style="font-size: 7pt; text-align:center">Carimbo e Assinatura do Diretor</div>

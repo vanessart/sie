@@ -6,7 +6,7 @@
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td>
             <div style="font-size: 15px; font-weight: bold">
-                Prefeitura Municipal de Barueri
+                <?= CLI_NOME ?>
                 <br>SE - Secretaria de Educação
             </div>
             <div style="font-size: 11px">
@@ -36,7 +36,7 @@
                 <td rowspan="3"><img style="width: 80px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>
                 </td>
                 <td>
-                    <div style="font-size: 15px; font-weight: bold">Prefeitura Municipal de Barueri
+                    <div style="font-size: 15px; font-weight: bold"><?= CLI_NOME ?>
                         <br>SE - Secretaria de Educação
                     </div>
                     <div style="font-size: 11px">'
@@ -64,7 +64,7 @@
                 <td rowspan="3"><img style="width: 80px" src="' . HOME_URI . '/views/_images/brasao.jpg"/></td>
                 <td style = "text-align: center">
                     <div style="font-size: 15px; font-weight: bold">
-                        Prefeitura Municipal de Barueri<br>SE - Secretaria de Educação
+                        <?= CLI_NOME ?><br>SE - Secretaria de Educação
                     </div>
                     <div style="font-size: 11px; text-align: center">
                         $this->_nome

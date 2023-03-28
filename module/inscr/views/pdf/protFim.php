@@ -157,7 +157,7 @@ $pdf->mgf = 10;
 <br><br>
 Li e confirmo as informações.
 <br /><br /><br /><br /><br />
-<div class="topo" style="text-align: right; border-style: none; ">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+<div class="topo" style="text-align: right; border-style: none; "><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
 <br /><br /><br /><br />
 <div style="text-align: center">_____________________________________________________________</div>
 <div style="text-align:center"><?= $v['nome'] ?></div>

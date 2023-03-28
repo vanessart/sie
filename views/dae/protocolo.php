@@ -60,7 +60,7 @@ foreach ($dados as $key => $v) {
             </td>
             <td style="padding-top: 5px; width: 579px; text-align: center">
                 <div style="font-size: 20px; font-weight: bold">
-                    Prefeitura Municipal de Barueri
+                    <?= CLI_NOME ?>
                     <br />
                     SE - Secretaria de Educação
                     <br />

@@ -75,7 +75,7 @@ if ($id_rec) {
                 </p>
             </div>
             <br /><br /><br /><br /><br />
-            <div class="topo" style="text-align: right; border-style: none; padding-right: 140px">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+            <div class="topo" style="text-align: right; border-style: none; padding-right: 140px"><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
             <br /><br /><br /><br />
             <div style="text-align: center">_____________________________________________________________</div>
             <div style="text-align:center"><?= $ar['nome'] ?></div>

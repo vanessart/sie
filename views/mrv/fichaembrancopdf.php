@@ -149,61 +149,6 @@ $cor = '#F5F5F5';
 </div>
 <div style="page-break-after: always"></div>
 <br /><br />
-<!--
-<div>
-    <table style="width: 100%">
-        <tr>
-            <td colspan="3" style="font-weight:bold; font-size:10pt; background-color: #000000; color:#ffffff; text-align: center">
-                PARA USO EXCLUSIVO DA UNIDADE ESCOLAR
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" class="topo">
-                Comprovante de Residência
-                <br /><br />
-                (    ) Morador de Barueri há mais de 4 anos
-                <br />
-                (    ) Morador de Barueri menos de 4 anos
-                <br />
-                (    ) Não é morador de Barueri
-                <br />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" class="topo">
-                Estudou do 6° ao 9º ano na Rede Municipal
-                <br /><br />
-                (    ) Sim       
-                <br />
-                (    ) Não
-                <br />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" class="topo">
-                Média igual ou superior a 6,5
-                <br /><br />
-                (    ) Sim
-                <br />
-                (    ) Não
-                <br />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" class="topo3" style="text-align: center">
-                <br />
-                Secretaria de Educação
-                <br />
-                Rua C.PM José Maria Schiavelli, 125 - Jd. dos Camargos - Barueri - SP - CEP: 06410-335 - Fone/PABX (11) 4199-2900
-                <br />
-                E-mail: edu.gabinete@barueri.sp.gov.br
-                <br />
-                educacao.barueri.sp.gov.br
-            </td>
-        </tr>
-    </table>
-</div>
--->
 <?php
 tool::pdfescola('P', @$_POST['id_inst']);
 ?>

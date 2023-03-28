@@ -128,7 +128,7 @@ if ($id_turma) {
         <br /><br /><br />
         <!-- Capa -->
         <div class="topo2">
-            PREFEITURA MUNICIPAL DE BARUERI
+            <?= CLI_NOME ?>
             <br />
             COORDENADORIA DE ENSINO FUNDAMENTAL
         </div>

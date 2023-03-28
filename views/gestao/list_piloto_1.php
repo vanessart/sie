@@ -9,7 +9,7 @@
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td>
             <div>
-                <div style="font-size: 15px; font-weight: bold">Prefeitura Municipal de Barueri<br>SE - Secretaria de Educação</div>
+                <div style="font-size: 15px; font-weight: bold"><?= CLI_NOME ?><br>SE - Secretaria de Educação</div>
                 <div style="font-size: 11px">'. $this->_nome .'<br>'. $this->_email .'<br>'. $this->enderecoEstruturado(1) .'</div>
         </td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

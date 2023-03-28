@@ -152,7 +152,7 @@ $meses = [
     <br /><br /><br />
     <!-- Capa -->
     <div class="topo2">
-        PREFEITURA MUNICIPAL DE BARUERI
+        <?= CLI_NOME ?>
         <br />
         SECRETARIA DE EDUCAÇÃO
 

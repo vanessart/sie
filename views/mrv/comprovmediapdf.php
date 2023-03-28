@@ -164,7 +164,7 @@ if (empty($_POST['as'])) {
             </tr>
         </table>
 
-        <div style="text-align: right; font-size: 10pt">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+        <div style="text-align: right; font-size: 10pt"><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
         <br /><br /><br /><br /><br />
         <div style="text-align: center; font-size: 10pt">_____________________________________</div>
         <div style="text-align:center; font-size: 10pt">Carimbo e Assinatura da Escola</div>

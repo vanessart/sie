@@ -7,7 +7,7 @@ ob_start();
             <img style="width: 100px" src="<?php echo HOME_URI ?>/views/_images/brasao.png"/>
         </td>
         <td style="text-align: center; font-size: 22px; font-weight: bold  ">
-            Prefeitura Municipal de Barueri
+            <?= CLI_NOME ?>
             <br />
             Secretaria de Educação
             <br /><br />

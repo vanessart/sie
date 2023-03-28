@@ -21,7 +21,7 @@ $conta = $model->contachamado();
             <img style="width: 100px" src="<?php echo HOME_URI ?>/views/_images/brasao.jpg"/>
         </td>
         <td style="text-align: center; font-size: 22px; font-weight: bold  ">
-            Prefeitura Municipal de Barueri
+            <?= CLI_NOME ?>
             <br />
             Secretaria de Educação
             <br /><br />

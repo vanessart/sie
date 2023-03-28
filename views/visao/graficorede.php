@@ -18,7 +18,7 @@ $res2 = $model->wresumo('relatorio', $per);
 <div class="fieldTop">
     <div class="row">
         <div style="font-size: 16px" class="col-md-10">
-            <b>PREFEITURA MUNICIPAL DE BARUERI<b/> 
+            <b><?= CLI_NOME ?><b/> 
                 <br />
                 CAMPANHA DA VISÃO - "ALÉM DO OLHAR"
                 <br />

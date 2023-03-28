@@ -11,7 +11,7 @@ $titulo = ['Oculosreac' => 'Usa Óculos', 'Situacaoreac' => 'Situação Reteste'
 <div class="fieldTop">
     <div class="row">
         <div style="font-size: 14px" class="col-md-10">
-            <b>PREFEITURA MUNICIPAL DE BARUERI<b/> 
+            <b><?= CLI_NOME ?><b/> 
                 <br />
                 <?php echo $escola['n_inst'] ?>
                 <br />

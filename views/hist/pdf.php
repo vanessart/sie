@@ -140,7 +140,7 @@ if (is_numeric($_POST['id_pessoa'])) {
                         </td>
                         <td style="padding-top: 5px; width: 579px; text-align: center">
                             <div style="font-size: 22px; font-weight: bold">
-                                Prefeitura Municipal de Barueri
+                                <?= CLI_NOME ?>
                                 <br />
                                 SE - Secretaria de Educação
                             </div>

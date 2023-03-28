@@ -91,7 +91,7 @@ foreach ($cla as $kw => $w) {
         <div>Dia e Hora: <?php echo data::converteBr($v['dt_evento']) . ' - ' . substr($v['h_inicio'], 0, 5) . ' até ' . substr($v['h_final'], 0, 5) ?> horas </div>
         <?php ?>
         <br />
-        <div style="text-align: right">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+        <div style="text-align: right"><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
         <div style="text-align: center" >Atenciosamente</div>
         <br />
         <div style="text-align: center">_____________________________________</div>

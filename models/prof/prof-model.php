@@ -38,9 +38,12 @@ class profModel extends MainModel {
             @$prof['email'] = $_POST['email'];
             @$prof['fk_id_psc'] = $_POST['fk_id_psc'];
             $rm = sql::get('ge_funcionario', 'rm', ['rm' => $prof['rm']], 'fetch')['rm'];
-            if (substr(@$prof['email'], -17) == 'barueri.sp.gov.br') {
-                $prof['email'] = NULL;
-                tool::alert("O e-mail não foi salvo. Não é permitido e-mails institucionais");
+            if (!empty($prof['email']) ) {
+                $emailDomain = explode('@', @$prof['email']);
+                if (isset($emailDomain[1]) && $emailDomain[1] == CLI_MAIL_DOMINIO) {
+                    $prof['email'] = NULL;
+                    tool::alert("O e-mail não foi salvo. Não é permitido e-mails institucionais");
+                }
             }
             if (empty($rm)) {
                 tool::alert("Não foi encontrado Professor com a matrícula " . $prof['rm']);
@@ -123,9 +126,12 @@ class profModel extends MainModel {
             @$prof['nao_hac'] = $_POST['nao_hac'];
             @$prof['email'] = $_POST['email'];
             $rm = sql::get('ge_funcionario', 'rm', ['rm' => $prof['rm']], 'fetch')['rm'];
-            if (substr(@$prof['email'], -17) == 'barueri.sp.gov.br') {
-                $prof['email'] = NULL;
-                tool::alert("O e-mail não foi salvo. Não é permitido e-mails institucionais");
+            f (!empty($prof['email']) ) {
+                $emailDomain = explode('@', @$prof['email']);
+                if (isset($emailDomain[1]) && $emailDomain[1] == CLI_MAIL_DOMINIO) {
+                    $prof['email'] = NULL;
+                    tool::alert("O e-mail não foi salvo. Não é permitido e-mails institucionais");
+                }
             }
             if (empty($rm)) {
                 tool::alert("Não foi encontrado Professor com a matrícula " . $prof['rm']);

@@ -103,7 +103,7 @@ $chamada = $model->chamadaDiario($id_pl, $id_turma, $id_disc);
     <br /><br /><br />
     <!-- Capa -->
     <div class="topo2">
-        PREFEITURA MUNICIPAL DE BARUERIyyyyy
+        <?= CLI_NOME ?>yyyyy
         k
         k
         k

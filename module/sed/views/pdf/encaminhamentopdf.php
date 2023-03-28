@@ -143,7 +143,7 @@ foreach ($dados as $v) {
     </div>
     <br />
     <div style="text-align: right">
-        Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
+        <?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
     </div>
     <br /><br />
     <div style="text-align: center; padding-left: 350px">

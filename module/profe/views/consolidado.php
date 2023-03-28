@@ -109,7 +109,7 @@ $chamada = $model->chamadaDiario($id_pl, $id_turma, $id_disc);
     <br /><br /><br />
     <!-- Capa -->
     <div class="topo2">
-        PREFEITURA MUNICIPAL DE BARUERI
+        <?= CLI_NOME ?>
         <br />
         COORDENADORIA <?= in_array($id_curso, [3, 7, 8]) ? 'INFANTIL' : 'FUNDAMENTAL' ?>
     </div>

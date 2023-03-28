@@ -60,7 +60,7 @@ foreach ($cla as $kw => $w) {
         <br /><br />
         <div>Por ser verdade, firmamos o presente.</div>
         <br /><br /><br /><br />
-        <div style="text-align: right">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+        <div style="text-align: right"><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
         <br /><br /><br /><br /><br /><br /><br />
         <div style="text-align: center">_____________________________________</div>
         <div style="text-align:center">Carimbo e Assinatura</div>

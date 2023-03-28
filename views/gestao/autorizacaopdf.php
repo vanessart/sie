@@ -124,7 +124,7 @@ foreach ($cla as $kw => $w) {
             <?php
             ?>
             <br />
-            <div style="text-align: right">Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
+            <div style="text-align: right"><?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?></div>
             <br />
             <div style="text-align: center">__________________________________________________</div>
             <div style="text-align: center">Assinatura do Responsável</div>

@@ -129,7 +129,7 @@ try {
                                     </td>
                                     <td style="padding-left: 20px">
                                         <div style="font-weight: bold; font-size: 15px">
-                                            Prefeitura Municipal de Barueri
+                                            <?= CLI_NOME ?>
                                             <br />
                                             Secretaria de Educação
                                             <br />

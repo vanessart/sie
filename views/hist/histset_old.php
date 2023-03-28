@@ -151,7 +151,7 @@
                         </td>
                         <td>
                             <div style="font-size: 20px">
-                                Prefeitura Municipal de Barueri
+                                <?= CLI_NOME ?>
                                 <br />
                                 SE - Secretaria de Educação
                             </div>

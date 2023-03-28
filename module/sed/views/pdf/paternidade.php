@@ -151,7 +151,7 @@ if (!empty($pat)) {
     </div>
     <br /><br />
     <div style="font-size: 8pt; text-align: center; font-weight:bold">
-        Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
+        <?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
     </div>
     <br />
     <div style="font-size: 8pt; text-align: center; font-weight:bold">
@@ -170,7 +170,7 @@ if (!empty($pat)) {
     </div>  
     <br /><br />
     <div style="font-size: 8pt; text-align: center; font-weight:bold">
-        Barueri, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
+        <?= CLI_CIDADE ?>, <?php echo date('d') . ' ' . data::mes(date('m')) . ' ' . date('Y') . '.' ?>
     </div>
     <br />
     <div style="font-size: 8pt; text-align: center; font-weight:bold">
