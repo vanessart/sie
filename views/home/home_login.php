@@ -43,17 +43,13 @@ $token = DB::sqlKey('googleLogin');
                 background-color: #fff !important;
                 position: absolute;    
                 width: 100%;
-
             }
 
             footer{
-                position: absolute;
+                position: fixed;
                 bottom: 0 !important;
                 width: 100%;
             }
-
-
-
 
             .bg-box{
                 margin-top: 13vh !important;
