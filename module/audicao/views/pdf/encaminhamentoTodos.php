@@ -54,7 +54,7 @@ foreach ($alunos as $k => $v) {
         </div>
         <br><br>
         <div class="row">
-            <div class="col" style="text-align:right;">Barueri, <?= date("d") ?> de <?= data::mes(date("m")) ?> de <?= date("Y") ?> </div>
+            <div class="col" style="text-align:right;"><?= CLI_CIDADE ?>, <?= date("d") ?> de <?= data::mes(date("m")) ?> de <?= date("Y") ?> </div>
         </div>
         <br /><br>
         <div class="row">

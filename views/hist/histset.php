@@ -1111,8 +1111,8 @@ for ($h = 1; $h < $contaFalta; $h++) {
                 document.getElementById("uf" + idTexto).value = "";
             } else {
                 $("#escol" + idTexto).hide();
-                document.getElementById("cid" + idTexto).value = "Barueri";
-                document.getElementById("uf" + idTexto).value = "SP";
+                document.getElementById("cid" + idTexto).value = "<?= CLI_CIDADE ?>";
+                document.getElementById("uf" + idTexto).value = "<?= CLI_UF ?>";
             }
 
         });

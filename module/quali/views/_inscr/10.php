@@ -382,7 +382,7 @@ foreach ($ceps_ as $v) {
             <div class="caixag">
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
-                        <?= form::input('1[cidade]', 'Cidade', 'Barueri', ' readonly ') ?>
+                        <?= form::input('1[cidade]', 'Cidade', CLI_CIDADE, ' readonly ') ?>
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <?= form::input('1[uf]', 'Estado', 'SP', ' readonly ') ?>

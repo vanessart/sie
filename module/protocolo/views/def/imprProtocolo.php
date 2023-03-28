@@ -99,7 +99,7 @@ if (!empty($id_protocolo)) {
     <br><br>
     <div class="row">
         <div class="col-md-12">
-            <p style=" font-size: 16px;">Informamos que <?= $oa ?> alun<?= $oa ?> <?= $n_pessoa ?>, RA <?= $id_pessoa ?> , foi encaminhad<?= $oa ?> para pedido de Atendimento em Sala de Educação Especial. Após deferimento da Secretaria de Educação de Barueri, a escola convocará o responsável via telefone.</p>
+            <p style=" font-size: 16px;">Informamos que <?= $oa ?> alun<?= $oa ?> <?= $n_pessoa ?>, RA <?= $id_pessoa ?> , foi encaminhad<?= $oa ?> para pedido de Atendimento em Sala de Educação Especial. Após deferimento da Secretaria de Educação de <?= CLI_CIDADE ?>, a escola convocará o responsável via telefone.</p>
         </div>
     </div>
     <br>
@@ -119,7 +119,7 @@ if (!empty($id_protocolo)) {
     </table>
     <br><br><br>
     <div class="row" style="text-align:right;">
-        <div class="col tit_table">Barueri, <?= date("d") ?> de <?= data::mes(date("m")) ?>  de <?= date("Y") ?></div>
+        <div class="col tit_table"><?= CLI_CIDADE ?>, <?= date("d") ?> de <?= data::mes(date("m")) ?>  de <?= date("Y") ?></div>
     </div>
 </div>
 <script type="text/javascript">

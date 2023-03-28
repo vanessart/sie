@@ -97,7 +97,7 @@ if (!empty($dados['id_acomp'])) {
                     <img style="width: 100px" src = "<?php echo $code ?>"/>
                 </td>
                 <td>
-                    Autenticado pela Secretaría de Educação de Barueri
+                    Autenticado pela Secretaría de Educação de <?= CLI_CIDADE ?>
                     <br />
                     <p style="text-align: justify">
                         Confira a autenticidade deste documento utilizando o Qr Code ao lado ou acesse o endereco:

@@ -17,7 +17,7 @@ if (!empty($dados)) {
         <b><?php echo $dados['n_pessoa'] ?></b>, RG nº <?php echo $dados['rg'] . ' - ' . $dados['rg_oe'] ?>,
         CPF nº <?php echo substr($dados['cpf'], 0, 9) . '-' . substr($dados['cpf'], 9, 2) ?>, compareceu ao Departamento Técnico de Gestão de Pessoal da
         Secretaria de Educação para fins de atualização de dados no Cadastro Municipal de Professores 
-        Eventuais - CADAMPE - conforme convocação no Jornal Oficial de Barueri, Edição 1.184, de 06/11/2019, página 11.
+        Eventuais - CADAMPE - conforme convocação no Jornal Oficial de <?= CLI_CIDADE ?>, Edição 1.184, de 06/11/2019, página 11.
     </div>
 
     <br /><br />

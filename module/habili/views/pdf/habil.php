@@ -90,7 +90,7 @@ if (!empty($id_cur)) {
             . '</td>'
             . '<td style="text-align: center; font-weight: bold; ">'
             . '<p style="font-size: 22px">'
-            . 'Conteúdo Curricular de Barueri'
+            . 'Conteúdo Curricular de '. CLI_CIDADE
             . '</p>'
             . ' <p style="font-size: 20px">'
             . $curso['n_curso']

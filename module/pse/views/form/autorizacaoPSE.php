@@ -55,7 +55,7 @@ $dados_aluno = $model->getPessoa($id_pessoa);
        AUTORIZAÇÃO DE PARTICIPAÇÃO NAS ATIVIDADES PROGRAMA SAÚDE NA ESCOLA <br> <br>PSE - <?= @$n_campanha ?>
     </div>
     <br />
-    <?= toolErp::divAlert('info',"O Programa Saúde na Escola está no município de Barueri desde 2013 e tem como objetivo realizar atividades que promovam a saúde e previnam doenças nas Unidades Escolares. A participação d$oa $seu filh$oa é muito importante para nós.") ?>
+    <?= toolErp::divAlert('info',"O Programa Saúde na Escola está no município de ". CLI_CIDADE ." desde 2013 e tem como objetivo realizar atividades que promovam a saúde e previnam doenças nas Unidades Escolares. A participação d$oa $seu filh$oa é muito importante para nós.") ?>
      <div class="alert alert-info" style="padding-top:  10px; padding-bottom: 0">   
         <div class="row">
             <div  class="col-8 col-sm-8">
@@ -155,7 +155,7 @@ $dados_aluno = $model->getPessoa($id_pessoa);
         <br>
         <div class="row" style="text-align:right;">
             <div  class="col col-sm">
-                Barueri, <?= date("d") ?> de <?= data::mes(date("m")) ?> de <?= date("Y") ?>
+                <?= CLI_CIDADE ?>, <?= date("d") ?> de <?= data::mes(date("m")) ?> de <?= date("Y") ?>
             </div>
         </div> 
         <br><br>

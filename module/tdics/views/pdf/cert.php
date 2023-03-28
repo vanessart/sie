@@ -56,9 +56,9 @@ if (!empty($ids)) {
             </div>
             no <?= $periodo ?>, com carga horária de 25 horas, realizado
             <br />
-            por iniciativa da Secretaria de Educação de Barueri
+            por iniciativa da Secretaria de Educação de <?= CLI_CIDADE ?>
             <br /><br />
-            Barueri, <?= data::porExtenso($data) ?>
+            <?= CLI_CIDADE ?>, <?= data::porExtenso($data) ?>
         </div>
         <?php
         $mpdf->WriteHTML(ob_get_contents());

@@ -184,7 +184,7 @@ if (!empty($id)) {
         if (!empty($_REQUEST['p'])) {
             ?>
             <div class="text-right">
-                Barueri, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+                <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
             </div>
             <br /><br /><br /><br /><br /><br /><br /><br /><br />
             <div style="width: 200px; float: left;text-align: center">

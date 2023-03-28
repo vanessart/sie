@@ -206,7 +206,7 @@ $escola = new escola();
         Assinatura _________________________________________________
     </div> 
     <div style="text-align: right; padding-right: 20px">
-        Barueri, ____ de _______________________ 20____.     
+        <?= CLI_CIDADE ?>, ____ de _______________________ 20____.     
     </div>
 </div>
 
@@ -284,7 +284,7 @@ $escola = new escola();
        Eu, _______________________________________________________, R.G. _______________________ responsável legal pelo(a) aluno(a) _______________________________________________,
         autorizo o uso de materiais produzidos pelo(a) meu filho (minha filha), bem como a divulgação de sua imagem pela Secretaria de Educação, sem nenhum ônus lucrativo, para todos os fins educacionais.
     </div > 
-    <div style="text-align: right; padding-right: 20px">Barueri, ____ de _______________________ 20____.</div>
+    <div style="text-align: right; padding-right: 20px"><?= CLI_CIDADE ?>, ____ de _______________________ 20____.</div>
 
     <div style="text-align: right; padding-right: 20px" >
         <br />
@@ -298,9 +298,9 @@ $escola = new escola();
     <div style="text-align: justify; font-size: 8pt" >
         Eu, ______________________________________, R.G. __________ responsável legal pelo(a) aluno(a) acima identificado(a).
         <br />
-        Declaro, sob as penas da lei, que resido no município de Barueri, conforme documentação 
+        Declaro, sob as penas da lei, que resido no município de <?= CLI_CIDADE ?>, conforme documentação 
         anexa, e que o aluno(a aluna) 
-        estuda na Rede Municipal de Ensino de Barueri.
+        estuda na Rede Municipal de Ensino de <?= CLI_CIDADE ?>.
         <br />
         Declaro-me ciente, ainda, de que qualquer tipo de falsidade constante na declaração,
         inclusive, nos documentos residencias, poderá acarretar na adoção de medidas 
@@ -310,7 +310,7 @@ $escola = new escola();
         e aplicação das sanções penais pertinentes, sem prejuízo da adoção das medidas 
         nas esferas administrativa e cível.
     </div > 
-    <div style="text-align: right; padding-right: 20px">Barueri, ____ de _______________________ 20____.</div>
+    <div style="text-align: right; padding-right: 20px"><?= CLI_CIDADE ?>, ____ de _______________________ 20____.</div>
 
     <div style="text-align: right; padding-right: 20px" >
         <br />

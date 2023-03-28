@@ -96,7 +96,7 @@ foreach ($turma as $t) {
                     <?php echo addslashes($v['n_pessoa']) ?>
                 </td>      
                 <td style="background-color: <?php echo $cor ?>">
-                    <?php echo (($v['cidade'] == 'BARUERI' OR$v['cidade'] == 'Barueri') ? $v['status_ben'] : $v['cidade']) ?>
+                    <?php echo (($v['cidade'] == CLI_CIDADE OR$v['cidade'] == ucfirst(CLI_CIDADE)) ? $v['status_ben'] : $v['cidade']) ?>
                 </td>
                 <td style="background-color: <?php echo $cor ?>">
                     <?php echo $v['categoria'] ?>

@@ -87,7 +87,7 @@ foreach ($dados as $v) {
         b. 03 fotos 3x4 recentes <?php echo $sexo = ($v['sexo'] == "M") ? ' do aluno; ' : ' da aluna; ' ?><br />
         <!--c. Xerox do RG e CPF dos pais <?php echo $sexo = ($v['sexo'] == "M") ? ' pelo aluno; ' : ' pela aluna; ' ?><br /> -->
         c. Xerox do RG e CPF dos pais;<br />
-        d. Xerox do comprovante de endereço atualizado, em nome do pai, mãe ou responsável legal <?php echo $sexo = ($v['sexo'] == "M") ? ' pelo aluno, ' : ' pela aluna, ' ?> morador de Barueri;<br />
+        d. Xerox do comprovante de endereço atualizado, em nome do pai, mãe ou responsável legal <?php echo $sexo = ($v['sexo'] == "M") ? ' pelo aluno, ' : ' pela aluna, ' ?> morador de <?= CLI_NOME ?>;<br />
         e. Xerox da carteira de vacina atualizada <?php echo $sexo = ($v['sexo'] == "M") ? ' do aluno ' : ' da aluna ' ?> com validação da Unidade Básica de Saúde - UBS; <br />
 
 

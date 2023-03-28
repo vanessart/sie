@@ -12,9 +12,6 @@ $func = sql::get(['pessoa', 'ge_funcionario'], 'n_pessoa, rm, cpf, emailgoogle, 
         padding: 3px;
     }
 </style>
-<div style="text-align: center">
-    <img src="<?= HOME_URI ?>/includes/images/educBarueri.jpg"/>
-</div>
 <br /><br />
 <div style="text-align: center; font-size: 22px; font-weight: bold">
     Devolução de Chromebook para a Escola

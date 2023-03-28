@@ -109,7 +109,7 @@ $aluno->tempoEscola($tempo, $distancia);
                             Cidade: 
                         </td>
                         <td>
-                            <input placeholder="Barueri" <?php echo $disable ?> type="text" name="1[cidade]" value="<?php echo $aluno->_cidade ?>" />
+                            <input placeholder="<?= CLI_CIDADE ?>" <?php echo $disable ?> type="text" name="1[cidade]" value="<?php echo $aluno->_cidade ?>" />
                         </td>
                     </tr>
                     <tr>
@@ -175,7 +175,7 @@ $aluno->tempoEscola($tempo, $distancia);
                     ?>
                     <tr>
                         <td>
-                            Mora em Barueri desde
+                            Mora em <?= CLI_CIDADE ?> desde
                         </td>
                         <td>
                             <input type="text" name="1[dt_barueri]" value="<?php echo data::converteBr($aluno->_dt_barueri) ?>" <?php echo formulario::dataConf() ?> />

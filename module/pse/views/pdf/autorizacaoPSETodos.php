@@ -151,7 +151,7 @@ foreach ($alunos as $k => $v) {
             <br><br>
             <div class="row" style="text-align:right;">
                 <div  class="col col-sm">
-                    Barueri, <?= date("d") ?> de <?= data::mes(date("m")) ?> de <?= date("Y") ?>
+                    <?= CLI_CIDADE ?>, <?= date("d") ?> de <?= data::mes(date("m")) ?> de <?= date("Y") ?>
                 </div>
             </div> 
             <br><br>

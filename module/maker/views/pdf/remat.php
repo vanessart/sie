@@ -85,7 +85,7 @@ if (!empty($alunos)) {
             Sem mais,
         </div>
         <div style="text-align: right; padding-top: 40px">
-            Barueri,______ de _____________________de 2022
+            <?= CLI_CIDADE ?>,______ de _____________________de 2022
         </div>
         <div style="text-align: right; padding-top: 60px">
             ___________________________________________________

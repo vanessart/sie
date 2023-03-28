@@ -90,7 +90,7 @@ for ($c = 1; $c <= 2; $c++) {
                 <table style="width: 100%">
                     <tr>
                         <td colspan="2" style="text-align: right;">
-                            <?php echo "Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") ?>
+                            <?php echo CLI_CIDADE.", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") ?>
                             <br /><br /><br /><br /><br />
                         </td>
                     </tr>

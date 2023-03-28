@@ -147,7 +147,7 @@ if (!empty($pat)) {
 
     <br /><br /><br /><br />  
     <div style="font-size: 8pt; text-align: justify; font-weight:bold">
-        Declaro para os fins legais que a presente relação nominal tem origem na consulta do documento original de Certidão de Nascimento dos alunos, em atendimento ao Projeto Paternidade Responsável do Poder Judiciário do Estado de São Paulo, Foro de Barueri, 4a. Vara Cível.
+        Declaro para os fins legais que a presente relação nominal tem origem na consulta do documento original de Certidão de Nascimento dos alunos, em atendimento ao Projeto Paternidade Responsável do Poder Judiciário do Estado de São Paulo, Foro de <?= CLI_CIDADE ?>, 4a. Vara Cível.
     </div>
     <br /><br />
     <div style="font-size: 8pt; text-align: center; font-weight:bold">

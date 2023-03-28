@@ -60,7 +60,7 @@ foreach ($ceps_ as $v) {
     <div style="text-align: center; font-weight: bold; font-size: 20px; padding: 10px; background-color: #BF302E; color: white">
         Programa de Desenvolvimento Organizacional
         <br />
-        Câmara Municipal de Barueri
+        Câmara Municipal de <?= CLI_CIDADE ?>
     </div>
     <br />
     <?php

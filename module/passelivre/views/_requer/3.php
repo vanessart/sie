@@ -60,7 +60,7 @@ if (empty($dados)) {
             </div>
             <div class="col-6">
                 <?php
-                if (strcasecmp($dados['municipio'], 'BARUERI') != 0) {
+                if (strcasecmp($dados['municipio'], CLI_CIDADE) != 0) {
                     ?>
                     <p style="color:red;font-weight: bolder">Não Munícipe.</p>
                     <?php

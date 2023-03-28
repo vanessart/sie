@@ -19,7 +19,7 @@ foreach ($ids as $v) {
     <hr>
 </div>
 <p style="text-align: justify">
-    Declaro que, nesta data, recebi do Município de Barueri, através da Secretaria Municipal de Educação, o equipamento abaixo citado em perfeitas condições de uso, a título de comodato gratuito, para uso exclusivo nas dependências das escolas municipais de Barueri, ou ainda, para a realização de atividades pedagógicas em ambiente externo, comprometendo-me a mantê-lo em perfeito estado de conservação, ficando ciente de que:
+    Declaro que, nesta data, recebi do Município de <?= CLI_CIDADE ?>, através da Secretaria Municipal de Educação, o equipamento abaixo citado em perfeitas condições de uso, a título de comodato gratuito, para uso exclusivo nas dependências das escolas municipais de <?= CLI_CIDADE ?>, ou ainda, para a realização de atividades pedagógicas em ambiente externo, comprometendo-me a mantê-lo em perfeito estado de conservação, ficando ciente de que:
 </p>
 <ul>
     <li>
@@ -83,7 +83,7 @@ if (!empty($id_chs)) {
             &nbsp;
         </td>
         <td style="text-align: center">
-            Barueri, <?= data::porExtenso(date('Y-m-d')) ?>
+            <?= CLI_CIDADE ?>, <?= data::porExtenso(date('Y-m-d')) ?>
             <br /><br /><br /><br /><br />
             ______________________________________________
             <br />

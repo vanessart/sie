@@ -37,7 +37,7 @@ if (empty($dados)) {
 </div>
 
 <div style="text-align: right; padding: 50px">
-    Barueri, <?= data::porExtenso($dt_PdfPrint) ?>
+    <?= CLI_CIDADE ?>, <?= data::porExtenso($dt_PdfPrint) ?>
 </div>
 <br /><br /><br />
 <div style="padding: 35px; width: 65%; margin-left: 35%">

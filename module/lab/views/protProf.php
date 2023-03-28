@@ -30,16 +30,13 @@ if (!empty($id_ch)) {
     $arr = $query->fetch(PDO::FETCH_ASSOC);
     if ($arr) {
         ?>
-        <div style="text-align: center">
-            <img src="<?= HOME_URI ?>/includes/images/educBarueri.jpg"/>
-        </div>
         <br /><br />
         <div style="text-align: center; font-weight: bold; font-size: 16px">
             TERMO DE RESPONSABILIDADE PELA GUARDA E USO DE CHROMEBOOK
         </div>
         <br /><br />
         <p style="text-align: justify">
-            Com Base no DECRETO Nº 9.134, DE 28 DE ABRIL DE 2020, declaro que, recebi do Município de Barueri, através da Secretaria Municipal de Educação, o equipamento abaixo citado em perfeitas condições de uso, a título de comodato para uso na Secretaria de Educação e nas dependências das Unidades Escolares e fora dela, em atividades profissionais em ambientes externos;
+            Com Base no DECRETO Nº 9.134, DE 28 DE ABRIL DE 2020, declaro que, recebi do Município de <?= CLI_CIDADE ?>, através da Secretaria Municipal de Educação, o equipamento abaixo citado em perfeitas condições de uso, a título de comodato para uso na Secretaria de Educação e nas dependências das Unidades Escolares e fora dela, em atividades profissionais em ambientes externos;
         </p>
         <p style="text-align: justify">
             Comprometendo-me a mantê-lo em perfeito estado de conservação, ficando ciente de que:

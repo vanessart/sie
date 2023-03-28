@@ -96,7 +96,7 @@ $pdf->headerAlt = '<div style="text-align: center; font-weight: bold; font-size:
     Declaro que a equipe escolar entrou em contato com os(as) responsáveis dos(as) alunos(as) participantes do projeto solicitando a autorização de rematricula, conforme a orientações da Secretaria da Educação:
 </div>
 <div style="text-align: right; padding-top: 40px">
-    Barueri, <?= data::porExtenso($data) ?>
+    <?= CLI_CIDADE ?>, <?= data::porExtenso($data) ?>
 </div>
 <br /><br />
 <?php

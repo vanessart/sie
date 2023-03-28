@@ -9,8 +9,8 @@ javaScript::cep();
             document.getElementById('ceptmp').value = document.getElementById('cep').value;
             document.getElementById('cep').value = "<?php echo $escola->_cie ?>";
             document.getElementById('cep').readOnly = true;
-            document.getElementById('cidade').value = "Barueri";
-            document.getElementById('uf').value = "SP";
+            document.getElementById('cidade').value = "<?= CLI_CIDADE ?>";
+            document.getElementById('uf').value = "<?= CLI_UF ?>";
             document.getElementById("setc").value = ""
         } else {
             document.getElementById('cep').value = document.getElementById('ceptmp').value;
@@ -67,7 +67,7 @@ javaScript::cep();
                     <?php formulario::input('a[uf]', 'UF: ', NULL, @$end['uf'], ' id="uf"  ') ?>
                 </div>
                 <div class="col-lg-4">
-                    <?php echo formulario::input('a[dt_barueri]', 'Mora em Barueri desde', NULL, data::converteBr(@$end['dt_barueri']), formulario::dataConf()) ?>
+                    <?php echo formulario::input('a[dt_barueri]', 'Mora em '.CLI_NOME.' desde', NULL, data::converteBr(@$end['dt_barueri']), formulario::dataConf()) ?>
                 </div>
             </div>
         </div>

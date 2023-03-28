@@ -75,7 +75,7 @@ foreach ($ceps_ as $v) {
     <div style="text-align: center; font-weight: bold; font-size: 20px; padding: 10px; background-color: #BF302E; color: white">
         Programa de Desenvolvimento Organizacional
         <br />
-        Câmara Municipal de Barueri
+        Câmara Municipal de <?= CLI_CIDADE ?>
     </div>
     <br />
     <?php
@@ -277,7 +277,7 @@ foreach ($ceps_ as $v) {
                 <br />
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
-                        <?= form::input('1[cidade]', 'Cidade', 'Barueri', ' readonly id="cidade" ') ?>
+                        <?= form::input('1[cidade]', 'Cidade', CLI_CIDADE, ' readonly id="cidade" ') ?>
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <?= form::input('1[uf]', 'Estado', 'SP', ' readonly id="uf" ') ?>

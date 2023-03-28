@@ -7,7 +7,7 @@ ob_start();
             <img style="width: 100px" src="<?php echo HOME_URI ?>/views/_images/brasao.png"/>
         </td>
         <td style="text-align: center; font-size: 22px; font-weight: bold  ">
-            PrefeituraMunicipal de Barueri
+            <?= CLI_NOME ?>
             <br />
             Secretaria de Educação
             <br /><br />
@@ -207,7 +207,7 @@ if (!empty($id)) {
         if (!empty($_REQUEST['p'])) {
             ?>
             <div class="text-right">
-                Barueri, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+                <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
             </div>
             <br /><br /><br /><br /><br /><br /><br /><br /><br />
             <div style="width: 200px; float: left;text-align: center">

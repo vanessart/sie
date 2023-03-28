@@ -91,7 +91,7 @@ $aluno = sql::get('mrv_beneficiado', '*', ['id_pessoa' => @$id_pessoa], 'fetch')
                             <?php echo formulario::input('1[cep]', 'CEP ', null, $aluno['cep'], 'id="cep"', 'Digite somente números') ?>
                         </div>
                         <div class="col-md-4">
-                            <?php formulario::select('1[morador_barueri_ben]', ['Sim' => 'Sim', 'Não' => 'Não'], 'Morador de Barueri ?', $aluno['morador_barueri_ben']) ?>
+                            <?php formulario::select('1[morador_barueri_ben]', ['Sim' => 'Sim', 'Não' => 'Não'], 'Morador de '.CLI_CIDADE.' ?', $aluno['morador_barueri_ben']) ?>
                         </div>
                     </div>        
                 </div>

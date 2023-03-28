@@ -122,7 +122,7 @@ ob_start();
     ?>
     <br /><br />
     <div style="text-align: right; margin-left: 100px">
-        Barueri, <?php echo data::porExtenso(date("Y-m-d")) ?>
+        <?= CLI_CIDADE ?>, <?php echo data::porExtenso(date("Y-m-d")) ?>
     </div>
     <br /><br /><br />
     <br /><br /><br />

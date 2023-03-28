@@ -21,8 +21,8 @@ $abrange = $query->fetchAll();
             document.getElementById('ceptmp').value = document.getElementById('cep').value;
             document.getElementById('cep').value = "<?php echo $escola->_cie ?>";
             document.getElementById('cep').readOnly = true;
-            document.getElementById('cidade').value = "Barueri";
-            document.getElementById('uf').value = "SP";
+            document.getElementById('cidade').value = "<?= CLI_CIDADE ?>";
+            document.getElementById('uf').value = "<?= CLI_UF ?>";
             document.getElementById("setc").value = ""
         } else {
             document.getElementById('cep').value = document.getElementById('ceptmp').value;
@@ -68,10 +68,10 @@ $abrange = $query->fetchAll();
                         <?php formulario::input('1[bairro]', 'Bairro: ', NULL, @$end['bairro'], ' id="bairro"  required') ?>
                     </div>
                     <div class="col-lg-5">
-                        <?php formulario::input('1[cidade]', 'Cidade: ', NULL, empty($end['cidade']) ? 'Barueri' : $end['cidade'], ' id="cidade"  ') ?>
+                        <?php formulario::input('1[cidade]', 'Cidade: ', NULL, empty($end['cidade']) ? CLI_CIDADE : $end['cidade'], ' id="cidade"  ') ?>
                     </div>
                     <div class="col-lg-2">
-                        <?php formulario::input('1[uf]', 'UF: ', NULL, empty($end['uf']) ? 'SP' : $end['uf'], ' id="uf"  ') ?>
+                        <?php formulario::input('1[uf]', 'UF: ', NULL, empty($end['uf']) ? CLI_UF : $end['uf'], ' id="uf"  ') ?>
                     </div>
                 </div>
             </div>

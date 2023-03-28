@@ -196,7 +196,7 @@ foreach ($dados as $v) {
     ?>
 </table>
 <div class="topo">
-    Barueri, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+    <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
 </div>
 
 <?php

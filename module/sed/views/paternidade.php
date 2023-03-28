@@ -72,7 +72,7 @@ if ($pat) {
             Nos casos em que há pai, sincronizado, o aluno desaparecerá da lista.
         </p>
         <p>
-            A presente relação nominal terá origem na consulta do documento original de Certidão de Nascimento dos alunos, em atendimento ao Projeto Paternidade Responsável do Poder Judiciário do Estado de São Paulo, Foro de Barueri, 4a. Vara Cível.
+            A presente relação nominal terá origem na consulta do documento original de Certidão de Nascimento dos alunos, em atendimento ao Projeto Paternidade Responsável do Poder Judiciário do Estado de São Paulo, Foro de <?= CLI_CIDADE ?>, 4a. Vara Cível.
         </p>
     </div>
     <br /><br />

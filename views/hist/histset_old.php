@@ -739,7 +739,7 @@
                                             asort($escolas);
                                             foreach ($escolas as $key => $value) {
                                                 ?>
-                                                <option onclick="document.getElementById('escol<?php echo $c ?>').style.display = 'none';document.getElementById('cid<?php echo $c ?>').value = 'Barueri';document.getElementById('uf<?php echo $c ?>').value = 'SP'" <?php echo @$hist['fk_id_inst'][$c] == $key ? 'selected' : '' ?> value="<?php echo $key ?>" ><?php echo $value ?></option>
+                                                <option onclick="document.getElementById('escol<?php echo $c ?>').style.display = 'none';document.getElementById('cid<?php echo $c ?>').value = '<?= CLI_CIDADE ?>';document.getElementById('uf<?php echo $c ?>').value = 'SP'" <?php echo @$hist['fk_id_inst'][$c] == $key ? 'selected' : '' ?> value="<?php echo $key ?>" ><?php echo $value ?></option>
                                                 <?php
                                             }
                                             ?>

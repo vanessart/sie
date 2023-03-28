@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
             })(window, document, "clarity", "script", "dxu3040a9l");
         </script>
                 <!-- <title><?php echo $this->title; ?> - SIEB - 26/12/2020</title> -->
-        <title>Barueri - Educação - SIEB</title>
+        <title><?= CLI_CIDADE ?> - Educação - <?= SISTEMA_NOME ?></title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width">

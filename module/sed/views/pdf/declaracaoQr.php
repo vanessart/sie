@@ -72,7 +72,7 @@ if ($password_hash->CheckPassword($aluno['dt_nasc'], $token)) {
     <?php
     ?>
     <br /><br /><br /><br /><br />
-    <div style="text-align: right">Barueri, <?= data::porExtenso(date("Y-m-d")) ?></div>
+    <div style="text-align: right"><?= CLI_CIDADE ?>, <?= data::porExtenso(date("Y-m-d")) ?></div>
 
 
     <?php

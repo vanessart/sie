@@ -18,9 +18,6 @@ if ($id_ce) {
         padding: 3px;
     }
 </style>
-<div style="text-align: center">
-    <img src="<?= HOME_URI ?>/includes/images/educBarueri.jpg"/>
-</div>
 <br /><br />
 <div style="text-align: center; font-size: 22px; font-weight: bold">
     D E C L A R A Ç Ã O
@@ -67,7 +64,7 @@ if ($id_ce) {
     </tr>
 </table>
 <div style="text-align: right; padding: 50px">
-    Barueri, <?= data::porExtenso(date("Y-m-d")) ?>
+    <?= CLI_CIDADE ?>, <?= data::porExtenso(date("Y-m-d")) ?>
 </div>
 <div style="padding: 35px; width: 65%; margin-left: 35%">
     <hr>

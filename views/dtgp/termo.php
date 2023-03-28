@@ -16,7 +16,7 @@ $dados = sql::get('dtgp_cadampe', '*', ['id_cad' => @$_POST['id_cad']], 'fetch')
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     Eu, <?php echo strtoupper(@$dados['n_insc']) ?>, 
     devidamente qualificado perante o Cadastro Municipal de Professores Eventuais 
-    CADAMPE do Município de Barueri, como professor eventual de
+    CADAMPE do Município de <?php echo date("d") ?>, como professor eventual de
     <?php echo @$_POST['disciplina'] ?> , 
     firmo o presente compromisso de atender às convocações que se 
     fizerem necessárias ao interesse público,
@@ -31,7 +31,7 @@ $dados = sql::get('dtgp_cadampe', '*', ['id_cad' => @$_POST['id_cad']], 'fetch')
 </div>
 <br /><br /><br /><br />
 <div style="text-align: center; font-size: 16px">
-    Barueri, <?php echo date("d")  ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+    <?= CLI_CIDADE ?>, <?php echo date("d")  ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
 </div>
 <br /><br /><br /><br /><br />
 <div style="text-align: center; font-size: 16px">

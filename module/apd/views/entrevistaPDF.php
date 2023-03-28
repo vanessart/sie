@@ -348,7 +348,7 @@ foreach ($atualiza as $v) {?>
 <br>
 
 <div class="row" style="text-align:center;">
-    <div class="col tit_table">Barueri, <?= date("d") ?> de <?= data::mes(date("m")) ?>  de <?= date("Y") ?></div>
+    <div class="col tit_table"><?= CLI_CIDADE ?>, <?= date("d") ?> de <?= data::mes(date("m")) ?>  de <?= date("Y") ?></div>
 </div>
 
 </div>

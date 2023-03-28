@@ -107,7 +107,7 @@ if ($a) {
         </div>
         <br />
         <div style="text-align: right; padding: 30px; font-weight: bold; font-size: 16px;">
-            Barueri, <?= dataErp::porExtenso(date("Y-m-d")) ?>
+            <?= CLI_CIDADE ?>, <?= dataErp::porExtenso(date("Y-m-d")) ?>
             <br /><br /><br /><br /><br /><br /><br />
             ___________________________________________________
             <br />  

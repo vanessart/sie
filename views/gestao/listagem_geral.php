@@ -42,7 +42,7 @@ echo $escola->cabecalho();
             <td>Cod.Classe</td>
             <td>R.G.</td>
             <td>Cartão SUS</td>
-            <td>Cartão Barueri</td>
+            <td>Cartão <?= CLI_CIDADE ?></td>
             <td>Endereço</td>
             <td>Nr.</td>
             <td>Complemento</td>

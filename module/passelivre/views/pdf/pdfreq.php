@@ -142,7 +142,7 @@ $esc = $model->pegaescolas();
     <br /><br />
     Requeiro a emissão do cartão “Passe Livre”, para fins da gratuidade no serviço 
     convencional simples a comercial do Sistema de Transporte Coletivo Rodoviário Municipal
-    de Passageiros no Município de Barueri.
+    de Passageiros no Município de <?= CLI_CIDADE ?>.
     <br /><br />
     Afirmo que as informações acima são verdadeiras, sob pena de ser responsabilizado civil
     e criminalmente, inclusive com a perda do benefício.
@@ -166,7 +166,7 @@ if (empty($dados['dt_requerimento'])) {
         <td colspan="2" class="topo">
             DATA:
             <br />
-            <?= 'Barueri, ' . $data_r[2] . ' de ' . data::mes(date($data_r[1])) . ' de ' . $data_r[0] . '.' ?>          
+            <?= CLI_CIDADE .', ' . $data_r[2] . ' de ' . data::mes(date($data_r[1])) . ' de ' . $data_r[0] . '.' ?>          
         </td>
         <td colspan="4" class="topo2">
             SECRETARIA DE EDUCAÇÃO:

@@ -19,7 +19,7 @@ $dados = $model->getCadampe($_POST['id_cad']);
 </div>
 <br /><br /><br /><br />
 <div style="text-align: justify; font-size: 18px">
-    Barueri, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+    <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
 </div>
 <br /><br /><br /><br /><br />
 <div style="text-align: center">

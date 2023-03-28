@@ -46,7 +46,7 @@ $model->geratabelaalunoclasse(tool::id_inst());
             $v['id_turma'] = $v['id_turma'];
             $v['escola'] = user::session('n_inst');
 
-            if ($v['cidade'] == 'BARUERI' or $v['cidade'] == 'Barueri' or $v['cidade'] == 'barueri') {
+            if ($v['cidade'] == CLI_CIDADE or $v['cidade'] == ucfirst(CLI_CIDADE) or $v['cidade'] == strtolower(CLI_CIDADE)) {
                 if ($v['situacao'] == 'Frequente' && !in_array($v['id_pessoa'], $id_inscritos)) {
                     $classe[$k]['interesse'] = formulario::submit('Não Há Interesse', $sqlkeyNao, $v);
                     $classe[$k]['inscricao'] = formulario::submit('Inscrição', null, $v, HOME_URI . '/mrv/inscricao');

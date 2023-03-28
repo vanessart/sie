@@ -64,7 +64,7 @@ $aluno = (array) new aluno($id_pessoa);
                         </div>
                         <!--
                         <div class="col-md-4">
-                        <?php formulario::select('mora4', ['Sim' => 'Sim', 'Não' => 'Não'], 'Morador de Barueri há mais de 4 anos ?', @$mora4, NULL, NULL, 'required') ?>
+                        <?php formulario::select('mora4', ['Sim' => 'Sim', 'Não' => 'Não'], 'Morador de '.CLI_CIDADE.' há mais de 4 anos ?', @$mora4, NULL, NULL, 'required') ?>
                         </div>
                         -->
                     </div>        
@@ -94,7 +94,7 @@ $aluno = (array) new aluno($id_pessoa);
                     $morador = 'Não';
                     $def = 'Indeferida';
 
-                    if (($end['cidade'] == 'Barueri') or ( $end['cidade'] == 'BARUERI')) {
+                    if (($end['cidade'] == ucfirst(CLI_CIDADE)) or ( $end['cidade'] == CLI_CIDADE)) {
                         $morador = 'Sim';
                         $def = 'Ag. Def.';
                     }

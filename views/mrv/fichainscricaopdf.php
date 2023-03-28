@@ -104,7 +104,7 @@ if (!empty($_POST['sel'])) {
                         <br />
                         inscrição do mesmo no Sistema de Reservas de Vagas/ITB/2022.
                         <br /><br />
-                        Para  tanto,  declaro  residir  no  Município de Barueri, conforme  documentação anexa, e que, o  aluno-candidato estuda na Rede Municipal de Ensino de Barueri.
+                        Para  tanto,  declaro  residir  no  Município de <?= CLI_CIDADE ?>, conforme  documentação anexa, e que, o  aluno-candidato estuda na Rede Municipal de Ensino de <?= CLI_CIDADE ?>.
                         <br /><br />
                         Em conformidade com a Portaria nº 282/2022 de 03 de agosto de 2022.
                         <br /><br/>
@@ -165,7 +165,7 @@ if (!empty($_POST['sel'])) {
                 </tr>
                 <tr>
                     <td colspan="3" class="topo" style="width: 70%">
-                        Barueri, ___ de _______________ de 2022.
+                        <?= CLI_CIDADE ?>, ___ de _______________ de 2022.
                     </td>
                     <td class="topo" style="width: 30%">
                         Carimbo da U.E. e Data

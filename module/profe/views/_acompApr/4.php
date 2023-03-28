@@ -130,7 +130,7 @@ if (!empty($dados['fk_id_pessoa_prof'])) {
 <div class="alert alert-info" style="text-align: justify; font-weight: bold; font-size: 1.3em">
     <p>Relate, de acordo com suas observações, o desenvolvimento da criança dentro do seu percurso de aprendizagem, utilizando os seguintes instrumentos metodológicos:</p>
     <p>
-        Habilidades do conteúdo curricular de Barueri desenvolvidas
+        Habilidades do conteúdo curricular de <?= CLI_CIDADE ?> desenvolvidas
     </p>
     <p>
         Registros de acompanhamento realizados sobre os projetos executados, bem como anotações pessoais que retratem o processo de desenvolvimento da criança;

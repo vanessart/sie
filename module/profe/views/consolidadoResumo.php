@@ -613,7 +613,7 @@ if (!empty($chamada['dt'])) {
             </div>
             <br /><br /><br /><br />
             <div style="text-align: right; padding: 60px">
-                Barueri, <?= data::porExtenso(date("Y-m-") . '19') ?>
+                <?= CLI_CIDADE ?>, <?= data::porExtenso(date("Y-m-") . '19') ?>
             </div>
             <br /><br /><br /><br /><br />
             ____________________________________________________

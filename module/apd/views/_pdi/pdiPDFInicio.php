@@ -514,7 +514,7 @@ echo '<div style="padding-left: 15px;"><strong>Sem Registro </strong></div>';
 <br>
 
 <div class="row" style="text-align:center;" class="anoAtual">
-    <div class="col tit_table anoAtual">Barueri, <?= date("d") ?> de <?= data::mes(date("m")) ?>  de <?= date("Y") ?></div>
+    <div class="col tit_table anoAtual"><?= CLI_CIDADE ?>, <?= date("d") ?> de <?= data::mes(date("m")) ?>  de <?= date("Y") ?></div>
 </div>
 
 </div>

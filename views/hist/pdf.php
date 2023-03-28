@@ -828,7 +828,7 @@ if (is_numeric($_POST['id_pessoa'])) {
             </table>
             <br />
             <div style="text-align: right; font-size: 10px">
-                Barueri, <?php echo date("d") ?> de <?php echo data::mes(date('m')) ?> de <?php echo date("Y") ?>
+                <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date('m')) ?> de <?php echo date("Y") ?>
             </div>
             <br /><br /><br />
             <div style="float: left; width: 50%; text-align: center; font-size:10px">

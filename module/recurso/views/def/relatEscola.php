@@ -80,7 +80,7 @@ if (!empty($equipamentos)) {
                 &nbsp;
             </td>
             <td style="text-align: center">
-                Barueri, <?= data::porExtenso(date('Y-m-d')) ?>
+                <?= CLI_CIDADE ?>, <?= data::porExtenso(date('Y-m-d')) ?>
                 <br /><br /><br /><br /><br />
                 ______________________________________________
                 <br />

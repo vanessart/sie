@@ -249,7 +249,7 @@
                     }
                     ?>
 
-                    <?php echo formulario::input('1[dt_barueri]', 'Mora em Barueri desde', NULL, data::converteBr(@$dados['dt_barueri']), formulario::dataConf(8) . 'maxlength="10" id="data8" ' . @$readonly) ?>
+                    <?php echo formulario::input('1[dt_barueri]', 'Mora em '.CLI_CIDADE.' desde', NULL, data::converteBr(@$dados['dt_barueri']), formulario::dataConf(8) . 'maxlength="10" id="data8" ' . @$readonly) ?>
                     </div>
                 </div>
                 <br />

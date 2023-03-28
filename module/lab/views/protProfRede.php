@@ -19,16 +19,13 @@ if (!empty($id_ce)) {
             $dataFinal = date("Y-m-d");
         }
         ?>
-        <div style="text-align: center">
-            <img src="<?= HOME_URI ?>/includes/images/educBarueri.jpg"/>
-        </div>
         <br /><br />
         <div style="text-align: center; font-weight: bold; font-size: 16px">
             TERMO DE RESPONSABILIDADE PELA GUARDA E USO DE EQUIPAMENTO
         </div>
         <br /><br />
         <p style="text-align: justify">
-            Com base no DECRETO Nº 9.134, DE 28 DE ABRIL DE 2020, declaro que, recebi do Município de Barueri, através da Secretaria Municipal de Educação, o equipamento abaixo citado em perfeitas condições de uso, a título de comodato para uso na Secretaria de Educação e nas dependências das Unidades Escolares e fora dela, em atividades profissionais.
+            Com base no DECRETO Nº 9.134, DE 28 DE ABRIL DE 2020, declaro que, recebi do Município de <?= CLI_CIDADE ?>, através da Secretaria Municipal de Educação, o equipamento abaixo citado em perfeitas condições de uso, a título de comodato para uso na Secretaria de Educação e nas dependências das Unidades Escolares e fora dela, em atividades profissionais.
         </p>
         <p style="text-align: justify">
             Comprometendo-me a mantê-lo em perfeito estado de conservação, ficando ciente de que:
@@ -120,7 +117,7 @@ if (!empty($id_ce)) {
         </table>
         <div style="text-align: center; width: 50%; float: right; margin-top: 20px">
             <div style="padding-bottom: 100px; text-align: right">
-                Barueri, <?= data::porExtenso($dataFinal) ?>
+                <?= CLI_CIDADE ?>, <?= data::porExtenso($dataFinal) ?>
             </div>
             ___________________________________________________
             <br />

@@ -324,7 +324,7 @@ foreach ($alunos as $v) {
             Assinatura _________________________________________________
         </div>
         <div style="text-align: right; padding-right: 20px">
-            Barueri, ____ de _______________________ 20____.
+            <?= CLI_CIDADE ?>, ____ de _______________________ 20____.
         </div>
     </div>
 
@@ -402,7 +402,7 @@ foreach ($alunos as $v) {
             Eu, ________________________________________________________, R.G. ___________________ responsável legal <?php echo $s = ($v['sexo'] == "M") ? 'pelo aluno' : 'pela aluna' ?> <b><?php echo $v['n_pessoa'] ?><?php ?></b>,
             autorizo o uso de materiais produzidos <?php echo $s = ($v['sexo'] == "M") ? 'pelo meu filho' : 'pela minha filha' ?>, bem como a divulgação de sua imagem pela Secretaria de Educação, sem nenhum ônus lucrativo, para todos os fins educacionais.
         </div >
-        <div style="text-align: right; padding-right: 20px">Barueri, ____ de _______________________ 20____.</div>
+        <div style="text-align: right; padding-right: 20px"><?= CLI_CIDADE ?>, ____ de _______________________ 20____.</div>
 
         <div style="text-align: right; padding-right: 20px" >
             <br />
@@ -416,9 +416,9 @@ foreach ($alunos as $v) {
         <div style="text-align: justify; font-size: 8pt" >
             Eu, _________________________________________________________, R.G. ________________________ responsável legal <?php echo $s = ($v['sexo'] == "M") ? 'pelo aluno acima identificado.' : 'pela aluna acima identificada.' ?>
             <br />
-            Declaro, sob as penas da lei, que resido no município de Barueri, conforme documentação
+            Declaro, sob as penas da lei, que resido no município de <?= CLI_CIDADE ?>, conforme documentação
             anexa, e que <?php echo $s = ($v['sexo'] == "M") ? 'o aluno' : 'a aluna' ?>
-            estuda na Rede Municipal de Ensino de Barueri.
+            estuda na Rede Municipal de Ensino de <?= CLI_CIDADE ?>.
             <br />
             Declaro-me ciente, ainda, de que qualquer tipo de falsidade constante na declaração,
             inclusive, nos documentos residenciais, poderá acarretar na adoção de medidas
@@ -428,7 +428,7 @@ foreach ($alunos as $v) {
             e aplicação das sanções penais pertinentes, sem prejuízo da adoção das medidas
             nas esferas administrativa e cível.
         </div >
-        <div style="text-align: right; padding-right: 20px">Barueri, ____ de _______________________ 20____.</div>
+        <div style="text-align: right; padding-right: 20px"><?= CLI_CIDADE ?>, ____ de _______________________ 20____.</div>
 
         <div style="text-align: right; padding-right: 20px" >
             <br />

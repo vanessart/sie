@@ -181,7 +181,7 @@ $prof = $model->inscricoes(@$_POST['id_prof'], 'id_prof');
     A Direção atesta a inscrição do referido projeto.
     <br /><br /><br />
     <div style="text-align: right">
-        Barueri, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+        <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
     </div>
     <br /><br /><br /><br /><br />
     <table style="width: 100%">

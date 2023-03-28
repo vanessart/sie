@@ -91,8 +91,8 @@ if (!defined('ABSPATH'))
     <div style="text-align: center; padding: 20px">
         <?=
         formErp::hidden([
-            'l[cidade]' => 'Barueri',
-            'l[uf]' => 'SP',
+            'l[cidade]' => CLI_CIDADE,
+            'l[uf]' => CLI_UF,
             'l[id_predio]' => @$end['id_predio'],
             'id_inst' => $id_inst,
             'i[id_inst]' => $id_inst,

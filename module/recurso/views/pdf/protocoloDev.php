@@ -94,7 +94,7 @@ if (!empty($func)) {
     }?>
 </div>
 <div style="text-align: right; padding: 50px">
-    Barueri, <?= data::porExtenso($data) ?>
+    <?= CLI_CIDADE ?>, <?= data::porExtenso($data) ?>
 </div>
 
 <div style="padding: 35px; width: 65%; margin-left: 35%">

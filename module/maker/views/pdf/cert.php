@@ -48,9 +48,9 @@ if (!empty($ids)) {
                 <?= $v['n_pessoa'] ?>
             </div>
             <br />
-            Participou do Projeto Sala Maker, no <?= $periodo ?>, no polo <?= $v['n_polo'] ?>, nível <?= $v['n_mc'] ?>, com carga horária de 25h, realizada pela Assinco Maker por iniciativa da Secretaria de Educação de Barueri.
+            Participou do Projeto Sala Maker, no <?= $periodo ?>, no polo <?= $v['n_polo'] ?>, nível <?= $v['n_mc'] ?>, com carga horária de 25h, realizada pela Assinco Maker por iniciativa da Secretaria de Educação de <?= CLI_CIDADE ?>.
             <br /><br /><br /><br />
-            Barueri, <?= data::porExtenso($data) ?>
+            <?= CLI_CIDADE ?>, <?= data::porExtenso($data) ?>
         </div>
         <?php
         $mpdf->WriteHTML(ob_get_contents());

@@ -259,7 +259,7 @@ $classi = $query->fetchAll();
     Declaração: li e confirmo as informações.
 </div>
 <div style="text-align: right; padding: 10px">
-    Barueri, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
+    <?= CLI_CIDADE ?>, <?php echo date("d") ?> de <?php echo data::mes(date("m")) ?> de <?php echo date("Y") ?>
 </div>
 <br /><br />
 <div style="text-align: center; width: 100%">

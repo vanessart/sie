@@ -175,7 +175,7 @@ foreach ($destino_ as $k => $v) {
 </div>
 <br /><br />
 <div style="text-align: right; padding: 10px">
-    Barueri, <?= intval(date("d")) ?> de <?= dataErp::meses(date("m")) ?> de <?= date("Y") ?>
+    <?= CLI_CIDADE ?>, <?= intval(date("d")) ?> de <?= dataErp::meses(date("m")) ?> de <?= date("Y") ?>
 </div>
 <br /><br /><br /><br /><br /><br />
 <div style="width: 300px; text-align: center">
