@@ -374,13 +374,6 @@ class UserLogin {
 
                 // Remove a sessão com a URL
                 unset($_SESSION['goto_url']);
-
-                // Redireciona para a página
-                //echo '<meta http-equiv="Refresh" content="0; url=' . $goto_url . '">';
-                // echo '<script type="text/javascript">window.location.href = "' . $goto_url . '";</script>';
-                //  echo '<meta http-equiv="Refresh" content="0; url=https://www.educbarueri.sp.gov.br/portal/">';
-                //  echo '<script type="text/javascript">window.location.href = "https://www.educbarueri.sp.gov.br/portal/";</script>';
-                //header( 'location: ' . $goto_url );
             }
 
             return;
@@ -434,13 +427,6 @@ class UserLogin {
 
             // A página em que o usuário estava
             $_SESSION['goto_url'] = urlencode($_SERVER['REQUEST_URI']);
-
-            // Redireciona
-            // echo '<meta http-equiv="Refresh" content="0; url=' . $login_uri . '">';
-            // echo '<script type="text/javascript">window.location.href = "' . $login_uri . '";</script>';
-            //echo '<meta http-equiv="Refresh" content="0; url=https://www.educbarueri.sp.gov.br/portal/">';
-            //echo '<script type="text/javascript">window.location.href = "https://www.educbarueri.sp.gov.br/portal/";</script>';
-            // header('location: ' . $login_uri);
         }
 
         return;

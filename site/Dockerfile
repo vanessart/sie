@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.2-apache
 COPY site.conf /etc/apache2/sites-available/000-default.conf
 COPY php.ini /usr/local/etc/php/php.ini
 #RUN a2ensite site.conf

@@ -18,15 +18,15 @@ class mailer {
             try {
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
+                $mail->Host = CLI_MAIL_HOST;
                 $mail->SMTPAuth = true;
-                $mail->Username = 'sieb@educbarueri.sp.gov.br';
-                $mail->Password = 'aptN@3@ui';
-                $mail->Port = 587;
+                $mail->Username = CLI_MAIL_USERNAME;
+                $mail->Password = CLI_MAIL_PASSWORD;
+                $mail->Port = CLI_MAIL_PORT;
                 $mail->ContentType = 'text/plain; charset=utf-8';
                 $mail->CharSet = 'UTF-8';
 
-                $mail->setFrom('sieb@educbarueri.sp.gov.br');
+                $mail->setFrom(CLI_MAIL_USERNAME);
                 $mail->addAddress($email);
 
                 if (!empty($attachment) && is_array($attachment)) {
@@ -61,15 +61,15 @@ class mailer {
             $body = ''
                     . ' Olá ' . $arr['n_pessoa'] . '.'
                     . '<br /><br />'
-                    . ' Para acessar o SIEB, entre no site http://portal.educ.net.br e utilize a senha "' . $senha . '" '
+                    . ' Para acessar o '.SISTEMA_NOME.', entre no site '.BASE_URL.' e utilize a senha "' . $senha . '" '
                     . '<br /><br />'
-                    . 'Se preferir, acesse o SIEB  utilizando o Google com o e-mail ' . $arr['email']
+                    . 'Se preferir, acesse o '.SISTEMA_NOME.' utilizando o Google com o e-mail ' . $arr['email']
                     . '<br /><br />'
                     . 'Este e-mail é enviado automaticamente e não recebe mensagens.';
 
 
             $body .= '<br /><br /><br /><br />'
-                    . 'SIEB';
+                    . SISTEMA_NOME;
 
             $exito = mailer::send($arr['email'], 'Senha de acesso', $body);
             if ($exito) {
@@ -82,11 +82,10 @@ class mailer {
 
         $subject = "Recuperar Senha";
         $body = "Caro(a) $n_pessoa<br /><br />"
-                . "Foi solicitada a redefinição de senha do seu login do SIEB '$email' no site portal.educ.net.br.<br /><br /> "
+                . "Foi solicitada a redefinição de senha do seu login do ".SISTEMA_NOME." '$email' no site ".BASE_URL.".<br /><br /> "
                 . "Para confirmar este pedido e definir uma nova senha para sua conta, por favor, acesse o seguinte link:<br /><br /> "
-                . "<a target=\"_blank\" href=\"https://portal.educ.net.br/ge/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "\">http://portal.educ.net.br/ge/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "</a><br /><br />"
-                //  . "<a target=\"_blank\" href=\"http://187.84.96.130/ge/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "\">http://portal.educ.net.br/ge/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "</a><br /><br />"
-                . '(Este link é válido por 30 minutos, contados a partir da solicitação no SIEB<br /><br />'
+                . "<a target=\"_blank\" href=\"". BASE_URL ."/sie/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "\">".BASE_URL."/sie/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "</a><br /><br />"
+                . '(Este link é válido por 30 minutos, contados a partir da solicitação no '.SISTEMA_NOME.'<br /><br />'
                 . 'Se não foi solicitado, por favor, ignore este e-mail.<br><br>'
                 . 'Caso haja alguma dúvida, favor entrar em contato com o DTTIE.';
 
@@ -96,14 +95,14 @@ class mailer {
 
     public static function enviaEmail($n_pessoa, $email, $senha, $user, $url) {
         $subject = "Recuperação de Senha";
-        $body = "PREFEITURA MUNICIPAL DE BARUERI<br />"
+        $body = CLI_NOME ."<br />"
                 . "SECRETARIA DE EDUCAÇÃO<br />"
                 . "DTTIE-DEPARTAMENTO TÉCNICO DE TECNOLOGIA DA INFORMAÇÃO EDUCACIONAL<br />"
                 . "=======================================================================<br /><br />"
                 . "Prezado(a), $n_pessoa <br /><br />"
                 . "Seja bem-vindo! <br />"
-                . "Segue abaixo seu USUÁRIO e SENHA para acesso ao S.I.E.B. - Sistemas Integrados da Educação de Barueri, em:<br /><br />"
-                . "<a href=\"https://www.educbarueri.sp.gov.br/portal/\">educ.net.br</a>.<br /><br />"
+                . "Segue abaixo seu USUÁRIO e SENHA para acesso ao ".SISTEMA_NOME." - Sistemas Integrados da Educação de ". ucfirst(CLI_CIDADE) .", em:<br /><br />"
+                . "<a href=\"". CLI_URL ."/portal/\">". CLI_URL ."</a>.<br /><br />"
                 . "|———————————————————><br />"
                 . "|<br />"
                 . "|       USUÁRIO:  $user<br />"
@@ -113,8 +112,8 @@ class mailer {
                 . "ATENÇÃO:<br />"
                 . "=========<br />"
                 . "* Caso você tenha permissão de acesso para algum outro subsistema, poderá usar a mesma senha;<br />"
-                . "* Caso esqueça sua senha, poderá clicar em “Esqueci a Senha”, para tanto, mantenha seu e-mail sempre atualizado no SIEB;<br />"
-                . "* As identificações e as senhas para acesso à rede corporativa da Secretaria de Educação (incluindo o SIEB) são sigilosas, de uso pessoal e intransferível.<br />"
+                . "* Caso esqueça sua senha, poderá clicar em “Esqueci a Senha”, para tanto, mantenha seu e-mail sempre atualizado no ".SISTEMA_NOME.";<br />"
+                . "* As identificações e as senhas para acesso à rede corporativa da Secretaria de Educação (incluindo o ".SISTEMA_NOME.") são sigilosas, de uso pessoal e intransferível.<br />"
                 . "* Você deve trocar sua senha sempre que existir qualquer indicação de possível comprometimento da rede corporativa ou da própria senha.<br />"
                 . "* Para trocar sua senha, acesse o menu superior << MAIS  >> - Config. usuário. <br />"
                 . "* Nossa política de segurança não permite o uso do mesmo CPF para dois usuários, isto é, quando um usuário entra no sistema, derruba automaticamente o outro.<br /><br /><br />"
@@ -126,13 +125,13 @@ class mailer {
 
     public static function enviaEmailCadampe($n_pessoa, $email, $senha) {
         $subject = "Sua Senha";
-        $body = "PREFEITURA MUNICIPAL DE BARUERI<br />"
+        $body =  CLI_NOME ."<br />"
                 . "SECRETARIA DE EDUCAÇÃO<br />"
                 . "PROCESSO SELETIVO CADAMPE<br />"
                 . "=======================================================================<br /><br />"
                 . "Prezado(a), $n_pessoa <br /><br />"
                 . "Segue abaixo sua SENHA para acesso ao PROCESSO SELETIVO CADAMPE, em:<br /><br />"
-                . "<a href=\"https://portal.educ.net.br/ge/inscr/inscr/3/\">educ.net.br</a>.<br /><br />"
+                . "<a href=\"". BASE_URL ."/ge/inscr/inscr/3/\">". CLI_URL ."</a>.<br /><br />"
                 . "|———————————————————><br />"
                 . "|<br />"
                 . "|       SENHA: $senha<br />"
@@ -155,7 +154,7 @@ class mailer {
         $categoria = $pedido[0]['n_categoria'];
         $data = "De " . data::converteBr($pedido[0]['dt_inicio']) . " a " . data::converteBr($pedido[0]['dt_fim']);
         $subject = "Nova Atribuição CADAMPE - PROTOCOLO: $id_pedido";
-        $body = "PREFEITURA MUNICIPAL DE BARUERI<br />"
+        $body =  CLI_NOME ."<br />"
                 . "SECRETARIA DE EDUCAÇÃO<br />"
                 . "PROCESSO DE ATRIBUIÇÃO CADAMPE<br />"
                 . "=======================================================================<br /><br />"
@@ -209,7 +208,7 @@ class mailer {
 
         $centerBody .= "</table>";
 
-        $body = "PREFEITURA MUNICIPAL DE BARUERI<br />"
+        $body = CLI_NOME ."<br />"
                 . "SECRETARIA DE EDUCAÇÃO<br />"
                 . "LISTA DE ESPERA<br />"
                 . "=======================================================================<br /><br />"

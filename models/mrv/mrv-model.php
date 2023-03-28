@@ -61,7 +61,7 @@ class mrvModel extends MainModel {
             $insert['fk_id_turma'] = @$_POST['id_turma'];
             $insert['status_ben'] = 'NI';
             $insert['fk_id_pl'] = '87';
-            if (($end['cidade'] == 'Barueri') or ( $end['cidade'] == 'BARUERI')) {
+            if (($end['cidade'] == ucfirst(CLI_CIDADE)) or ( $end['cidade'] == CLI_CIDADE)) {
                 $insert['morador_barueri_ben'] = 'Sim';
                 $insert['categoria'] = '99';
                 $insert['obs_ben'] = 'Não há Interesse';
@@ -125,7 +125,6 @@ class mrvModel extends MainModel {
 
             $insert['morador_barueri_ben'] = "Sim";
             $insert['categoria'] = '1';
-            // $insert['morador_barueri_ben'] = $_POST['morador'];
             // $insert['morador4_completo_ben'] = $_POST['mora4'];
             //$insert['estudou4_ben'] = $_POST['estuda'];
             // $insert['obs_ben'] = 1;
@@ -175,14 +174,7 @@ class mrvModel extends MainModel {
             } else {
                 $_POST[1]['categoria'] = '1';
             }
-            /*
-              } elseif (($_POST[1]['localidade'] == 'Barueri') or ( $_POST[1]['localidade'] == 'BARUERI')) {
-              $_POST[1]['categoria'] = '3';
-              $_POST[1]['morador_barueri_ben'] = 'Sim';
-              }
 
-             * 
-             */
             if ($_POST[1]['status_ben'] == 'Não Munícipe') {
                 $_POST[1]['categoria'] = '98';
             }
@@ -549,13 +541,6 @@ class mrvModel extends MainModel {
         $query = $this->db->query($sql);
 
         $id_inst = tool::id_inst();
-        /*
-          $sel = "SELECT ta.fk_id_inst, ta.situacao FROM mrv_turma_aluno ta"
-          . " JOIN ge_turmas t on t.id_turma = ta.fk_id_turma"
-          . " LEFT JOIN endereco e ON e.fk_id_pessoa = ta.fk_id_pessoa"
-          . " WHERE t.fk_id_ciclo = '" . '9' . "' AND t.fk_id_pl = '" . '87' . "' AND  ta.situacao = '" . 'Frequente' . "'"
-          . " AND ta.fk_id_inst = '" . $id_inst . "' AND cidade IN('Barueri', 'BARUERI', 'barueri')";
-         */
         $sel = "SELECT ta.fk_id_inst, ta.situacao FROM mrv_turma_aluno ta"
                 . " JOIN mrv_beneficiado b ON b.id_pessoa = ta.fk_id_pessoa"
                 . " JOIN ge_turmas t ON t.id_turma = ta.fk_id_turma"
@@ -792,7 +777,7 @@ class mrvModel extends MainModel {
 
         if (!empty($dados)) {
             foreach ($dados as $v) {
-                if (strcasecmp($v['localidade'], 'BARUERI') == 0) {
+                if (strcasecmp($v['localidade'], CLI_CIDADE) == 0) {
                     /*
                       if (($v['morador4_completo_ben'] == 'Sim') AND ( $v['estudou4_ben'] == 'Sim')) {
                       $cat = '1';
@@ -883,8 +868,8 @@ class mrvModel extends MainModel {
 
         $cie = tool::cie();
 
-        $sql = "UPDATE mrv_beneficiado SET localidade = '" . 'BARUERI' . "'"
-                . " WHERE localidade = '" . 'barueri' . "' AND fk_id_pl = 87"
+        $sql = "UPDATE mrv_beneficiado SET localidade = '" . CLI_CIDADE . "'"
+                . " WHERE localidade = '" . strtolower(CLI_CIDADE) . "' AND fk_id_pl = 87"
                 . " AND cie_ben = '" . $cie . "'";
 
         $query = $this->db->query($sql);
@@ -913,7 +898,7 @@ class mrvModel extends MainModel {
             switch ($v['status_ben']) {
                 case "Deferida":
                 case "Indeferida":
-                    if (($v['localidade'] == 'Barueri') OR ( $v['localidade'] == 'BARUERI')) {
+                    if (($v['localidade'] == ucfirst(CLI_CIDADE)) OR ( $v['localidade'] == CLI_CIDADE)) {
                         /*
                           if (($v['morador4_completo_ben'] == 'Sim') AND ( $v['estudou4_ben'] == 'Sim')) {
                           if ($v['categoria'] != "1") {
@@ -1096,7 +1081,7 @@ class mrvModel extends MainModel {
                 . '<td rowspan = "5">'
                 . '<img style="width: 70px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>'
                 . '</td>'
-                . '<td style="font-size: 18px">Prefeitura Municipal de Barueri</td>'
+                . '<td style="font-size: 18px">'. CLI_NOME .'</td>'
                 . '<td rowspan = "5" style=" text-align: right">'
                 . '<img style="width: 210px;" src="' . HOME_URI . '/views/_images/logo_relatorio.jpg"/>'
                 . '</td>'
@@ -1105,13 +1090,13 @@ class mrvModel extends MainModel {
                 . '<td style="font-size: 16px">SE - Secretaria de Educação</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 12px">Rua Cabo PM José Maria Schiavelli nº. 125</td>'
+                . '<td style="font-size: 12px">'. CLI_END .'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 12px">Jardim dos Camargos - Barueri - SP CEP  06410-355 Fone (11) 4199-2900</td>'
+                . '<td style="font-size: 12px">'. CLI_BAIRRO .' - '. CLI_CIDADE .' - '. CLI_UF .' CEP '. CLI_CEP .' Fone '. CLI_FONE .'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 12px">http://portal.educ.net.br/ - Email: gabinete@educbarueri.sp.gov.br</td>'
+                . '<td style="font-size: 12px">'. CLI_URL .' - Email: '. CLI_MAIL .'</td>'
                 . '</tr>'
                 . '</table>';
 
@@ -1121,7 +1106,7 @@ class mrvModel extends MainModel {
 
         $mpdf = new mPDF($mode, $format, $default_font_size, $default_font, $mgl, $mgr, $mgt, $mgb, $mgh);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">". ucfirst(CLI_CIDADE) .", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -1166,7 +1151,7 @@ class mrvModel extends MainModel {
                 . " WHERE t.fk_id_pl = 87 AND t.fk_id_ciclo =  '9'"
                 . " AND ta.fk_id_inst = '" . tool::id_inst() . "'"
                 . " AND ta.situacao = '" . 'Frequente' . "'"
-                . " AND b.id_pessoa IS NULL AND e.cidade IN('BARUERI', 'Barueri', 'barueri')"
+                . " AND b.id_pessoa IS NULL AND e.cidade IN('".CLI_CIDADE."', '".ucfirst(CLI_CIDADE)."', '".strtolower(CLI_CIDADE)."')"
                 . " ORDER BY t.codigo, p.n_pessoa";
 
         $query = $this->db->query($sql);
@@ -1368,17 +1353,6 @@ class mrvModel extends MainModel {
         foreach ($freq as $v) {
             $d[$v['fk_id_inst']]['Frequente'] = $v['Total'];
         }
-        /*
-         * 
-          A consulta ta demoranado
-          SELECT ta.fk_id_inst, e.cidade, COUNT(ta.situacao) AS Total FROM mrv_turma_aluno ta
-          JOIN ge_turmas t ON t.id_turma = ta.fk_id_turma
-          LEFT JOIN endereco e ON e.fk_id_pessoa = ta.fk_id_pessoa
-          GROUP BY ta.fk_id_inst, ta.situacao, t.fk_id_ciclo, t.fk_id_pl, e.cidade
-          HAVING ta.situacao = 'Frequente' AND t.fk_id_ciclo = 9 AND t.fk_id_pl = 87
-          AND e.cidade = 'BARUERI'
-         * 
-         */
 
         $sql = "SELECT ta.fk_id_inst, e.cidade FROM mrv_turma_aluno ta"
                 . " JOIN ge_turmas t ON t.id_turma = ta.fk_id_turma"
@@ -1389,7 +1363,7 @@ class mrvModel extends MainModel {
         $cidade = $query->fetchAll();
 
         foreach ($cidade as $v) {
-            if (strcasecmp($v['cidade'], 'BARUERI') == 0) {
+            if (strcasecmp($v['cidade'], CLI_CIDADE) == 0) {
                 $d[$v['fk_id_inst']]['Munícipe'] = $d[$v['fk_id_inst']]['Munícipe'] + 1;
             } else {
                 $d[$v['fk_id_inst']]['Não Munícipe'] = $d[$v['fk_id_inst']]['Não Munícipe'] + 1;
@@ -1448,7 +1422,7 @@ class mrvModel extends MainModel {
                 . " JOIN ge_turmas t on t.id_turma = ta.fk_id_turma"
                 . " LEFT JOIN endereco e ON e.fk_id_pessoa = ta.fk_id_pessoa"
                 . " WHERE t.fk_id_ciclo = '" . '9' . "' AND t.fk_id_pl = '" . '87' . "' AND  ta.situacao = '" . 'Frequente' . "'"
-                . " AND ta.fk_id_inst = '" . $id_inst . "' AND cidade IN('Barueri', 'BARUERI', 'barueri')";
+                . " AND ta.fk_id_inst = '" . $id_inst . "' AND cidade IN('".ucfirst(CLI_CIDADE)."', '".CLI_CIDADE."', '".strtolower(CLI_CIDADE)."')";
 
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);

@@ -1,10 +1,12 @@
 constantDb.*
 constantDb.php
+constantCLI.php
+config.php
+
 *.pdf
 pub/
 views/pub/
 views/public/
-config.php
 /module/profe/views/_faltaSeq/nbproject/private/
 /module/profe/views/_faltaSeq/vendor/
 ge.sql

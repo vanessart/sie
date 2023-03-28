@@ -8,11 +8,11 @@ services:
       - ../_data/logs/:/var/log/
       #- ${FRONT_DIR_HOST}:/var/www/html/
       #- ${FRONT_DIR_HOST}:/Users/vanessa/www/ge/
-      - ${FRONT_DIR_HOST}:/var/www/html/ge/
+      - ${FRONT_DIR_HOST}:/var/www/html/sie/
     ports:
       - "${FRONT_PORT}:${FRONT_PORT_IMG}"
     networks:
-      net_portaleduc:
+      net_sie:
         ipv4_address: ${NETWORK_RANGE}${FRONT_SUFIX_IP}
   mysql:
     image: mysql:5.6.35
@@ -29,7 +29,7 @@ services:
     ports:
       - "${DB_MYSQL_PORT}:${DB_MYSQL_PORT_IMG}"
     networks:
-      net_portaleduc:
+      net_sie:
         ipv4_address: ${NETWORK_RANGE}${DB_MYSQL_SUFIX_IP}
   mongo:
     image: mongo:4.2
@@ -49,9 +49,9 @@ services:
         max-size: "10m"
         max-file: "5"
     networks:
-      net_portaleduc:
+      net_sie:
         ipv4_address: ${NETWORK_RANGE}${DB_MONGO_SUFIX_IP}
-        # conectar :===> mongo -uportaleduc_user -pportaleduc_pwd mongodb://portaleduc_db
+        # conectar :===> mongo -usie_user -psie_pwd mongodb://sie_db
   mongo-express:
     image: mongo-express
     container_name: mexpress
@@ -67,11 +67,11 @@ services:
     ports:
       - "8081:8081"    
     networks:
-      net_portaleduc:
+      net_sie:
         ipv4_address: ${NETWORK_RANGE}${DB_MONGO_SUFIX_IP_express}
-        # conectar :===> mongo -uportaleduc_user -pportaleduc_pwd mongodb://portaleduc_db
+        # conectar :===> mongo -usie_user -psie_pwd mongodb://sie_db
 networks:
-  net_portaleduc:
+  net_sie:
     ipam:
       driver: default
       config:

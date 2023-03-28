@@ -63,7 +63,7 @@ class sendEmail {
         $n_destinatario = $n_pessoa;
         $texto = "Caro(a) $n_pessoa<br /><br />"
                 . "Para recuperar a sua senha clique no link abaixo:<br /><br />"
-                . "<a target=\"_blank\" href=\"https://portal.educ.net.br/ge/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "\">http://portal.educ.net.br/ge/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "</a>";
+                . "<a target=\"_blank\" href=\"".BASE_URL."sie/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "\">".BASE_URL."sie/home/recupera?vr=" . substr(uniqid(), 0, 4) . $id . '-' . $token . "</a>";
 
         sendEmail::send($destinatario, $n_destinatario, $assunto, $texto, $titulo, $remetente, $n_remetente, $token, $url);
     }
@@ -74,14 +74,14 @@ class sendEmail {
         $n_remetente = 'WebMaster';
         $destinatario = $email;
         $n_destinatario = $n_pessoa;
-        $texto = "PREFEITURA MUNICIPAL DE BARUERI<br />"
+        $texto = CLI_NOME ."<br />"
                 . "SECRETARIA DE EDUCAÇÃO<br />"
                 . "DTTIE-DEPARTAMENTO TÉCNICO DE TECNOLOGIA DA INFORMAÇÃO EDUCACIONAL<br />"
                 . "=======================================================================<br /><br />"
                 . "Prezado(a), $n_pessoa <br /><br />"
                 . "Seja bem-vindo! <br />"
-                . "Segue abaixo seu USUÁRIO e SENHA para acesso ao S.I.E.B. - Sistemas Integrados da Educação de Barueri, em:<br /><br />"
-                . "<a href=\"https://www.educbarueri.sp.gov.br/portal/\">educ.net.br</a>.<br /><br />"
+                . "Segue abaixo seu USUÁRIO e SENHA para acesso ao ".SISTEMA_NOME.". - Sistemas Integrados da Educação de ".CLI_CIDADE.", em:<br /><br />"
+                . "<a href=\"". CLI_URL ."/portal/\">". CLI_URL ."</a>.<br /><br />"
                 . "|———————————————————><br />"
                 . "|<br />"
                 . "|       USUÁRIO:  $user<br />"
@@ -91,8 +91,8 @@ class sendEmail {
                 . "ATENÇÃO:<br />"
                 . "=========<br />"
                 . "* Caso você tenha permissão de acesso para algum outro subsistema, poderá usar a mesma senha;<br />"
-                . "* Caso esqueça sua senha, poderá clicar em “Esqueci a Senha”, para tanto, mantenha seu e-mail sempre atualizado no SIEB;<br />"
-                . "* As identificações e as senhas para acesso à rede corporativa da Secretaria de Educação (incluindo o SIEB) são sigilosas, de uso pessoal e intransferível.<br />"
+                . "* Caso esqueça sua senha, poderá clicar em “Esqueci a Senha”, para tanto, mantenha seu e-mail sempre atualizado no ".SISTEMA_NOME.";<br />"
+                . "* As identificações e as senhas para acesso à rede corporativa da Secretaria de Educação (incluindo o ".SISTEMA_NOME.") são sigilosas, de uso pessoal e intransferível.<br />"
                 . "* Você deve trocar sua senha sempre que existir qualquer indicação de possível comprometimento da rede corporativa ou da própria senha.<br />"
                 . "* Para trocar sua senha, acesse o menu superior << MAIS  >> - Config. usuário. <br />"
                 . "* Nossa política de segurança não permite o uso do mesmo CPF para dois usuários, isto é, quando um usuário entra no sistema, derruba automaticamente o outro.<br /><br /><br />"
@@ -108,7 +108,7 @@ class sendEmail {
         $n_remetente = 'WebMaster';
         $destinatario = $email;
         $n_destinatario = $n_pessoa;
-        $texto = "PREFEITURA MUNICIPAL DE BARUERI<br />"
+        $texto = CLI_NOME."<br />"
                 . "SECRETARIA DE EDUCAÇÃO<br />"
                 . "DTTIE-DEPARTAMENTO TÉCNICO DE TECNOLOGIA DA INFORMAÇÃO EDUCACIONAL<br />"
                 . "=======================================================================<br /><br />"
@@ -119,7 +119,7 @@ class sendEmail {
                 . "<br /><br />"
                 . "Você poderá consultar a qualquer momento o STATUS"
                 . "<br />"
-                . "de seu pedido através do site:  <a href = \"https://educacao.barueri.sp.gov.br\">    educacao.barueri.sp.gov.br</a> "
+                . "de seu pedido através do site:  <a href = \"".CLI_URL."\"> ".CLI_URL."</a> "
                 . "<br />"
                 . "clicando no link “Rastreamento de Serviços”."
                 . "<br /><br />"
@@ -131,12 +131,12 @@ class sendEmail {
                 . "<br />"
                 . "sua solicitação."
                 . "<br /><br />"
-                . "https://portal.educ.net.br/ge/dttie/webprot?id=002$rastro$id_sup"
+                . BASE_URL ."sie/dttie/webprot?id=002$rastro$id_sup"
                 . "<br /><br />"
                 . "Atenciosamente,<br />"
                 . "Equipe Técnica D.T.T.I.E."
                 . "<br />"
-                . "sef.informatica@barueri.sp.gov.br"
+                . CLI_MAIL_TEC
                 . "<br />"
                 . "Depto. Técnico da Tecnologia de Informação Educacional";
 

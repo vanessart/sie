@@ -60,8 +60,8 @@ class historico {
                 if (@$v['fk_id_inst'] != 0) {
                     $dados['fk_id_inst'][$v['fk_id_ciclo']] = $v['fk_id_inst'];
                     $dados['escola'][$v['fk_id_ciclo']] = @$escolas[$v['fk_id_inst']];
-                    $dados['uf'][$v['fk_id_ciclo']] = 'SP';
-                    $dados['cidade'][$v['fk_id_ciclo']] = 'Barueri';
+                    $dados['uf'][$v['fk_id_ciclo']] = CLI_UF;
+                    $dados['cidade'][$v['fk_id_ciclo']] = ucfirst(CLI_CIDADE);
                 } else {
                     $dados['fk_id_inst'][$v['fk_id_ciclo']] = $v['EscolaAlternativa'];
                     $dados['escola'][$v['fk_id_ciclo']] = $v['EscolaAlternativa'];
@@ -99,7 +99,7 @@ class historico {
                 //Regime
                 if (!empty($v['RegimeAlternativo'])) {
                     $regime = $v['RegimeAlternativo'];
-                } elseif ($v['AnoLetivo'] >= 2015 && (!empty($v['IdEscola']) || $v['MunicipioEscolaAlternativa'] == "BARUERI")) {
+                } elseif ($v['AnoLetivo'] >= 2015 && (!empty($v['IdEscola']) || $v['MunicipioEscolaAlternativa'] == CLI_CIDADE)) {
                     @$regime = 'EF9';
                 } elseif ($v['AnoLetivo'] <= 2005) {
                     @$regime = 'EF8';

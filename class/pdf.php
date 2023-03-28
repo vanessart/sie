@@ -39,8 +39,7 @@ class pdf {
     }
 
     public function autenticaSistema($token, $path, $id) {
-        //$site = 'https://dados.barueri.br/';
-        $site = 'https://portal.educ.net.br/';
+        $site = BASE_URL;
         $end = $site . HOME_URI . '/' . $path . '?id=' . $id . '&token=' . urlencode($token);
         $f = '<table style="width: 100%"><tr><td style="width: 100px">'
                 . '<img src="' . HOME_URI . '/app/code/php/qr_img.php?d=' . urlencode($end) . '&.PNG" width="150" height="150"/>'
@@ -206,7 +205,7 @@ class pdf {
             }
         }
         if (!empty($this->footerSet)) {
-            $footer = $this->autenticaSet . "<div style=\"padding: 8px; background-color: silver\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">Barueri, " . data::porExtenso(date("Y-m-d")) . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+            $footer = $this->autenticaSet . "<div style=\"padding: 8px; background-color: silver\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">". CLI_CIDADE .", " . data::porExtenso(date("Y-m-d")) . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         }
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/includes/css/style.css">');
@@ -234,8 +233,7 @@ class pdf {
     }
 
     public function footerUatentica($nome, $token, $path) {
-        //$site = 'https://dados.barueri.br/';
-        $site = 'https://portal.educ.net.br/';
+        $site = BASE_URL;
         $end = $site . HOME_URI . '/' . $path . '?token=' . $token;
         $f = '<table style="width: 100%"><tr><td style="width: 100px">'
                 . '<img src="' . HOME_URI . '/app/code/php/qr_img.php?d=' . $site . '/' . HOME_URI . '/sed/autentica?token=' . $token . '&.PNG" width="90" height="90"/>'
@@ -254,7 +252,7 @@ class pdf {
                 . '<td rowspan = "5">'
                 . '<img style="width: 70px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>'
                 . '</td>'
-                . '<td style="font-size: 18px; text-align: Center">Prefeitura Municipal de Barueri</td>'
+                . '<td style="font-size: 18px; text-align: Center">Prefeitura Municipal de '. ucfirst(CLI_CIDADE) .'</td>'
                 . '<td rowspan = "5" style=" text-align: right">'
                 . '<img style="width: 210px;" src="' . HOME_URI . '/views/_images/logo_relatorio.jpg"/>'
                 . '</td>'
@@ -263,13 +261,13 @@ class pdf {
                 . '<td style="font-size: 16px; text-align: Center">SE - Secretaria de Educação</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px; text-align: Center">Rua Cabo PM José Maria Schiavelli nº. 125</td>'
+                . '<td style="font-size: 10px; text-align: Center">'. CLI_END .'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px; text-align: Center">Jardim dos Camargos - Barueri - SP CEP  06410-355 Fone (11) 4199-2900</td>'
+                . '<td style="font-size: 10px; text-align: Center">'. CLI_BAIRRO .' - '. CLI_CIDADE .' - '. CLI_UF .' CEP '. CLI_CEP .' Fone '. CLI_FONE .'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px; text-align: Center">https://www.educbarueri.sp.gov.br - Email: gabinete@educbarueri.sp.gov.br</td>'
+                . '<td style="font-size: 10px; text-align: Center">'. CLI_URL .' - Email: '. CLI_MAIL .'</td>'
                 . '</tr>'
                 . '</table>';
 

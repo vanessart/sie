@@ -1099,7 +1099,7 @@ class toolErp {
                 </td>
                 <td style="padding-top: 5px; width: 80%; text-align: center">
                     <div style="font-size: 22px; font-weight: bold">
-                        Prefeitura Municipal de Barueri
+                        <?php echo CLI_NOME ?>
                         <br />
                         SE - Secretaria de Educação
                     </div>

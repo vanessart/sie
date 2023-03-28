@@ -273,7 +273,7 @@ class tool {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
 
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -380,7 +380,7 @@ class tool {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 5px; background-color: #D4DF92;\" ><table width=\"100%\"><tr><td style=\" font-weight: bold; font-size: 8pt; width: 100px\">SIEB</td><td style=\" text-align: center;font-size: 8pt;font-weight: bold\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 100px; font-size: 8pt; font-weight: bold\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 5px; background-color: #D4DF92;\" ><table width=\"100%\"><tr><td style=\" font-weight: bold; font-size: 8pt; width: 100px\">".SISTEMA_NOME."</td><td style=\" text-align: center;font-size: 8pt;font-weight: bold\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 100px; font-size: 8pt; font-weight: bold\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($escola->cabecalho());
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -429,7 +429,7 @@ class tool {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -472,7 +472,7 @@ class tool {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -919,7 +919,7 @@ class tool {
                 . '<td rowspan = "5">'
                 . '<img style="width: 70px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>'
                 . '</td>'
-                . '<td style="font-size: 16px">Prefeitura Municipal de Barueri</td>'
+                . '<td style="font-size: 16px">'.ucfirst(CLI_NOME).'</td>'
                 . '<td rowspan = "5" style=" text-align: right">'
                 . '<img style="width: 190px;" src="' . HOME_URI . '/views/_images/logo_relatorio.jpg"/>'
                 . '</td>'
@@ -928,13 +928,13 @@ class tool {
                 . '<td style="font-size: 14px">SE - Secretaria de Educação</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px">Rua Cabo PM José Maria Schiavelli nº. 125</td>'
+                . '<td style="font-size: 10px">'.CLI_END.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px">Jardim dos Camargos - Barueri - SP CEP 06410-355<br />Fone (11) 4194-2900</td>'
+                . '<td style="font-size: 10px">'.CLI_BAIRRO.' - '.CLI_CIDADE.' - '.CLI_UF.' CEP '.CLI_CEP.'<br />Fone '.CLI_FONE.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px">https://portal.educ.net.br - Email: gabinete@educbarueri.sp.gov.br</td>'
+                . '<td style="font-size: 10px">'.CLI_URL.' - Email: '.CLI_MAIL.'</td>'
                 . '</tr>'
                 . '</table>';
 
@@ -952,7 +952,7 @@ class tool {
         $mpdf = new \Mpdf\Mpdf($config);
 
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -977,7 +977,7 @@ class tool {
                 . '<td rowspan = "5">'
                 . '<img style="width: 70px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>'
                 . '</td>'
-                . '<td style="font-size: 16px">Prefeitura Municipal de Barueri</td>'
+                . '<td style="font-size: 16px"> '.CLI_NOME.'</td>'
                 . '<td rowspan = "5" style=" text-align: right">'
                 . '<img style="width: 190px;" src="' . HOME_URI . '/views/_images/logo_relatorio.jpg"/>'
                 . '</td>'
@@ -986,13 +986,13 @@ class tool {
                 . '<td style="font-size: 14px">SE - Secretaria de Educação</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px">Rua Cabo PM José Maria Schiavelli nº. 125</td>'
+                . '<td style="font-size: 10px">'.CLI_END.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px">Jardim dos Camargos - Barueri - SP CEP 06410-355<br />Fone (11) 4194-2900</td>'
+                . '<td style="font-size: 10px">'.CLI_BAIRRO.' - '.CLI_CIDADE.' - '.CLI_UF.' CEP '.CLI_CEP.'<br />Fone '.CLI_FONE.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px">educbarueri.sp.gov.br - Email: gabinete@educbarueri.sp.gov.br</td>'
+                . '<td style="font-size: 10px">'.CLI_URL.' - Email: '.CLI_MAIL.'</td>'
                 . '</tr>'
                 . '</table>';
 
@@ -1010,7 +1010,7 @@ class tool {
         $mpdf = new \Mpdf\Mpdf($config);
 
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -1037,7 +1037,7 @@ class tool {
                 . '<td rowspan = "5">'
                 . '<img style="width: 70px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>'
                 . '</td>'
-                . '<td style="font-size: 16px; padding-left: 10px">Prefeitura Municipal de Barueri</td>'
+                . '<td style="font-size: 16px; padding-left: 10px">'.CLI_NOME.'</td>'
                 . '<td rowspan = "5" style=" text-align: right">'
                 . '<img style="width: 280px;" src="' . HOME_URI . '/views/_images/logose.png"/>'
                 . '</td>'
@@ -1046,13 +1046,13 @@ class tool {
                 . '<td style="font-size: 14px; padding-left: 10px">SE - Secretaria de Educação</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px; padding-left: 10px">Rua Cabo PM José Maria Schiavelli nº. 125</td>'
+                . '<td style="font-size: 10px; padding-left: 10px">'.CLI_END.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px;padding-left: 10px">Jardim dos Camargos - Barueri - SP CEP 06410-355<br />Fone (11) 4199-2900</td>'
+                . '<td style="font-size: 10px;padding-left: 10px">'.CLI_BAIRRO.' - '.CLI_CIDADE.' - '.CLI_UF.' CEP '.CLI_CEP.'<br />Fone '.CLI_FONE.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 10px; padding-left: 10px ">https://www.educbarueri.sp.gov.br/portal/</td>'
+                . '<td style="font-size: 10px; padding-left: 10px ">'.CLI_URL.'</td>'
                 . '</tr>'
                 . '</table>';
 
@@ -1069,7 +1069,7 @@ class tool {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".ucfirst(CLI_CIDADE).", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
@@ -1100,9 +1100,6 @@ class tool {
             'tempDir' => __DIR__ . '/../tmp'
         ];
         $mpdf = new \Mpdf\Mpdf($config);
-
-       // $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
-
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
         $mpdf->WriteHTML($css, 1);
@@ -1126,7 +1123,7 @@ class tool {
                 . '<td rowspan = "5">'
                 . '<img style="width: 70px" src="' . HOME_URI . '/views/_images/brasao.jpg"/>'
                 . '</td>'
-                . '<td style="font-size: 18px">Prefeitura Municipal de Barueri</td>'
+                . '<td style="font-size: 18px">'.CLI_NOME.'</td>'
                 . '<td rowspan = "5" style=" text-align: right">'
                 . '<img style="width: 210px;" src="' . HOME_URI . '/views/_images/logo_relatorio.jpg"/>'
                 . '</td>'
@@ -1135,13 +1132,13 @@ class tool {
                 . '<td style="font-size: 16px">SE - Secretaria de Educação</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 12px">Rua Cabo PM José Maria Schiavelli nº. 125</td>'
+                . '<td style="font-size: 12px">'.CLI_END.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 12px">Jardim dos Camargos - Barueri - SP CEP  06410-355 Fone (11) 4199-2900</td>'
+                . '<td style="font-size: 12px">'.CLI_BAIRRO.' - '.CLI_CIDADE.' - '.CLI_UF.' CEP '.CLI_CEP.' Fone '.CLI_FONE.'</td>'
                 . '</tr>'
                 . '<tr>'
-                . '<td style="font-size: 12px">http://portal.educ.net.br/ - Email: gabinete@educbarueri.sp.gov.br</td>'
+                . '<td style="font-size: 12px">'.CLI_URL.' - Email: '.CLI_MAIL.'</td>'
                 . '</tr>'
                 . '</table>';
 
@@ -1154,7 +1151,7 @@ class tool {
         ];
         $mpdf = new \Mpdf\Mpdf($config);
 
-        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">SIEB</td><td style=\" text-align: center\">Barueri, " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+        $footer = "<div style=\"padding: 8px; background-color: #D4DF92;\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 200px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">".CLI_CIDADE.", " . date("d") . " de " . data::mes(date("m")) . " de " . date("Y") . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents(ABSPATH . "/views/_css/style.css");
