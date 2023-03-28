@@ -174,8 +174,6 @@ $token = DB::sqlKey('googleLogin');
                 box-shadow: 0 7px 14px 0 rgba(65, 69, 88, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);;
             }
 
-
-
             .zoom {
                 transition: transform .1s; /* Animation */
             }
@@ -187,14 +185,13 @@ $token = DB::sqlKey('googleLogin');
             }
 
             .bg-login{
-                background-image: url('<?= HOME_URI ?>/includes/images/login/bg/bg-login.png');
+                /*background-image: url('<?= HOME_URI ?>/includes/images/login/bg/bg-login.png');*/
                 height: 100vh;
                 background-position: bottom center;
                 background-size: cover;
                 background-repeat: no-repeat;
                 padding-bottom: 10px;
             }
-
 
             .text-para-acessar{
                 font-weight: 300;
@@ -215,7 +212,7 @@ $token = DB::sqlKey('googleLogin');
                 background-color: #333 !important;
             }
 
-            .logo-sieb-footer{
+            .logo-sie-footer{
                 width: 100%;
             }
 
@@ -228,7 +225,7 @@ $token = DB::sqlKey('googleLogin');
             }
 
             @media screen and (max-width: 991px){
-                .logo-sieb-footer {
+                .logo-sie-footer {
                     width: 149%;
                 }
             }
@@ -250,7 +247,7 @@ $token = DB::sqlKey('googleLogin');
                     padding-bottom: 147px;
                 }
 
-                .logo-sieb-footer {
+                .logo-sie-footer {
                     width: 28%;
                     padding-bottom: 11px;
                     margin-right: 18px;
@@ -267,7 +264,7 @@ $token = DB::sqlKey('googleLogin');
 
 
                 /*GE*/
-                .logo-sieb-faixa{
+                .logo-sie-faixa{
                     width: 100% !important;
                     margin-bottom: 23px;
                 }
@@ -296,7 +293,7 @@ $token = DB::sqlKey('googleLogin');
                 .align-logo-faixa{
                     text-align: center;
                 }
-                .logo-sieb-faixa {
+                .logo-sie-faixa {
                     width: 50% !important;
                 }
 
@@ -329,11 +326,11 @@ $token = DB::sqlKey('googleLogin');
                 margin-bottom: 20px;
             }
 
-            .img-logo-sieb{
+            .img-logo-sie{
                 align-content: center;
             }
 
-            .img-logo-sieb-topo{
+            .img-logo-sie-topo{
                 align-content: center;
                 width: 70px !important;
                 margin-bottom: 15px;
@@ -416,7 +413,7 @@ $token = DB::sqlKey('googleLogin');
                             <div class="col-12 col-md-6 py-3">
                                 <div class="">
                                     <div class="d-flex justify-content-end">
-                                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-vertical.png" class=" text-center img-logo-sieb-topo" alt=""> -->
+                                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sie-vertical.png" class=" text-center img-logo-sie-topo" alt=""> -->
                                     </div>
                                     <div id="g_id_onload"
                                          data-client_id="<?= API_GOOGLE ?>"
@@ -476,7 +473,7 @@ $token = DB::sqlKey('googleLogin');
                         </p>
                     </div>
                     <div class="col-md-1 pt-2 px-0 mt-2 align-logo-footer">
-                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sieb-footer"> -->
+                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sie-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sie-footer"> -->
                     </div>
                 </div>
             </div>
