@@ -12,7 +12,7 @@ define( 'DB_USER', 'user_mysql' );
 define( 'DB_PASSWORD', 'V0c3J@s@B3qU@l3' );
 
 //logar com o google
-define('API_GOOGLE', '3238010239-qbj2p0h3fdujd7a2s2dv95htvqnvkhft.apps.googleusercontent.com');
+define('API_GOOGLE', '791747530577-5iml28vrbbgg6sisbqla0832iui4ci4l.apps.googleusercontent.com');
 
 //mongoDB
 define('MONGO_HOSTNAME', 'localhost:27017');

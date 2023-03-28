@@ -71,7 +71,7 @@ $token = DB::sqlKey('googleLogin');
                 min-width: 0;
                 word-wrap: break-word;
                 background-clip: border-box;
-                border: 2px solid #853769;
+                border: 2px solid #333;
                 border-radius: 0.375rem;
                 box-shadow: 0 7px 14px 0 rgba(65, 69, 88, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);;
             }
@@ -89,19 +89,19 @@ $token = DB::sqlKey('googleLogin');
             }
 
             .bg-card-inputs{
-                background-color: #853769;
+                background-color: #333;
                 color: #FFF !important;
 
             }
             .bg-color{
-                background-color: #853769 !important;
+                background-color: #333 !important;
                 height: 0.5px;
-                color: #853769 !important;
+                color: #333 !important;
             }
 
             .btn-erp{
                 /*border: 1px solid #000  !important;*/
-                background: #853769 !important;
+                background: #333 !important;
                 color: #FFF !important;
                 font-size: 1.1em !important;
             }
@@ -111,12 +111,12 @@ $token = DB::sqlKey('googleLogin');
 
             .link-senha a{
                 text-decoration: none;
-                color: #853769;
+                color: #333;
             }
 
             .link-senha a:hover{
                 text-decoration: none;
-                color: #853769 !important;
+                color: #333 !important;
                 font-weight: 700;
                 text-decoration: underline;
             }
@@ -133,11 +133,11 @@ $token = DB::sqlKey('googleLogin');
                 display: inline-block;
                 height: 50px;
                 margin: -1px 19px -1px -1px;
-                border: 1px solid #853769;
+                border: 1px solid #333;
             }
 
             .btn-login {
-                background: #853769;
+                background: #333;
                 padding: 15px;
                 color: #FFF;
                 font-size: 18px;
@@ -146,7 +146,7 @@ $token = DB::sqlKey('googleLogin');
 
             label {
                 display: inline-block;
-                color: #853769;
+                color: #333;
             }
 
             .text-seja-bem{
@@ -211,12 +211,12 @@ $token = DB::sqlKey('googleLogin');
 
             .bg-footer {
                 color: #FFF !important;
-                background-color: #853769 !important;
+                background-color: #333 !important;
             }
 
             .bg-roxo {
                 color: #FFF !important;
-                background-color: #853769 !important;
+                background-color: #333 !important;
             }
 
             .logo-sieb-footer{
@@ -380,7 +380,7 @@ $token = DB::sqlKey('googleLogin');
                     <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-7 bg-box">
                         <div class="row">
                             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 px-0 bg-card-inputs bg-card-gradient ">
-                                <div class="bg-white px-3 " style="border-right: 2px solid #853769;border-radius: 4px 2px 0px 0px;">
+                                <div class="bg-white px-3 " style="border-right: 2px solid #333;border-radius: 4px 2px 0px 0px;">
                                     <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo_Educ_PNG.png" class="w-100 img-logo" alt="">
                                 </div>
                                 <div class="px-4">
@@ -389,7 +389,7 @@ $token = DB::sqlKey('googleLogin');
                                     </p>
                                 </div>
                                 <div class="text-center mb-2">
-                                    <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb.png" class="w-50 text-center img-logo-sieb" alt="">
+                                    <?= SISTEMA_NOME ?>
                                     <div class="d-block d-sm-none mb-4"></div>
                                 </div>
                                 <div class="px-4 mt-4 d-none d-sm-block">
@@ -405,11 +405,11 @@ $token = DB::sqlKey('googleLogin');
                                     } else {
                                         ?>
                                         <p class="text-white text-para-acessar mt-4 mb-1">
-                                            Para acessar a Plataforma com login do Google use seu e-mail nominal institucional:
+                                            Para acessar a Plataforma com login do Google use seu e-mail institucional:
                                         </p>
                                         <p class="text-white mt-2">
                                             <small>
-                                                - nomesobrenome@<?= CLI_MAIL_DOMINIO ?>
+                                                email@<?= CLI_MAIL_DOMINIO ?>
                                             </small>
                                         </p>
                                         <?php
@@ -420,7 +420,7 @@ $token = DB::sqlKey('googleLogin');
                             <div class="col-12 col-md-6 py-3">
                                 <div class="">
                                     <div class="d-flex justify-content-end">
-                                        <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-vertical.png" class=" text-center img-logo-sieb-topo" alt="">
+                                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-vertical.png" class=" text-center img-logo-sieb-topo" alt=""> -->
                                     </div>
                                     <div id="g_id_onload"
                                          data-client_id="<?= API_GOOGLE ?>"
@@ -480,7 +480,7 @@ $token = DB::sqlKey('googleLogin');
                         </p>
                     </div>
                     <div class="col-md-1 pt-2 px-0 mt-2 align-logo-footer">
-                        <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sieb-footer">
+                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sieb-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sieb-footer"> -->
                     </div>
                 </div>
             </div>
