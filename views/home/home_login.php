@@ -381,7 +381,7 @@ $token = DB::sqlKey('googleLogin');
                         <div class="row">
                             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 px-0 bg-card-inputs bg-card-gradient ">
                                 <div class="bg-white px-3 " style="border-right: 2px solid #853769;border-radius: 4px 2px 0px 0px;">
-                                    <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo_Barueri_Educ_PNG.png" class="w-100 img-logo" alt="">
+                                    <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo_Educ_PNG.png" class="w-100 img-logo" alt="">
                                 </div>
                                 <div class="px-4">
                                     <p class="text-white text-center mt-4 text-seja-bem ">

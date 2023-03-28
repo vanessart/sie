@@ -292,7 +292,7 @@ class UserLogin {
                 );
                 log::logSet('Logou no sistema');
             }
-###            //configurar acesso a páginas e cabeçalho
+            //configurar acesso a páginas e cabeçalho
             if (!empty($_POST['userdatasis'])) {
                 extract($_POST['userdatasis']);
 

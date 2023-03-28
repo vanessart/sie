@@ -14,7 +14,7 @@ class HomeController extends MainController {
     public function index() {
 
         // Título da página
-        $this->title = 'SIEB';
+        $this->title = SISTEMA_NOME;
 
 
         $model = $this->load_model('home/home-model');

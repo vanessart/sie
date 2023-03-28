@@ -262,7 +262,7 @@
         <div class="container mb-2 mt-5">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5 col-xl-4">
-                    <img src="<?= HOME_URI ?>/includes/images/logo_Barueri_Educ_PNG.png" alt="Logotipo Prefeitura de Barueri" class="img-logo-barueri-sieb">
+                    <img src="<?= HOME_URI ?>/includes/images/logo_Educ_PNG.png" alt="Logotipo Prefeitura de Barueri" class="img-logo-barueri-sieb">
                 </div>
                 <div class="col-8 col-sm-5 col-md-6 col-lg-5 col-xl-7 ">
                     <p class="text-acesso-integrado mb-0">Acesso Integrado Google For Education</p>
