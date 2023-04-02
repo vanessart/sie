@@ -236,3 +236,25 @@ CREATE TABLE `framework` (
   PRIMARY KEY (`id_fr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO instancia
+VALUES (NULL, 'Administração', 0, 1,2, NULL, 0, 1, 0);
+
+
+INSERT INTO ge2.framework (id_fr, n_fr, end_fr, ativo)
+VALUES(1, 'Autenticador', '/sie/', 1);
+
+INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+VALUES(1, 'princ', 'Sistema Principal', 1, 'a:2:{i:0;s:1:"1";i:1;s:1:"2";}', '', 1, 0, '', 1);
+INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+VALUES(2, 'admin', 'Administrador do Sistema (novo)', 1, 'a:1:{i:0;s:1:"2";}', '', 1, 0, NULL, NULL);
+INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+VALUES(3, 'tdics', 'Núcleos WIT', 1, 'a:7:{i:0;s:1:"2";i:1;s:2:"39";i:2;s:1:"8";i:3;s:2:"10";i:4;s:2:"57";i:5;s:2:"24";i:6;s:2:"43";}', '', 1, 0, NULL, NULL);
+
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(1, 'Administrador', 1, 0);
+
+
+INSERT INTO acesso_gr VALUES(NULL, 1, 1, 1);
+INSERT INTO acesso_gr VALUES(NULL, 1, 2, 1);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 1);
+
