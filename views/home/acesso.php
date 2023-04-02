@@ -50,7 +50,7 @@
 
             .bg-roxo {
                 color: #FFF !important;
-                background-color: #853769 !important;
+                background-color: #324b73 !important;
             }
 
             .logo-sie-footer{
@@ -78,7 +78,7 @@
             .btn-sair-sie{
                 font-size: 0.8em !important;
                 color: #FFF !important;
-                background-color: #853769 !important;
+                background-color: #324b73 !important;
                 border-radius: 0px 0px 4px 4px  !important;
             }
 
@@ -100,7 +100,7 @@
             .text-icones-geral-sie{
                 font-size: 1.05em;
                 font-weight: 500;
-                color: #853769;
+                color: #324b73;
                 text-decoration: none;
                 height: 89px !important;
             }
@@ -135,7 +135,7 @@
 
             .bg-footer {
                 color: #FFF !important;
-                background-color: #853769 !important;
+                background-color: #324b73 !important;
             }
 
             .footer-sie-erp {
@@ -171,7 +171,7 @@
                 .text-icones-geral-sie {
                     font-size: 0.8em;
                     font-weight: 500;
-                    color: #853769;
+                    color: #324b73;
                     text-decoration: none;
                     height: 89px !important;
                 }

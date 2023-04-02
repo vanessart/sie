@@ -24,13 +24,13 @@ class sql {
      */
     public static function get($table, $fields = '*', $where = NULL, $fetch = 'fetchAll', $join = NULL) {
         $fetch = empty($fetch) ? 'fetchAll' : $fetch;
-        $where = sql::where($where);
+        $where = self::where($where);
         if (is_array($table)) {
             $tabela1 = $table[0];
             @$tableUsada[] = $tabela1;
             $sql = "SELECT $fields FROM `$tabela1` ";
             foreach ($table as $v) {
-                $col = sql::columns($v);
+                $col = self::columns($v);
 
                 foreach ($col as $vv) {
                     if (substr($vv, 0, 6) == 'fk_id_') {
@@ -151,7 +151,7 @@ class sql {
      * @param type $ativo ativo se ativo = 1 e começar com at_
      */
     public static function idNome($table, $where=NULL) {
-        $tb = sql::get($table);
+        $tb = self::get($table);
         foreach (current($tb) as $k => $v) {
             $prefixo = explode('_', $k)[0];
             if ($prefixo == 'id') {
@@ -173,7 +173,7 @@ class sql {
          * 
          */
         $fields = $id . ', ' . $n;
-        $tb = sql::get($table, $fields, $where);
+        $tb = self::get($table, $fields, $where);
 
         foreach ($tb as $v) {
             $idN[$v[$id]] = $v[$n];

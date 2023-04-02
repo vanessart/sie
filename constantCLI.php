@@ -19,4 +19,3 @@ define('CLI_MAIL_HOST', 'smtp.gmail.com');
 define('CLI_MAIL_USERNAME', 'sie@'. CLI_MAIL_DOMINIO);
 define('CLI_MAIL_PASSWORD', 'aptN@3@ui');
 define('CLI_MAIL_PORT', 587);
-

@@ -130,3 +130,109 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+CREATE TABLE `instancia` (
+  `id_inst` int(11) NOT NULL AUTO_INCREMENT,
+  `n_inst` varchar(255) NOT NULL,
+  `fkid_inst_aut` int(11) NOT NULL,
+  `ativo` int(10) NOT NULL,
+  `fk_id_tp` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `terceirizada` int(11) DEFAULT NULL,
+  `visualizar` int(11) NOT NULL DEFAULT '1',
+  `manutencao` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_inst`),
+  KEY `tp_inst` (`fk_id_tp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `ge_escolas` (
+  `id_escola` int(3) NOT NULL AUTO_INCREMENT,
+  `fk_id_inst` int(3) DEFAULT NULL,
+  `cie_escola` int(6) DEFAULT NULL,
+  `fk_id_tp_ens` varchar(50) DEFAULT NULL,
+  `classe` int(11) NOT NULL,
+  `ato_cria` varchar(255) NOT NULL,
+  `ato_municipa` varchar(255) NOT NULL,
+  `maps` varchar(500) DEFAULT NULL,
+  `latitude` varchar(50) DEFAULT NULL,
+  `longitude` varchar(50) DEFAULT NULL,
+  `esc_site` varchar(255) DEFAULT NULL,
+  `esc_contato` varchar(255) DEFAULT NULL,
+  `vizualizar` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id_escola`),
+  KEY `fk_id_inst` (`fk_id_inst`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `acesso_pessoa` (
+  `id_ac` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `fk_id_gr` int(11) NOT NULL,
+  `fk_id_inst` int(11) NOT NULL,
+  PRIMARY KEY (`id_ac`),
+  UNIQUE KEY `fk_id_pessoa_2` (`fk_id_pessoa`,`fk_id_gr`,`fk_id_inst`),
+  KEY `fk_id_sistema` (`fk_id_gr`),
+  KEY `fk_id_inst` (`fk_id_inst`),
+  KEY `fk_id_pessoa` (`fk_id_pessoa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `grupo` (
+  `id_gr` int(11) NOT NULL AUTO_INCREMENT,
+  `n_gr` varchar(255) NOT NULL,
+  `at_gr` int(11) NOT NULL,
+  PRIMARY KEY (`id_gr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `acesso_gr` (
+  `id_ag` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_gr` int(11) NOT NULL,
+  `fk_id_sistema` int(11) NOT NULL,
+  `fk_id_nivel` int(11) NOT NULL,
+  PRIMARY KEY (`id_ag`),
+  UNIQUE KEY `fk_id_pessoa_2` (`fk_id_gr`,`fk_id_sistema`,`fk_id_nivel`),
+  KEY `fk_id_sistema` (`fk_id_sistema`),
+  KEY `fk_id_nivel` (`fk_id_nivel`),
+  KEY `fk_id_pessoa` (`fk_id_gr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ge2.nivel definition
+
+CREATE TABLE `nivel` (
+  `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
+  `n_nivel` varchar(255) NOT NULL,
+  `ativo` int(11) NOT NULL,
+  `fk_id_nivel` int(11) NOT NULL,
+  PRIMARY KEY (`id_nivel`),
+  UNIQUE KEY `n_nivel` (`n_nivel`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ge2.sistema definition
+
+CREATE TABLE `sistema` (
+  `id_sistema` int(11) NOT NULL AUTO_INCREMENT,
+  `arquivo` varchar(50) NOT NULL,
+  `n_sistema` varchar(255) NOT NULL,
+  `fk_id_fr` int(11) NOT NULL,
+  `niveis` text NOT NULL,
+  `descr_sistema` longtext NOT NULL,
+  `ativo` int(10) NOT NULL,
+  `fkid` int(11) DEFAULT NULL,
+  `msg` text,
+  `protegido` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_sistema`),
+  KEY `fk_id_fr` (`fk_id_fr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ge2.framework definition
+
+CREATE TABLE `framework` (
+  `id_fr` int(11) NOT NULL AUTO_INCREMENT,
+  `n_fr` varchar(50) NOT NULL,
+  `end_fr` text NOT NULL,
+  `ativo` int(11) NOT NULL,
+  PRIMARY KEY (`id_fr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
