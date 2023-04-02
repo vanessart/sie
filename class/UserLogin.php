@@ -325,15 +325,17 @@ class UserLogin {
                         $file = ABSPATH . '/module/' . @$arquivo . '/menu.php';
                         include $file;
 
-                        foreach ($menu[$id_nivel] as $k => $v) {
-                            if (empty($v['page'])) {
-                                if (!empty($v['url'])) {
-                                    $pg[] = ['pagina' => substr($v['url'], 1), 'n_pag' => $k];
-                                }
-                            } else {
-                                foreach ($v['page'] as $kk => $vv) {
-                                    if (!empty($vv['url'])) {
-                                        $pg[] = ['pagina' => substr($vv['url'], 1), 'n_pag' => $kk];
+                        if (isset($menu[$id_nivel])) {
+                            foreach ($menu[$id_nivel] as $k => $v) {
+                                if (empty($v['page'])) {
+                                    if (!empty($v['url'])) {
+                                        $pg[] = ['pagina' => substr($v['url'], 1), 'n_pag' => $k];
+                                    }
+                                } else {
+                                    foreach ($v['page'] as $kk => $vv) {
+                                        if (!empty($vv['url'])) {
+                                            $pg[] = ['pagina' => substr($vv['url'], 1), 'n_pag' => $kk];
+                                        }
                                     }
                                 }
                             }

@@ -5,7 +5,7 @@
  * //
  */
 //Administrador
-$menu[2] = [
+$menu[1] = [
     'Início' => ['url' => '/tdics/index'],
     'Run' => ['url' => '/tdics/run'],
 ];
