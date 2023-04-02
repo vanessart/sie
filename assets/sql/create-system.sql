@@ -258,3 +258,5 @@ INSERT INTO acesso_gr VALUES(NULL, 1, 1, 1);
 INSERT INTO acesso_gr VALUES(NULL, 1, 2, 1);
 INSERT INTO acesso_gr VALUES(NULL, 1, 3, 1);
 
+
+INSERT INTO acesso_pessoa VALUES(NULL, 1, 1, 1);
