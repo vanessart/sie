@@ -5,7 +5,7 @@ $id_porte = filter_input(INPUT_POST, 'id_porte', FILTER_SANITIZE_NUMBER_INT);
 $fk_id_pessoa = filter_input(INPUT_POST, 'fk_id_pessoa', FILTER_SANITIZE_NUMBER_INT);
 $id_prof = toolErp::id_pessoa();
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT); 
-$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_SANITIZE_STRING); 
+$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_UNSAFE_RAW); 
 $titulo = 'Nova Adaptação Curricular';
 $activeNav = 2;
 

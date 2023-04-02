@@ -6,7 +6,7 @@ $id_turma_2 = filter_input(INPUT_POST, 'id_turma_2', FILTER_SANITIZE_NUMBER_INT)
 permuta($id_turma_1, $id_turma_2);
 $polos = sql::idNome('maker_polo');
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
-$periodo = filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
+$periodo = filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 if (!$id_pl) {
     $id_pl = $model->setup();

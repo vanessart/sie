@@ -50,8 +50,8 @@ class UserLogin {
 
         if (@$_POST['table'] == 'googleLogin') {
 
-            $key = filter_input(INPUT_POST, 'key', FILTER_SANITIZE_STRING);
-            $keyJWT = filter_input(INPUT_POST, 'credential', FILTER_SANITIZE_STRING);
+            $key = filter_input(INPUT_POST, 'key', FILTER_UNSAFE_RAW);
+            $keyJWT = filter_input(INPUT_POST, 'credential', FILTER_UNSAFE_RAW);
             $keyJWT = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $keyJWT)[1]))));
             $userEmail = $keyJWT->email;
             $google_id = $keyJWT->sub;

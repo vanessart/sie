@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $id_projeto = filter_input(INPUT_POST, 'id_projeto', FILTER_SANITIZE_NUMBER_INT);
 $id_reg = filter_input(INPUT_POST, 'id_reg', FILTER_SANITIZE_NUMBER_INT);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $ano = date('Y');
 if (!empty($id_projeto)) {
     $reg = $model->getProjetoReg($id_projeto, $id_reg);

@@ -4,8 +4,8 @@ if (!defined('ABSPATH'))
 $fk_id_pessoa = filter_input(INPUT_POST, 'fk_id_pessoa', FILTER_SANITIZE_NUMBER_INT); 
 $id_aluno_adaptacao = filter_input(INPUT_POST, 'id_aluno_adaptacao', FILTER_SANITIZE_NUMBER_INT); 
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT); 
-$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_SANITIZE_STRING); 
-$dt_nasc = filter_input(INPUT_POST, 'dt_nasc', FILTER_SANITIZE_STRING); 
+$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_UNSAFE_RAW); 
+$dt_nasc = filter_input(INPUT_POST, 'dt_nasc', FILTER_UNSAFE_RAW); 
 $id_inst = toolErp::id_inst();
 $id_pessoa = toolErp::id_pessoa();
 $n_aluno = toolErp::n_pessoa($fk_id_pessoa);

@@ -4,10 +4,10 @@ $destino = filter_input(INPUT_POST, 'destino', FILTER_SANITIZE_NUMBER_INT);
 $dadosGeral = $model->dadosAluno($id_pessoa, $destino);
 $dados = $dadosGeral['aluno'];
 $time = current($dadosGeral['destino']);
-$escola = filter_input(INPUT_POST, 'n_inst', FILTER_SANITIZE_STRING);
+$escola = filter_input(INPUT_POST, 'n_inst', FILTER_UNSAFE_RAW);
 $destinoId = filter_input(INPUT_POST, 'destino', FILTER_SANITIZE_NUMBER_INT);
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
-$statusMostrar = filter_input(INPUT_POST, 'statusMostrar', FILTER_SANITIZE_STRING);
+$statusMostrar = filter_input(INPUT_POST, 'statusMostrar', FILTER_UNSAFE_RAW);
 $id_li = filter_input(INPUT_POST, 'id_li', FILTER_SANITIZE_NUMBER_INT);
 ?>
 

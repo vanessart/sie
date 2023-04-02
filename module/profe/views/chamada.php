@@ -7,16 +7,16 @@ $atual_letiva = filter_input(INPUT_POST, 'atual_letiva', FILTER_SANITIZE_NUMBER_
 $hlo = filter_input(INPUT_POST, 'hlo', FILTER_SANITIZE_NUMBER_INT);
 $hlo = empty($hlo) ? 1 : $hlo;
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);;
-$nome_turma = filter_input(INPUT_POST, 'nome_turma', FILTER_SANITIZE_STRING);
-$nome_disc = filter_input(INPUT_POST, 'nome_disc', FILTER_SANITIZE_STRING);
+$nome_turma = filter_input(INPUT_POST, 'nome_turma', FILTER_UNSAFE_RAW);
+$nome_disc = filter_input(INPUT_POST, 'nome_disc', FILTER_UNSAFE_RAW);
 $id_pessoa = toolErp::id_pessoa();
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 $id_ciclo = filter_input(INPUT_POST, 'id_ciclo', FILTER_SANITIZE_NUMBER_INT);
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
-$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
-$escola = filter_input(INPUT_POST, 'escola', FILTER_SANITIZE_STRING);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
+$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
+$escola = filter_input(INPUT_POST, 'escola', FILTER_UNSAFE_RAW);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
+$data = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
 $aulas = filter_input(INPUT_POST, 'aulas', FILTER_SANITIZE_NUMBER_INT);
 if (empty($id_turma) || empty($id_pl) || empty($id_disc)) {
     ?>

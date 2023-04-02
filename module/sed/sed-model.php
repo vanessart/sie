@@ -265,7 +265,7 @@ class sedModel extends MainModel {
     public function mudaAUL() {
         $ins['id_curso'] = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
         $ins['atual_letiva'] = filter_input(INPUT_POST, 'atual_letiva', FILTER_SANITIZE_NUMBER_INT);
-        $mudaAUL = filter_input(INPUT_POST, 'mudaAUL', FILTER_SANITIZE_STRING);
+        $mudaAUL = filter_input(INPUT_POST, 'mudaAUL', FILTER_UNSAFE_RAW);
         if ($mudaAUL == 'mais') {
             $ins['atual_letiva']++;
         } elseif ($mudaAUL == 'menos' && $ins['atual_letiva'] > 1) {
@@ -450,8 +450,8 @@ class sedModel extends MainModel {
     }
 
     public function alunoNovoSet() {
-        $ra = filter_input(INPUT_POST, 'ra', FILTER_SANITIZE_STRING);
-        $uf = filter_input(INPUT_POST, 'uf', FILTER_SANITIZE_STRING);
+        $ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
+        $uf = filter_input(INPUT_POST, 'uf', FILTER_UNSAFE_RAW);
         if ($ra && $uf) {
             if (is_numeric($ra)) {
                 $ra = intval($ra);
@@ -484,9 +484,9 @@ class sedModel extends MainModel {
     public function uploadImgCad() {
         $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
         $ins['fk_id_pessoa'] = $id_pessoa;
-        $ins['end'] = $id_pessoa . '_' . filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING) . '.jpg';
+        $ins['end'] = $id_pessoa . '_' . filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW) . '.jpg';
         $ins['fk_id_pront'] = filter_input(INPUT_POST, 'fk_id_pront', FILTER_SANITIZE_NUMBER_INT);
-        $ins['n_pu'] = filter_input(INPUT_POST, 'n_pu', FILTER_SANITIZE_STRING);
+        $ins['n_pu'] = filter_input(INPUT_POST, 'n_pu', FILTER_UNSAFE_RAW);
         $ins['dt_pu'] = date("Y-m-d");
 
         $id = $this->db->insert('sed_prontuario_up', $ins);
@@ -501,7 +501,7 @@ class sedModel extends MainModel {
         $ins['fk_id_pessoa'] = $id_pessoa;
         $ins['end'] = $end;
         $ins['fk_id_pront'] = filter_input(INPUT_POST, 'fk_id_pront', FILTER_SANITIZE_NUMBER_INT);
-        $ins['n_pu'] = filter_input(INPUT_POST, 'n_pu', FILTER_SANITIZE_STRING);
+        $ins['n_pu'] = filter_input(INPUT_POST, 'n_pu', FILTER_UNSAFE_RAW);
         $ins['dt_pu'] = date("Y-m-d");
 
         $id = $this->db->insert('sed_prontuario_up', $ins);
@@ -525,9 +525,9 @@ class sedModel extends MainModel {
     public function importarAluno($json = null) {
         $post = $_POST;
         $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-        $ra = filter_input(INPUT_POST, 'ra', FILTER_SANITIZE_STRING);
-        $ra_dig = filter_input(INPUT_POST, 'ra_dig', FILTER_SANITIZE_STRING);
-        $ra_uf = filter_input(INPUT_POST, 'ra_uf', FILTER_SANITIZE_STRING);
+        $ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
+        $ra_dig = filter_input(INPUT_POST, 'ra_dig', FILTER_UNSAFE_RAW);
+        $ra_uf = filter_input(INPUT_POST, 'ra_uf', FILTER_UNSAFE_RAW);
 
         if (empty($ra_uf)) {
             $ra_uf = 'SP';
@@ -677,7 +677,7 @@ class sedModel extends MainModel {
     }
 
     public function baixarTurmaAluno() {
-        $prodesp = filter_input(INPUT_POST, 'prodesp', FILTER_SANITIZE_STRING);
+        $prodesp = filter_input(INPUT_POST, 'prodesp', FILTER_UNSAFE_RAW);
         $id_pl = gtMain::periodoSet(filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT));
         $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
         restImport::baixarTurmaAluno($prodesp, $id_inst, $id_pl, 1);
@@ -808,8 +808,8 @@ class sedModel extends MainModel {
 
     public function assinatura() {
         $permitido = [CLI_MAIL_DOMINIO];
-        $email = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_STRING);
-        $nome = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'userEmail', FILTER_UNSAFE_RAW);
+        $nome = filter_input(INPUT_POST, 'userName', FILTER_UNSAFE_RAW);
         $pessoa = sql::get('pessoa', 'n_pessoa', ['emailgoogle' => $email], 'fetch');
 
         if (!empty($pessoa['n_pessoa'])) {
@@ -930,7 +930,7 @@ class sedModel extends MainModel {
         $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
         $id_pessoa_resp = filter_input(INPUT_POST, 'id_pessoa_resp', FILTER_SANITIZE_NUMBER_INT);
         $sit = filter_input(INPUT_POST, 'sit', FILTER_SANITIZE_NUMBER_INT);
-        $campo = filter_input(INPUT_POST, 'campo', FILTER_SANITIZE_STRING);
+        $campo = filter_input(INPUT_POST, 'campo', FILTER_UNSAFE_RAW);
 
         $sql = "UPDATE ge_aluno_responsavel SET $campo = $sit WHERE fk_id_pessoa_aluno = $id_pessoa and fk_id_pessoa_resp = $id_pessoa_resp";
         $query = pdoSis::getInstance()->query($sql);

@@ -2,7 +2,7 @@
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 
 $a = data::meses();
-$mes = filter_input(INPUT_POST, 'mes', FILTER_SANITIZE_STRING);
+$mes = filter_input(INPUT_POST, 'mes', FILTER_UNSAFE_RAW);
 if (empty($mes)) {
     $mes = date("m");
 }

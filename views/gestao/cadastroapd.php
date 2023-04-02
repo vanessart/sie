@@ -1,5 +1,5 @@
 <?php
-$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+$nome = filter_input(INPUT_POST, 'nome', FILTER_UNSAFE_RAW);
 ?>
 <div class="fieldBody">
     <div class="fieldTop">

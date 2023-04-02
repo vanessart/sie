@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $id_inst = toolErp::id_inst();
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT); 
-$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_SANITIZE_STRING); 
+$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_UNSAFE_RAW); 
 $id_aluno_adaptacao = filter_input(INPUT_POST, 'id_aluno_adaptacao', FILTER_SANITIZE_NUMBER_INT);
 $n_parecer = '<i>'. (toolErp::id_nilvel()==24 ? "Escreva aqui" : "O Professor irá descrever aqui").' o Parecer Descritivo ao longo do Bimestre</i>';
 

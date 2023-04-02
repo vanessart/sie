@@ -580,7 +580,7 @@ class profeController extends MainController {
     }
 
     public function consolidado() {
-        $n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
+        $n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
         $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
         $turma = sql::get('ge_turmas', 'periodo, letra, periodo_letivo, n_turma, fk_id_ciclo', ['id_turma' => $id_turma], 'fetch');
         $this->title = $turma['n_turma'] . ' - ' . $n_disc;
@@ -593,7 +593,7 @@ class profeController extends MainController {
     }
 
     public function consolidadoResumo() {
-        $n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
+        $n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
         $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
         $turma = sql::get('ge_turmas', 'periodo, letra, periodo_letivo, n_turma, fk_id_ciclo', ['id_turma' => $id_turma], 'fetch');
         $this->title = $turma['n_turma'] . ' - ' . $n_disc;

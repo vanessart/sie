@@ -2,8 +2,8 @@
 if (!defined('ABSPATH'))
     exit;
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_SANITIZE_STRING);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_UNSAFE_RAW);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 if ($id_turma) {
     $sql = "SELECT distinct * FROM maker_gt_turma_aluno ta "
             . " join maker_gt_turma t on t.id_turma = ta.fk_id_turma and t.id_turma = $id_turma"

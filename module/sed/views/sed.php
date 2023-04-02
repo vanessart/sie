@@ -10,10 +10,10 @@ if (@$_SESSION['userdata']['id_pessoa'] == 1 || @$_SESSION['userdata']['id_pesso
     $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
     $pl = gtMain::periodos();
     $pl = array_reverse($pl);
-    $prodesp = filter_input(INPUT_POST, 'prodesp', FILTER_SANITIZE_STRING);
-    $ra = filter_input(INPUT_POST, 'ra', FILTER_SANITIZE_STRING);
-    $dig = filter_input(INPUT_POST, 'dig', FILTER_SANITIZE_STRING);
-    $uf = filter_input(INPUT_POST, 'uf', FILTER_SANITIZE_STRING);
+    $prodesp = filter_input(INPUT_POST, 'prodesp', FILTER_UNSAFE_RAW);
+    $ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
+    $dig = filter_input(INPUT_POST, 'dig', FILTER_UNSAFE_RAW);
+    $uf = filter_input(INPUT_POST, 'uf', FILTER_UNSAFE_RAW);
     ?>
     <div class="fieldBody">
         <br /><br />

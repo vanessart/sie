@@ -1,8 +1,8 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$dt_data1 = filter_input(INPUT_POST, 'dt_data1', FILTER_SANITIZE_STRING);
-$dt_data2 = filter_input(INPUT_POST, 'dt_data2', FILTER_SANITIZE_STRING);
+$dt_data1 = filter_input(INPUT_POST, 'dt_data1', FILTER_UNSAFE_RAW);
+$dt_data2 = filter_input(INPUT_POST, 'dt_data2', FILTER_UNSAFE_RAW);
 $turmas = ng_escola::turmasSegAtiva(toolErp::id_inst());
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 if (empty($dt_data1)) {

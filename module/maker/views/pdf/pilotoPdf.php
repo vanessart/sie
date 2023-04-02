@@ -2,8 +2,8 @@
 if (!defined('ABSPATH'))
     exit;
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_SANITIZE_STRING);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_UNSAFE_RAW);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 if ($id_turma) {
     $sql="SELECT * FROM maker_gt_turma_aluno ta JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa JOIN maker_aluno m on m.fk_id_pessoa = ta.fk_id_pessoa JOIN instancia i on i.id_inst = m.fk_id_inst WHERE ta.fk_id_turma = $id_turma ORDER BY p.n_pessoa ";
    $query = pdoSis::getInstance()->query($sql);

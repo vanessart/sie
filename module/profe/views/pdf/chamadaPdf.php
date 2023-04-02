@@ -5,11 +5,11 @@ if (!defined('ABSPATH'))
 ob_start();
 $pdf = new pdf();
 
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
-$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
-$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
-$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_STRING);
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
+$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
+$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
+$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_UNSAFE_RAW);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
 $letiva = $model->letivaDados($id_turma);
 $alunos = ng_escola::alunoPorTurma($id_turma);
 $dados = $model->chamadaPorAluno($id_pl, $id_turma, $id_disc);

@@ -4,8 +4,8 @@ if (!defined('ABSPATH'))
 
 ob_start();
 $escola = new escola(@$_POST['id_inst']);
-$d_inicio = filter_input(INPUT_POST, 'datai', FILTER_SANITIZE_STRING);
-$d_fim = filter_input(INPUT_POST, 'dataf', FILTER_SANITIZE_STRING);
+$d_inicio = filter_input(INPUT_POST, 'datai', FILTER_UNSAFE_RAW);
+$d_fim = filter_input(INPUT_POST, 'dataf', FILTER_UNSAFE_RAW);
 $cor = '#F5F5F5';
 ?>
 <head>

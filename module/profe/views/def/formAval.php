@@ -3,15 +3,15 @@ if (!defined('ABSPATH'))
     exit;
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 $id_pessoa = toolErp::id_pessoa();
-$uniqid = filter_input(INPUT_POST, 'uniqid', FILTER_SANITIZE_STRING);
-$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_STRING);
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
-$id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_STRING);
-$atual_letiva = filter_input(INPUT_POST, 'atual_letiva', FILTER_SANITIZE_STRING);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
-$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
+$uniqid = filter_input(INPUT_POST, 'uniqid', FILTER_UNSAFE_RAW);
+$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_UNSAFE_RAW);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
+$id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_UNSAFE_RAW);
+$atual_letiva = filter_input(INPUT_POST, 'atual_letiva', FILTER_UNSAFE_RAW);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
+$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
 $alunos = ng_escola::alunoPorTurma($id_turma);
-$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
+$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
 $hidden = [
     'id_inst' => $id_inst,
     'id_pl' => $id_pl,

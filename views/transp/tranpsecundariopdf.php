@@ -41,7 +41,7 @@ $cor = '#F5F5F5';
 </head>
 
 <?php
-$mes = filter_input(INPUT_POST, 'mes', FILTER_SANITIZE_STRING);
+$mes = filter_input(INPUT_POST, 'mes', FILTER_UNSAFE_RAW);
 $m = data::meses();
 $dados = transporte::alunoFrequencia($_POST['mes']);
 $pp = ['M' => 'Manhã', 'T' => 'Tarde', 'N' => 'Noite'];

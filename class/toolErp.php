@@ -855,7 +855,7 @@ class toolErp {
             if ($type == 1) {
                 $array[$v] = filter_input(INPUT_POST, $v, FILTER_SANITIZE_NUMBER_INT);
             } elseif ($type == 2) {
-                $array[$v] = filter_input(INPUT_POST, $v, FILTER_SANITIZE_STRING);
+                $array[$v] = filter_input(INPUT_POST, $v, FILTER_UNSAFE_RAW);
             }
         }
 

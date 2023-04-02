@@ -1,17 +1,17 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'fk_id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_ciclo = filter_input(INPUT_POST, 'fk_id_ciclo', FILTER_SANITIZE_NUMBER_INT);
 $id_disc = filter_input(INPUT_POST, 'fk_id_disc', FILTER_SANITIZE_NUMBER_INT);
-$msg_coord = filter_input(INPUT_POST, 'msg_coord', FILTER_SANITIZE_STRING);
+$msg_coord = filter_input(INPUT_POST, 'msg_coord', FILTER_UNSAFE_RAW);
 $titulo = 'Cadastro de Projeto';
 $id_pessoa = toolErp::id_pessoa();
 $id_pf = filter_input(INPUT_POST, 'id_pf', FILTER_SANITIZE_NUMBER_INT);
 $id_projeto = filter_input(INPUT_POST, 'id_projeto', FILTER_SANITIZE_NUMBER_INT);
-$n_projeto = filter_input(INPUT_POST, 'n_projeto', FILTER_SANITIZE_STRING);
+$n_projeto = filter_input(INPUT_POST, 'n_projeto', FILTER_UNSAFE_RAW);
 $checked_foto = 'checked';
 $display_video = 'none';
 if (!empty($id_pf)) {

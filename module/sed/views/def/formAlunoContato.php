@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $aluno = new ng_aluno($id_pessoa);
 $tel = ng_aluno::telefone($id_pessoa);
 $cont = empty($tel) ? 3 : count($tel) - 1;

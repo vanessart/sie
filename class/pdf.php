@@ -64,7 +64,7 @@ class pdf {
             return $_REQUEST;
         }
         $token = @$_REQUEST['token'];
-        $senha = filter_input(INPUT_POST, 'senha17uwgstegddg', FILTER_SANITIZE_STRING);
+        $senha = filter_input(INPUT_POST, 'senha17uwgstegddg', FILTER_UNSAFE_RAW);
         if ($token) {
             $sql = "SELECT * FROM `pdf_autentica` WHERE `token` LIKE '$token'";
             $query = pdoSis::getInstance()->query($sql);

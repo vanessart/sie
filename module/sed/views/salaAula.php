@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$per = filter_input(INPUT_POST, 'per', FILTER_SANITIZE_STRING);
+$per = filter_input(INPUT_POST, 'per', FILTER_UNSAFE_RAW);
 if ($per) {
     $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
     $esc = escolas::idInst();

@@ -1,8 +1,8 @@
 <?php
 
-$periodo = filter_input(INPUT_POST, 'periodo_letivo', FILTER_SANITIZE_STRING);
+$periodo = filter_input(INPUT_POST, 'periodo_letivo', FILTER_UNSAFE_RAW);
 $idinst = filter_input(INPUT_POST, 'fk_id_inst', FILTER_SANITIZE_NUMBER_INT);
-$tipoteste = filter_input(INPUT_POST, 'teste', FILTER_SANITIZE_STRING);
+$tipoteste = filter_input(INPUT_POST, 'teste', FILTER_UNSAFE_RAW);
 $turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 
 $tipo = [0 => 'Selecionar', 1 => 'Computador', 2 => 'Papel'];

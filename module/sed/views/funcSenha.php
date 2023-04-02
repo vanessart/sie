@@ -1,10 +1,10 @@
 <?php
 $id_inst = toolErp::id_inst();
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_SANITIZE_STRING);
-$sexo = filter_input(INPUT_POST, 'sexo', FILTER_SANITIZE_STRING);
+$n_pessoa = filter_input(INPUT_POST, 'n_pessoa', FILTER_UNSAFE_RAW);
+$sexo = filter_input(INPUT_POST, 'sexo', FILTER_UNSAFE_RAW);
 $id_user = filter_input(INPUT_POST, 'id_user', FILTER_SANITIZE_NUMBER_INT);
-$prof = filter_input(INPUT_POST, 'prof', FILTER_SANITIZE_STRING);
+$prof = filter_input(INPUT_POST, 'prof', FILTER_UNSAFE_RAW);
 if (!empty($_POST['redefineSenha'])) {
     toolErp::modalInicio(1);
     $senhafun = user::gerarSenha();

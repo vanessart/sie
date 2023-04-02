@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 ob_start();
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
-$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_SANITIZE_STRING);
+$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_UNSAFE_RAW);
 $pdf = new pdf();
 $pdf->mgt = '60';
 $pdf->mgb = '30';

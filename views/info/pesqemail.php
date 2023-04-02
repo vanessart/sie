@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 
 $rse = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-$email = filter_input(INPUT_POST, 'emailgoogle', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, 'emailgoogle', FILTER_UNSAFE_RAW);
 ?>
 <br />
 

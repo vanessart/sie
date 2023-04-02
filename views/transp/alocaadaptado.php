@@ -3,7 +3,7 @@ $destino = filter_input(INPUT_POST, 'destino', FILTER_SANITIZE_NUMBER_INT);
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 $destino_ = unserialize(base64_decode($model->_setup['destino']));
 $id_li = filter_input(INPUT_POST, 'id_li', FILTER_SANITIZE_NUMBER_INT);
-$statusMostrar = filter_input(INPUT_POST, 'statusMostrar', FILTER_SANITIZE_STRING);
+$statusMostrar = filter_input(INPUT_POST, 'statusMostrar', FILTER_UNSAFE_RAW);
 if (!empty($id_li)) {
     $linhaDados = transporte::linhaGet($id_li);
 }

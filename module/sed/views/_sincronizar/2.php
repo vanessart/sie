@@ -4,7 +4,7 @@ if (!defined('ABSPATH'))
     exit;
 $id_pl = gtMain::periodoSet(filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT));
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
-$prodesp = filter_input(INPUT_POST, 'prodesp', FILTER_SANITIZE_STRING);
+$prodesp = filter_input(INPUT_POST, 'prodesp', FILTER_UNSAFE_RAW);
 $periodos = gtMain::periodosPorSituacao();
 $escolas = escolas::idInst();
 if ($id_pl && $id_inst) {

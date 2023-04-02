@@ -1,5 +1,5 @@
 <?php
-$id_li = filter_input(INPUT_POST, 'id_li', FILTER_SANITIZE_STRING);
+$id_li = filter_input(INPUT_POST, 'id_li', FILTER_UNSAFE_RAW);
 if (empty($id_li)) {
     $id_li = @$_POST['last_id'];
 }

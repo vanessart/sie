@@ -2,14 +2,14 @@
 if (!defined('ABSPATH'))
     exit;
 
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
-$data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
-$autores = filter_input(INPUT_POST, 'autores', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
+$data = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
+$autores = filter_input(INPUT_POST, 'autores', FILTER_UNSAFE_RAW);
 $id_projeto = filter_input(INPUT_POST, 'id_projeto', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_ciclo = filter_input(INPUT_POST, 'fk_id_ciclo', FILTER_SANITIZE_NUMBER_INT);
 $id_disc = filter_input(INPUT_POST, 'fk_id_disc', FILTER_SANITIZE_NUMBER_INT);
-$msg_coord = filter_input(INPUT_POST, 'msg_coord', FILTER_SANITIZE_STRING);
+$msg_coord = filter_input(INPUT_POST, 'msg_coord', FILTER_UNSAFE_RAW);
 $hidden = $_POST['hidden'];
 if ($id_projeto) {
     $projeto = sql::get('profe_projeto', 'id_projeto, n_projeto, dt_inicio, dt_fim, habilidade, justifica, situacao, recurso, resultado, fonte, autores, avaliacao, devolutiva, fk_id_projeto_status, coord_vizualizar , msg_coord', 'WHERE id_projeto =' . $id_projeto, 'fetch', 'left');

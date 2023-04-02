@@ -1,8 +1,8 @@
 <?php
 
-$idEscola = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
-$tipoInscricao = filter_input(INPUT_POST, 'tipoInscricao', FILTER_SANITIZE_STRING);
-$anoLetivo = filter_input(INPUT_POST, 'anoletivo', FILTER_SANITIZE_STRING);
+$idEscola = filter_input(INPUT_POST, 'id', FILTER_UNSAFE_RAW);
+$tipoInscricao = filter_input(INPUT_POST, 'tipoInscricao', FILTER_UNSAFE_RAW);
+$anoLetivo = filter_input(INPUT_POST, 'anoletivo', FILTER_UNSAFE_RAW);
 if($idEscola && $tipoInscricao && $anoLetivo){
     $result = rest::listarInscricoesEscola($idEscola, $tipoInscricao, $anoLetivo);
 }

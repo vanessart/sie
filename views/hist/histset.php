@@ -17,7 +17,7 @@
     $d = disciplina::disc();
     $wciclo = [6, 7, 8, 9];
     $pandemiaC = [2020 => 820, 2021 => 862];
-    $anociclo = filter_input(INPUT_POST, 'ano', FILTER_SANITIZE_STRING);
+    $anociclo = filter_input(INPUT_POST, 'ano', FILTER_UNSAFE_RAW);
 
     foreach ($d as $dd) {
         $disciplinas[$dd['id_disc']] = $dd['n_disc'];

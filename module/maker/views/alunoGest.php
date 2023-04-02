@@ -2,7 +2,7 @@
 if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
-$periodo = filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
+$periodo = filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
 $id_mc = filter_input(INPUT_POST, 'id_mc', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $diaSem = filter_input(INPUT_POST, 'diaSem', FILTER_SANITIZE_NUMBER_INT);

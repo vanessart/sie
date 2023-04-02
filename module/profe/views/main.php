@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 $id_pessoa = toolErp::id_pessoa();
 $tpd = $model->turmaDisciplina($id_pessoa);
 
-$diaSem = filter_input(INPUT_POST, 'diaSem', FILTER_SANITIZE_STRING);
+$diaSem = filter_input(INPUT_POST, 'diaSem', FILTER_UNSAFE_RAW);
 if (empty($diaSem)) {
     $diaSem = date('N');
     if (in_array($diaSem, [6, 7])) {

@@ -2,13 +2,13 @@
 if (!defined('ABSPATH'))
     exit;
 $turma = $model->turmas(toolErp::id_inst());
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
-$periodo = filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
-$ano = filter_input(INPUT_POST, 'ano', FILTER_SANITIZE_STRING);
-$id_grade = filter_input(INPUT_POST, 'id_grade', FILTER_SANITIZE_STRING);
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
-$id_ciclo = filter_input(INPUT_POST, 'id_ciclo', FILTER_SANITIZE_STRING);
-$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
+$periodo = filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
+$ano = filter_input(INPUT_POST, 'ano', FILTER_UNSAFE_RAW);
+$id_grade = filter_input(INPUT_POST, 'id_grade', FILTER_UNSAFE_RAW);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
+$id_ciclo = filter_input(INPUT_POST, 'id_ciclo', FILTER_UNSAFE_RAW);
+$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_UNSAFE_RAW);
 if ($id_grade) {
     $grade = $model->grade($id_grade);
 }

@@ -4,7 +4,7 @@ if (!defined('ABSPATH'))
 
 $ano = filter_input(INPUT_POST, 'ano', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$relatorio = filter_input(INPUT_POST, 'relatorio', FILTER_SANITIZE_STRING);
+$relatorio = filter_input(INPUT_POST, 'relatorio', FILTER_UNSAFE_RAW);
 
 if (empty($ano)) {
     $ano = date("Y");

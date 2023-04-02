@@ -1,8 +1,8 @@
 <?php
 
-$ra = filter_input(INPUT_POST, 'ra', FILTER_SANITIZE_STRING);
-$uf = filter_input(INPUT_POST, 'uf', FILTER_SANITIZE_STRING);
-$anoletvo = filter_input(INPUT_POST, 'anoletivo', FILTER_SANITIZE_STRING);
+$ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
+$uf = filter_input(INPUT_POST, 'uf', FILTER_UNSAFE_RAW);
+$anoletvo = filter_input(INPUT_POST, 'anoletivo', FILTER_UNSAFE_RAW);
 
 if($ra && $uf){
     $result = rest::listarInscricoesAluno($ra, $uf, null, $anoletvo);

@@ -3,10 +3,10 @@ if (!defined('ABSPATH'))
     exit;
 ob_start();
 header("Access-Control-Allow-Origin: *");
-$op = filter_input(INPUT_POST, 'op', FILTER_SANITIZE_STRING);
-$data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
+$op = filter_input(INPUT_POST, 'op', FILTER_UNSAFE_RAW);
+$data = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
+$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
 $id_hab = filter_input(INPUT_POST, 'id_hab', FILTER_SANITIZE_NUMBER_INT);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);

@@ -62,7 +62,7 @@ class homeModel extends MainModel {
     }
 
     public function recuperaSenha() {
-        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
+        $user = filter_input(INPUT_POST, 'user', FILTER_UNSAFE_RAW);
         $sql = "SELECT n_pessoa, id_pessoa, emailgoogle as email, id_user, user_session_id FROM `pessoa` "
                 . "JOIN users ON users.fk_id_pessoa = pessoa.id_pessoa "
                 . "WHERE "

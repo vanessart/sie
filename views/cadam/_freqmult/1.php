@@ -3,7 +3,7 @@ $id_pr = filter_input(INPUT_POST, 'id_pr', FILTER_SANITIZE_NUMBER_INT);
 if (empty($id_pr)) {
     $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
     $id_cargo = filter_input(INPUT_POST, 'id_cargo', FILTER_SANITIZE_NUMBER_INT);
-    $periodo = filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
+    $periodo = filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
     $inicio = filter_input(INPUT_POST, 'inicio');
     $fim = filter_input(INPUT_POST, 'fim');
     $hidden['id_inst'] = $id_inst;

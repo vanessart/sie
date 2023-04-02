@@ -417,10 +417,10 @@ class profeModel extends MainModel {
     }
 
     public function salvarFrequencia() {
-        $valor['atual_letiva'] = filter_input(INPUT_POST, 'atual_letiva', FILTER_SANITIZE_STRING);
-        $valor['data'] = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
-        $valor['id_turma'] = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
-        $valor['id_disc'] = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
+        $valor['atual_letiva'] = filter_input(INPUT_POST, 'atual_letiva', FILTER_UNSAFE_RAW);
+        $valor['data'] = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
+        $valor['id_turma'] = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
+        $valor['id_disc'] = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
         $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
         $valor['time_stamp'] = date("Y-m-d H:i:s");
         $valor['id_pessoa'] = toolErp::id_pessoa();
@@ -840,19 +840,19 @@ class profeModel extends MainModel {
         }
 
         $newArr = [
-            'uniqid' => filter_input(INPUT_POST, 'uniqid', FILTER_SANITIZE_STRING),
-            'id_pl' => filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_STRING),
-            'instrumentoNome' => filter_input(INPUT_POST, 'instrumentoNome', FILTER_SANITIZE_STRING),
-            'instrumentoTipo' => filter_input(INPUT_POST, 'instrumentoTipo', FILTER_SANITIZE_STRING),
-            'dataAvaliacao' => filter_input(INPUT_POST, 'dataAvaliacao', FILTER_SANITIZE_STRING),
+            'uniqid' => filter_input(INPUT_POST, 'uniqid', FILTER_UNSAFE_RAW),
+            'id_pl' => filter_input(INPUT_POST, 'id_pl', FILTER_UNSAFE_RAW),
+            'instrumentoNome' => filter_input(INPUT_POST, 'instrumentoNome', FILTER_UNSAFE_RAW),
+            'instrumentoTipo' => filter_input(INPUT_POST, 'instrumentoTipo', FILTER_UNSAFE_RAW),
+            'dataAvaliacao' => filter_input(INPUT_POST, 'dataAvaliacao', FILTER_UNSAFE_RAW),
             'peso' => filter_input(INPUT_POST, 'peso', FILTER_VALIDATE_INT),
-            'id_ciclo' => filter_input(INPUT_POST, 'id_ciclo', FILTER_SANITIZE_STRING),
-            'id_inst' => filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_STRING),
-            'id_pessoa' => filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_STRING),
-            'timeStamp' => filter_input(INPUT_POST, 'timeStamp', FILTER_SANITIZE_STRING),
-            'id_turma' => filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING),
-            'atual_letiva' => filter_input(INPUT_POST, 'atual_letiva', FILTER_SANITIZE_STRING),
-            'id_disc' => filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING),
+            'id_ciclo' => filter_input(INPUT_POST, 'id_ciclo', FILTER_UNSAFE_RAW),
+            'id_inst' => filter_input(INPUT_POST, 'id_inst', FILTER_UNSAFE_RAW),
+            'id_pessoa' => filter_input(INPUT_POST, 'id_pessoa', FILTER_UNSAFE_RAW),
+            'timeStamp' => filter_input(INPUT_POST, 'timeStamp', FILTER_UNSAFE_RAW),
+            'id_turma' => filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW),
+            'atual_letiva' => filter_input(INPUT_POST, 'atual_letiva', FILTER_UNSAFE_RAW),
+            'id_disc' => filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW),
             'ativo' => filter_input(INPUT_POST, 'ativo', FILTER_VALIDATE_INT),
             'id_disc_nc' => filter_input(INPUT_POST, 'id_disc_nc', FILTER_VALIDATE_INT),
         ];
@@ -905,9 +905,9 @@ class profeModel extends MainModel {
             toolErp::alertModal('Você inseriu notas invalidas');
         }
         $newArr = [
-            'uniqid' => filter_input(INPUT_POST, 'uniqid', FILTER_SANITIZE_STRING),
+            'uniqid' => filter_input(INPUT_POST, 'uniqid', FILTER_UNSAFE_RAW),
             'notas' => $notas,
-            'id_pl' => filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_STRING),
+            'id_pl' => filter_input(INPUT_POST, 'id_pl', FILTER_UNSAFE_RAW),
         ];
 
         $mongo = new mongoCrude('Diario');
@@ -1456,12 +1456,12 @@ class profeModel extends MainModel {
         ob_clean();
         $data = filter_input(INPUT_POST, 'data');
         $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-        $id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
-        $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_STRING);
+        $id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
+        $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_UNSAFE_RAW);
         $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
         $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
         $id_ciclo = filter_input(INPUT_POST, 'id_ciclo', FILTER_SANITIZE_NUMBER_INT);
-        $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
+        $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
         $at_sonda = filter_input(INPUT_POST, 'at_sonda', FILTER_SANITIZE_NUMBER_INT);
         $id_gh = filter_input(INPUT_POST, 'id_gh', FILTER_SANITIZE_NUMBER_INT);
         $id_hab = filter_input(INPUT_POST, 'id_hab', FILTER_SANITIZE_NUMBER_INT);

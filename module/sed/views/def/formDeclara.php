@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 
 $id_vaga_c = filter_input(INPUT_POST, 'id_vaga_c', FILTER_SANITIZE_NUMBER_INT);
-$nome_aluno = filter_input(INPUT_POST, 'nome_aluno', FILTER_SANITIZE_STRING);
+$nome_aluno = filter_input(INPUT_POST, 'nome_aluno', FILTER_UNSAFE_RAW);
 
 if ($id_vaga_c) {
     $dados = sqlErp::get('ge_decl_vaga_comp', '*', ['id_vaga_c' => $id_vaga_c], 'fetch');

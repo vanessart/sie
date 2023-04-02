@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_STRING);
+$id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_UNSAFE_RAW);
 
 if ($id_curso) {
     $curso = sql::get('ge_cursos', '*', ['id_curso' => $id_curso], 'fetch');

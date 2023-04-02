@@ -5,8 +5,8 @@ if ($model->db->tokenCheck('alunoNovoSet')) {
     $result = $model->alunoNovoSet();
 }
 
-$ra = filter_input(INPUT_POST, 'ra', FILTER_SANITIZE_STRING);
-$uf = filter_input(INPUT_POST, 'uf', FILTER_SANITIZE_STRING);
+$ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
+$uf = filter_input(INPUT_POST, 'uf', FILTER_UNSAFE_RAW);
 ?>
 <div class="body">
     <div class="fieldTop">

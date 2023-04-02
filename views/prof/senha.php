@@ -1,7 +1,7 @@
 <?php
 if (!empty($_POST['emailSet'])) {
     tool::modalInicio();
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_UNSAFE_RAW);
      $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
     ?>
     <div style="text-align: center;">

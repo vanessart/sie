@@ -3,9 +3,9 @@ if (!defined('ABSPATH'))
     exit;
 $id_inst_sieb = filter_input(INPUT_POST, 'id_inst_sieb', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
-$periodo = filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
+$periodo = filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
 $id_mc = filter_input(INPUT_POST, 'id_mc', FILTER_SANITIZE_NUMBER_INT);
-$transporte = filter_input(INPUT_POST, 'transporte', FILTER_SANITIZE_STRING);
+$transporte = filter_input(INPUT_POST, 'transporte', FILTER_UNSAFE_RAW);
 $frequencia = filter_input(INPUT_POST, 'frequencia', FILTER_SANITIZE_NUMBER_INT);
 
 $dados = $model->relatFerq($id_polo, $id_inst_sieb, $periodo, $id_mc, $transporte, $frequencia, 1);

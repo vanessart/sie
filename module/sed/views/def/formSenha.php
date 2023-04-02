@@ -11,7 +11,7 @@ if ($id_pessoa == 1) {
     <?php
     exit();
 }
-$senhaProf = filter_input(INPUT_POST, 'senhaProf', FILTER_SANITIZE_STRING);
+$senhaProf = filter_input(INPUT_POST, 'senhaProf', FILTER_UNSAFE_RAW);
 if ($id_pessoa) {
     $p = sql::get(['pessoa', 'users'], 'n_pessoa, sexo, id_user, emailgoogle ', ['id_pessoa' => $id_pessoa], 'fetch', 'left');
     ?>

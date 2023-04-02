@@ -1,6 +1,6 @@
 <?php
-$codEscola = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING);
-$anoLetivo = filter_input(INPUT_POST, 'anoLetivo', FILTER_SANITIZE_STRING);
+$codEscola = filter_input(INPUT_POST, 'codigo', FILTER_UNSAFE_RAW);
+$anoLetivo = filter_input(INPUT_POST, 'anoLetivo', FILTER_UNSAFE_RAW);
 if ($codEscola && $anoLetivo) {
     $dados = rest::relacaoClasses($codEscola, $anoLetivo);
 }

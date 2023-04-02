@@ -5,7 +5,7 @@ if (!defined('ABSPATH'))
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 $id_disc = filter_input(INPUT_POST, 'id_disc');
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$n_inst = filter_input(INPUT_POST, 'n_inst', FILTER_SANITIZE_STRING);
+$n_inst = filter_input(INPUT_POST, 'n_inst', FILTER_UNSAFE_RAW);
 if (empty($n_inst)) {
     $n_inst = toolErp::n_inst();
 }

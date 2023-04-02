@@ -2,7 +2,7 @@
 ob_start();
 $cor = '#cccccc';
 if (!empty($_POST['periodo'])) {
-    $per =filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
+    $per =filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
 } else {
     $per = date('Y');
 }

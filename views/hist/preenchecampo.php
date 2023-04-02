@@ -1,6 +1,6 @@
 <?php
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-$tabela = filter_input(INPUT_POST, 'AlunoSit', FILTER_SANITIZE_STRING);
+$tabela = filter_input(INPUT_POST, 'AlunoSit', FILTER_UNSAFE_RAW);
 $salvar = filter_input(INPUT_POST, 'liberabotao', FILTER_SANITIZE_NUMBER_INT);
 $aluno = new aluno($id_pessoa);
 

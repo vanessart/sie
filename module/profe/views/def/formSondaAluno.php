@@ -4,8 +4,8 @@ if (!defined('ABSPATH'))
 $data = filter_input(INPUT_POST, 'data');
 $idadeMin = filter_input(INPUT_POST, 'idadeMin', FILTER_SANITIZE_NUMBER_INT);
 $idadeMax = filter_input(INPUT_POST, 'idadeMax', FILTER_SANITIZE_NUMBER_INT);
-$id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_STRING);
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
+$id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_UNSAFE_RAW);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
 $id_ce = filter_input(INPUT_POST, 'id_ce', FILTER_SANITIZE_NUMBER_INT);
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
 $at_set = filter_input(INPUT_POST, 'at_set', FILTER_SANITIZE_NUMBER_INT);
@@ -14,7 +14,7 @@ $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_ciclo = filter_input(INPUT_POST, 'id_ciclo', FILTER_SANITIZE_NUMBER_INT);
 $at_sonda = filter_input(INPUT_POST, 'at_sonda', FILTER_SANITIZE_NUMBER_INT);
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
-$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
+$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
 $hidden = $_POST;
 if ($id_ce) {
     $ce = " and fk_id_ce = $id_ce";

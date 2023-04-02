@@ -4,12 +4,12 @@ if (!defined('ABSPATH'))
 
 ob_start();
 
-$local2 = filter_input(INPUT_POST, 'lo', FILTER_SANITIZE_STRING);
-$resp2 = filter_input(INPUT_POST, 'rp', FILTER_SANITIZE_STRING);
-$st2 = filter_input(INPUT_POST, 'sta', FILTER_SANITIZE_STRING);
-$tipo2 = filter_input(INPUT_POST, 'ti', FILTER_SANITIZE_STRING);
-$data_ci = filter_input(INPUT_POST, 'di', FILTER_SANITIZE_STRING);
-$data_cf = filter_input(INPUT_POST, 'df', FILTER_SANITIZE_STRING);
+$local2 = filter_input(INPUT_POST, 'lo', FILTER_UNSAFE_RAW);
+$resp2 = filter_input(INPUT_POST, 'rp', FILTER_UNSAFE_RAW);
+$st2 = filter_input(INPUT_POST, 'sta', FILTER_UNSAFE_RAW);
+$tipo2 = filter_input(INPUT_POST, 'ti', FILTER_UNSAFE_RAW);
+$data_ci = filter_input(INPUT_POST, 'di', FILTER_UNSAFE_RAW);
+$data_cf = filter_input(INPUT_POST, 'df', FILTER_UNSAFE_RAW);
 
 $tipo = $model->pegalista();
 $dados = $model->pegadadosconsulta($local2, $resp2, $tipo2, $st2, $data_ci, $data_cf);

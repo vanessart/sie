@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$pesquisa = filter_input(INPUT_POST, 'pesquisa', FILTER_SANITIZE_STRING);
+$pesquisa = filter_input(INPUT_POST, 'pesquisa', FILTER_UNSAFE_RAW);
 $rede = filter_input(INPUT_POST, 'rede', FILTER_SANITIZE_NUMBER_INT);
 if ($pesquisa) {
     if ($rede) {

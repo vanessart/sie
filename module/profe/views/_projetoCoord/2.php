@@ -3,11 +3,11 @@ if (!defined('ABSPATH'))
     exit;
 
 $id_projeto = filter_input(INPUT_POST, 'id_projeto', FILTER_SANITIZE_NUMBER_INT);
-$n_projeto = filter_input(INPUT_POST, 'n_projeto', FILTER_SANITIZE_STRING);
-$msg_coord = filter_input(INPUT_POST, 'msg_coord', FILTER_SANITIZE_STRING);
-$autores = filter_input(INPUT_POST, 'autores', FILTER_SANITIZE_STRING);
-$dataProjeto = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_projeto = filter_input(INPUT_POST, 'n_projeto', FILTER_UNSAFE_RAW);
+$msg_coord = filter_input(INPUT_POST, 'msg_coord', FILTER_UNSAFE_RAW);
+$autores = filter_input(INPUT_POST, 'autores', FILTER_UNSAFE_RAW);
+$dataProjeto = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 //$hidden = filter_input(INPUT_POST, 'hidden', FILTER_REQUIRE_ARRAY);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_pessoa = toolErp::id_pessoa();

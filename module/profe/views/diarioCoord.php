@@ -3,10 +3,10 @@ if (!defined('ABSPATH'))
     exit;
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_NUMBER_INT);
-$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$escola = filter_input(INPUT_POST, 'escola', FILTER_SANITIZE_STRING);
+$escola = filter_input(INPUT_POST, 'escola', FILTER_UNSAFE_RAW);
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 $bimestre = filter_input(INPUT_POST, 'bimestre', FILTER_SANITIZE_NUMBER_INT);
 

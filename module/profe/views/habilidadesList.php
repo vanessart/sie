@@ -7,9 +7,9 @@ $hidden['codigo'] = $codigo = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE
 $hidden['id_cur'] = $id_cur = filter_input(INPUT_POST, 'id_cur', FILTER_SANITIZE_NUMBER_INT);
 $hidden['id_disc'] = $id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_NUMBER_INT);
 $hidden['id_ciclo'] = $id_ciclo = filter_input(INPUT_POST, 'id_ciclo', FILTER_SANITIZE_NUMBER_INT);
-$hidden['nHab'] = $nHab = filter_input(INPUT_POST, 'nHab', FILTER_SANITIZE_STRING);
-$hidden['atual_letiva'] = $atual_letiva = filter_input(INPUT_POST, 'atual_letiva', FILTER_SANITIZE_STRING);
-$hidden['id_gh'] = $id_gh = filter_input(INPUT_POST, 'id_gh', FILTER_SANITIZE_STRING);
+$hidden['nHab'] = $nHab = filter_input(INPUT_POST, 'nHab', FILTER_UNSAFE_RAW);
+$hidden['atual_letiva'] = $atual_letiva = filter_input(INPUT_POST, 'atual_letiva', FILTER_UNSAFE_RAW);
+$hidden['id_gh'] = $id_gh = filter_input(INPUT_POST, 'id_gh', FILTER_UNSAFE_RAW);
 $id_gh = filter_input(INPUT_POST, 'id_gh', FILTER_SANITIZE_NUMBER_INT);
 if (!empty($id_cur)) {
     $curso = sqlErp::get('ge_cursos', '*', ['id_curso' => $id_cur], 'fetch');

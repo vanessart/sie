@@ -2,7 +2,7 @@
 if (!defined('ABSPATH'))
     exit;
 
-$data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
+$data = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
 $robot = filter_input(INPUT_POST, 'robot', FILTER_SANITIZE_NUMBER_INT);
 if (empty($data)) {
     $data = date("Y-m-d");

@@ -1,5 +1,5 @@
 <?php
-$arq = filter_input(INPUT_POST, 'nome_arquivo', FILTER_SANITIZE_STRING);
+$arq = filter_input(INPUT_POST, 'nome_arquivo', FILTER_UNSAFE_RAW);
 
 $lista = $model->peganomearquivo();
 

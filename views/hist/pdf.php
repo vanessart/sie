@@ -51,7 +51,7 @@ ob_start();
 <?php
 $wciclo = [6, 7, 8, 9];
 $pandemiaC = [2020 => 820, 2021 => 862];
-$ciclo_ano = filter_input(INPUT_POST, 'cicloano', FILTER_SANITIZE_STRING);
+$ciclo_ano = filter_input(INPUT_POST, 'cicloano', FILTER_UNSAFE_RAW);
 
 if (is_numeric($_POST['id_pessoa'])) {
     $d = disciplina::disc();

@@ -25,12 +25,12 @@ $pdf->mgf = 2;
 
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_NUMBER_INT);
-$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$escola = filter_input(INPUT_POST, 'escola', FILTER_SANITIZE_STRING);
+$escola = filter_input(INPUT_POST, 'escola', FILTER_UNSAFE_RAW);
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
-$prof_no = filter_input(INPUT_POST, 'prof', FILTER_SANITIZE_STRING);
+$prof_no = filter_input(INPUT_POST, 'prof', FILTER_UNSAFE_RAW);
 
 if ($id_turma) {
     if (empty($id_disc)) {

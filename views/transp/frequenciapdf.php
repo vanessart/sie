@@ -43,7 +43,7 @@ $cor = '#F5F5F5';
 </head>
 
 <?php
-$mes = filter_input(INPUT_POST, 'mes', FILTER_SANITIZE_STRING);
+$mes = filter_input(INPUT_POST, 'mes', FILTER_UNSAFE_RAW);
 $m = data::meses();
 $idinst = filter_input(INPUT_POST, 'idinst', FILTER_SANITIZE_NUMBER_INT);
 $semana = explode('|', data::pegasemana($mes));

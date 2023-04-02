@@ -1,9 +1,9 @@
 <?php
 
-$ra = filter_input(INPUT_POST, 'ra', FILTER_SANITIZE_STRING);
-$numClasse = filter_input(INPUT_POST, 'numClasse', FILTER_SANITIZE_STRING);
-$uf = filter_input(INPUT_POST, 'uf', FILTER_SANITIZE_STRING);
-$situacao = filter_input(INPUT_POST, 'situacao', FILTER_SANITIZE_STRING);
+$ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
+$numClasse = filter_input(INPUT_POST, 'numClasse', FILTER_UNSAFE_RAW);
+$uf = filter_input(INPUT_POST, 'uf', FILTER_UNSAFE_RAW);
+$situacao = filter_input(INPUT_POST, 'situacao', FILTER_UNSAFE_RAW);
 $result = array();
 if ($ra && $numClasse && $uf && $situacao) {
     $result = rest::exibirMatriculaClasseRA($ra, $uf, null, $numClasse, $situacao);

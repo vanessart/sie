@@ -1,5 +1,5 @@
 <?php
-$codClasse = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING);
+$codClasse = filter_input(INPUT_POST, 'codigo', FILTER_UNSAFE_RAW);
 if ($codClasse) {
     $dados = rest::formacaoClasse($codClasse);
     ##################            

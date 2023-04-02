@@ -7,7 +7,7 @@
 if (!defined('ABSPATH'))
     exit;
 $refresh = filter_input(INPUT_POST, 'refresh', FILTER_SANITIZE_NUMBER_INT);
-$dt_gdae = filter_input(INPUT_POST, 'dt_gdae', FILTER_SANITIZE_STRING);
+$dt_gdae = filter_input(INPUT_POST, 'dt_gdae', FILTER_UNSAFE_RAW);
 $geral = $aluno->dadosPessoais;
 
 foreach ($geral as $k => $v) {

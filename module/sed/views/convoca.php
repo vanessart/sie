@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$doc = filter_input(INPUT_POST, 'doc', FILTER_SANITIZE_STRING);
+$doc = filter_input(INPUT_POST, 'doc', FILTER_UNSAFE_RAW);
 $id_inst = tool::id_inst();
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_pl = ng_main::periodoSet($id_pl);

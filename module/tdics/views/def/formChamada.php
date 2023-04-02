@@ -3,11 +3,11 @@ if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
+$data = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
 
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
-$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
+$n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_UNSAFE_RAW);
 $alu = $model->alunoEsc($id_pl, null, null, $id_turma);
 
 $mongo = new mongoCrude('Tdics');

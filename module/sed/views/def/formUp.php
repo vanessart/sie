@@ -2,7 +2,7 @@
 if (!defined('ABSPATH'))
     exit;
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-$up = filter_input(INPUT_POST, 'up', FILTER_SANITIZE_STRING);
+$up = filter_input(INPUT_POST, 'up', FILTER_UNSAFE_RAW);
 $tipoDoc = sql::idNome('sed_prontuario', ['at_pront'=>1]);
 
 ?>

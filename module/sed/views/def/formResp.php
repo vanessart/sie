@@ -8,9 +8,9 @@ $id_rt = filter_input(INPUT_POST, 'id_rt');
 $nome = filter_input(INPUT_POST, 'nome');
 $id_pessoa = filter_input(INPUT_POST, "id_pessoa", FILTER_VALIDATE_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $id_pessoa_resp = filter_input(INPUT_POST, "id_pessoa_resp", FILTER_VALIDATE_INT);
-$cpf = filter_input(INPUT_POST, "cpf", FILTER_SANITIZE_STRING);
+$cpf = filter_input(INPUT_POST, "cpf", FILTER_UNSAFE_RAW);
 if (!empty($id_pessoa_resp)) {
     $pessoa = sql::get("pessoa", "id_pessoa, n_pessoa, sexo, cpf, email, emailgoogle ", ['id_pessoa' => $id_pessoa_resp], "fetch");
     $resp = sql::get("ge_aluno_responsavel", "*", ['fk_id_pessoa_aluno' => $id_pessoa, 'fk_id_pessoa_resp' => $id_pessoa_resp], 'fetch');
@@ -193,7 +193,7 @@ function ExibirFormulario($pessoa, $id_pessoa, $model, $id_rt = null, $nome = nu
         <br /><br />
         <?php
         $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-        $n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
+        $n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
         echo formErp::hidden([
             'id_pessoa' => $id_pessoa,
             'id_turma' => $id_turma,

@@ -2,12 +2,12 @@
 if (!defined('ABSPATH'))
     exit;
 
-$local2 = filter_input(INPUT_POST, 'local_sup', FILTER_SANITIZE_STRING);
-$resp2 = filter_input(INPUT_POST, 'id_resp', FILTER_SANITIZE_STRING);
-$st2 = filter_input(INPUT_POST, 'status_sup', FILTER_SANITIZE_STRING);
-$tipo2 = filter_input(INPUT_POST, 'tipo_sup', FILTER_SANITIZE_STRING);
-$data_ci = filter_input(INPUT_POST, 'datai', FILTER_SANITIZE_STRING);
-$data_cf = filter_input(INPUT_POST, 'dataf', FILTER_SANITIZE_STRING);
+$local2 = filter_input(INPUT_POST, 'local_sup', FILTER_UNSAFE_RAW);
+$resp2 = filter_input(INPUT_POST, 'id_resp', FILTER_UNSAFE_RAW);
+$st2 = filter_input(INPUT_POST, 'status_sup', FILTER_UNSAFE_RAW);
+$tipo2 = filter_input(INPUT_POST, 'tipo_sup', FILTER_UNSAFE_RAW);
+$data_ci = filter_input(INPUT_POST, 'datai', FILTER_UNSAFE_RAW);
+$data_cf = filter_input(INPUT_POST, 'dataf', FILTER_UNSAFE_RAW);
 
 $local = $model->pegalocalsup();
 $resp = $model->pegarespon(1);

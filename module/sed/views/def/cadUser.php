@@ -3,7 +3,7 @@
     <?php
     $id_inst = tool::id_inst(filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT));
     javaScript::cpf();
-    $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
+    $cpf = filter_input(INPUT_POST, 'cpf', FILTER_UNSAFE_RAW);
     if (validar::Cpf($cpf)) {
 
         $pessoa = sql::get('pessoa', '*', ['cpf' => $cpf], 'fetch');

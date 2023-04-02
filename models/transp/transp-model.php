@@ -109,7 +109,7 @@ class transpModel extends MainModel {
         $alu = @$_POST['alu'];
         $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
         $id_fj = filter_input(INPUT_POST, 'id_fj', FILTER_SANITIZE_NUMBER_INT);
-        $justificativa = filter_input(INPUT_POST, 'justificativa', FILTER_SANITIZE_STRING);
+        $justificativa = filter_input(INPUT_POST, 'justificativa', FILTER_UNSAFE_RAW);
         $id_li = filter_input(INPUT_POST, 'id_li', FILTER_SANITIZE_NUMBER_INT);
         $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
         $mes = filter_input(INPUT_POST, 'mes', FILTER_SANITIZE_NUMBER_INT);

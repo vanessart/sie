@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$destino = filter_input(INPUT_POST, 'destino', FILTER_SANITIZE_STRING);
+$destino = filter_input(INPUT_POST, 'destino', FILTER_UNSAFE_RAW);
 $id_inst = tool::id_inst();
 $id_mural = filter_input(INPUT_POST, 'id_mural', FILTER_SANITIZE_NUMBER_INT);
 if ($id_mural) {

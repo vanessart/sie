@@ -4,12 +4,12 @@
 if (!defined('ABSPATH'))
     exit;
 
-$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
+$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
-$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_STRING);
+$id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_UNSAFE_RAW);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$n_inst = filter_input(INPUT_POST, 'n_inst', FILTER_SANITIZE_STRING);
+$n_inst = filter_input(INPUT_POST, 'n_inst', FILTER_UNSAFE_RAW);
 if (empty($n_inst)) {
     $n_inst = toolErp::n_inst();
 }

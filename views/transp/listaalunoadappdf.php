@@ -42,8 +42,8 @@ $cor = '#F5F5F5';
 </head>
 
 <?php
-$mes = filter_input(INPUT_POST, 'mes', FILTER_SANITIZE_STRING);
-$idinst = filter_input(INPUT_POST, 'idinst', FILTER_SANITIZE_STRING);
+$mes = filter_input(INPUT_POST, 'mes', FILTER_UNSAFE_RAW);
+$idinst = filter_input(INPUT_POST, 'idinst', FILTER_UNSAFE_RAW);
 $id_li = filter_input(INPUT_POST, 'idlinha', FILTER_SANITIZE_NUMBER_INT);
 
 $m = data::meses();

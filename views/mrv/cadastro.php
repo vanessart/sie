@@ -1,5 +1,5 @@
 <?php
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
 $model->geratabelaalunoclasse(tool::id_inst());
 ?>
 <div class="fieldBody">

@@ -2,12 +2,12 @@
 if (!defined('ABSPATH'))
     exit;
 $turma = $model->turmas(toolErp::id_inst());
-$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_SANITIZE_STRING);
-$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_SANITIZE_STRING);
+$n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
+$n_disc = filter_input(INPUT_POST, 'n_disc', FILTER_UNSAFE_RAW);
 $id_disc = filter_input(INPUT_POST, 'id_disc', FILTER_SANITIZE_NUMBER_INT);
-$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_STRING);
-$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_STRING);
-$id_grade = filter_input(INPUT_POST, 'id_grade', FILTER_SANITIZE_STRING);
+$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_UNSAFE_RAW);
+$id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_UNSAFE_RAW);
+$id_grade = filter_input(INPUT_POST, 'id_grade', FILTER_UNSAFE_RAW);
 
 $hidden = [
     'id_pl' => $id_pl,

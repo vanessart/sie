@@ -6,7 +6,7 @@ if (!in_array(tool::id_pessoa(), [1, 6])) {
 }
 $polos = sql::idNome('maker_polo');
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
-$periodo = filter_input(INPUT_POST, 'periodo', FILTER_SANITIZE_STRING);
+$periodo = filter_input(INPUT_POST, 'periodo', FILTER_UNSAFE_RAW);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_turma_1 = filter_input(INPUT_POST, 'id_turma_1', FILTER_SANITIZE_NUMBER_INT);
 $id_turma_2 = filter_input(INPUT_POST, 'id_turma_2', FILTER_SANITIZE_NUMBER_INT);

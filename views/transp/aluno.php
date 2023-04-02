@@ -8,7 +8,7 @@ if (user::session('id_nivel') != 10) {
 } else {
     $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 }
-$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+$nome = filter_input(INPUT_POST, 'nome', FILTER_UNSAFE_RAW);
 $aDeferimento = filter_input(INPUT_POST, 'aDeferimento', FILTER_SANITIZE_NUMBER_INT);
 ?>
 <div class="fieldBody">
