@@ -152,6 +152,9 @@ class sql {
      */
     public static function idNome($table, $where=NULL) {
         $tb = self::get($table);
+        if (empty($tb)) {
+            return [];
+        }
         foreach (current($tb) as $k => $v) {
             $prefixo = explode('_', $k)[0];
             if ($prefixo == 'id') {

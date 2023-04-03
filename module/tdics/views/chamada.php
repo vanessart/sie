@@ -1,7 +1,8 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$id_pl = sql::get('tdics_pl', '*', ' where ativo in (1)', 'fetch')['id_pl'];
+$_pl = sql::get('tdics_pl', '*', ' where ativo in (1)', 'fetch');
+$id_pl = !empty($_pl) ? $_pl['id_pl'] : 0;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $polos = sql::idNome('tdics_polo');

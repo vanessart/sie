@@ -32,7 +32,7 @@ if (empty($_SESSION['userdata']['profTp'])) {
  * //
  */
 //Administrador
-$menu[2] = [
+$menu[1] = [
     'Início' => ['url' => '/profe/index'],
     'Plano de Aula' => ['url' => '/profe/planoAula'],
     'Projeto' => ['url' => '/profe/projetoCoord'],

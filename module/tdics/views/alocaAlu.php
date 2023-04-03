@@ -21,6 +21,7 @@ $setup = sql::get('tdics_setup', '*', null, 'fetch');
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $plsArr = sql::get('tdics_pl', '*', ' where ativo in (1,2)');
 $libera = [];
+$pls = [];
 foreach ($plsArr as $v) {
     $pls[$v['id_pl']] = $v['n_pl'];
     if (empty($id_pl) && $v['ativo'] == 1) {

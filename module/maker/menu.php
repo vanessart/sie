@@ -49,7 +49,7 @@ $menu[10] = [
 ];
 
 //Administrador
-$menu[2] = [
+$menu[1] = [
     'Início' => ['url' => '/maker/index'],
     'Gerenciamento' => [
         'page' => [
