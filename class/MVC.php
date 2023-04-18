@@ -54,6 +54,8 @@ class MVC {
         $template = sql::get('tema_default', 'n_td', NULL, 'fetch')['n_td'];
         define('TEMPLETE', $template);
 
+        echo "A-<br>";
+
         // Obtém os valores do controlador, ação e parâmetros da URL.
         // E configura as propriedades da classe.
         $this->get_url_data();
@@ -64,6 +66,7 @@ class MVC {
          */
         if (!$this->controlador) {
 
+            echo "B-<br>";
             // Adiciona o controlador padrão
             require_once ABSPATH . '/controllers/home-controller.php';
 
@@ -77,6 +80,8 @@ class MVC {
             // FIM :)
             return;
         }
+
+        echo "C-<br>";
         // Se o arquivo do controlador não existir, não faremos nada
         if (!file_exists(ABSPATH . '/controllers/' . $this->controlador . '.php') && !file_exists(ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php')) {
 
@@ -90,6 +95,7 @@ class MVC {
             return;
         }
 
+        echo "D-<br>";
         // Inclui o arquivo do controlador
         if (file_exists(ABSPATH . '/controllers/' . $this->controlador . '.php')) {
             require_once ABSPATH . '/controllers/' . $this->controlador . '.php';
@@ -102,6 +108,7 @@ class MVC {
         // se chamar NewsController.
         $this->controlador = preg_replace('/[^a-zA-Z]/i', '', $this->controlador);
 
+        echo "E-<br>";
         // Se a classe do controlador indicado não existir, não faremos nada
         if (!class_exists($this->controlador)) {
             echo "2<br>";
@@ -120,7 +127,7 @@ class MVC {
         if (!empty($this->acao)) {
             $this->acao = preg_replace('/[^a-zA-Z]/i', '', $this->acao);
         }
-
+        echo "F-<br>";
         // Se o método indicado existir, executa o método e envia os parâmetros
         if (!empty($this->acao)) {
             if (method_exists($this->controlador, $this->acao)) {
