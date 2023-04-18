@@ -32,19 +32,16 @@ function chk_array($array, $key)
  * O nome do arquivo deverá ser class-NomeDaClasse.php.
  * Por exemplo: para a classe TutsupMVC, o arquivo vai chamar class-TutsupMVC.php
  */
-
-spl_autoload_register(function ($class_name) {
+function m_autoload( $class_name ) {
     $file = ABSPATH.'/class/'.$class_name.'.php';
-
     if (!file_exists($file)) {
-    	echo $file."<br>";
         require_once ABSPATH.'/includes/404.php';
 
         return;
     }
-
     require_once $file;
-});
+}
+spl_autoload_register('m_autoload');
 
 function clearCpf($cpf) {
    return preg_replace('/[^0-9]/is', '', $cpf);
