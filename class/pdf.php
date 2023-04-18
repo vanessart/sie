@@ -181,7 +181,9 @@ class pdf {
         ob_end_clean();
         error_reporting(0);
         ini_set('display_errors', 0);
+        echo "A0-<br>";
         require_once ABSPATH . '/vendor/autoload.php';
+        echo "A1-<br>";
 
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->DeflMargin = $this->mgl;
