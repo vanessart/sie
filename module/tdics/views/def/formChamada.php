@@ -13,8 +13,8 @@ $alu = $model->alunoEsc($id_pl, null, null, $id_turma);
 $mongo = new mongoCrude('Tdics');
 @$presArr = (array) $mongo->query('presece_' . $id_pl, ['id_turma' => $id_turma, 'data' => $data])[0];
 if ($presArr) {
-    $pres = (array) $presArr['ch'] ?? [];
-    $jt = (array) $presArr['jt'] ?? [];
+    $pres = !empty($presArr['ch']) ? (array) $presArr['ch'] : [];
+    $jt = !empty($presArr['jt']) ? (array) $presArr['jt'] : [];
 }
 if (empty($data)) {
     $data = date("Y-m-d");
