@@ -124,6 +124,9 @@ class tdicsController extends MainController {
     }
 
     public function lanche() {
+        $this->title = 'TDICS';
+        $this->requiredPage('tdics/lanche');
+        $this->requireLogin();
         $model = $this->load_model('tdics/tdics-model');
         require_once ABSPATH . '/module/tdics/views/lanche.php';
     }
