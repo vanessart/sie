@@ -79,6 +79,10 @@ class MVC {
         }
         // Se o arquivo do controlador não existir, não faremos nada
         if (!file_exists(ABSPATH . '/controllers/' . $this->controlador . '.php') && !file_exists(ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php')) {
+
+            echo "1<br>";
+            var_dump($this->controlador, ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php');
+            echo "<br>";
             // Página não encontrada
             require_once ABSPATH . $this->not_found;
 
@@ -100,6 +104,9 @@ class MVC {
 
         // Se a classe do controlador indicado não existir, não faremos nada
         if (!class_exists($this->controlador)) {
+            echo "2<br>";
+            var_dump($this->controlador, class_exists($this->controlador));
+            echo "<br>";
             // Página não encontrada
             require_once ABSPATH . $this->not_found;
 
@@ -129,7 +136,9 @@ class MVC {
 
             // FIM :)
             return;
-        } // ! $this->acao 
+        } // ! $this->acao
+
+        echo "3<br>";
         // Página não encontrada
         require_once ABSPATH . $this->not_found;
 
