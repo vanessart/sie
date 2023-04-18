@@ -99,8 +99,10 @@ class MVC {
         // Inclui o arquivo do controlador
         if (file_exists(ABSPATH . '/controllers/' . $this->controlador . '.php')) {
             require_once ABSPATH . '/controllers/' . $this->controlador . '.php';
+            echo ABSPATH . '/controllers/' . $this->controlador . '.php<br>';
         } elseif (file_exists(ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php')) {
             require_once ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php';
+            echo ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php<br>';
         }
 
         // Remove caracteres inválidos do nome do controlador para gerar o nome
