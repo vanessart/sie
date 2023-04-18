@@ -124,14 +124,8 @@ class tdicsController extends MainController {
     }
 
     public function lanche() {
-        $this->title = 'TDICS';
-        // $this->requiredPage('tdics/lanche');
-        // $this->requireLogin();
-        require ABSPATH . '/includes/structure/header.php';
         $model = $this->load_model('tdics/tdics-model');
-        require ABSPATH . '/includes/structure/menu.php';
         require_once ABSPATH . '/module/tdics/views/lanche.php';
-        require ABSPATH . '/includes/structure/footer.php';
     }
 
     public function listaPiloto() {
