@@ -33,7 +33,7 @@ class formErp {
 
         $key = md5(uniqid(rand(), true));
         $doc['id_ft'] = $key;
-        @$doc['url'] = explode('=', $_SERVER['QUERY_STRING'])[1];
+        @$doc['url'] = empty($_SERVER['QUERY_STRING']) ? [] : explode('=', $_SERVER['QUERY_STRING'])[1];
         $doc['table_ft'] = $table;
         $doc['col_ft'] = (empty($col) ? NULL : serialize($col));
         $doc['action_ft'] = $action;
@@ -98,7 +98,7 @@ class formErp {
     }
 
     public static function extratPost($field) {
-        $field_ = explode('[', $field);
+        $field_ = empty($field) ? [] : explode('[', $field);
         if (count($field_) > 1) {
             $name = substr($field_[1], 0, -1);
             if (!empty($_POST[$field_[0]][$name])) {
@@ -113,7 +113,7 @@ class formErp {
     }
 
     public static function extratName($field) {
-        $field_ = explode('[', $field);
+        $field_ = empty($field) ? [] : explode('[', $field);
         if (count($field_) > 1) {
             $name = substr($field_[1], 0, -1);
         }
@@ -121,7 +121,7 @@ class formErp {
     }
 
     public static function extraName($name) {
-        $field_ = explode('[', $name);
+        $field_ = empty($name) ? [] : explode('[', $name);
         if (count($field_) > 1) {
             $name = substr($field_[1], 0, -1);
         }

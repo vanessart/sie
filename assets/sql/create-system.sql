@@ -499,3 +499,4 @@ INSERT INTO ge2.tdics_setup (id_setup, qt_turma, matri, matri_prev, qt_curso_alu
 VALUES(1, 16, 0, 0, 1, 1, '2022-12-19');
 
 
+ALTER TABLE ge2.tdics_polo MODIFY COLUMN id_polo int auto_increment NOT NULL;
