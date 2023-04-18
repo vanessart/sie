@@ -14,6 +14,10 @@ if ($id_turma) {
     $pres = $mongo->query('presece_' . $id_pl, ['id_turma' => $id_turma]);
     $token = formErp::token('apagaCh');
     if (!empty($pres)) {
+        echo '<pre>';
+        print_r($pres);
+        echo "<br><br>";
+        var_dump($pres);
         foreach ($pres as $v) {
             @$ct = [];
             $form['array'][$v->data]['data'] = $v->data;
