@@ -127,8 +127,10 @@ class MVC {
         // Cria o objeto da classe do controlador e envia os parâmentros
         $this->controlador = new $this->controlador($this);
 
+        echo "E-2-<br>";
         // Remove caracteres inválidos do nome da ação (método)
         if (!empty($this->acao)) {
+            echo "E-3-<br>";
             $this->acao = preg_replace('/[^a-zA-Z]/i', '', $this->acao);
         }
         echo "F-<br>";
