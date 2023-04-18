@@ -123,6 +123,7 @@ class MVC {
         } // class_exists
 
         echo "E-1-<br>";
+        var_dump($this->controlador);
 
         // Cria o objeto da classe do controlador e envia os parâmentros
         $this->controlador = new $this->controlador($this);
