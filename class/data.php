@@ -77,13 +77,14 @@ class data {
      * @return string
      */
     public static function converteBr($data) {
-        if (substr(@$data, 4, 1) == '-' && substr(@$data, 7, 1) == '-') {
-            $data = substr($data, 0, 10);
-            $dt = explode('-', $data);
-            $data = str_pad($dt[2], 2, "0", STR_PAD_LEFT) . '/' . str_pad($dt[1], 2, "0", STR_PAD_LEFT) . '/' . str_pad($dt[0], 4, "20", STR_PAD_LEFT);
+        if (!empty($data)) {
+            if (substr(@$data, 4, 1) == '-' && substr(@$data, 7, 1) == '-') {
+                $data = substr($data, 0, 10);
+                $dt = explode('-', $data);
+                $data = str_pad($dt[2], 2, "0", STR_PAD_LEFT) . '/' . str_pad($dt[1], 2, "0", STR_PAD_LEFT) . '/' . str_pad($dt[0], 4, "20", STR_PAD_LEFT);
+            }
+            return $data;
         }
-
-        return $data;
     }
 
     /**
