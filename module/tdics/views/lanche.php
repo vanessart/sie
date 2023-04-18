@@ -2,6 +2,9 @@
 if (!defined('ABSPATH'))
     exit;
 
+die('111');
+
+
 $polos = sql::idNome('tdics_polo');
 @$id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 
