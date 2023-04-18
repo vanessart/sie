@@ -14,21 +14,21 @@ if ($id_turma) {
     $pres = $mongo->query('presece_' . $id_pl, ['id_turma' => $id_turma]);
     $token = formErp::token('apagaCh');
     if (!empty($pres)) {
-        echo '<pre>';
-        print_r($pres);
-        echo "<br><br>";
-        var_dump($pres);
         foreach ($pres as $v) {
             @$ct = [];
             $form['array'][$v->data]['data'] = $v->data;
-            foreach ($v->ch as $pf) {
-                @$ct[$pf]++;
+            if (!empty($v->ch)) {
+                foreach ($v->ch as $pf) {
+                    @$ct[$pf]++;
+                }
             }
 
-            foreach ($v->jt as $pf) {
-                if ($pf) {
-                    @$ct[0]--;
-                    @$ct[2]++;
+            if (!empty($v->jt)) {
+                foreach ($v->jt as $pf) {
+                    if ($pf) {
+                        @$ct[0]--;
+                        @$ct[2]++;
+                    }
                 }
             }
 
