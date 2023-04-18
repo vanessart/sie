@@ -182,6 +182,7 @@ class pdf {
         error_reporting(0);
         ini_set('display_errors', 0);
         echo "A0-<br>";
+        echo ABSPATH . '/vendor/autoload.php<br>';
         require_once ABSPATH . '/vendor/autoload.php';
         echo "A1-<br>";
 
