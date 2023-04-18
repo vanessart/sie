@@ -39,9 +39,7 @@ function m_autoload( $class_name ) {
 
 	if ( !in_array($class_name, $exception) ) {
 	    $file = ABSPATH.'/class/'.$class_name.'.php';
-	    echo $class_name. "<br>";
-	    print_r($exception);
-	    echo "<br>";
+
 	    if (!file_exists($file)) {
 	        require_once ABSPATH.'/includes/404.php';
 

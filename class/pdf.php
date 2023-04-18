@@ -181,17 +181,9 @@ class pdf {
         ob_end_clean();
         error_reporting(0);
         ini_set('display_errors', 0);
-        echo "A0-<br>";
-        echo ABSPATH . '/vendor/autoload.php<br>';
         require_once ABSPATH . '/vendor/autoload.php';
-        echo "A1-<br>";
 
-        try {
-            $mpdf = new \Mpdf\Mpdf();
-        } catch (Exception $e) {
-            var_dump($e->getMessage());
-        }
-        echo "A2-<br>";
+        $mpdf = new \Mpdf\Mpdf();
         $mpdf->DeflMargin = $this->mgl;
         $mpdf->DefrMargin = $this->mgr;
         $mpdf->orig_tMargin = $this->mgt;
@@ -200,35 +192,25 @@ class pdf {
         $mpdf->margin_header = $this->mgh;
         $mpdf->margin_footer = $this->mgf;
 
-        echo "A-<br>";
         if (!empty($this->headerSet)) {
             if (empty($this->title)) {
                 $this->title = 'Secretaria de Educação' . "<br />" . tool::n_inst();
             }
             if (!empty($this->headerContent)) {
-        echo "B-<br>";
                 $mpdf->SetHTMLHeader($this->headerContent);
             } elseif (empty($this->headerAlt)) {
-        echo "C-<br>";
                 $mpdf->SetHTMLHeader($this->header());
             } else {
-        echo "D-<br>";
                 $mpdf->SetHTMLHeader($this->headerAlt);
             }
         }
-        echo "E-<br>";
         if (!empty($this->footerSet)) {
             $footer = $this->autenticaSet . "<div style=\"padding: 8px; background-color: silver\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">SIEB</td><td style=\" text-align: center\">". CLI_CIDADE .", " . data::porExtenso(date("Y-m-d")) . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         }
-        echo "F-<br>";
         $mpdf->SetHTMLFooter($footer);
-        echo "G-<br>";
         $css = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/includes/css/style.css">');
-        echo "H-<br>";
         $mpdf->WriteHTML($css, 1);
-        echo "I-<br>";
         $bootstrap = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/includes/css/bootstrap.min.css">');
-        echo "J-<br>";
         $mpdf->WriteHTML($bootstrap, 1);
 
         if ($this->orientation == 'L' || $this->orientation == 'l') {
