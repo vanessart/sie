@@ -5,13 +5,13 @@
  * //
  */
 //Administrador
-$menu[1] = [
+$menu[10] = [
     'Início' => ['url' => '/tdics/index'],
     'Run' => ['url' => '/tdics/run'],
 ];
 
 //gerente
-$menu[10] = [
+$menu[1] = [
     'Início' => ['url' => '/tdics/index'],
     'Gerenciar Alunos' => ['url' => '/tdics/alocaAlu'],
     'Presença' => [
