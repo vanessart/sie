@@ -54,8 +54,6 @@ class MVC {
         $template = sql::get('tema_default', 'n_td', NULL, 'fetch')['n_td'];
         define('TEMPLETE', $template);
 
-        echo "A-<br>";
-
         // Obtém os valores do controlador, ação e parâmetros da URL.
         // E configura as propriedades da classe.
         $this->get_url_data();
@@ -66,7 +64,6 @@ class MVC {
          */
         if (!$this->controlador) {
 
-            echo "B-<br>";
             // Adiciona o controlador padrão
             require_once ABSPATH . '/controllers/home-controller.php';
 
@@ -81,13 +78,9 @@ class MVC {
             return;
         }
 
-        echo "C-<br>";
         // Se o arquivo do controlador não existir, não faremos nada
         if (!file_exists(ABSPATH . '/controllers/' . $this->controlador . '.php') && !file_exists(ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php')) {
 
-            echo "1<br>";
-            var_dump($this->controlador, ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php');
-            echo "<br>";
             // Página não encontrada
             require_once ABSPATH . $this->not_found;
 
@@ -95,14 +88,11 @@ class MVC {
             return;
         }
 
-        echo "D-<br>";
         // Inclui o arquivo do controlador
         if (file_exists(ABSPATH . '/controllers/' . $this->controlador . '.php')) {
             require_once ABSPATH . '/controllers/' . $this->controlador . '.php';
-            echo ABSPATH . '/controllers/' . $this->controlador . '.php<br>';
         } elseif (file_exists(ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php')) {
             require_once ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php';
-            echo ABSPATH . '/module/' . (explode('-', $this->controlador)[0]) . '/' . $this->controlador . '.php<br>';
         }
 
         // Remove caracteres inválidos do nome do controlador para gerar o nome
@@ -110,13 +100,8 @@ class MVC {
         // se chamar NewsController.
         $this->controlador = preg_replace('/[^a-zA-Z]/i', '', $this->controlador);
 
-        echo "E-<br>";
         // Se a classe do controlador indicado não existir, não faremos nada
         if (!class_exists($this->controlador)) {
-            echo "E-2-<br>";
-            echo "2<br>";
-            var_dump($this->controlador, class_exists($this->controlador));
-            echo "<br>";
             // Página não encontrada
             require_once ABSPATH . $this->not_found;
 
@@ -124,19 +109,14 @@ class MVC {
             return;
         } // class_exists
 
-        echo "E-1-<br>";
-        var_dump($this->controlador);
-
         // Cria o objeto da classe do controlador e envia os parâmentros
         $this->controlador = new $this->controlador($this);
 
-        echo "E-2-<br>";
         // Remove caracteres inválidos do nome da ação (método)
         if (!empty($this->acao)) {
-            echo "E-3-<br>";
             $this->acao = preg_replace('/[^a-zA-Z]/i', '', $this->acao);
         }
-        echo "F-<br>";
+
         // Se o método indicado existir, executa o método e envia os parâmetros
         if (!empty($this->acao)) {
             if (method_exists($this->controlador, $this->acao)) {
@@ -154,15 +134,12 @@ class MVC {
             return;
         } // ! $this->acao
 
-        echo "3<br>";
         // Página não encontrada
         require_once ABSPATH . $this->not_found;
 
         // FIM :)
         return;
     }
-
-// __construct
 
     /**
      * Obtém parâmetros de $_GET['path']
@@ -214,5 +191,4 @@ class MVC {
         }
     }
 
-// get_url_data
 }
