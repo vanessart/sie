@@ -186,6 +186,7 @@ class pdf {
         echo "A1-<br>";
 
         $mpdf = new \Mpdf\Mpdf();
+        echo "A2-<br>";
         $mpdf->DeflMargin = $this->mgl;
         $mpdf->DefrMargin = $this->mgr;
         $mpdf->orig_tMargin = $this->mgt;
