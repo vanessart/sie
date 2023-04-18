@@ -32,7 +32,8 @@ $menu[1] = [
         'page' => [
             "Quadro de Alunos" => ['url' => '/tdics/quadro'],
             "Quadro de Vagas" => ['url' => '/tdics/vagas'],
-            'Lanche' => ['url' => '/tdics/lanche', 'target' => 1],
+            // 'Lanche' => ['url' => '/tdics/lanche', 'target' => 1],
+            'Lanche' => ['url' => '/tdics/lanche'],
             'Lista Piloto' => ['url' => '/tdics/listaPiloto'],
             'Termo de Matrícula' => ['url' => '/tdics/termoList'],
             'Alunos AEE' => ['url' => '/tdics/aee'],
