@@ -37,6 +37,7 @@ spl_autoload_register(function ($class_name) {
     $file = ABSPATH.'/class/'.$class_name.'.php';
 
     if (!file_exists($file)) {
+    	echo $file."<br>";
         require_once ABSPATH.'/includes/404.php';
 
         return;
