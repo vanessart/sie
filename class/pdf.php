@@ -186,7 +186,11 @@ class pdf {
         require_once ABSPATH . '/vendor/autoload.php';
         echo "A1-<br>";
 
-        $mpdf = new \Mpdf\Mpdf();
+        try {
+            $mpdf = new \Mpdf\Mpdf();
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
         echo "A2-<br>";
         $mpdf->DeflMargin = $this->mgl;
         $mpdf->DefrMargin = $this->mgr;
