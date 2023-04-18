@@ -111,6 +111,7 @@ class MVC {
         echo "E-<br>";
         // Se a classe do controlador indicado não existir, não faremos nada
         if (!class_exists($this->controlador)) {
+            echo "E-2-<br>";
             echo "2<br>";
             var_dump($this->controlador, class_exists($this->controlador));
             echo "<br>";
@@ -120,6 +121,9 @@ class MVC {
             // FIM :)
             return;
         } // class_exists
+
+        echo "E-1-<br>";
+
         // Cria o objeto da classe do controlador e envia os parâmentros
         $this->controlador = new $this->controlador($this);
 
