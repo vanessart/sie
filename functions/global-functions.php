@@ -33,13 +33,19 @@ function chk_array($array, $key)
  * Por exemplo: para a classe TutsupMVC, o arquivo vai chamar class-TutsupMVC.php
  */
 function m_autoload( $class_name ) {
-    $file = ABSPATH.'/class/'.$class_name.'.php';
-    if (!file_exists($file)) {
-        require_once ABSPATH.'/includes/404.php';
+	$exception = [
+		'Mpdf\Mpdf'
+	];
 
-        return;
-    }
-    require_once $file;
+	if ( !in_array($class_name, $exception) ) {
+	    $file = ABSPATH.'/class/'.$class_name.'.php';
+	    if (!file_exists($file)) {
+	        require_once ABSPATH.'/includes/404.php';
+
+	        return;
+	    }
+	    require_once $file;
+	}
 }
 spl_autoload_register('m_autoload');
 
