@@ -205,7 +205,7 @@ class pdf {
             }
         }
         if (!empty($this->footerSet)) {
-            $footer = $this->autenticaSet . "<div style=\"padding: 8px; background-color: silver\" >zzzzz<table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">". CLI_CIDADE .", " . data::porExtenso(date("Y-m-d")) . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
+            $footer = $this->autenticaSet . "<div style=\"padding: 8px; background-color: silver\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">". CLI_CIDADE .", " . data::porExtenso(date("Y-m-d")) . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         }
         $mpdf->SetHTMLFooter($footer);
         $css = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/includes/css/style.css">');
