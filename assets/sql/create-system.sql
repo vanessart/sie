@@ -120,6 +120,7 @@ CREATE TABLE `users` (
   `horas` text NOT NULL,
   `google_id` varchar(255) DEFAULT NULL,
   `google_token` text,
+  `fk_id_tp` int DEFAULT NULL
   PRIMARY KEY (`id_user`),
   KEY `fk_id_pessoa` (`fk_id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -507,6 +508,13 @@ CREATE TABLE `sis_nivel_pag` (
   KEY `fk_id_nivel` (`fk_id_nivel`),
   KEY `fk_id_pag` (`fk_id_pag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+DROP TABLE IF EXISTS `tipo_user`;
+CREATE TABLE `tipo_user` (
+  `id_tp` int(11) NOT NULL AUTO_INCREMENT,
+  `n_tp` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_tp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);

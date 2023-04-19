@@ -91,7 +91,7 @@ class princController extends MainController {
 
         $include = ABSPATH . '/views/princ/form-user.php';
         include ABSPATH . '/views/relat/simples.php';
-        if (!empty(@$_POST['search']) && $form['array'][0]['ativo'] == 'Sim') {
+        if (!empty(@$_POST['search']) && isset($form['array'][0]) && $form['array'][0]['ativo'] == 'Sim') {
             echo '<br />';
 
             $form = $model->acesso($form['array'][0]['id_pessoa']);
