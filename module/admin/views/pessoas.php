@@ -35,7 +35,7 @@ if ($pesq) {
 ?>
   <pre>   
     <?php
-      print_r($pessoas);
+      //print_r($pessoas);
     ?>
   </pre>
 <?php
