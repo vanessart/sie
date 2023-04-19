@@ -81,7 +81,7 @@ if (!empty($_POST['novo']) || !empty($dados)) {
             </div>
             <div class="row">
                 <?php
-                $nivelSet = unserialize(@$dados['niveis']);
+                $nivelSet = !empty($dados['niveis']) ? unserialize($dados['niveis']) : [];
                 $nivel = sql::get('nivel', '*', ['ativo' => 1,'>'=>'n_nivel']);
                 foreach ($nivel as $n) {
                     $checked = null;
