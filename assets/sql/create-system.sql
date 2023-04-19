@@ -460,6 +460,54 @@ CREATE TABLE `ge_periodo_letivo` (
   PRIMARY KEY (`id_pl`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `ge_aluno_necessidades_especiais`;
+CREATE TABLE `ge_aluno_necessidades_especiais` (
+  `id_def` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_pessoa` int(11) DEFAULT NULL,
+  `ra` int(11) NOT NULL,
+  `ra_uf` varchar(11) DEFAULT NULL,
+  `fk_id_ne` int(11) NOT NULL,
+  `fk_id_porte` int(11) NOT NULL DEFAULT '2',
+  PRIMARY KEY (`id_def`),
+  UNIQUE KEY `ra` (`ra`,`fk_id_ne`),
+  KEY `id_pessoa` (`fk_id_pessoa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_aluno_necessidades_especiais_porte`;
+CREATE TABLE `ge_aluno_necessidades_especiais_porte` (
+  `id_porte` int(11) NOT NULL AUTO_INCREMENT,
+  `n_porte` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_porte`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `pagina`;
+CREATE TABLE `pagina` (
+  `id_pag` int(11) NOT NULL AUTO_INCREMENT,
+  `pagina` text,
+  `n_pag` varchar(100) NOT NULL,
+  `descr_page` mediumtext,
+  `ord_pag` int(11) NOT NULL,
+  `fk_id_sistema` int(11) NOT NULL,
+  `posi_pag` varchar(11) DEFAULT NULL,
+  `view` text,
+  `ativo` int(11) NOT NULL,
+  PRIMARY KEY (`id_pag`),
+  KEY `fk_id_sistema` (`fk_id_sistema`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `sis_nivel_pag`;
+CREATE TABLE `sis_nivel_pag` (
+  `id_sn` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_sistema` int(11) NOT NULL,
+  `fk_id_nivel` int(11) NOT NULL,
+  `paginas` longtext,
+  `fk_id_pag` int(11) NOT NULL,
+  PRIMARY KEY (`id_sn`),
+  KEY `fk_id_sistema` (`fk_id_sistema`),
+  KEY `fk_id_nivel` (`fk_id_nivel`),
+  KEY `fk_id_pag` (`fk_id_pag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
 
@@ -500,3 +548,7 @@ VALUES(1, 16, 0, 0, 1, 1, '2022-12-19');
 
 
 ALTER TABLE ge2.tdics_polo MODIFY COLUMN id_polo int auto_increment NOT NULL;
+
+SET GLOBAL sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
+SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
+
