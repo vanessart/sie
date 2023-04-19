@@ -3,6 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $pesq = filter_input(INPUT_POST, 'pesq');
 $func = filter_input(INPUT_POST, 'func', FILTER_SANITIZE_NUMBER_INT);
+$pessoas = [];
 if ($pesq) {
     $pessoas = $model->pesqPessoas($pesq, $func);
 }
