@@ -552,3 +552,24 @@ ALTER TABLE ge2.tdics_polo MODIFY COLUMN id_polo int auto_increment NOT NULL;
 SET GLOBAL sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
 SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
 
+
+INSERT INTO pagina (pagina,n_pag,descr_page,ord_pag,fk_id_sistema,posi_pag,`view`,ativo) VALUES
+   ('princ/paginas','Gerenciar|>Páginas','',1,1,NULL,NULL,1),
+   ('princ/menu','Gerenciar|>Menu','',2,1,NULL,NULL,1),
+   ('princ/sistema','CADASTRO|>SUBSISTEMA','',3,1,NULL,NULL,1),
+   ('princ/usuario','Gerenciar|>Usuários','',0,1,NULL,NULL,1),
+   ('princ/usersis','Gerenciar|>Usuários/Sistema','',11,1,NULL,NULL,1),
+   ('Dropdown/1','Gerenciar||','',0,1,NULL,NULL,1),
+   ('princ/index','Início','',0,1,NULL,NULL,1),
+   ('princ/temas','Gerenciar|>Temas','',12,1,NULL,NULL,1),
+   ('princ/frame','CADASTRO|>FRAMEWORK','',1,1,NULL,NULL,1),
+   ('Dropdown/2','CADASTRO||','',2,1,NULL,NULL,1);
+INSERT INTO pagina (pagina,n_pag,descr_page,ord_pag,fk_id_sistema,posi_pag,`view`,ativo) VALUES
+   ('adm/nivel','CADASTRO|>NÍVEIS','',2,1,NULL,NULL,1),
+   ('princ/migra','Importar Dados','',14,1,NULL,NULL,1),
+   ('princ/correcoes','CORREÇÕES','',20,1,NULL,NULL,1);
+
+insert into sis_nivel_pag
+select null, 1, 1, null, id_pag
+from pagina where fk_id_sistema = 1;
+
