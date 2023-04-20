@@ -516,6 +516,79 @@ CREATE TABLE `tipo_user` (
   PRIMARY KEY (`id_tp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `ge_funcionario`;
+CREATE TABLE `ge_funcionario` (
+  `id_func` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `rm` varchar(50) NOT NULL,
+  `funcao` varchar(255) NOT NULL,
+  `situacao` varchar(255) DEFAULT NULL,
+  `fk_id_inst` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `tel` varchar(255) DEFAULT NULL,
+  `cel` varchar(255) DEFAULT NULL,
+  `at_func` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_func`),
+  KEY `fk_id_pessoa` (`fk_id_pessoa`,`fk_id_inst`),
+  KEY `fk_id_inst` (`fk_id_inst`),
+  KEY `fk_id_pessoa_2` (`fk_id_pessoa`),
+  KEY `rm` (`rm`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `telefones`;
+CREATE TABLE `telefones` (
+  `id_tel` int(11) NOT NULL AUTO_INCREMENT,
+  `fkid` int(11) DEFAULT NULL,
+  `fk_id_pessoa` int(11) DEFAULT NULL,
+  `fk_id_tp` int(11) NOT NULL DEFAULT '1',
+  `ddd` int(11) DEFAULT NULL,
+  `num` varchar(50) DEFAULT NULL,
+  `tipo` varchar(50) DEFAULT 'Fixo',
+  `complemento` varchar(255) DEFAULT NULL,
+  `fk_id_tt` int(11) DEFAULT '1',
+  PRIMARY KEY (`id_tel`),
+  KEY `telefones_fk_id_pessoa_IDX` (`fk_id_pessoa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `telefones_tipo`;
+CREATE TABLE `telefones_tipo` (
+  `id_tt` int(11) NOT NULL AUTO_INCREMENT,
+  `n_tt` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_tt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `endereco`;
+CREATE TABLE `endereco` (
+  `id_end` int(11) NOT NULL AUTO_INCREMENT,
+  `fkid` int(11) DEFAULT NULL,
+  `fk_id_pessoa` int(11) DEFAULT NULL,
+  `fk_id_tp` int(11) NOT NULL DEFAULT '1',
+  `cep` varchar(20) DEFAULT NULL,
+  `logradouro` varchar(254) DEFAULT NULL,
+  `logradouro_gdae` varchar(255) DEFAULT NULL,
+  `num` varchar(50) DEFAULT NULL,
+  `num_gdae` varchar(100) DEFAULT NULL,
+  `complemento` varchar(255) DEFAULT NULL,
+  `bairro` varchar(254) DEFAULT NULL,
+  `cidade` varchar(254) DEFAULT NULL,
+  `uf` varchar(254) DEFAULT NULL,
+  `dt_barueri` date DEFAULT NULL,
+  `latitude` varchar(100) DEFAULT '0',
+  `longitude` varchar(100) DEFAULT '0',
+  `distancia` varchar(100) DEFAULT NULL,
+  `tempo` varchar(100) DEFAULT NULL,
+  `bloco` varchar(100) DEFAULT NULL,
+  `torre` varchar(100) DEFAULT NULL,
+  `apart` varchar(100) DEFAULT NULL,
+  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_end`),
+  UNIQUE KEY `fkid` (`fkid`),
+  UNIQUE KEY `fk_id_pessoa_2` (`fk_id_pessoa`),
+  KEY `fk_id_pessoa` (`fk_id_pessoa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
 
@@ -687,6 +760,15 @@ INSERT INTO pagina (pagina,n_pag,descr_page,ord_pag,fk_id_sistema,posi_pag,`view
    ('princ/correcoes','CORREÇÕES','',20,1,NULL,NULL,1);
 
 insert into sis_nivel_pag
-select null, 1, 1, null, id_pag
+select null, 1, 2, null, id_pag
 from pagina where fk_id_sistema = 1;
+
+INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+VALUES(1, 'Celular');
+INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+VALUES(2, 'Residencial');
+INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+VALUES(3, 'Comercial');
+INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+VALUES(4, 'Recados');
 
