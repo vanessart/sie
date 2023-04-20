@@ -18,33 +18,26 @@ class ComposerAutoloaderInitc4aefd6e45d127619c06afa7b2df1c99
      */
     public static function getLoader()
     {
-        echo "b1<br>";
         if (null !== self::$loader) {
             return self::$loader;
         }
-        echo "b2<br>";
 
         require __DIR__ . '/platform_check.php';
-        echo "b3<br>";
 
         spl_autoload_register(array('ComposerAutoloaderInitc4aefd6e45d127619c06afa7b2df1c99', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(__DIR__));
         spl_autoload_unregister(array('ComposerAutoloaderInitc4aefd6e45d127619c06afa7b2df1c99', 'loadClassLoader'));
-        echo "b4<br>";
 
         require __DIR__ . '/autoload_static.php';
         call_user_func(\Composer\Autoload\ComposerStaticInitc4aefd6e45d127619c06afa7b2df1c99::getInitializer($loader));
-        echo "b5<br>";
 
         $loader->register(true);
-        echo "b6<br>";
 
         $includeFiles = \Composer\Autoload\ComposerStaticInitc4aefd6e45d127619c06afa7b2df1c99::$files;
         foreach ($includeFiles as $fileIdentifier => $file) {
             composerRequirec4aefd6e45d127619c06afa7b2df1c99($fileIdentifier, $file);
         }
 
-        echo "b7<br>";
         return $loader;
     }
 }

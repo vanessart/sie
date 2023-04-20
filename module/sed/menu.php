@@ -17,7 +17,7 @@ $query = pdoSis::getInstance()->query($sql);
 $terceirizada = $query->fetch(PDO::FETCH_ASSOC)['terceirizada'];
 
 //Administrador
-$menu[1] = [
+$menu[2] = [
     'Início' => ['url' => '/sed/index'],
     'SED' => [
         'page' => [

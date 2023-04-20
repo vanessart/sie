@@ -588,6 +588,274 @@ CREATE TABLE `endereco` (
   KEY `fk_id_pessoa` (`fk_id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+DROP TABLE IF EXISTS `sed_quadro`;
+CREATE TABLE `sed_quadro` (
+  `id_q` int(11) NOT NULL AUTO_INCREMENT,
+  `n_q` varchar(255) NOT NULL,
+  `descr_q` text,
+  `tp_ensino` varchar(255) DEFAULT NULL,
+  `dt_ini` date DEFAULT NULL,
+  `dt_fim` date DEFAULT NULL,
+  `at_q` int(11) DEFAULT NULL,
+  `fk_id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_q`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `protocolo_cadastro`;
+CREATE TABLE `protocolo_cadastro` (
+  `id_protocolo` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_area` int(11) DEFAULT NULL,
+  `fk_id_status` int(11) DEFAULT NULL,
+  `fk_id_pessoa` int(11) DEFAULT NULL,
+  `dt_update` datetime DEFAULT CURRENT_TIMESTAMP,
+  `fk_id_pessoa_cadastra` int(11) DEFAULT NULL,
+  `fk_id_ne` int(11) DEFAULT NULL,
+  `fk_id_inst` int(11) DEFAULT NULL,
+  `descricao` text,
+  `dt_resp_form1` datetime DEFAULT CURRENT_TIMESTAMP,
+  `fk_id_inst_AEE` int(11) DEFAULT NULL,
+  `fk_id_turma_AEE` int(11) DEFAULT NULL,
+  `fk_id_pl` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_protocolo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `protocolo_termo`;
+CREATE TABLE `protocolo_termo` (
+  `id_protocolo_termo` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` enum('A','R') NOT NULL,
+  `fk_id_protocolo` int(11) NOT NULL,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `fk_id_pessoa_aluno` int(11) NOT NULL,
+  `fk_id_assinatura` int(11) NOT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `rg` varchar(20) DEFAULT NULL,
+  `dias` varchar(100) DEFAULT NULL,
+  `horarios` varchar(100) DEFAULT NULL,
+  `motivo` varchar(250) DEFAULT NULL,
+  `autorizado` tinyint(4) DEFAULT NULL,
+  `autorizado_img` tinyint(2) DEFAULT NULL,
+  `conduzido_por` varchar(150) DEFAULT NULL,
+  `ativo` tinyint(4) NOT NULL DEFAULT '1',
+  `dt_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_protocolo_termo`) USING BTREE,
+  KEY `fk_id_protocolo` (`fk_id_protocolo`) USING BTREE,
+  KEY `ativo` (`ativo`) USING BTREE,
+  KEY `tipo` (`tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_decl_vaga_comp`;
+CREATE TABLE `ge_decl_vaga_comp` (
+  `id_vaga_c` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_inst` int(11) NOT NULL,
+  `nome_solicitante` varchar(100) NOT NULL,
+  `rg` varchar(20) NOT NULL,
+  `sexo` varchar(10) NOT NULL,
+  `n_ciclo` varchar(20) DEFAULT NULL,
+  `dt_emissao` date NOT NULL,
+  `tipo` varchar(50) NOT NULL,
+  `h_inicio` time DEFAULT NULL,
+  `h_final` time DEFAULT NULL,
+  `rse` int(10) DEFAULT NULL,
+  `nome_aluno` varchar(100) DEFAULT NULL,
+  `codigo` varchar(10) NOT NULL,
+  `sexo_aluno` varchar(10) NOT NULL,
+  `dt_comp` date DEFAULT NULL,
+  `tipodec` int(11) DEFAULT NULL,
+  `fk_id_ciclo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_vaga_c`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+DROP TABLE IF EXISTS `ge_turma_aluno_situacao`;
+CREATE TABLE `ge_turma_aluno_situacao` (
+  `id_tas` int(11) NOT NULL AUTO_INCREMENT,
+  `n_tas` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_tas`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_ciclos`;
+CREATE TABLE `ge_ciclos` (
+  `id_ciclo` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_curso` int(11) NOT NULL,
+  `n_ciclo` varchar(255) NOT NULL,
+  `sg_ciclo` varchar(50) NOT NULL,
+  `aprova_automatico` int(11) NOT NULL,
+  `fk_id_grade` int(11) DEFAULT NULL,
+  `periodicidade` varchar(20) NOT NULL,
+  `ativo` int(11) NOT NULL,
+  `SerieAno` int(11) DEFAULT NULL,
+  `aulas` int(11) DEFAULT '1',
+  `dias_semana` text,
+  PRIMARY KEY (`id_ciclo`),
+  KEY `fk_id_curso` (`fk_id_curso`,`fk_id_grade`),
+  KEY `fk_id_grade` (`fk_id_grade`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_cursos`;
+CREATE TABLE `ge_cursos` (
+  `id_curso` int(1) NOT NULL AUTO_INCREMENT,
+  `n_curso` varchar(255) NOT NULL,
+  `sg_curso` varchar(20) NOT NULL,
+  `descr_curso` varchar(255) DEFAULT NULL,
+  `fk_id_tp_ens` int(11) NOT NULL,
+  `fk_id_ta` int(11) NOT NULL,
+  `fk_id_calcaval` int(11) NOT NULL,
+  `notas` varchar(255) DEFAULT NULL,
+  `notas_legenda` text,
+  `corte` varchar(10) DEFAULT NULL,
+  `ativo` int(11) NOT NULL,
+  `un_letiva` varchar(255) NOT NULL,
+  `sg_letiva` varchar(20) NOT NULL,
+  `qt_letiva` int(11) NOT NULL,
+  `atual_letiva` varchar(11) DEFAULT NULL,
+  `conceito_final` int(11) DEFAULT NULL,
+  `extra` int(11) DEFAULT NULL,
+  `TipoEnsino` int(11) NOT NULL,
+  PRIMARY KEY (`id_curso`),
+  KEY `fk_id_tp_ens` (`fk_id_tp_ens`,`fk_id_ta`,`fk_id_calcaval`),
+  KEY `fk_id_ta` (`fk_id_ta`),
+  KEY `fk_id_calcaval` (`fk_id_calcaval`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_eventos`;
+CREATE TABLE `ge_eventos` (
+  `id_evento` int(11) NOT NULL AUTO_INCREMENT,
+  `evento` varchar(100) NOT NULL,
+  `dt_evento` date NOT NULL,
+  `h_inicio` time NOT NULL,
+  `h_final` time NOT NULL,
+  `local_evento` varchar(100) NOT NULL,
+  `fk_id_inst` int(11) NOT NULL,
+  `ano_letivo` int(11) NOT NULL,
+  `ev_resp` varchar(100) NOT NULL,
+  `titulo_evento` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_evento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `instancia_predio`;
+CREATE TABLE `instancia_predio` (
+  `id_ip` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_inst` int(11) NOT NULL,
+  `fk_id_predio` int(11) NOT NULL,
+  `sede` int(11) NOT NULL,
+  PRIMARY KEY (`id_ip`),
+  KEY `fk_id_inst` (`fk_id_inst`,`fk_id_predio`),
+  KEY `fk_id_predio` (`fk_id_predio`),
+  KEY `fk_id_inst_2` (`fk_id_inst`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `predio`;
+CREATE TABLE `predio` (
+  `id_predio` int(11) NOT NULL AUTO_INCREMENT,
+  `n_predio` varchar(255) NOT NULL,
+  `sigla` varchar(50) DEFAULT NULL,
+  `descricao` text,
+  `ativo` int(11) NOT NULL,
+  `cep` varchar(20) DEFAULT NULL,
+  `logradouro` varchar(255) DEFAULT NULL,
+  `num` varchar(50) DEFAULT NULL,
+  `complemento` varchar(255) DEFAULT NULL,
+  `bairro` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `uf` varchar(255) DEFAULT NULL,
+  `tel1` varchar(20) DEFAULT NULL,
+  `tel2` varchar(20) DEFAULT NULL,
+  `tel3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_predio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `salas`;
+CREATE TABLE `salas` (
+  `id_sala` int(11) NOT NULL AUTO_INCREMENT,
+  `n_sala` varchar(255) NOT NULL,
+  `fk_id_predio` int(11) NOT NULL,
+  `largura` varchar(255) NOT NULL,
+  `comprimento` varchar(255) NOT NULL,
+  `piso` int(11) NOT NULL,
+  `cadeirante` int(11) NOT NULL,
+  `fk_id_ts` int(11) NOT NULL,
+  `tomadas` int(11) NOT NULL,
+  `computadores` int(11) NOT NULL,
+  `ar` int(11) NOT NULL,
+  `datashow` int(11) NOT NULL,
+  `cortinas` int(11) NOT NULL,
+  `wifi` int(11) NOT NULL,
+  `cabo_rede` int(11) NOT NULL,
+  `alunos_sala` int(11) NOT NULL,
+  `alunos_gdae` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_sala`),
+  KEY `fk_id_predio` (`fk_id_predio`,`fk_id_ts`),
+  KEY `fk_id_ts` (`fk_id_ts`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tipo_sala`;
+CREATE TABLE `tipo_sala` (
+  `id_ts` int(11) NOT NULL AUTO_INCREMENT,
+  `n_ts` varchar(255) NOT NULL,
+  `sg_ts` varchar(20) NOT NULL,
+  `descricao` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_ts`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_prof_esc`;
+CREATE TABLE `ge_prof_esc` (
+  `id_pe` int(11) NOT NULL AUTO_INCREMENT,
+  `n_pe` varchar(255) DEFAULT NULL,
+  `fk_id_inst` int(11) NOT NULL,
+  `rm` varchar(50) NOT NULL,
+  `disciplinas` varchar(255) DEFAULT NULL,
+  `hac_dia` int(11) DEFAULT NULL,
+  `hac_periodo` varchar(20) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `nao_hac` int(11) DEFAULT NULL,
+  `fk_id_psc` int(11) DEFAULT NULL,
+  `times_stamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cit` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_pe`),
+  UNIQUE KEY `fk_id_inst` (`fk_id_inst`,`rm`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `sed_lista_branca_prof_esc`;
+CREATE TABLE `sed_lista_branca_prof_esc` (
+  `id_pessoa` int(11) NOT NULL,
+  PRIMARY KEY (`id_pessoa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_disciplinas`;
+CREATE TABLE `ge_disciplinas` (
+  `id_disc` int(11) NOT NULL AUTO_INCREMENT,
+  `n_disc` varchar(255) NOT NULL,
+  `sg_disc` varchar(10) NOT NULL,
+  `fk_id_area` int(11) NOT NULL,
+  `status_disc` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_disc`),
+  KEY `fk_id_area` (`fk_id_area`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_prof_sit_classe`;
+CREATE TABLE `ge_prof_sit_classe` (
+  `id_psc` int(11) NOT NULL AUTO_INCREMENT,
+  `n_psc` varchar(100) NOT NULL,
+  `ativo` int(11) NOT NULL,
+  PRIMARY KEY (`id_psc`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_grades`;
+CREATE TABLE `ge_grades` (
+  `id_grade` int(11) NOT NULL AUTO_INCREMENT,
+  `n_grade` varchar(255) NOT NULL,
+  `fk_id_ta` int(11) NOT NULL,
+  `ativo` int(11) NOT NULL,
+  PRIMARY KEY (`id_grade`),
+  KEY `fk_id_ta` (`fk_id_ta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_turma_status`;
+CREATE TABLE `ge_turma_status` (
+  `id_ts` int(11) NOT NULL AUTO_INCREMENT,
+  `n_st` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_ts`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
@@ -611,6 +879,8 @@ INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr
 VALUES(2, 'admin', 'Administrador do Sistema (novo)', 1, 'a:1:{i:0;s:1:"2";}', '', 1, 0, NULL, NULL);
 INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(3, 'tdics', 'Núcleos WIT', 1, 'a:7:{i:0;s:1:"2";i:1;s:2:"39";i:2;s:1:"8";i:3;s:2:"10";i:4;s:2:"57";i:5;s:2:"24";i:6;s:2:"43";}', '', 1, 0, NULL, NULL);
+INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+VALUES(4, 'sed', 'Gestão Educacional', 1, 'a:6:{i:0;s:1:"2";i:1;s:1:"8";i:2;s:2:"10";i:3;s:2:"31";i:4;s:2:"43";i:5;s:2:"44";}', '', 1, 0, NULL, 0);
 
 
 INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
@@ -727,6 +997,20 @@ VALUES(59, 'Lançamento de Dados', 1, 0);
 INSERT INTO acesso_gr VALUES(NULL, 1, 1, 2);
 INSERT INTO acesso_gr VALUES(NULL, 1, 2, 2);
 INSERT INTO acesso_gr VALUES(NULL, 1, 3, 2);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 10);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 24);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 57);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 39);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 43);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 8);
+INSERT INTO acesso_gr VALUES(NULL, 1, 4, 2);
+INSERT INTO acesso_gr VALUES(NULL, 1, 4, 31);
+INSERT INTO acesso_gr VALUES(NULL, 1, 4, 43);
+INSERT INTO acesso_gr VALUES(NULL, 1, 4, 44);
+INSERT INTO acesso_gr VALUES(NULL, 1, 4, 8);
+INSERT INTO acesso_gr VALUES(NULL, 1, 4, 10);
+
+
 
 INSERT INTO acesso_pessoa VALUES(NULL, 1, 1, 1);
 
