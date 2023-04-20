@@ -46,11 +46,15 @@ class escola {
         $this->_cie = $esc['cie_escola'];
         $this->_classeAF = $esc['classe'];
         $this->_ativo = $esc['ativo'] == 1 ? 'Sim' : 'Nao';
-        $this->_fk_id_tp_ens = str_replace('|', ',', substr($esc['fk_id_tp_ens'], 1, -1));
+        if (!empty($esc['fk_id_tp_ens'])) {
+            $this->_fk_id_tp_ens = str_replace('|', ',', substr($esc['fk_id_tp_ens'], 1, -1));
+        } else {
+            $this->_fk_id_tp_ens = '';
+        }
         $this->_ato_cria = @$esc['ato_cria'];
         $this->_ato_municipa = @$esc['ato_municipa'];
-        $this->_latitude = trim(@$esc['latitude']);
-        $this->_longitude = trim(@$esc['longitude']);
+        $this->_latitude = !empty($esc['latitude']) ? trim($esc['latitude']) : '';
+        $this->_longitude = !empty($esc['longitude']) ? trim($esc['longitude']) : '';
         $this->_maps = @$esc['maps'];
         $this->_site = @$esc['esc_site'];
         $this->_contato = @$esc['esc_contato'];
