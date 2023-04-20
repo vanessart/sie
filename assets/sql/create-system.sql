@@ -539,12 +539,121 @@ VALUES(2, 'admin', 'Administrador do Sistema (novo)', 1, 'a:1:{i:0;s:1:"2";}', '
 INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(3, 'tdics', 'Núcleos WIT', 1, 'a:7:{i:0;s:1:"2";i:1;s:2:"39";i:2;s:1:"8";i:3;s:2:"10";i:4;s:2:"57";i:5;s:2:"24";i:6;s:2:"43";}', '', 1, 0, NULL, NULL);
 
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
-VALUES(1, 'Administrador', 1, 0);
 
-INSERT INTO acesso_gr VALUES(NULL, 1, 1, 1);
-INSERT INTO acesso_gr VALUES(NULL, 1, 2, 1);
-INSERT INTO acesso_gr VALUES(NULL, 1, 3, 1);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(1, 'Desenvolvedor', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(2, 'Administrador', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(4, 'Atendente                     ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(6, 'Gestão de Processos           ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(7, 'DTTIE                         ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(8, 'Escola', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(9, 'Relatório                     ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(10, 'Gerente                       ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(11, 'Secretaria de Educação', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(12, 'Usuário                       ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(13, 'Avaliação                     ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(14, 'Gestão de Pessoal', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(15, 'Contabilidade                 ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(16, 'Banca Corretora               ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(17, 'Diretor', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(18, 'Avaliação In Loco             ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(19, 'Avaliação In Loco S.          ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(20, 'Abrangência                   ', 1, 20);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(21, 'Fundamental                   ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(22, 'Supervisor                    ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(23, 'Infantil                      ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(24, 'Professor(a)', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(25, 'Secretaria de Escola', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(26, 'Coordenadoria', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(27, 'Maternal', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(28, 'Pré', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(29, 'Apoio Pedagógico', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(30, 'Aluno', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(31, 'Informações', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(32, 'Responsáveis', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(34, 'DAE', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(35, 'Organização Social', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(36, 'Equipe de Gestão', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(37, 'Consulta', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(38, 'Exportação de Dados', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(39, 'Call Center', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(40, 'Validação Avaliação Global', 1, 10);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(41, 'Terceirizado', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(43, 'Professor(a) Volante', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(44, 'Vida Escolar', 1, 10);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(45, 'Apoio Secretaria', 1, 45);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(46, 'Administrador Email Google', 1, 10);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(47, 'Telefonia', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(48, 'Coordenador', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(49, 'Suporte Técnico', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(50, 'Professor Infantil', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(51, 'Transporte', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(52, 'Professor Maker', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(53, 'Coordenadoria Infantil ', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(54, 'Coordenadoria Fundamental', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(55, 'Coordenador Fundamental', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(56, 'Coordenador Infantil', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(57, 'Núcleo TDICS', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(58, 'Saúde Bucal', 1, 0);
+INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+VALUES(59, 'Lançamento de Dados', 1, 0);
+
+INSERT INTO acesso_gr VALUES(NULL, 1, 1, 2);
+INSERT INTO acesso_gr VALUES(NULL, 1, 2, 2);
+INSERT INTO acesso_gr VALUES(NULL, 1, 3, 2);
 
 INSERT INTO acesso_pessoa VALUES(NULL, 1, 1, 1);
 

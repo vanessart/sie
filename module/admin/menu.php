@@ -1,7 +1,7 @@
 <?php
 
 //Administrador
-$menu[1] = [
+$menu[2] = [
     'Início'=>['url' => '/admin/index'],
     'Pessoas'=>['url'=>'/admin/pessoas']
 ];
