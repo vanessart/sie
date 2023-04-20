@@ -39,6 +39,7 @@ foreach ($prof as $f) {
     $professor[$f['fk_id_turma']][$f['iddisc']]['n_pe'] = $f['n_pe'];
 }
 
+$id_grade = [];
 foreach ($turmas as $v) {
     $id_grade[] = $v['id_grade'];
 }
