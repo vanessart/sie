@@ -49,67 +49,69 @@ foreach ($turmas as $v) {
 </div>
 
 <?php
-$sql = "SELECT id_disc, n_disc, nucleo_comum, fk_id_grade FROM ge_disciplinas "
-        . "join ge_aloca_disc on ge_aloca_disc.fk_id_disc = ge_disciplinas.id_disc "
-        . "where fk_id_grade in (" . implode(',', $id_grade) . ")"
-        . " order by n_disc";
+if (!empty($id_grade)) {
+    $sql = "SELECT id_disc, n_disc, nucleo_comum, fk_id_grade FROM ge_disciplinas "
+            . "join ge_aloca_disc on ge_aloca_disc.fk_id_disc = ge_disciplinas.id_disc "
+            . "where fk_id_grade in (" . implode(',', $id_grade) . ")"
+            . " order by n_disc";
 
-$query = $model->db->query($sql);
-$disc = $query->fetchAll();
+    $query = $model->db->query($sql);
+    $disc = $query->fetchAll();
 
-foreach ($disc as $v) {
-    if ($v['nucleo_comum'] == 1) {
-        @$grade[$v['fk_id_grade']][] = 'nc';
+    foreach ($disc as $v) {
+        if ($v['nucleo_comum'] == 1) {
+            @$grade[$v['fk_id_grade']][] = 'nc';
+        }
+        @$grade[$v['fk_id_grade']][] = $v['id_disc'];
+        @$nucleo += $v['nucleo_comum'];
+        $disciplinas[$v['id_disc']] = $v['n_disc'];
     }
-    @$grade[$v['fk_id_grade']][] = $v['id_disc'];
-    @$nucleo += $v['nucleo_comum'];
-    $disciplinas[$v['id_disc']] = $v['n_disc'];
-}
-if ($nucleo > 0) {
-    $disciplinas['nc'] = 'Núcleo Comum';
-}
+    if ($nucleo > 0) {
+        $disciplinas['nc'] = 'Núcleo Comum';
+    }
 
-foreach ($disciplinas as $k => $v) {
-    @$nucleo += $v['nucleo_comum'];
-    ?>
-    <div style="padding: 5px;page-break-before: auto " class="topo">
-        <div class="topo">
-            <?php echo $v ?>
-        </div>
-        <table class="table table-striped table-bordered">
-            <tr>
-                <td style="width: 15%; color: red" class="topo">Classe</td>
-                <td style="width: 15%; color: red" class="topo">Código</td>
-                <td style="width: 15%; color: red" class="topo">Matrícula</td>
-                <td style="width: 55%; color: red" class="topo">Professor</td>
-            </tr>
-            <?php
-            foreach ($turmas as $t) {
-                if (in_array($k, $grade[$t['id_grade']])) {
-                    if(empty($nc[$t['id_grade']][$k])) {
-                        ?>
-                        <tr>
-                            <td class="topo">
-                                <?php echo $t['n_turma'] ?>
-                            </td>
-                            <td class="topo">
-                                <?php echo $t['codigo'] ?>
-                            </td>
-                            <td class="topo">
-                                <?php echo @$professor[$t['id_turma']][$k]['rm'] ?>
-                            </td>
-                            <td style="text-align: left" class="topo">
-                                <?php echo @$professor[$t['id_turma']][$k]['n_pe'] ?>
-                            </td>
-                        </tr>
-                        <?php
+    foreach ($disciplinas as $k => $v) {
+        @$nucleo += $v['nucleo_comum'];
+        ?>
+        <div style="padding: 5px;page-break-before: auto " class="topo">
+            <div class="topo">
+                <?php echo $v ?>
+            </div>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td style="width: 15%; color: red" class="topo">Classe</td>
+                    <td style="width: 15%; color: red" class="topo">Código</td>
+                    <td style="width: 15%; color: red" class="topo">Matrícula</td>
+                    <td style="width: 55%; color: red" class="topo">Professor</td>
+                </tr>
+                <?php
+                foreach ($turmas as $t) {
+                    if (in_array($k, $grade[$t['id_grade']])) {
+                        if(empty($nc[$t['id_grade']][$k])) {
+                            ?>
+                            <tr>
+                                <td class="topo">
+                                    <?php echo $t['n_turma'] ?>
+                                </td>
+                                <td class="topo">
+                                    <?php echo $t['codigo'] ?>
+                                </td>
+                                <td class="topo">
+                                    <?php echo @$professor[$t['id_turma']][$k]['rm'] ?>
+                                </td>
+                                <td style="text-align: left" class="topo">
+                                    <?php echo @$professor[$t['id_turma']][$k]['n_pe'] ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
                     }
                 }
-            }
-            ?>
-        </table>
-    </div>
-    <?php
+                ?>
+            </table>
+        </div>
+        <?php
+    }
 }
 tool::pdfEscola();
 ?>
