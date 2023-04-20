@@ -52,6 +52,7 @@ class profeController extends MainController {
 
     public function def() {
         $_data = func_get_args()[0][0];
+        $this->requireLogin();
         $this->title = 'Diário de Classe';
         require ABSPATH . '/includes/structure/header.php';
         $model = $this->load_model('/profe/profe-model');

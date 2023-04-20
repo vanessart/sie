@@ -2,7 +2,7 @@
 if (!defined('ABSPATH'))
     exit;
 
-$registro = sql::get('profe_projeto_ava', '*', 'WHERE fk_id_projeto =' . $id_projeto.' AND fk_id_pessoa = ' .toolErp::id_pessoa().' ORDER BY dt_ava');
+$registro = sql::get('profe_projeto_ava', '*', 'WHERE fk_id_projeto =' . $id_projeto.' AND (fk_id_pessoa = ' .toolErp::id_pessoa().' OR fk_id_pessoa is null) ORDER BY dt_ava');
 
 if ($registro) {
 

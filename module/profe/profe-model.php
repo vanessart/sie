@@ -456,8 +456,8 @@ class profeModel extends MainModel {
         }
     }
 
-    public function turmaDisciplina($id_pessoa) {
-        $disciplinasPorClasse = professores::classesDisc($id_pessoa, 1); // 1 = nao mostra turmas AEE
+    public function turmaDisciplina($id_pessoa, $ano= null) {
+        $disciplinasPorClasse = professores::classesDisc($id_pessoa, 1, $ano); // 1 = nao mostra turmas AEE
         if ($disciplinasPorClasse) {
             foreach ($disciplinasPorClasse as $key => $value) {
                 if (!empty($value['nucleoComum'])) {

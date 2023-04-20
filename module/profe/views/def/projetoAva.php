@@ -1,6 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
+if(tool::id_pessoa()){
 $hab = [];
 $n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
@@ -96,3 +97,8 @@ if (empty($habil)) {
         document.getElementById(id).innerHTML = '';
     }
 </script>
+<?php
+} else {
+    echo 'Algo errado não está certo :(';    
+}
+?>
