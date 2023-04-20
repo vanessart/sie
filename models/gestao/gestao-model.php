@@ -1148,10 +1148,14 @@ class gestaoModel extends MainModel {
             $dt_fim = str_replace('-', '', $dt_fim);
         }
 
+        $resultado = [];
+        $periodos = gtMain::periodos(1);
+        if (empty($periodos)) return $resultado;
+
         $sql = "Select t.fk_id_ciclo, t.codigo as codigo_classe, a.situacao, a.dt_matricula, a.dt_transferencia, t.periodo, t.n_turma from "
                 . " ge_turma_aluno a "
                 . " Join ge_turmas t on t.id_turma =a.fk_id_turma "
-                . " Where t.fk_id_inst=" . tool::id_inst() . " And fk_id_pl IN (" . implode(",", array_keys(gtMain::periodos(1))) . ")"
+                . " Where t.fk_id_inst=" . tool::id_inst() . " And fk_id_pl IN (" . implode(",", array_keys($periodos)) . ")"
                 . " And t.fk_id_ciclo IN (" . $c[$id_turma] . ") order by t.codigo";
 
         $query = pdoSis::getInstance()->query($sql);
@@ -1187,8 +1191,11 @@ class gestaoModel extends MainModel {
             $ano = date("Y");
         }
 
+        $resultadoac = gtMain::periodos(1);
+        if (empty($resultadoac)) return $resultadoac;
+
         $sql = "SELECT periodo, count(periodo) as conta from ge_turmas"
-                . " Where fk_id_inst = " . tool::id_inst() . " And fk_id_pl IN (" . implode(",", array_keys(gtMain::periodos(1))) . ")"
+                . " Where fk_id_inst = " . tool::id_inst() . " And fk_id_pl IN (" . implode(",", array_keys($resultadoac)) . ")"
                 . " AND fk_id_ciclo IN (" . $c[$id_turma] . ") GROUP by periodo";
 
         $query = $this->db->query($sql);
@@ -1226,7 +1233,7 @@ class gestaoModel extends MainModel {
         $sql = "Select t.fk_id_ciclo, t.codigo as codigo_classe, a.situacao, a.dt_matricula, a.dt_transferencia, t.periodo, t.n_turma, t.periodo_letivo "
                 . "from ge_turma_aluno a"
                 . " Join ge_turmas t on t.id_turma =a.fk_id_turma"
-                . " Where t.fk_id_inst=" . tool::id_inst() . " And fk_id_pl IN (" . implode(",", array_keys(gtMain::periodos(1))) . ")"
+                . " Where t.fk_id_inst=" . tool::id_inst() . " And fk_id_pl IN (" . implode(",", array_keys($resultadoac)) . ")"
                 . " And t.fk_id_ciclo IN (" . $c[$id_turma] . ") order by t.codigo";
 
         $query = pdoSis::getInstance()->query($sql);
