@@ -126,7 +126,7 @@ class profModel extends MainModel {
             @$prof['nao_hac'] = $_POST['nao_hac'];
             @$prof['email'] = $_POST['email'];
             $rm = sql::get('ge_funcionario', 'rm', ['rm' => $prof['rm']], 'fetch')['rm'];
-            f (!empty($prof['email']) ) {
+            if (!empty($prof['email']) ) {
                 $emailDomain = explode('@', @$prof['email']);
                 if (isset($emailDomain[1]) && $emailDomain[1] == CLI_MAIL_DOMINIO) {
                     $prof['email'] = NULL;
