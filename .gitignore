@@ -15,6 +15,7 @@ ge.sql
 .DS_Store
 vendor/*
 nbproject/
+tmp/
 
 #Docker
 .env
