@@ -25,6 +25,10 @@ class escola {
     public $_latitude;
     public $_longitude;
     public $_maps;
+    public $_site;
+    public $_contato;
+    public $_terceirizada;
+    public $_id_escola;
 
     public function __construct($id = null, $search = 'id_inst') {
         if (empty($id)) {
