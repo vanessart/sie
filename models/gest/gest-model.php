@@ -182,10 +182,15 @@ class gestModel extends MainModel {
 
     public function encaminhamentocarta($alu) {
 
+        $idaluno = [];
         foreach ($alu as $v) {
             if (!empty($v)) {
                 $idaluno[] = $v;
             }
+        }
+
+        if (empty($idaluno)) {
+            return [];
         }
 
         $idaluno = implode(",", $idaluno);
