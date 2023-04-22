@@ -37,7 +37,7 @@ foreach ($vaga as $v) {
     </div>
     <br /><br /><br /><br />
     <div style="text-align:justify"> A direção desta escola declara, para devidos fins, que <b><?php echo addslashes($v['nome_solicitante']) ?></b>
-        , RG nº. <?php echo $v['rg'] ?>, solicitou uma vaga no <?= $ciclos[$v['fk_id_ciclo']] ?>, para <?php echo ($v['sexo_aluno'] == "M" ? 'o aluno ' : 'a aluna ') ?> <b><?php echo addslashes($v['nome_aluno']) ?></b> nesta Unidade Escolar.
+        , RG nº. <?php echo $v['rg'] ?>, solicitou uma vaga no <?= $ciclos[$v['fk_id_ciclo']]??'' ?>, para <?php echo ($v['sexo_aluno'] == "M" ? 'o aluno ' : 'a aluna ') ?> <b><?php echo addslashes($v['nome_aluno']) ?></b> nesta Unidade Escolar.
     </div>
     <br /><br />
     <div>Este documento tem validade de 05 dias a partir da data de sua emissão.</div>
