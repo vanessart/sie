@@ -19,35 +19,37 @@ class gtTurmas {
         }
         if (!empty($periodo)) {
 
-        if (!empty($ciclos)) {
-            $ciclos = " and fk_id_ciclo in ($ciclos) ";
-        }
-        if (empty($fields)) {
-            $fields = " c.id_curso, c.sg_curso, c.notas, c.corte, "
-                    . " c.atual_letiva, s.n_sala, c.n_curso, ci.sg_ciclo, "
-                    . " ci.id_ciclo, ci.n_ciclo, pr.n_predio, "
-                    . " t.id_turma, t.n_turma, t.fk_id_inst, t.fk_id_ciclo,"
-                    . " t.fk_id_grade as fk_id_grade, t.fk_id_sala,"
-                    . " t.professor,t.rm_prof, t.codigo, t.periodo,"
-                    . " t.periodo_letivo, t.fk_id_pl, t.letra, t.prodesp,"
-                    . " ts.n_st, pl.at_pl";
-        }
-        $sql = "select $fields from ge_turmas t "
-                . " join ge_ciclos ci on ci.id_ciclo = t.fk_id_ciclo  "
-                . " join ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl "
-                . " join ge_cursos c on c.id_curso = ci.fk_id_curso "
-                . " left join salas s on s.id_sala = t.fk_id_sala "
-                . " left join predio pr on pr.id_predio = s.fk_id_predio "
-                . " left join ge_turma_status ts on t.status = ts.id_ts "
-                . " where $field = $search "
-                . " $ciclos "
-                . " and pl.id_pl in ( $periodo ) "
-                . " order by c.n_curso, ci.sg_ciclo, t.letra";
-        $query = autenticador::getInstance()->query($sql);
-        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+            if (!empty($ciclos)) {
+                $ciclos = " and fk_id_ciclo in ($ciclos) ";
+            }
+            if (empty($fields)) {
+                $fields = " c.id_curso, c.sg_curso, c.notas, c.corte, "
+                        . " c.atual_letiva, s.n_sala, c.n_curso, ci.sg_ciclo, "
+                        . " ci.id_ciclo, ci.n_ciclo, pr.n_predio, "
+                        . " t.id_turma, t.n_turma, t.fk_id_inst, t.fk_id_ciclo,"
+                        . " t.fk_id_grade as fk_id_grade, t.fk_id_sala,"
+                        . " t.professor,t.rm_prof, t.codigo, t.periodo,"
+                        . " t.periodo_letivo, t.fk_id_pl, t.letra, t.prodesp,"
+                        . " ts.n_st, pl.at_pl";
+            }
+            $sql = "select $fields from ge_turmas t "
+                    . " join ge_ciclos ci on ci.id_ciclo = t.fk_id_ciclo  "
+                    . " join ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl "
+                    . " join ge_cursos c on c.id_curso = ci.fk_id_curso "
+                    . " left join salas s on s.id_sala = t.fk_id_sala "
+                    . " left join predio pr on pr.id_predio = s.fk_id_predio "
+                    . " left join ge_turma_status ts on t.status = ts.id_ts "
+                    . " where $field = $search "
+                    . " $ciclos "
+                    . " and pl.id_pl in ( $periodo ) "
+                    . " order by c.n_curso, ci.sg_ciclo, t.letra";
+            $query = autenticador::getInstance()->query($sql);
+            $array = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return $array;
+            return !empty($array) ? $array : [];
         }
+
+        return [];
     }
 
     public static function alunos($id_turma, $fields) {
