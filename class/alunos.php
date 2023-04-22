@@ -180,7 +180,7 @@ class alunos {
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return !(empty) ? $array : [];
+        return !empty($array) ? $array : [];
     }
 
     public static function alunosGet($id_inst = NULL, $fields = " p.id_pessoa, p.n_pessoa, t.codigo, ta.chamada, id_ciclo") {
@@ -199,7 +199,7 @@ class alunos {
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return !(empty) ? $array : [];
+        return !empty($array) ? $array : [];
     }
 
     /**
