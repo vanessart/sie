@@ -17,22 +17,22 @@ if ($id_evento) {
         <br />
         <div class="row">
             <div class="col">
-                <?= formErp::input('1[dt_evento]', 'Data', @$evento['dt_evento'], null, null, 'date') ?>
+                <?= formErp::input('1[dt_evento]', 'Data', @$evento['dt_evento'], 'required', null, 'date') ?>
             </div>
             <div class="col">
-                <?= formErp::input('1[h_inicio]', 'Hora Início', @$evento['h_inicio'], null, null, 'time') ?>
+                <?= formErp::input('1[h_inicio]', 'Hora Início', @$evento['h_inicio'], 'required', null, 'time') ?>
             </div>
             <div class="col">
-                <?= formErp::input('1[h_final]', 'Hora Final', @$evento['h_final'], null, null, 'time') ?>
+                <?= formErp::input('1[h_final]', 'Hora Final', @$evento['h_final'], 'required', null, 'time') ?>
             </div>
         </div>
         <br />
         <div class="row">
             <div class="col">
-                <?= formErp::input('1[local_evento]', 'Local Evento', @$evento['local_evento']) ?>
+                <?= formErp::input('1[local_evento]', 'Local Evento', @$evento['local_evento'], 'required') ?>
             </div>
             <div class="col">
-                <?= formErp::input('1[ev_resp]', 'Responsável pelo Evento', @$evento['ev_resp']) ?>
+                <?= formErp::input('1[ev_resp]', 'Responsável pelo Evento', @$evento['ev_resp'], 'required') ?>
             </div>
         </div>
         <br />
