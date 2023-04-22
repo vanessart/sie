@@ -199,7 +199,7 @@ class alunos {
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return $array;
+        return $array??[];
     }
 
     /**
