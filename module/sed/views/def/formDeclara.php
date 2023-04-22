@@ -25,6 +25,7 @@ $declaraTipo = [
 $ciclos_ = sqlErp::get(['ge_ciclos', 'ge_cursos'], "concat(n_ciclo, ' - ', n_curso) n_ciclo, id_ciclo ", ['>' => 'n_curso, n_ciclo']);
 $ciclos = toolErp::idName($ciclos_);
 
+$alunos = [];
 $alunosSel = [];
 foreach ($alunos_ as $v) {
     $alunos[$v['id_pessoa']] = $v;
@@ -140,7 +141,7 @@ foreach ($alunos_ as $v) {
                        
                         echo formErp::hidden([
                             '1[fk_id_inst]' => toolErp::id_inst(),
-                            '1[n_ciclo]' => $alunos[$id_pessoa]['n_ciclo'],
+                            '1[n_ciclo]' => $alunos[$id_pessoa]['n_ciclo']??'',
                             '1[dt_emissao]' => date("Y-m-d"),
                             '1[tipo]' => $declaraTipo[$tipodec],
                             '1[rse]' => $id_pessoa,
