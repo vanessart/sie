@@ -33,7 +33,10 @@ foreach ($alunos_ as $v) {
 }
 ?>
 <div class="body">
-    <?php
+    <?php if (empty($alunos)) { ?>
+        Não existem alunos habilitados
+    <?php } else {
+
     if ($tipodec && $cont == 1) {
         ?>
         <table class="table table-bordered table-hover table-striped">
@@ -65,20 +68,20 @@ foreach ($alunos_ as $v) {
                     <?= $id_pessoa ?>
                 </td>
                 <td>
-                    <?= ($tipodec == 2 ? $alunos[$id_pessoa]['n_pessoa'] : $nome_aluno) ?>
+                    <?= ($tipodec == 2 ? $alunos[$id_pessoa]['n_pessoa']??'' : $nome_aluno) ?>
                 </td>
 
                 <?php
                 if ($tipodec == 2) {
                     ?>
                     <td>
-                        <?= $alunos[$id_pessoa]['n_ciclo'] ?>
+                        <?= $alunos[$id_pessoa]['n_ciclo']??'' ?>
                     </td>
                     <td>
-                        <?= $alunos[$id_pessoa]['sexo'] ?>
+                        <?= $alunos[$id_pessoa]['sexo']??'' ?>
                     </td>
                     <td>
-                        <?= $alunos[$id_pessoa]['codigo'] ?>
+                        <?= $alunos[$id_pessoa]['codigo']??'' ?>
                     </td>
                     <?php
                 }
@@ -145,9 +148,9 @@ foreach ($alunos_ as $v) {
                             '1[dt_emissao]' => date("Y-m-d"),
                             '1[tipo]' => $declaraTipo[$tipodec],
                             '1[rse]' => $id_pessoa,
-                            '1[nome_aluno]' => $alunos[$id_pessoa]['n_pessoa'],
-                            '1[codigo]' => $alunos[$id_pessoa]['codigo'],
-                            '1[sexo_aluno]' => $alunos[$id_pessoa]['sexo'],
+                            '1[nome_aluno]' => $alunos[$id_pessoa]['n_pessoa']??'',
+                            '1[codigo]' => $alunos[$id_pessoa]['codigo']??'',
+                            '1[sexo_aluno]' => $alunos[$id_pessoa]['sexo']??'',
                             '1[tipodec]' => $tipodec
                         ]);
                     } else {
@@ -199,6 +202,7 @@ foreach ($alunos_ as $v) {
             <input type="hidden" name="cont" value= 1 />
         </form>
     <?php
+}
 }
 ?>
 </div>
