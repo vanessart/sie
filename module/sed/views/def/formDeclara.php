@@ -25,6 +25,7 @@ $declaraTipo = [
 $ciclos_ = sqlErp::get(['ge_ciclos', 'ge_cursos'], "concat(n_ciclo, ' - ', n_curso) n_ciclo, id_ciclo ", ['>' => 'n_curso, n_ciclo']);
 $ciclos = toolErp::idName($ciclos_);
 
+$alunosSel = [];
 foreach ($alunos_ as $v) {
     $alunos[$v['id_pessoa']] = $v;
     $alunosSel[$v['id_pessoa']] = $v['n_pessoa'];
