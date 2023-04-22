@@ -58,7 +58,7 @@ class rest {
         return $dados;
     }
 
-    public static function listarInscricoesAluno($ra, $uf, $dig = NULL, $anoLetivo, $db = NULL, $type = 'array') {
+    public static function listarInscricoesAluno($ra, $uf, $dig = NULL, $anoLetivo = NULL, $db = NULL, $type = 'array') {
         $paramentos['inNumRA'] = $ra;
         $paramentos['inSiglaUFRA'] = $uf;
         $paramentos['inAnoLetivo'] = $anoLetivo;
@@ -103,7 +103,7 @@ class rest {
      * @param type $type
      * @return type
      */
-    public static function exibirMatriculaClasseRA($ra, $uf, $dig = NULL, $numClasse, $situacao, $db = NULL, $type = 'array') {
+    public static function exibirMatriculaClasseRA($ra, $uf, $dig = NULL, $numClasse = NULL, $situacao = NULL, $db = NULL, $type = 'array') {
         $paramentos['inNumRA'] = $ra;
         $paramentos['inSiglaUFRA'] = $uf;
         $paramentos['inNumClasse'] = $numClasse;
@@ -167,11 +167,16 @@ class rest {
         if (is_array($paramentos)) {
             $paramentos = http_build_query($paramentos);
         }
-       // if (empty($_SESSION['rest']['token'])) {
+        // if (empty($_SESSION['rest']['token'])) {
             $mongo = new mongoCrude('Gdae');
-            $d = (array) $mongo->query('setup', ['id_set' => '1'])[0];
-          //  $_SESSION['rest']['token'] = $d['token'];
-        //}
+            $d = (array) $mongo->query('setup', ['id_set' => '1']);
+            if (empty($d)) {
+                echo "Gdae: Cliente não configurado";
+                return;
+            }
+            $d = $d[0];
+            // $_SESSION['rest']['token'] = $d['token'];
+        // }
 
         while ($pass < 3) {
             $curl = curl_init();
@@ -211,8 +216,6 @@ class rest {
                 $pass = 3;
             }
         }
-
-
 
         if ($err) {
             echo "cURL Error #:" . $err;
