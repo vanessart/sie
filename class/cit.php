@@ -87,6 +87,10 @@ class cit {
     }
 
     public static function curlExec($servico, $parameters, $type = 'array') {
+        if ( empty($_SESSION['cit']) ) {
+            return null;
+        }
+
         $url = cit::url() . $servico . cit::parameters($parameters);
 
         $curl = curl_init($url);

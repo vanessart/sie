@@ -886,6 +886,57 @@ CREATE TABLE `ge_aloca_disc` (
   KEY `fk_id_disc` (`fk_id_disc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `ge_situacao_sed`;
+CREATE TABLE `ge_situacao_sed` (
+  `id_sit_sed` int(11) NOT NULL AUTO_INCREMENT,
+  `sit_sed` varchar(100) NOT NULL,
+  `sit_sieb` varchar(100) NOT NULL,
+  `sit_agrupamento` int(10) NOT NULL,
+  `sit_layout` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_sit_sed`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `sed_mural`;
+CREATE TABLE `sed_mural` (
+  `id_mural` int(11) NOT NULL AUTO_INCREMENT,
+  `n_mural` varchar(255) NOT NULL,
+  `fk_id_inst` int(11) DEFAULT NULL,
+  `fk_id_turma` int(11) DEFAULT NULL,
+  `dt_inicio` date DEFAULT NULL,
+  `dt_fim` date DEFAULT NULL,
+  `at_mural` int(11) NOT NULL DEFAULT '1',
+  `msg` text NOT NULL,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `fk_id_gr` int(11) DEFAULT NULL,
+  `atualizado` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_mural`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `sed_grupo`;
+CREATE TABLE `sed_grupo` (
+  `id_gr` int(11) NOT NULL AUTO_INCREMENT,
+  `n_gr` varchar(255) DEFAULT NULL,
+  `descr_gr` text,
+  `fk_id_inst` int(11) NOT NULL,
+  `fk_id_pessoa` int(11) DEFAULT NULL,
+  `at_gr` int(11) NOT NULL DEFAULT '1',
+  `cor` varchar(20) DEFAULT NULL,
+  `atualizado` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_gr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_encaminhamento`;
+CREATE TABLE `ge_encaminhamento` (
+  `id_encam` int(11) NOT NULL AUTO_INCREMENT,
+  `escola_origem` int(11) NOT NULL,
+  `escola_destino` int(11) NOT NULL,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `fk_id_turma` int(11) NOT NULL,
+  `ciclo_futuro` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id_encam`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
@@ -898,7 +949,7 @@ INSERT INTO ge2.grupo (id_gr, n_gr, at_gr)
 VALUES(1, 'MASTER', 1);
 
 INSERT INTO instancia
-VALUES (NULL, 'Administração', 0, 1,2, NULL, 0, 1, 0);
+VALUES (NULL, 'Administração', 0, 1,, NULL, 0, 1, 0);
 
 INSERT INTO ge2.framework (id_fr, n_fr, end_fr, ativo)
 VALUES(1, 'Autenticador', '/sie/', 1);
