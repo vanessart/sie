@@ -112,7 +112,7 @@ css::switchButton();
         ?>
         <tr>
             <td colspan="7" style="text-align: center; font-weight: bold">
-                Importado do SIEB antigo
+                Importado do <?php echo SISTEMA_NOME ?> antigo
             </td>
         </tr>
         <?php

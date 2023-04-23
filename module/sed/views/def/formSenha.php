@@ -23,7 +23,7 @@ if ($id_pessoa) {
             <br /><br />
             <div style="text-align: center; font-size: 18px">
                 <div style="text-align: center;">
-                    Esta ação altera apenas a senha do SIEB
+                    Esta ação altera apenas a senha do <?php echo SISTEMA_NOME ?>
                     <br /><br />    
                     Confirma redefinir a senha d<?php echo toolErp::sexoArt($p['sexo']) ?> 
                 </div>

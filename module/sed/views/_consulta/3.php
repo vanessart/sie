@@ -3,6 +3,7 @@
 $idEscola = filter_input(INPUT_POST, 'id', FILTER_UNSAFE_RAW);
 $tipoInscricao = filter_input(INPUT_POST, 'tipoInscricao', FILTER_UNSAFE_RAW);
 $anoLetivo = filter_input(INPUT_POST, 'anoletivo', FILTER_UNSAFE_RAW);
+$result = [];
 if($idEscola && $tipoInscricao && $anoLetivo){
     $result = rest::listarInscricoesEscola($idEscola, $tipoInscricao, $anoLetivo);
 }
@@ -30,14 +31,16 @@ if($idEscola && $tipoInscricao && $anoLetivo){
         </div>
 
         <table class="table table-bordered table-hover table-striped">
-            <?php foreach($result['outInscricoes'] as $key => $value):?>
+            <?php if(!empty($result['outInscricoes'])) {
+                foreach($result['outInscricoes'] as $key => $value):?>
                 <tr>
                     <td><?= str_replace('out', '', $key) ?></td>
                     <td><?= $value ?></td>
                 
                 </tr>
 
-            <?php endforeach; ?>
+            <?php endforeach;
+            } ?>
 
         </table>
 

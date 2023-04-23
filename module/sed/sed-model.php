@@ -1070,9 +1070,12 @@ class sedModel extends MainModel {
         // @$prof['email'] = $_POST['email'];
         @$prof['fk_id_psc'] = $_POST['fk_id_psc'];
         $rm = sql::get('ge_funcionario', 'rm', ['rm' => $prof['rm']], 'fetch')['rm'];
-        if (substr(@$prof['email'], -17) == 'barueri.sp.gov.br') {
-            $prof['email'] = NULL;
-            toolErp::alert("O e-mail não foi salvo. Não é permitido e-mails institucionais");
+        if (!empty($prof['email'])) {
+            $kbum = explode('@', $prof['email']);
+            if (isset($kbum[1]) && $kbum[1] == CLI_MAIL_DOMINIO) {
+                $prof['email'] = NULL;
+                toolErp::alert("O e-mail não foi salvo. Não é permitido e-mails institucionais");
+            }
         }
         if (empty($rm)) {
             toolErp::alert("Não foi encontrado Professor com a matrícula " . $prof['rm']);
@@ -1157,9 +1160,7 @@ class sedModel extends MainModel {
         $password_hash = new PasswordHash(8, FALSE);
         $token = $password_hash->HashPassword($dt_nasc);
 
-        //$site = 'https://dados.barueri.br/';
-        $site = 'https://portal.educ.net.br/';
-        $qr = $site . HOME_URI . '/sed/pdf/declaracaoQr.php?id=' . $id_pessoa . '&token=' . urlencode($token);
+        $qr = CLI_URL .'/'. HOME_URI . '/sed/pdf/declaracaoQr.php?id=' . $id_pessoa . '&token=' . urlencode($token);
         return urldecode($qr);
     }
 

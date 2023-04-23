@@ -63,10 +63,10 @@ if ($pat) {
             Os casos definidos como “Sem Paternidade Estabelecida” são os alunos que não constam o nome do pai na certidão de nascimento.
         </p>
         <p>
-            Nos casos dos pais “Indefinido” que não se enquadra em “Sem Paternidade Estabelecida” devem ser cadastrados no SED (não adianta cadastrar no SIEB) e, após o cadastro, clicar em  “Sincronizar com o SED”.
+            Nos casos dos pais “Indefinido” que não se enquadra em “Sem Paternidade Estabelecida” devem ser cadastrados no SED (não adianta cadastrar no <?php echo SISTEMA_NOME ?> ) e, após o cadastro, clicar em  “Sincronizar com o SED”.
         </p>
         <p>
-            Nos casos das mães “Indefinida” devem ser cadastradas no SED (não adianta cadastrar no SIEB) e, após o cadastro, clicar em  “Sincronizar com o SED”.
+            Nos casos das mães “Indefinida” devem ser cadastradas no SED (não adianta cadastrar no <?php echo SISTEMA_NOME ?> ) e, após o cadastro, clicar em  “Sincronizar com o SED”.
         </p>
         <p>
             Nos casos em que há pai, sincronizado, o aluno desaparecerá da lista.
