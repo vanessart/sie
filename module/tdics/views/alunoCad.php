@@ -12,6 +12,7 @@ if ($idName) {
             . " AND fk_id_ciclo in (4, 5, 6, 7, 8, 9)"
             . " join ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl and pl.at_pl = 1"
             . " join instancia i on i.id_inst = t.fk_id_inst ";
+            echo $sql;
     $query = pdoSis::getInstance()->query($sql);
     $alunos = $query->fetchAll(PDO::FETCH_ASSOC);
     if (!empty($alunos)) {
