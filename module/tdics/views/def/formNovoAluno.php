@@ -111,9 +111,9 @@ $hidden = [
                 ?>
             </div>
             <div class="col-3">
-                <?=
+                <?php
                 if (!empty($alunos)) {
-                    formErp::hidden($hidden)
+                    echo formErp::hidden($hidden)
                     . formErp::hiddenToken('novoAluno')
                     . formErp::button('Salvar')
                 } ?>
