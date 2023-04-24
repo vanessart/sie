@@ -79,7 +79,7 @@ $hidden = [
         </tr>
         <tr>
             <td>
-                RSE
+                Matrícula
             </td>
             <td>
                 <?= $alu['id_pessoa'] ?>

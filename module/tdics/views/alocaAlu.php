@@ -81,7 +81,7 @@ if ($id_polo) {
         }
         $form['array'] = $alunos;
         $form['fields'] = [
-            'RSE' => 'id_pessoa',
+            'Matrícula' => 'id_pessoa',
             'Nome' => 'n_pessoa',
             'Turma' => 'n_turma',
             'Escola' => 'n_inst',

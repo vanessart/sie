@@ -52,7 +52,7 @@ if (empty($data)) {
                     Nome
                 </td>
                 <td>
-                    RSE
+                    Matrícula
                 </td>
             </tr>
             <?php

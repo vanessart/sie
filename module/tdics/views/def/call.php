@@ -26,7 +26,7 @@ if ($id_pessoa) {
             </tr>
             <tr>
                 <td>
-                    RSE
+                    Matrícula
                 </td>
                 <td>
                     <?= $aluno[0]['id_pessoa'] ?>

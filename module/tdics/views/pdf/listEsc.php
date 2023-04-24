@@ -37,7 +37,7 @@ if (!empty($nucleos)) {
         <table style="width: 100%" border=1 cellspacing=0 cellpadding=2 bordercolor="666633"> 
             <tr>
                 <td>
-                    RSE
+                    Matrícula
                 </td>
                 <td>
                     Turma de Origem

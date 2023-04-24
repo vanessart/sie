@@ -33,7 +33,7 @@ if (toolErp::id_nilvel() != 8) {
                 }
                 $form['array'] = $alunos;
                 $form['fields'] = [
-                    'RSE' => 'id_pessoa',
+                    'Matrícula' => 'id_pessoa',
                     'Nome' => 'n_pessoa',
                 //    'Polo' => 'n_polo',
                     formErp::checkbox(null, 1, null, null, 'id="select-all"') . '<label for="car">Selecionar Todos</label>' => 'ck'

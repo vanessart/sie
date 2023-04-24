@@ -33,7 +33,7 @@ if ($alunos) {
         }
         $form['array'] = $alunos;
         $form['fields'] = [
-            'RSE' => 'id_pessoa',
+            'Matrícula' => 'id_pessoa',
             'Nome' => 'n_pessoa',
             'Núcleo' => 'n_polo',
             'Turma TDICS' => 'n_turma_tdics',

@@ -21,7 +21,7 @@ if (!empty($buscar)) {
         if (!empty($dados['alunos'])) {
             $form['array'] = $dados['alunos'];
             $form['fields'] = [
-                'RSE' => 'id_pessoa',
+                'Matrícula' => 'id_pessoa',
                 'Aluno' => 'n_pessoa',
                 'Escola' => 'n_inst',
                 'Turma' => 'n_turma',

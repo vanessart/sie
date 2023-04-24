@@ -31,7 +31,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
     <table class="table table-bordered table-hover table-responsive">
         <tr>
             <td style="width: 300px">
-                RSE
+                Matrícula
             </td>
             <td>
                 <?= $id_pessoa ?>

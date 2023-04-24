@@ -26,7 +26,7 @@ if ($a && $id_inst) {
     }
     $form['array'] = $a;
     $form['fields'] = [
-        'RSE' => 'id_pessoa',
+        'Matrícula' => 'id_pessoa',
         'Nome' => 'n_pessoa',
         'Turma' => 'n_turma',
         'Dia' => 'diaSem',

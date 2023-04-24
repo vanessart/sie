@@ -31,7 +31,7 @@ if (!empty($faltid)) {
     $form['array'] = $alunos;
     $form['fields'] = [
         'Quant.' => 'ct',
-        'RSE' => 'id_pessoa',
+        'Matrícula' => 'id_pessoa',
         'Nome' => 'n_pessoa',
         'Núcleo' => 'n_polo',
         'Curso' => 'n_curso',

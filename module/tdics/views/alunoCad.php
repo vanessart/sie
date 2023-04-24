@@ -31,7 +31,7 @@ if ($id_pessoa) {
     <form method="POST">
         <div class="row">
             <div class="col-9">
-                <?= formErp::input('idName', 'Nome ou RSE', $idName) ?>
+                <?= formErp::input('idName', 'Nome ou Matrícula', $idName) ?>
             </div>
             <div class="col-3">
                 <?= formErp::button('Buscar') ?>
@@ -46,7 +46,7 @@ if ($id_pessoa) {
             <table class="table table-bordered table-hover table-responsive">
                 <tr>
                     <td>
-                        RSE
+                        Matrícula
                     </td>
                     <td>
                         Nome
@@ -101,7 +101,7 @@ if ($id_pessoa) {
             <table class="table table-bordered table-hover table-responsive">
                 <tr>
                     <td>
-                        RSE
+                        Matrícula
                     </td>
                     <td>
                         Nome
