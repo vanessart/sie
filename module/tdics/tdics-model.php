@@ -481,6 +481,7 @@ class tdicsModel extends MainModel {
         $id_pl = $this->pl();
         $mongo = new mongoCrude('Tdics');
         $frenq = $mongo->query('presece_' . $id_pl);
+        $cht = [];
 
         foreach ($frenq as $v) {
             if (!empty($v->ch)) {
@@ -506,7 +507,7 @@ class tdicsModel extends MainModel {
             }
         }
 
-        return @$cht;
+        return $cht;
     }
 
     public function freqCurGraf($periodo = null) {
