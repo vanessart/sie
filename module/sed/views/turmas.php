@@ -20,7 +20,7 @@ $id_pl = ng_main::periodoSet($id_pl);
 $periodos = ng_main::periodosPorSituacao();
 $turmas = gtTurmas::idNome($id_inst, $id_pl);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$oldSet = $_POST['oldSet']??[];
+$oldSet = $_POST['oldSet']??'';
 $oldSet = json_decode(str_replace("''", '"', $oldSet), true);
 if (empty($oldSet)) {
     $oldSet = [];
