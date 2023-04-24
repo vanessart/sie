@@ -44,7 +44,7 @@ if (!defined('ABSPATH')) {
         <script src="<?php echo HOME_URI; ?>/includes/js/bootstrap-select.min.js"></script>
         <link rel="stylesheet" href="<?php echo HOME_URI; ?>/includes/css/style.css">
         <script src="<?php echo HOME_URI; ?>/includes/js/scripts.js"></script>
-        <link rel='manifest' href='/manifest.json'>
+        <link rel='manifest' href='manifest.json'>
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
