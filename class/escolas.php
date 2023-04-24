@@ -51,6 +51,7 @@ class escolas {
     public static function idInst($search = NULL, $field = NULL, $se = NULL) {
         $esc = escolas::gets($search, $field, 'id_inst, n_inst');
 
+        $s = [];
         foreach ($esc as $v) {
             $s[$v['id_inst']] = $v['n_inst'];
         }
