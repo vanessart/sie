@@ -120,7 +120,6 @@ class ng_escolas {
         $ids = null;
         if ($cursos) {
             $sql = "SELECT * FROM `sed_inst_curso` WHERE `fk_id_curso` IN (" . implode(', ', $cursos) . ") ";
-            echo $sql."<br><br>";
             $query = pdoSis::getInstance()->query($sql);
             $array = $query->fetchAll(PDO::FETCH_ASSOC);
             if ($array) {
@@ -131,7 +130,6 @@ class ng_escolas {
         $sql = "select id_inst, n_inst from instancia i "
                 . " join ge_escolas e on e.fk_id_inst = i.id_inst $ids "
                 . " order by n_inst ";
-            echo $sql."<br><br>";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
         return tool::idName($array);

@@ -1060,6 +1060,10 @@ INSERT INTO predio (n_predio,sigla,descricao,ativo,cep,logradouro,num,complement
 
 INSERT INTO instancia_predio values (null, 1, 1, 1);
 
+INSERT INTO ge2.ge_escolas (fk_id_inst,fk_id_tp_ens,classe,ato_cria,ato_municipa,vizualizar)
+  VALUES (1,'1|2',1,'','',1);
+
+
 INSERT INTO ge2.framework (id_fr, n_fr, end_fr, ativo)
 VALUES(1, 'Autenticador', '/sie/', 1);
 
