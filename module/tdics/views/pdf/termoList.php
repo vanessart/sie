@@ -37,7 +37,7 @@ if ($a) {
         <img src="<?= HOME_URI ?>/includes/images/maker/tdics.png" alt="alt"/>
         <br /><br />
         <div style="text-align: center; font-weight: bold; font-size: 20px">
-            PROJETO - NÚCLEOS WIT - TDICs
+            PROJETO - PARNAÍBA - MAKER LABS
         </div>
         <br />
         <div style="text-align: center; font-weight: bold; font-size: 19px; color: red">
@@ -56,13 +56,13 @@ if ($a) {
             <?= $v['n_pessoa'] ?>, matriculad<?= toolErp::sexoArt($v['sexo']) ?> no <?= $v['turmaEsc'] ?> 
             na <?= $v['n_inst'] ?>,
             <br /><br />
-            AUTORIZO a participação d<?= toolErp::sexoArt($v['sexo']) ?> alun<?= toolErp::sexoArt($v['sexo']) ?>   no Projeto Wit, conforme segue:
+            AUTORIZO a participação d<?= toolErp::sexoArt($v['sexo']) ?> alun<?= toolErp::sexoArt($v['sexo']) ?> no Projeto MAKER LABS, conforme segue:
         </div>
         <br /><br />
         <table style="width: 100%; margin: auto; font-weight: bold; font-size: 15px"  cellspacing=0 cellpadding=2 bordercolor="666633"> 
             <tr>
                 <td>
-                    NÚCLEO WIT (Escola):
+                    NÚCLEO (Escola):
                 </td>
                 <td colspan="3">
                     <?= $polos[$v['id_polo']] ?>
