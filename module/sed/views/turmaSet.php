@@ -44,11 +44,6 @@ $form['fields'] = [
             <?= formErp::select('id_pl', $periodos, 'PERIODO LETIVO', $id_pl, 1) ?><br>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-warning" onclick="NovaTurma()">Nova Turma</button>
-        </div>
-    </div>
     <?= report::simple($form) ?>
 </div>
 
