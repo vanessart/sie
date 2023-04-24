@@ -754,7 +754,7 @@ class sedModel extends MainModel {
         if (!empty($id_inst)) {
             $id_inst = " and t.fk_id_inst = $id_inst";
         }
-        echo '<br />' . $sql = "SELECT "
+        $sql = "SELECT "
         . " t.fk_id_inst as id_inst, t.id_turma, COUNT(ta.fk_id_pessoa) as alunos "
         . " FROM ge_turma_aluno ta "
         . " JOIN ge_turmas t on t.id_turma = ta.fk_id_turma "
@@ -764,6 +764,7 @@ class sedModel extends MainModel {
         . " GROUP BY t.id_turma";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
+        $alu = [];
         foreach ($array as $v) {
             $alu[$v['id_turma']] = $v['alunos'];
         }
@@ -777,6 +778,7 @@ class sedModel extends MainModel {
                 . $id_inst;
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
+        $turmas = [];
         foreach ($array as $v) {
             if (!empty($v['fk_id_sala'])) {
                 $turmas[$v['fk_id_sala']] = $v;
@@ -797,6 +799,7 @@ class sedModel extends MainModel {
 
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
+        $salas = [];
         foreach ($array as $v) {
             $salas[$v['id_inst']][$v['id_sala']] = $v;
             $salas[$v['id_inst']][$v['id_sala']]['turma'] = @$turmas[$v['id_sala']];
