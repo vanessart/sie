@@ -115,7 +115,7 @@ $hidden = [
                 if (!empty($alunos)) {
                     echo formErp::hidden($hidden)
                     . formErp::hiddenToken('novoAluno')
-                    . formErp::button('Salvar')
+                    . formErp::button('Salvar');
                 } ?>
             </div>
         </div>
