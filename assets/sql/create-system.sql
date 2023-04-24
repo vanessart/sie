@@ -105,9 +105,6 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `users`
---
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -116,8 +113,8 @@ CREATE TABLE `users` (
   `fk_id_pessoa` int(50) DEFAULT NULL,
   `user_session_id` varchar(255) DEFAULT NULL,
   `ativo` int(11) DEFAULT NULL,
-  `expira` date NOT NULL,
-  `horas` text NOT NULL,
+  `expira` date DEFAULT NULL,
+  `horas` text DEFAULT NULL,
   `google_id` varchar(255) DEFAULT NULL,
   `google_token` text,
   `fk_id_tp` int DEFAULT NULL
