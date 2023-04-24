@@ -185,6 +185,7 @@ class ng_main {
                 . $where
                 . $cursos
                 . " order by n_inst";
+        echo $sql."<br><br>";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchALL(PDO::FETCH_ASSOC);
 
