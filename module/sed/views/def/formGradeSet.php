@@ -25,7 +25,7 @@ if ($id_grade) {
                 '1[ativo]' => 1,
                 'activeNav' => 3
             ])
-            . formErp::hiddenToken('ge_grades', 'ireplace')
+            . formErp::hiddenToken('ge_grades', 'ireplace', null, null, null, 1)
             . formErp::button('Salvar')
             ?>
         </div>

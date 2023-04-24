@@ -945,6 +945,47 @@ CREATE TABLE `sed_erro` (
   PRIMARY KEY (`id_se`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `ge_tp_ensino`;
+CREATE TABLE `ge_tp_ensino` (
+  `id_tp_ens` int(11) NOT NULL AUTO_INCREMENT,
+  `n_tp_ens` varchar(255) NOT NULL,
+  `sigla` varchar(20) NOT NULL,
+  `sequencia` varchar(100) DEFAULT NULL,
+  `at_seg` int(11) DEFAULT '1',
+  PRIMARY KEY (`id_tp_ens`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_curso_grade`;
+CREATE TABLE `ge_curso_grade` (
+  `id_cg` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_ciclo` int(11) NOT NULL,
+  `fk_id_grade` int(11) NOT NULL,
+  `padrao` int(11) NOT NULL,
+  PRIMARY KEY (`id_cg`),
+  UNIQUE KEY `fk_id_ciclo` (`fk_id_ciclo`,`fk_id_grade`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_areas`;
+CREATE TABLE `ge_areas` (
+  `id_area` int(11) NOT NULL AUTO_INCREMENT,
+  `n_area` varchar(255) NOT NULL,
+  `sg_area` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_area`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_tp_aval`;
+CREATE TABLE `ge_tp_aval` (
+  `id_ta` int(11) NOT NULL AUTO_INCREMENT,
+  `n_ta` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_ta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE ge2.ge_cursos MODIFY COLUMN fk_id_ta int NULL;
+ALTER TABLE ge2.ge_cursos MODIFY COLUMN fk_id_calcaval int NULL;
+ALTER TABLE ge2.ge_cursos MODIFY COLUMN TipoEnsino int NULL;
+ALTER TABLE ge2.ge_ciclos MODIFY COLUMN aprova_automatico int NULL;
+ALTER TABLE ge2.ge_ciclos MODIFY COLUMN periodicidade varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL;
+
 
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
