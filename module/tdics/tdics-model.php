@@ -466,6 +466,7 @@ class tdicsModel extends MainModel {
         }
         $mongo = new mongoCrude('Tdics');
         $frenq = $mongo->query('presece_' . $id_pl, $filter);
+        $cht = [];
         foreach ($frenq as $v) {
             if (!empty($v->ch)) {
                 foreach ($v->ch as $id_pessoa => $fp) {
@@ -474,7 +475,7 @@ class tdicsModel extends MainModel {
             }
         }
 
-        return @$ch;
+        return $ch;
     }
 
     public function freqGraf($periodo = null) {
@@ -514,7 +515,7 @@ class tdicsModel extends MainModel {
         $id_pl = $this->pl();
         $mongo = new mongoCrude('Tdics');
         $frenq = $mongo->query('presece_' . $id_pl);
-
+        $cht = [];
         foreach ($frenq as $v) {
             if (!empty($v->ch)) {
                 $f = (array) $v->ch;
@@ -538,7 +539,7 @@ class tdicsModel extends MainModel {
                 }
             }
         }
-        return @$cht;
+        return $cht;
     }
 
     public function getInscricoesSQL($id_polo = null, $id_curso = null)
