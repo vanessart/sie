@@ -25,6 +25,10 @@ class ng_escola {
     public $_latitude;
     public $_longitude;
     public $_maps;
+    public $_site;
+    public $_contato;
+    public $_terceirizada;
+    public $_id_escola;
     public $_visualizar;
     public $_manutencao;
 
