@@ -4,6 +4,7 @@ if (!defined('ABSPATH'))
 @$id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 
 $td = sqlErp::get(['tdics_turma', 'tdics_curso'], 'dia_sem, fk_id_polo, id_curso, n_curso, id_turma, periodo', ['fk_id_pl' => $id_pl]);
+$cursos = [];
 foreach ($td as $v) {
     $cursos[$v['id_curso']] = $v['n_curso'];
     $qtCur[$v['id_curso']][$v['id_turma']] = $v['id_turma'];
