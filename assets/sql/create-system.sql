@@ -1043,14 +1043,15 @@ INSERT INTO ge_ciclos (fk_id_curso,n_ciclo,sg_ciclo,aprova_automatico,fk_id_grad
    (1,'Pré Fase 2','2',1,1,'1',1,2,1,'1,2,3,4,5');
 
 INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
-VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'ti.cristianoarruda@educbarueri.sp.gov.br', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'ti.cristianoarruda@educbarueri.sp.gov.br', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
+VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'crisarruda.silva@gmail.com', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'crisarruda.silva@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
 
 
 INSERT INTO ge2.users (id_user, user_password, fk_id_pessoa, user_session_id, ativo, expira, horas, google_id, google_token)
 VALUES(1, '$2a$08$3Xe1WzYN6snvza1d98EujOkRKJNKvII6iaFrZAtePiYH7bdZyBY9i', 1, '8ptrf5hldsmkt0aji3a3kr6cr8', 1, '2023-03-01', '', '107750209957574070253', '230452642a003cdd6a5');
 
 INSERT INTO ge2.grupo (id_gr, n_gr, at_gr)
-VALUES(1, 'MASTER', 1);
+VALUES (1, 'MASTER', 1), (26, 'Supervisor', 1), (61, 'Suporte Técnico', 1);
+
 
 INSERT INTO instancia
 VALUES (NULL, 'Administração', 0, 1,, NULL, 0, 1, 0);
@@ -1250,3 +1251,171 @@ VALUES(3, 'Comercial');
 INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
 VALUES(4, 'Recados');
 
+
+/*
+INSERT INTO `pessoa` (n_pessoa,n_social,dt_nasc,email,ativo,cpf,cpf_old,sexo,ra,ra_dig,ra_uf,rg,rg_dig,rg_oe,rg_uf,dt_rg,fk_id_rt,certidao,sus,pai,cpf_pai,mae,cpf_mae,mae_rg,mae_rg_dig,mae_rg_oe,dt_mae_rg,pai_rg,pai_rg_dig,pai_rg_oe,dt_pai_rg,mae_rg_uf,pai_rg_uf,responsavel,dt_resp,cpf_respons,rg_respons,email_respons,nacionalidade,uf_nasc,cidade_nasc,deficiencia,cor_pele,tel1,ddd1,tel2,ddd2,tel3,ddd3,obs,novacert_cartorio,novacert_acervo,novacert_regcivil,novacert_ano,novacert_tipolivro,novacert_numlivro,novacert_folha,novacert_termo,novacert_controle,dt_gdae,at_google,nis,emailgoogle,google_user_id,duplicado_nome_data,inep,trabalho_pai,end_trab_pai,trabalho_mae,end_trab_mae,update_at,parentesco) VALUES
+   ('HADASSA ANTONELLI CONCEIÇÃO DE JESUS','','2011-05-19','DENISDEJESUS@UOL.COM',1,NULL,NULL,'F','124543045','2','SP','','',NULL,'',NULL,1,'','','DENIS SOUZA DE JESUS',NULL,'VANESSA DE JESUS CONCEICAO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','BA','CATU','','PARDA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','','','','2023-04-22',0,'','1228152022',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-22 04:16:02',NULL),
+   ('EDUARDO DE OLIVEIRA CARVALHO','','2022-10-30','',1,'60606587845',NULL,'M','124544973','4','SP','','',NULL,'',NULL,1,'','701401689574630','LEONARDO DE CARVALHO COSTA',NULL,'THAIS SANTOS OLIVEIRA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','BRANCA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115055','01','55','2022','1','638','167','430860','75','2023-04-20',0,'','1228152013',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 17:30:03',NULL),
+   ('ANA SOFIE DA SILVA','','2022-07-15','',1,'60398711801',NULL,'F','124544962','X','SP','','',NULL,'',NULL,1,'','702608254568249','JOSE RAMOS DA SILVA',NULL,'MARIA APARECIDA DA SILVA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','PARDA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2022','1','308','205','183549','95','2023-04-20',0,'','1228152011',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 17:20:03',NULL),
+   ('ESTER NUNES DA SILVA','','2014-05-03','',1,'57912216812',NULL,'F','120112383','5','SP','00000066716592','7',NULL,'SP',NULL,1,'','708201131884548','JOSE TALLES ISIDIO DA SILVA',NULL,'JUCELI NUNES DE SOUSA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','OSASCO','','BRANCA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'118059','01','55','2014','1','54','93','28126','12','2023-04-20',0,'','1228152002',NULL,NULL,'179279500960',NULL,NULL,NULL,NULL,'2023-04-20 15:52:02',NULL),
+   ('NOAH MARCELO DE ARAUJO SOUZA','','2018-07-07','',1,'57062789895',NULL,'M','123494116','8','SP','65775813','9',NULL,NULL,NULL,1,'','898005955299353','MARCELO APARECIDO ALVES DE SOUZA',NULL,'ANA CRISTINA DE ARAUJO SOUZA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Estrangeira','','','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','','','','','','2023-04-20',0,'','1228151994',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 15:34:17',NULL),
+   ('AMANDA KESSIA ALMEIDA FEITOSA','','2014-08-20','',1,'62945418320',NULL,'F','124544566','2','SP','64892352018','6',NULL,'CE',NULL,1,'','706406689044289','ALEXANDRE PEREIRA FEITOSA',NULL,'MARIA ARIELLE MARTINS DE ALMEIDA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','CE','PIQUET CARNEIRO','','PARDA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'19737','01','55','2014','1','15','149','349','15','2023-04-20',0,'','1228151990',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 15:12:02',NULL),
+   ('ESTER CORDEIRO DA SILVA','','2021-06-16','',1,'59432648842',NULL,'F','124544568','6','SP','','',NULL,'',NULL,1,'','','CLOVES CORDEIRO DA SILVA FILHO',NULL,'SHEILA ALVES DA SILVA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115063','01','55','2021','1','233','26','139754','37','2023-04-20',0,'','1228151989',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 15:02:02',NULL),
+   ('REBECCA MOMBELE LONGUES RODRIGUES','','2018-05-20','',1,'55106134838',NULL,'F','122223920','6','SP','','',NULL,'',NULL,1,'','','RENATO DA SILVA CONCEICAO RODRIGUES',NULL,'DEBORA CAROLINE CONCEICAO RODRIGUES',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','SAO PAULO','','BRANCA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'111286','01','55','2018','1','620','61','170246','56','2023-04-20',0,'','1228151975',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 14:02:02',NULL),
+   ('AGATHA FERREIRA DA SILVA','','2015-03-02','',1,NULL,NULL,'F','124544291','0','SP','','',NULL,'',NULL,1,'','898004608346824','NAIROLDO FERREIRA DE SOUZA',NULL,'LUCINEIA CIRILO DA SILVA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2015','1','257','77','152796','76','2023-04-20',0,'','1228151973',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 13:32:03',NULL),
+   ('PEDRO ROCHA FRADE','','2013-03-31','',1,'57094813864',NULL,'M','114927830','4','SP','00000060231500','1',NULL,'SP',NULL,1,'','702307155365112','EDER DE SOUZA SANTOS FRADE',NULL,'CAMILA ROCHA SANTIAGO PEREIRA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','SAO PAULO','','BRANCA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'113225','01','55','2013','1','84','178','61449','51','2023-04-20',0,'','1228151972',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 13:06:03',NULL);
+INSERT INTO `pessoa` (n_pessoa,n_social,dt_nasc,email,ativo,cpf,cpf_old,sexo,ra,ra_dig,ra_uf,rg,rg_dig,rg_oe,rg_uf,dt_rg,fk_id_rt,certidao,sus,pai,cpf_pai,mae,cpf_mae,mae_rg,mae_rg_dig,mae_rg_oe,dt_mae_rg,pai_rg,pai_rg_dig,pai_rg_oe,dt_pai_rg,mae_rg_uf,pai_rg_uf,responsavel,dt_resp,cpf_respons,rg_respons,email_respons,nacionalidade,uf_nasc,cidade_nasc,deficiencia,cor_pele,tel1,ddd1,tel2,ddd2,tel3,ddd3,obs,novacert_cartorio,novacert_acervo,novacert_regcivil,novacert_ano,novacert_tipolivro,novacert_numlivro,novacert_folha,novacert_termo,novacert_controle,dt_gdae,at_google,nis,emailgoogle,google_user_id,duplicado_nome_data,inep,trabalho_pai,end_trab_pai,trabalho_mae,end_trab_mae,update_at,parentesco) VALUES
+   ('MARIA FLOR ROCHA FRADE','','2016-02-09',NULL,1,'57094688865',NULL,'F','120435270','7','SP','00000064875230','6',NULL,'SP',NULL,1,'','898005118430366','EDER DE SOUZA SANTOS FRADE',NULL,'CAMILA ROCHA SANTIAGO PEREIRA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','PRAIA GRANDE','','PARDA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'122440','01','55','2016','1','129','251','81507','20','2023-04-20',0,'','1228151969',NULL,NULL,'179355036301',NULL,NULL,NULL,NULL,'2023-04-20 12:59:53',NULL),
+   ('DEREK MOMBELE LONGUES RODRIGUES','','2020-04-09','',1,NULL,NULL,'M','122515922','2','SP',NULL,NULL,NULL,NULL,NULL,1,'',NULL,'RENATO DA SILVA CONCEICAO RODRIGUES',NULL,'DEBORA CAROLINE RODRIGUES',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','SAO PAULO','','BRANCA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'111286','01','55','2020','1','649','204','187873','50','2023-04-20',0,'','1228151968',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 13:20:08',NULL),
+   ('EMILLY SOPHIA ANDRADE DE SOUZA','','2021-08-08','',1,'59551994892',NULL,'F','124544109','7','SP','','',NULL,'',NULL,1,'','898006251093562','MARCELO DOS SANTOS DE ANDRADE',NULL,'GABRIELA ANDRADE DE SOUZA MARCELINO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2021','1','303','46','180241','45','2023-04-20',0,'','1228151967',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 12:14:03',NULL),
+   ('ASAFE FERREIRA SILVARES','','2021-12-23','',1,'59899951803',NULL,'M','124544076','7','SP',NULL,NULL,NULL,NULL,NULL,1,'','708909726674710','GABRIEL MOREIRA SILVARES',NULL,'LUIZA FERREIRA SILVARES',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','CARAPICUIBA','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115568','01','55','2021','1','391','203','233659','46','2023-04-20',0,'','1228151966',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 11:38:15',NULL),
+   ('SARAH VITORIA BESERRA DA SILVA NUNES','','2022-04-08','GILDANUNESDASILVA70@GMAIL.COM',1,'60269029885',NULL,'F','124543726','4','SP','','',NULL,'',NULL,1,'','706406176271185','JOEL BESERRA DA SILVA',NULL,'GILDA NUNES DA SILVA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2022','1','307','194','182930','51','2023-04-20',0,'','1228151955',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 10:02:02',NULL),
+   ('KAUA CARDOSO DE JESUS','','2021-09-23','',1,'59713825861',NULL,'M','124543732','X','SP','','',NULL,'',NULL,1,'','702306594787320','SINEVALDO CARDOSO DE SOUZA FILHO',NULL,'GRACILANE DE JESUS BATATEIRA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2021','1','304','17','180782','11','2023-04-20',0,'','1228151954',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 10:07:45',NULL),
+   ('HELLENA RAMOS CORREA GOMES','','2022-02-28','',1,'60097260851',NULL,'F','124543301','5','SP','','',NULL,'',NULL,1,'','704807013208647','VITOR GOMES DA SILVA',NULL,'JAQUELINE DE FATIMA RAMOS CORREA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2022','1','306','114','182172','31','2023-04-20',0,'','1228151938',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-20 12:50:33',NULL),
+   ('HENRY BARBOSA URTEGO','','2020-04-07','',1,'58427658885',NULL,'M','124543246','1','SP','','',NULL,'',NULL,1,'','','JOÃO VITOR GOMES SILVA URTEGO',NULL,'STEPHANE BARBOSA DA SILVA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2020','1','294','189','175146','25','2023-04-19',0,'','1228151931',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-19 17:32:03',NULL),
+   ('ENZO LIMA SIQUEIRA','','2021-09-03','',1,'59625535861',NULL,'M','124543178','X','SP','','',NULL,'',NULL,1,'','700502342909152','JEANES RIBEIRO DE SIQUEIRA',NULL,'SANDRELÚCIA RIBEIRO LIMA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','OSASCO','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115238','01','55','2021','1','547','151','326809','56','2023-04-19',0,'','1228151925',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-19 16:46:03',NULL),
+   ('HELOA DE FREITAS ARAUJO','','2022-04-04','',1,'60190578874',NULL,'F','124543107','9','SP','','',NULL,'',NULL,1,'','','MIGUEL FELIPE DE ARAUJO NETO',NULL,'YASMIN FREITAS BARBOSA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Brasileira','SP','BARUERI','','NÃO DECLARADA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'115840','01','55','2022','1','307','14','182570','11','2023-04-19',0,'','1228151922',NULL,NULL,'',NULL,NULL,NULL,NULL,'2023-04-19 16:22:03',NULL);
+
+  INSERT INTO `ge_turma_aluno` (codigo_classe,fk_id_turma,periodo_letivo,fk_id_pessoa,fk_id_inst,chamada,situacao,dt_matricula,dt_matricula_fim,dt_transferencia,origem_escola,destino_escola,destino_escola_cidade,destino_escola_uf,tp_destino,justificativa_transf,turma_status,situacao_final,conselho,dt_gdae,gdae,fk_id_sit_sed,fk_id_ciclo_aluno,fk_id_tas,fk_id_sf) VALUES
+   ('EFT7A ',1,'2023',3,1,33,'Frequente','2023-04-22',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-22',NULL,0,NULL,0,0),
+   ('EBI0A',1,'2023',4,1,11,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EBI0E',1,'2023',5,1,15,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EFM4A',1,'2023',6,1,32,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EIT1A',1,'2023',7,1,26,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EFT3D',1,'2023',8,1,23,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EMI1C',1,'2023',9,1,21,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EIT1A',1,'2023',10,1,25,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EFM3B',1,'2023',11,1,31,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EFM5A',1,'2023',12,1,22,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0);
+   INSERT INTO `ge_turma_aluno` (codigo_classe,fk_id_turma,periodo_letivo,fk_id_pessoa,fk_id_inst,chamada,situacao,dt_matricula,dt_matricula_fim,dt_transferencia,origem_escola,destino_escola,destino_escola_cidade,destino_escola_uf,tp_destino,justificativa_transf,turma_status,situacao_final,conselho,dt_gdae,gdae,fk_id_sit_sed,fk_id_ciclo_aluno,fk_id_tas,fk_id_sf) VALUES
+   ('EFT2B',41901,'2023',13,1,27,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EMI2A',43182,'2023',14,1,37,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EMI1B',41625,'2023',15,1,8,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EMI1B',41059,'2023',16,1,1,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EBI0A',40835,'2023',17,1,9,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EMI1B',40810,'2023',18,1,18,'Frequente','2023-04-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-20',NULL,0,NULL,0,0),
+   ('EMI1A',41058,'2023',19,1,2,'Frequente','2023-04-19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-19',NULL,0,NULL,0,0),
+   ('EMI2A',40846,'2023',20,1,3,'Frequente','2023-04-19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-19',NULL,0,NULL,0,0),
+   ('EMI1C',40772,'2023',21,1,4,'Frequente','2023-04-19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-19',NULL,0,NULL,0,0),
+   ('EBI0A',40840,'2023',22,1,5,'Frequente','2023-04-19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2023-04-19',NULL,0,NULL,0,0);
+
+*/
+
+
+INSERT INTO ge_cursos (id_curso,n_curso,sg_curso,descr_curso,fk_id_tp_ens,fk_id_ta,fk_id_calcaval,notas,notas_legenda,corte,ativo,un_letiva,sg_letiva,qt_letiva,atual_letiva,conceito_final,extra,TipoEnsino) VALUES
+   (1,'Ensino Fundamental','EF','Programa Padrão Ensino Fundamental',4,1,1,'0;0,5;1;1,5;2;2,5;3;3,5;4;4,5;5;5,5;6;6,5;7;7,5;8;8,5;9;9,5;10;D;d','','4,5',1,'Bimestre','B',4,'1',NULL,0,14),
+   (3,'Pré-Escola','EI','Programa Padrão Pré-Escola',3,1,1,'','','',1,'Bimestre','B',4,'1',NULL,0,6),
+   (5,'EJA 1º Segmento','EJAI','Educação de Jovens e Adultos',5,1,1,'1;2;3;4;5;6;7;8;9;10;D;d','','4',1,'Bimestre','B',4,'1',NULL,0,3),
+   (7,'Berçário','EB','',3,1,2,'','','',1,'Bimestre','B',4,'1',NULL,0,6),
+   (8,'Maternal','EM','',3,1,2,'','','',1,'Bimestre','B',4,'1',NULL,0,6),
+   (9,' EJA 2º Segmento','EJAII','Educação de Jovens e Adultos',5,1,1,'1;2;3;4;5;6;7;8;9;10;D;d','','4',1,'Bimestre','B',2,'1',NULL,0,4),
+   (10,'AEE','AEE','',6,1,2,'','','',1,'Bimestre','B',4,'1',NULL,1,32);
+  
+INSERT INTO ge_ciclos (id_ciclo,fk_id_curso,n_ciclo,sg_ciclo,aprova_automatico,fk_id_grade,periodicidade,ativo,SerieAno,aulas,dias_semana) VALUES
+   (1,1,'1º Ano','1',1,4,'1',1,1,5,'1,2,3,4,5'),
+   (2,1,'2º Ano','2',0,4,'1',1,2,5,'1,2,3,4,5'),
+   (3,1,'3º Ano','3',0,6,'1',1,3,5,'1,2,3,4,5'),
+   (4,1,'4º Ano','4',0,6,'1',1,4,5,'1,2,3,4,5'),
+   (5,1,'5º Ano','5',0,6,'1',1,5,5,'1,2,3,4,5'),
+   (6,1,'6º Ano','6',0,1,'1',1,6,5,'1,2,3,4,5'),
+   (7,1,'7º Ano','7',0,1,'1',1,7,5,'1,2,3,4,5'),
+   (8,1,'8º Ano','8',0,1,'1',1,8,5,'1,2,3,4,5'),
+   (9,1,'9º Ano','9',0,1,'1',1,9,5,'1,2,3,4,5'),
+   (19,3,'Pré Fase 1','1',1,12,'1',1,1,1,'1,2,3,4,5');
+INSERT INTO ge_ciclos (id_ciclo,fk_id_curso,n_ciclo,sg_ciclo,aprova_automatico,fk_id_grade,periodicidade,ativo,SerieAno,aulas,dias_semana) VALUES
+   (20,3,'Pré Fase 2','2',1,12,'1',1,2,1,'1,2,3,4,5'),
+   (21,7,'Berçário','0',1,12,'1',1,4,1,'1,2,3,4,5'),
+   (22,8,'Maternal Fase 1','1',1,12,'1',1,5,1,'1,2,3,4,5'),
+   (23,8,'Maternal Fase 2','2',1,12,'1',1,6,1,'1,2,3,4,5'),
+   (24,8,'Maternal Fase 3','3',1,12,'1',1,7,1,'1,2,3,4,5'),
+   (25,5,'Termo 1','1',1,9,'2',1,9,5,'1,2,3,4,5'),
+   (26,5,'Termo 2','2',1,9,'2',1,10,5,'1,2,3,4,5'),
+   (27,9,'Termo 1','1',1,10,'2',1,9,5,'1,2,3,4,5'),
+   (28,9,'Termo 2','2',1,10,'2',1,10,5,'1,2,3,4,5'),
+   (29,9,'Termo 3','3',1,10,'2',1,11,5,'1,2,3,4,5');
+INSERT INTO ge_ciclos (id_ciclo,fk_id_curso,n_ciclo,sg_ciclo,aprova_automatico,fk_id_grade,periodicidade,ativo,SerieAno,aulas,dias_semana) VALUES
+   (30,9,'Termo 4','4',1,10,'2',1,12,5,'1,2,3,4,5'),
+   (31,1,'Multisseriada','M',0,7,'1',1,0,5,'1,2,3,4,5'),
+   (32,10,'AEE','U',1,13,'1',1,0,5,'1,2,3,4,5'),
+   (34,9,'Termo 4 Diurno','4X',0,1,'2',1,112,5,'1,2,3,4,5'),
+   (35,5,'Multisseriada - EJA','M',1,9,'2',1,0,5,'1,2,3,4,5'),
+   (36,5,'Multisseriada - Eja - TMP','M',1,9,'2',1,0,5,'1,2,3,4,5'),
+   (37,5,'Multisseriada - Eja Tarde','T',1,9,'2',1,0,5,'1,2,3,4,5');
+
+INSERT INTO ge_tp_ensino (id_tp_ens,n_tp_ens,sigla,sequencia,at_seg) VALUES
+   (3,'Ensino Infantil','EI',NULL,1),
+   (4,'Ensino Fundamental','EF',NULL,1),
+   (5,'EJA','EJ',NULL,1),
+   (6,'Extracurricular','EXT',NULL,1);
+
+INSERT INTO ge_curso_grade (id_cg,fk_id_ciclo,fk_id_grade,padrao) VALUES
+   (14,6,1,1),
+   (16,7,1,1),
+   (18,8,1,1),
+   (23,9,1,1),
+   (25,10,2,1),
+   (26,11,2,1),
+   (27,12,2,1),
+   (28,14,2,1),
+   (31,25,9,1),
+   (41,26,9,1);
+INSERT INTO ge_curso_grade (id_cg,fk_id_ciclo,fk_id_grade,padrao) VALUES
+   (42,27,10,1),
+   (43,28,10,1),
+   (44,29,10,1),
+   (45,30,10,1),
+   (46,1,4,1),
+   (47,2,4,1),
+   (48,3,6,1),
+   (49,4,6,1),
+   (50,5,6,1),
+   (51,31,7,1);
+INSERT INTO ge_curso_grade (id_cg,fk_id_ciclo,fk_id_grade,padrao) VALUES
+   (52,31,8,0),
+   (54,21,12,1),
+   (55,24,12,1),
+   (56,23,12,1),
+   (57,22,12,1),
+   (58,19,12,1),
+   (59,20,12,1),
+   (60,32,13,1),
+   (61,33,1,1),
+   (62,34,1,1);
+  
+INSERT INTO ge_areas (id_area, n_area,sg_area) VALUES
+   (1,'Ciências Humanas','CH');
+   (2, 'Ciências da Natureza','CNT'),
+   (3, 'Linguagens','LCT'),
+   (4, 'Matemática','MT'),
+   (9, 'Parte Diversificada','PD'),
+   (10, 'Complementar Integral','CI'),
+   (11, 'Infantil','I');
+
+INSERT INTO ge_disciplinas (id_disc,n_disc,sg_disc,fk_id_area,status_disc) VALUES
+   (1,'genérica','',0,1),
+   (6,'Matemática','Mat',4,1),
+   (9,'Língua Portuguesa','Port',3,1),
+   (10,'Arte','Arte',3,1),
+   (11,'Educação Física','EdFis',3,1),
+   (12,'Ciências Naturais','Cien',2,1),
+   (13,'História','Hist',1,1),
+   (14,'Geografia','Geo',1,1),
+   (15,'L.E.Inglês','Ing',9,1),
+   (16,'I.Filosofia','Filo',9,1);
+INSERT INTO ge_disciplinas (id_disc,n_disc,sg_disc,fk_id_area,status_disc) VALUES
+   (17,'Música','Mus',9,1),
+   (18,'Ativ. Musicais','AtM',10,0),
+   (19,'Ativ. Exp. Corporal','AEC',10,0),
+   (20,'Ativ. Informática','AtInf',10,1),
+   (21,'Educ. Reflexão','ER',10,0),
+   (22,'L.E.Espanhol','Esp',10,0),
+   (23,'Orient. Estudos','OE',10,0),
+   (24,'Orient. Leitura e Escrita','OLE',10,0),
+   (25,'Orient. Práticas Operatórias','OPO',10,0),
+   (26,'Libras','Lib',9,1);
+INSERT INTO ge_disciplinas (id_disc,n_disc,sg_disc,fk_id_area,status_disc) VALUES
+   (27,'Infantil','Inf',11,1),
+   (28,'AEE','AEE',9,1),
+   (29,'Produção Textual','PT',3,0),
+   (30,'Língua Inglesa','LI',3,1),
+   (49,'Infantil -  PDI','PDI',11,1);
