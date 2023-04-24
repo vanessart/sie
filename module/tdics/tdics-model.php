@@ -466,7 +466,7 @@ class tdicsModel extends MainModel {
         }
         $mongo = new mongoCrude('Tdics');
         $frenq = $mongo->query('presece_' . $id_pl, $filter);
-        $cht = [];
+        $ch = [];
         foreach ($frenq as $v) {
             if (!empty($v->ch)) {
                 foreach ($v->ch as $id_pessoa => $fp) {
