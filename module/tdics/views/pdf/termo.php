@@ -13,7 +13,7 @@ $pdf->mgt = 0;
 <img src="<?= HOME_URI ?>/includes/images/maker/tdics.png" alt="alt"/>
 <br /><br />
 <div style="text-align: center; font-weight: bold; font-size: 20px">
-    PROJETO - NÚCLEOS WIT - TDICs
+    PROJETO - PARNAÍBA - MAKER LABS
 </div>
 <br />
 <div style="text-align: center; font-weight: bold; font-size: 19px; color: red">
@@ -32,13 +32,13 @@ $pdf->mgt = 0;
     <?= $n_pessoa ?>, matriculad<?= toolErp::sexoArt($sexo) ?> no <?= $turmaEsc ?> 
     na <?= $n_inst ?>,
     <br /><br />
-    AUTORIZO a participação d<?= toolErp::sexoArt($sexo) ?> alun<?= toolErp::sexoArt($sexo) ?>   no Projeto Wit, conforme segue:
+    AUTORIZO a participação d<?= toolErp::sexoArt($sexo) ?> alun<?= toolErp::sexoArt($sexo) ?> no Projeto MAKER LABS, conforme segue:
 </div>
 <br /><br />
 <table style="width: 100%; margin: auto; font-weight: bold; font-size: 15px"  cellspacing=0 cellpadding=2 bordercolor="666633"> 
     <tr>
         <td>
-            NÚCLEO WIT (Escola):
+            NÚCLEO (Escola):
         </td>
         <td colspan="3">
             <?= $n_polo ?>
