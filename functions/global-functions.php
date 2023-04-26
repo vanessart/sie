@@ -213,3 +213,34 @@ function dateMySql($date, $format = 'd/m/Y')
 function data($data){
     return date("d/m/Y", strtotime($data));
 }
+
+public function file_get_contents_by_curl($url, $method = "POST", $data = []) {
+	$timeout = 5;
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => $timeout,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => $method,
+        CURLOPT_POSTFIELDS => $data,
+        CURLOPT_HTTPHEADER => array(
+            "Accept: */*",
+            "cache-control: no-cache"
+        ),
+    ));
+    $ret = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+
+    if ( !empty($err) ) {
+        // return $this->removeHTML($err);
+    	return $err;
+    } else {
+        // return $this->removeHTML($ret);
+        return $ret;
+    }
+
+}
