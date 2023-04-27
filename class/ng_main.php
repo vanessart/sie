@@ -74,7 +74,7 @@ class ng_main {
             unset($array);
             return $alunos;
 
-        } elseif ($this->tentativa < $this->tentativaMax) {
+        } elseif (self::$tentativa < self::$tentativaMax) {
 
             try {
 
