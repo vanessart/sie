@@ -1,6 +1,7 @@
 <?php
 $ra = filter_input(INPUT_POST, 'ra', FILTER_UNSAFE_RAW);
 $uf = filter_input(INPUT_POST, 'uf', FILTER_UNSAFE_RAW);
+$dados = [];
 if ($ra && $uf) {
     $dados = rest::exibirFichaAluno($ra, $uf);
 }
