@@ -13,14 +13,14 @@
  */
 class ng_main {
 
-    protected const TENTATIVA = 0;
-    protected const tentativaMax = 2;
+    protected static $tentativa = 0;
+    protected static $tentativaMax = 2;
     /**
      * 
      * @param type $pesquisa Nome ou id_pessoa
      */
     public static function alunoPesquisa($pesquisa, $id_inst = null, $limit = 100, $semTurma = null) {
-        self::TENTATIVA++;
+        self::$tentativa++;
 
         $pesquisa = trim($pesquisa);
         if ($id_inst) {
