@@ -13,8 +13,8 @@
  */
 class ng_main {
 
-    protected $tentativa = 0;
-    protected $tentativaMax = 2;
+    protected const $tentativa = 0;
+    protected const $tentativaMax = 2;
     /**
      * 
      * @param type $pesquisa Nome ou id_pessoa
