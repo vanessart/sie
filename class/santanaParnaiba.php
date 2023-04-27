@@ -33,11 +33,10 @@ class santanaParnaiba extends integracao {
 
 	public static function dadosAuth()
 	{
-		$this->name = "Autenticação";
-		$this->endpoint = "token";
-		$this->method = "POST";
-		$this->contentType = null;
-
-		$dados = $this->dadosCLI[$element]['dados'] ?? null;
+		$this->dadosCLI[$element]['name'] = "Autenticação";
+		$this->dadosCLI[$element]['endpoint'] = "token";
+		$this->dadosCLI[$element]['method'] = "POST";
+		$this->dadosCLI[$element]['contentType'] = [ "Content-Type: application/x-www-form-urlencoded" ];
+		$this->dadosCLI[$element]['dados'] = "";
 	}
 }
