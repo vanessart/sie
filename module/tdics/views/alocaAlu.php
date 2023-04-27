@@ -9,6 +9,11 @@ if (toolErp::id_nilvel() == 8) {
 }
 $cursos = sql::idNome('tdics_curso');
 $escolas = ng_escolas::idEscolas([1]);
+
+echo '<pre>';
+print_r($escolas);
+var_dump($id_inst, $escolas[$id_inst]);
+
 if ($id_inst && empty($escolas[$id_inst])) {
     ?>
     <div class="alert alert-danger">
