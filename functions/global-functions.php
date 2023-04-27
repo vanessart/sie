@@ -214,7 +214,7 @@ function data($data){
     return date("d/m/Y", strtotime($data));
 }
 
-public function file_get_contents_by_curl($url, $method = "POST", $header = [], $data = []) {
+function file_get_contents_by_curl($url, $method = "POST", $header = [], $data = []) {
 	$timeout = 5;
 
 	$_header = [
