@@ -237,7 +237,12 @@ class UserLogin {
             // Obtém o ID do usuário
             $id_user = (int) $fetch['id_user'];
 
-            $expira = str_replace('-', '', $fetch['expira']);
+            if (!empty($fetch['expira'])) {
+                $expira = str_replace('-', '', $fetch['expira']);
+            } else {
+                $expira = $fetch['expira'];
+            }
+
             if ($expira != 0 && $expira > date("Ymd")) {
                 tool::alert("Seu Acesso expirou");
             }
