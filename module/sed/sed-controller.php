@@ -687,7 +687,7 @@ class sedController extends MainController {
         require ABSPATH . '/includes/structure/footer.php';
     }
 
-        public function relatProfTurma() {
+    public function relatProfTurma() {
         $this->title = 'Gestão Educacional';
         $this->requiredPage('sed/relatProfTurma');
         $this->requireLogin();
@@ -698,7 +698,7 @@ class sedController extends MainController {
         require ABSPATH . '/includes/structure/footer.php';
     }
  
-        public function carometroProf() {
+    public function carometroProf() {
         $this->title = 'Gestão Educacional';
         $this->requiredPage('sed/carometroProf');
         $this->requireLogin();
@@ -708,7 +708,8 @@ class sedController extends MainController {
         require_once ABSPATH . '/module/sed/views/carometroProf.php';
         require ABSPATH . '/includes/structure/footer.php';
     }
-         public function consultarm() {
+
+    public function consultarm() {
         $this->title = 'Gestão Educacional';
         $this->requiredPage('sed/consultarm');
         $this->requireLogin();
@@ -722,6 +723,17 @@ class sedController extends MainController {
     public function integracaoAlunos() {
         $model = $this->load_model('sed/sed-model');
         $model->integracaoAlunos(1);
+    }
+
+    public function import() {
+        $this->title = 'Gestão Educacional';
+        $this->requiredPage('sed/import');
+        $this->requireLogin();
+        require ABSPATH . '/includes/structure/header.php';
+        $model = $this->load_model('sed/sed-model');
+        require ABSPATH . '/includes/structure/menu.php';
+        require_once ABSPATH . '/module/sed/views/import.php';
+        require ABSPATH . '/includes/structure/footer.php';
     }
     
 }

@@ -25,7 +25,8 @@ $menu[2] = [
             'Consulta' => ['url' => '/sed/consulta']
         ]
     ],
-    'CID' => ['url' => '/sed/cid']
+    'CID' => ['url' => '/sed/cid'],
+    'Import Manual' => ['url' => '/sed/import'],
 ];
 
 //Informações
