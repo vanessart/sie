@@ -1414,3 +1414,7 @@ INSERT INTO ge_disciplinas (id_disc,n_disc,sg_disc,fk_id_area,status_disc) VALUE
    (29,'Produção Textual','PT',3,0),
    (30,'Língua Inglesa','LI',3,1),
    (49,'Infantil -  PDI','PDI',11,1);
+
+INSERT INTO ge_situacao_sed (id_sit_sed, sit_sed,sit_sieb,sit_agrupamento,sit_layout) VALUES
+   (1, 'FREQUENTE','Frequente',1,'Frequente');
+
