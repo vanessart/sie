@@ -13,11 +13,15 @@
  */
 class ng_main {
 
+    protected $tentativa = 0;
+    protected $tentativaMax = 2;
     /**
      * 
      * @param type $pesquisa Nome ou id_pessoa
      */
     public static function alunoPesquisa($pesquisa, $id_inst = null, $limit = 100, $semTurma = null) {
+        $this->tentativa++;
+
         $pesquisa = trim($pesquisa);
         if ($id_inst) {
             $id_inst = " AND i.id_inst = $id_inst ";
@@ -69,6 +73,26 @@ class ng_main {
             }
             unset($array);
             return $alunos;
+
+        } elseif ($this->tentativa < $this->tentativaMax) {
+
+            try {
+
+                $integracao = new integracao();
+                if (empty($integracao)) {
+                    throw new Exception("Nenhuma resposta da integracao de alunos");
+                }
+
+                if (empty($integracao['status'])) {
+                    throw new Exception($integracao['message']);
+                }
+
+                return self::alunoPesquisa($pesquisa, $id_inst, $limit, $semTurma);
+
+            } catch (Exception $e) {
+                return null;
+            }
+
         }
     }
 
