@@ -19,12 +19,12 @@ class sedModel extends MainModel {
      * @param object $controller Objeto do controlador
      */
     public function __construct($db = false, $controller = null) {
-// Configura o DB (PDO)
+        // Configura o DB (PDO)
         $this->db = new crud();
-// Configura o controlador
+        // Configura o controlador
         $this->controller = $controller;
 
-//seta o select dinamico
+        //seta o select dinamico
         if ($opt = formErp::jqOption()) {
             $metodo = $opt[0];
             if (in_array($metodo, get_class_methods($this))) {
@@ -1611,5 +1611,36 @@ class sedModel extends MainModel {
             . $matriculadoAEE;
 
         return $sql;
+    }
+
+    public function integracaoAlunos() 
+    {
+        try {
+            $integracao = new integracao();
+            if (empty($integracao)) {
+                throw new Exception("Nenhuma resposta da integracao de alunos");
+            }
+
+            $run = $integracao->alunos();
+            if (empty($run['status'])) {
+                throw new Exception($run['message'], $run['code']);
+            }
+
+            $r = [
+                'status' => true,
+                'message' => 'Sucesso',
+                'code' => 0,
+            ];
+
+        } catch (Exception $e) {
+            $r = [
+                'status' => false,
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ];
+        }
+
+        echo '<pre>';
+        var_dump($r);
     }
 }

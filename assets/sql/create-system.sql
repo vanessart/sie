@@ -1051,7 +1051,7 @@ VALUES (1, 'MASTER', 1), (26, 'Supervisor', 1), (61, 'Suporte Técnico', 1);
 
 
 INSERT INTO instancia
-VALUES (NULL, 'Administração', 0, 1,, NULL, 0, 1, 0);
+VALUES (NULL, 'Administração', 0, 1, 0, NULL, 0, 1, 0);
 
 INSERT INTO predio (n_predio,sigla,descricao,ativo,cep,logradouro,num,complemento,bairro,cidade,uf,tel1,tel2,tel3) VALUES
    ('Administração','Adm','',1,'00000-000','RUA A','1','','BAIRRO','CIDADE','UF','1111-2222',NULL,NULL);
@@ -1201,8 +1201,6 @@ INSERT INTO acesso_gr VALUES(NULL, 1, 4, 43);
 INSERT INTO acesso_gr VALUES(NULL, 1, 4, 44);
 INSERT INTO acesso_gr VALUES(NULL, 1, 4, 8);
 INSERT INTO acesso_gr VALUES(NULL, 1, 4, 10);
-
-
 
 INSERT INTO acesso_pessoa VALUES(NULL, 1, 1, 1);
 
@@ -1380,7 +1378,7 @@ INSERT INTO ge_curso_grade (id_cg,fk_id_ciclo,fk_id_grade,padrao) VALUES
    (62,34,1,1);
   
 INSERT INTO ge_areas (id_area, n_area,sg_area) VALUES
-   (1,'Ciências Humanas','CH');
+   (1,'Ciências Humanas','CH'),
    (2, 'Ciências da Natureza','CNT'),
    (3, 'Linguagens','LCT'),
    (4, 'Matemática','MT'),

@@ -10,7 +10,7 @@ class integracao {
 	protected $dadosCLI = null;
 	protected $cliente = null;
 
-	public function __construct(){
+	public function setDados(){
 		try {
 			$this->dadosCLI = $this->getDadosCLI();
 
@@ -18,7 +18,7 @@ class integracao {
 				throw new Exception("Cliente não Configurado", 1001);
 			}
 
-			if ( is_null($this->dadosCLI['class']) ) {
+			if ( !isset($this->dadosCLI['class']) ) {
 				throw new Exception("Class Cliente não Configurado", 1002);
 			}
 
@@ -35,11 +35,17 @@ class integracao {
 	public function auth()
 	{
 		try {
+			$sd = $this->setDados();
+			if (isset($sd['status']) && $sd['status'] === false) {
+				throw new Exception($sd['message'], $sd['code']);
+			}
+
 			// atribui os dados do endpoint de autenticacão
 			$dados = $this->cliente::dadosAuth();
+			echo '<pre>';var_dump($this->cliente);
 
 			$r = $this->execCurl($dados);
-			if ()
+			var_dump($r);
 			$ret = self::defaultReturn();
 
 		} catch (Exception $e) {
@@ -61,7 +67,19 @@ class integracao {
 
 	public function alunos()
 	{
-		// code...
+		try {
+			$a = $this->auth();
+			if (isset($a['status']) && $a['status'] === false) {
+				throw new Exception($a['message'], $a['code']);
+			}
+
+			$ret = self::defaultReturn();
+
+		} catch (Exception $e) {
+			$ret = self::defaultReturnFail($e);
+		}
+
+		return $ret;
 	}
 
 	public function getDadosCLI()
@@ -69,11 +87,8 @@ class integracao {
 		if ($this->dadosCLI === null) {
 			// identifica o cliente e pega os dados para a integracao
 			$this->dadosCLI = [
-				'user' => '',
-				'pass' => '',
-				'grant_type' => '',
-				'ep_Auth' => '',
-			]
+				'class' => 'santanaParnaiba',
+			];
 		}
 		return $this->dadosCLI;
 	}

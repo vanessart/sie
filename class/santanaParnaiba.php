@@ -37,6 +37,10 @@ class santanaParnaiba extends integracao {
 		$this->dadosCLI[$element]['endpoint'] = "token";
 		$this->dadosCLI[$element]['method'] = "POST";
 		$this->dadosCLI[$element]['contentType'] = [ "Content-Type: application/x-www-form-urlencoded" ];
-		$this->dadosCLI[$element]['dados'] = "";
+		$this->dadosCLI[$element]['dados'] = [
+			"username" => "59959338000118",
+			"password" => "575uYp+K",
+			"grant_type" => "password",
+		];
 	}
 }

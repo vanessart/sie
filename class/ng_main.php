@@ -74,7 +74,7 @@ class ng_main {
             unset($array);
             return $alunos;
 
-        } elseif (self::$tentativa < self::$tentativaMax) {
+        /*} elseif (self::$tentativa < self::$tentativaMax) {
 
             try {
 
@@ -92,7 +92,7 @@ class ng_main {
             } catch (Exception $e) {
                 return null;
             }
-
+        */
         }
     }
 

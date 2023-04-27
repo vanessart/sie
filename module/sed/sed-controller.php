@@ -718,5 +718,10 @@ class sedController extends MainController {
         require_once ABSPATH . '/module/sed/views/consultarm.php';
         require ABSPATH . '/includes/structure/footer.php';
     }
+
+    public function integracaoAlunos() {
+        $model = $this->load_model('sed/sed-model');
+        $model->integracaoAlunos(1);
+    }
     
 }
