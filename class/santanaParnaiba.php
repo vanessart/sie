@@ -7,9 +7,16 @@ class santanaParnaiba extends integracao {
 		// $this->endpoint = $this->dadosCLI[$element]['endpoint'] ?? null;
 		// $this->method = $this->dadosCLI[$element]['method'] ?? null;
 		$this->url = "https://intranet.santanadeparnaiba.sp.gov.br/APIFramework/";
-		// $this->contentType = $this->dadosCLI[$element]['contenttype'] ?? null;
+		// $this->header = $this->dadosCLI[$element]['header'] ?? null;
 
 		// $dados = $this->dadosCLI[$element]['dados']	
+	}
+
+	public function getDadosCLI()
+	{
+		return [
+			'url' => $this->url
+		];
 	}
 
 	public static function getDataEndPoint($element)
@@ -23,24 +30,27 @@ class santanaParnaiba extends integracao {
 		$this->name = $this->dadosCLI[$element]['name'] ?? null;
 		$this->endpoint = $this->dadosCLI[$element]['endpoint'] ?? null;
 		$this->method = $this->dadosCLI[$element]['method'] ?? null;
-		$this->url = $this->dadosCLI[$element]['url'] ?? null;
-		$this->contentType = $this->dadosCLI[$element]['contenttype'] ?? null;
+		$this->_url = $this->dadosCLI[$element]['url'] ?? null;
+		$this->header = $this->dadosCLI[$element]['header'] ?? null;
 
 		$dados = $this->dadosCLI[$element]['dados'] ?? null;
 
 		return $dados;
 	}
 
-	public static function dadosAuth()
+	public function dadosAuth()
 	{
-		$this->dadosCLI[$element]['name'] = "Autenticação";
-		$this->dadosCLI[$element]['endpoint'] = "token";
-		$this->dadosCLI[$element]['method'] = "POST";
-		$this->dadosCLI[$element]['contentType'] = [ "Content-Type: application/x-www-form-urlencoded" ];
-		$this->dadosCLI[$element]['dados'] = [
-			"username" => "59959338000118",
-			"password" => "575uYp+K",
-			"grant_type" => "password",
+		return [
+			'name' => "Autenticação",
+			'url' => $this->url,
+			'endpoint' => "token",
+			'method' => "POST",
+			'header' => [ "Content-Type: application/x-www-form-urlencoded" ],
+			'dados' => [
+				"username" => "59959338000118",
+				"password" => "575uYp+K",
+				"grant_type" => "password"
+			],
 		];
 	}
 }

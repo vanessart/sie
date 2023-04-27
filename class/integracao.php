@@ -2,17 +2,15 @@
 
 class integracao {
 
-	protected $method = 'GET';
-	protected $url = '';
-	protected $endpoint = '';
-	protected $name = '';
+	public array $_data;
 	protected $token = null;
 	protected $dadosCLI = null;
 	protected $cliente = null;
 
-	public function setDados(){
+	public function __construct()
+	{
 		try {
-			$this->dadosCLI = $this->getDadosCLI();
+			$this->dadosCLI = $this->getCLI();
 
 			if ( is_null($this->dadosCLI) ) {
 				throw new Exception("Cliente não Configurado", 1001);
@@ -28,24 +26,50 @@ class integracao {
 		} catch (Exception $e) {
 			return self::defaultReturnFail($e);
 		}
+	}
 
-		$this->url = $this->dadosCLI['url'];
+	public function __set($key, $value)
+	{
+		$this->_data[$key] = $value;
+	}
+
+	public function __get($key)
+	{
+		return $this->_data[$key];
+	}
+
+	public function setDados($data = []){
+		
+		if ( is_null($data) ) {
+			throw new Exception("Nenhum dado configurado", 1004);
+		}
+
+		foreach ($data as $key => $value) {
+			$this->$key = $value;
+		}
+
+		// echo '<pre>';var_dump($this);die();
+		if ( empty($this->_data['dados']) ) {
+			$dados = [];
+		} else {
+			$dados = $this->_data['dados'];
+		}
+
+		return $dados;
 	}
 
 	public function auth()
 	{
 		try {
-			$sd = $this->setDados();
-			if (isset($sd['status']) && $sd['status'] === false) {
-				throw new Exception($sd['message'], $sd['code']);
-			}
 
 			// atribui os dados do endpoint de autenticacão
-			$dados = $this->cliente::dadosAuth();
-			echo '<pre>';var_dump($this->cliente);
+			$da = $this->cliente->dadosAuth();
+			// echo '<pre>';var_dump($da);die();
 
+			$dados = $this->setDados($da);
+			// var_dump($dados);die();
 			$r = $this->execCurl($dados);
-			var_dump($r);
+			var_dump('zzz', $r);die();
 			$ret = self::defaultReturn();
 
 		} catch (Exception $e) {
@@ -82,12 +106,12 @@ class integracao {
 		return $ret;
 	}
 
-	public function getDadosCLI()
+	public function getCLI()
 	{
 		if ($this->dadosCLI === null) {
 			// identifica o cliente e pega os dados para a integracao
 			$this->dadosCLI = [
-				'class' => 'santanaParnaiba',
+				'class' => CLI_INTEGRACAO,
 			];
 		}
 		return $this->dadosCLI;
@@ -104,10 +128,14 @@ class integracao {
 
 	public function execCurl($dados = [])
 	{
+		// echo '<pre>';var_dump($this);die();
+
 		//
-		$ret = file_get_contents_by_curl($this->url . $this->endpoint, $this->method, $this->contentType, $dados);
+		$ret = file_get_contents_by_curl($this->_data['url'] . $this->_data['endpoint'], $this->_data['method'], $this->_data['header'], $dados);
+		echo '<pre>';var_dump($this->_data['url'] . $this->_data['endpoint'], $this->_data['method'], $this->_data['header'], $dados);
+		echo '<pre>';var_dump($ret);die();
 		if (empty($ret)) {
-			throw new Exception("API ". $this->name ." não retornou dados", 1);
+			throw new Exception("API ". $this->_data['name'] ." não retornou dados", 1);
 		}
 
 		// $r = json_decode($ret);

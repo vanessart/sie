@@ -237,6 +237,7 @@ function file_get_contents_by_curl($url, $method = "POST", $header = [], $data =
         CURLOPT_CUSTOMREQUEST => $method,
         CURLOPT_POSTFIELDS => $data,
         CURLOPT_HTTPHEADER => $_header,
+        CURLOPT_VERBOSE => true
     ));
     $ret = curl_exec($curl);
     $err = curl_error($curl);
