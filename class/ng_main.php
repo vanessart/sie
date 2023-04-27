@@ -20,7 +20,7 @@ class ng_main {
      * @param type $pesquisa Nome ou id_pessoa
      */
     public static function alunoPesquisa($pesquisa, $id_inst = null, $limit = 100, $semTurma = null) {
-        $this->tentativa++;
+        self::$tentativa++;
 
         $pesquisa = trim($pesquisa);
         if ($id_inst) {
