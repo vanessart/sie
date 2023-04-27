@@ -214,8 +214,18 @@ function data($data){
     return date("d/m/Y", strtotime($data));
 }
 
-public function file_get_contents_by_curl($url, $method = "POST", $data = []) {
+public function file_get_contents_by_curl($url, $method = "POST", $header = [], $data = []) {
 	$timeout = 5;
+
+	$_header = [
+		"Accept: */*",
+        "cache-control: no-cache",
+	];
+
+	if (empty($header)) {
+		$_header = array_merge($_header, $header);
+	}
+
     $curl = curl_init();
     curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
@@ -226,10 +236,7 @@ public function file_get_contents_by_curl($url, $method = "POST", $data = []) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => $method,
         CURLOPT_POSTFIELDS => $data,
-        CURLOPT_HTTPHEADER => array(
-            "Accept: */*",
-            "cache-control: no-cache"
-        ),
+        CURLOPT_HTTPHEADER => $_header,
     ));
     $ret = curl_exec($curl);
     $err = curl_error($curl);

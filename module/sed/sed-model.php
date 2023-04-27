@@ -752,13 +752,14 @@ class sedModel extends MainModel {
 
     public function salaAula($periodo, $id_inst = null) {
         if (!empty($id_inst)) {
-            $id_inst = " and t.fk_id_inst = $id_inst";
+            $id_inst = " AND i.id_inst = $id_inst";
         }
         $sql = "SELECT "
         . " t.fk_id_inst as id_inst, t.id_turma, COUNT(ta.fk_id_pessoa) as alunos "
         . " FROM ge_turma_aluno ta "
         . " JOIN ge_turmas t on t.id_turma = ta.fk_id_turma "
         . " JOIN ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl AND pl.at_pl = 1 "
+        . " JOIN instancia i on i.id_inst = t.fk_id_inst "
         . " where 1 "
         . $id_inst
         . " GROUP BY t.id_turma";
@@ -774,6 +775,7 @@ class sedModel extends MainModel {
                 . " FROM ge_turmas t "
                 . " JOIN ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl AND pl.at_pl = 1 "
                 . " JOIN ge_ciclos ci on ci.id_ciclo = t.fk_id_ciclo "
+                . " JOIN instancia i on i.id_inst = t.fk_id_inst "
                 . " where t.periodo = '$periodo' "
                 . $id_inst;
         $query = pdoSis::getInstance()->query($sql);
