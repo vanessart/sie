@@ -46,6 +46,7 @@ $menu[10] = [
 //professor
 $menu[24] = [
     'Início' => ['url' => '/tdics/index'],
+    'Gerenciar Alunos' => ['url' => '/tdics/alocaAlu'],
     'Chamada' => ['url' => '/tdics/chamada'],
     'Lista Piloto' => ['url' => '/tdics/listaPiloto'],
 ];
