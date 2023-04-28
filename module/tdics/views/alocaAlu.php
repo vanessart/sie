@@ -2,7 +2,9 @@
 if (!defined('ABSPATH'))
     exit;
 
-if (toolErp::id_nilvel() == 8) {
+$travaPorEscola = in_array(toolErp::id_nilvel(), [8, 24]);
+
+if ($travaPorEscola) {
     $id_inst = toolErp::id_inst();
 } else {
     $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
@@ -68,7 +70,7 @@ if ($id_polo) {
     if (!empty($alunos)) {
         $token = formErp::token('tdics_turma_aluno', 'delete');
         foreach ($alunos as $k => $v) {
-            if (in_array($id_pl, $libera) || toolErp::id_nilvel() != 8) {
+            if (in_array($id_pl, $libera) || !$travaPorEscola) {
                 $alunos[$k]['ac'] = '<button onclick="transf(' . $v['id_ta'] . ')" class="btn btn-info">Transferir</button>';
             }
             $alunos[$k]['ex'] = formErp::submit('Excluir', $token, $hidden + ['1[id_ta]' => $v['id_ta']]);
@@ -98,7 +100,7 @@ if ($id_polo) {
         Gerenciamento de Alunos
     </div>
     <?php
-    if (toolErp::id_nilvel() != 8) {
+    if (!$travaPorEscola) {
         echo formErp::select('id_inst', $escolas, 'Escola', $id_inst, 1, $hidden) . '<br>';
     }
     ?>
@@ -180,8 +182,8 @@ if ($id_polo) {
             <div class="col-3" style="text-align: center; padding: 10px">
                 <?php
                 if ($id_turma && $id_inst) {
-                    if (toolErp::id_nilvel() != 8 || @$qtAlunos[$id_turma] < $setup['qt_turma']) {
-                        if (in_array($id_pl, $libera) || toolErp::id_nilvel() != 8) {
+                    if (!$travaPorEscola || @$qtAlunos[$id_turma] < $setup['qt_turma']) {
+                        if (in_array($id_pl, $libera) || !$travaPorEscola) {
                             ?>
                             <form action="<?= HOME_URI ?>/tdics/def/formNovoAluno" id="novoAluno" target="frame" method="POST">
                                 <?=
@@ -212,7 +214,7 @@ if ($id_polo) {
                         </button>
                         <?php
                     }
-                } elseif (toolErp::id_nilvel() != 8 && $id_turma) {
+                } elseif (!$travaPorEscola && $id_turma) {
                     ?>
                     <button style="width: 100%" type="button" class="btn btn-secondary" >
                         Para Incluir Aluno, Selecione uma Escola
