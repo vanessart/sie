@@ -27,6 +27,7 @@ $sql = "select  $fields from ge_turma_aluno ta "
         . " AND situacao like 'Frequente' "
         . " and at_pl = 1 "
         . " order by n_pessoa ";
+        echo $sql;
 $query = pdoSis::getInstance()->query($sql);
 $ae = $query->fetchAll(PDO::FETCH_ASSOC);
 foreach ($ae as $v) {
