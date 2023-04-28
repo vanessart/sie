@@ -54,7 +54,7 @@ services:
         # conectar :===> mongo -usie_user -psie_pwd mongodb://sie_db
   mongo-express:
     image: mongo-express
-    container_name: mexpress
+    container_name: "${DB_MONGO_NAMESUFIX}-mexpress"
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${DB_MONGO_USER}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${DB_MONGO_PASS}
@@ -65,7 +65,7 @@ services:
       - mongo
     restart: unless-stopped
     ports:
-      - "8081:8081"    
+      - ${DB_MONGOEXP_PORT}:${DB_MONGOEXP_PORT_IMG}
     networks:
       net_sie:
         ipv4_address: ${NETWORK_RANGE}${DB_MONGO_SUFIX_IP_express}
