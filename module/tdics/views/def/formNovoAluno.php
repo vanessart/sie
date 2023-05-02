@@ -16,7 +16,7 @@ if ($turmaCurso['periodo'] == 'M') {
 } elseif ($turmaCurso['periodo'] == 'T') {
     $periodoCurso = "'M'";
 } else {
-    $periodoCurso = "'M', 'T'";
+    $periodoCurso = "'M', 'T', 'I'";
 }
 $fields = " p.id_pessoa, p.n_pessoa, t.codigo, ta.chamada, id_ciclo";
 $sql = "select  $fields from ge_turma_aluno ta "
