@@ -12,14 +12,16 @@ $polo = filter_input(INPUT_POST, 'polo');
 
 $turmaCurso = sql::get(['tdics_turma', 'tdics_curso'], '*', ['id_turma' => $id_turma], 'fetch');
 if ($turmaCurso['periodo'] == 'M') {
-    $periodoCurso = 'T';
+    $periodoCurso = "'T'";
+} elseif ($turmaCurso['periodo'] == 'T') {
+    $periodoCurso = "'M'";
 } else {
-    $periodoCurso = 'M';
+    $periodoCurso = "'M', 'T'";
 }
 $fields = " p.id_pessoa, p.n_pessoa, t.codigo, ta.chamada, id_ciclo";
 $sql = "select  $fields from ge_turma_aluno ta "
         . " join ge_turmas t on t.id_turma = ta.fk_id_turma and fk_id_ciclo not in (32) "
-        . " and periodo = '$periodoCurso' "
+        . " and periodo IN($periodoCurso) "
         . " join ge_ciclos ci on ci.id_ciclo = t.fk_id_ciclo "
         . " join pessoa p on p.id_pessoa = ta.fk_id_pessoa "
         . " join ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl "
