@@ -85,4 +85,4 @@ if (!empty($turmas)) {
 }
 
 
-$pdf->exec();
+// $pdf->exec();
