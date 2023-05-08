@@ -12,9 +12,9 @@ $polo = filter_input(INPUT_POST, 'polo');
 
 $turmaCurso = sql::get(['tdics_turma', 'tdics_curso'], '*', ['id_turma' => $id_turma], 'fetch');
 if ($turmaCurso['periodo'] == 'M') {
-    $periodoCurso = "'T', 'I' ";
+    $periodoCurso = "'T', 'I', 'N'";
 } else {
-    $periodoCurso = "'M', 'I'";
+    $periodoCurso = "'M', 'I', 'N'";
 }
 $fields = " p.id_pessoa, p.n_pessoa, t.codigo, ta.chamada, id_ciclo";
 $sql = "select  $fields from ge_turma_aluno ta "

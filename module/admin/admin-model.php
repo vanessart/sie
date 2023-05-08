@@ -80,7 +80,7 @@ class adminModel extends MainModel {
                 $left = null;
             }
             $sql = "SELECT "
-                   . " p.id_pessoa, p.n_pessoa, p.cpf, p.emailgoogle, GROUP_CONCAT(f.rm) rm "
+                   . " p.id_pessoa, p.n_pessoa, p.cpf, p.emailgoogle, GROUP_CONCAT(DISTINCT f.rm) rm "
                     . " FROM pessoa p "
                     . " $left JOIN ge_funcionario f on f.fk_id_pessoa = p.id_pessoa "
                     . $user
@@ -129,7 +129,7 @@ class adminModel extends MainModel {
     public function sisUser($id_sistema) {
         $sql = "SELECT "
                 . " p.n_pessoa, i.n_inst, p.id_pessoa, p.cpf, p.emailgoogle, "
-                . " GROUP_CONCAT(gr.n_gr) n_gr "
+                . " GROUP_CONCAT(DISTINCT gr.n_gr) n_gr "
                 . " FROM acesso_pessoa a "
                 . " JOIN acesso_gr g on g.fk_id_gr = a.fk_id_gr "
                 . " JOIN grupo gr on gr.id_gr = a.fk_id_gr "

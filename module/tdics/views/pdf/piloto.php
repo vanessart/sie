@@ -84,5 +84,4 @@ if (!empty($turmas)) {
     <?php
 }
 
-
 $pdf->exec();
