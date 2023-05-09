@@ -100,10 +100,13 @@ class tdicsController extends MainController {
         $this->title = 'TDICS';
         $this->requireLogin();
         $this->requiredPage('tdics/index');
-        require ABSPATH . '/includes/structure/header.php';
-        $model = $this->load_model('/tdics/tdics-model');
-        require_once ABSPATH . '/module/tdics/views/def/' . $_data . '.php';
-        require ABSPATH . '/includes/structure/footer.php';
+
+        if (file_exists(ABSPATH . '/module/tdics/views/def/' . $_data . '.php')) {
+            require ABSPATH . '/includes/structure/header.php';
+            $model = $this->load_model('/tdics/tdics-model');
+            require_once ABSPATH . '/module/tdics/views/def/' . $_data . '.php';
+            require ABSPATH . '/includes/structure/footer.php';
+        }
     }
 
     public function pdf() {
