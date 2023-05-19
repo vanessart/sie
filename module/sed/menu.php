@@ -27,6 +27,7 @@ $menu[2] = [
     ],
     'CID' => ['url' => '/sed/cid'],
     'Import Manual' => ['url' => '/sed/import'],
+    'Import Automatizada' => ['url' => '/sed/integracaoAlunos'],
 ];
 
 //Informações

@@ -6,7 +6,7 @@ class santanaParnaiba extends integracao {
 		// $this->name = $this->dadosCLI[$element]['name'] ?? null;
 		// $this->endpoint = $this->dadosCLI[$element]['endpoint'] ?? null;
 		// $this->method = $this->dadosCLI[$element]['method'] ?? null;
-		$this->url = "https://intranet.santanadeparnaiba.sp.gov.br/APIFramework/";
+		$this->url = "https://intranet.santanadeparnaiba.sp.gov.br/";
 		// $this->header = $this->dadosCLI[$element]['header'] ?? null;
 
 		// $dados = $this->dadosCLI[$element]['dados']	
@@ -43,7 +43,7 @@ class santanaParnaiba extends integracao {
 		return [
 			'name' => "Autenticação",
 			'url' => $this->url,
-			'endpoint' => "token",
+			'endpoint' => "APIFramework/token",
 			'method' => "POST",
 			'header' => [ "Content-Type: application/x-www-form-urlencoded" ],
 			'dados' => [
@@ -51,6 +51,44 @@ class santanaParnaiba extends integracao {
 				"password" => "575uYp+K",
 				"grant_type" => "password"
 			],
+		];
+	}
+
+	public function dadosEscolas()
+	{
+		return [
+			'name' => "Escolas",
+			'url' => $this->url,
+			'endpoint' => "SisEduc-API/integracao/lm/colegio",
+			'method' => "GET",
+			'header' => [ "Authorization: Bearer ".  $this->getToken() ],
+			'dados' => [],
+		];
+	}
+
+	public function dadosTurmas($inCodColegio = null)
+	{
+		$dados = !empty($inCodColegio) ? ['inCodColegio' => $inCodColegio] : [];
+		return [
+			'name' => "Turmas",
+			'url' => $this->url,
+			'endpoint' => "SisEduc-API/integracao/lm/turma",
+			'method' => "GET",
+			'header' => [ "Authorization: Bearer ".  $this->getToken() ],
+			'dados' => $dados,
+		];
+	}
+
+	public function dadosAlunos($inCodColegio = null)
+	{
+		$dados = !empty($inCodColegio) ? ['inCodColegio' => $inCodColegio] : [];
+		return [
+			'name' => "Alunos",
+			'url' => $this->url,
+			'endpoint' => "SisEduc-API/integracao/lm/aluno",
+			'method' => "GET",
+			'header' => [ "Authorization: Bearer ".  $this->getToken() ],
+			'dados' => $dados,
 		];
 	}
 }

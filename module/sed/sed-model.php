@@ -1621,6 +1621,16 @@ class sedModel extends MainModel {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
             }
 
+            $run = $integracao->escolas();
+            if (empty($run['status'])) {
+                throw new Exception($run['message'], $run['code']);
+            }
+
+            $run = $integracao->turmas();
+            if (empty($run['status'])) {
+                throw new Exception($run['message'], $run['code']);
+            }
+
             $run = $integracao->alunos();
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
