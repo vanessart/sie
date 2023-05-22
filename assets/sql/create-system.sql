@@ -9,7 +9,7 @@ CREATE TABLE `tema_default` (
   `id_td` int(11) NOT NULL AUTO_INCREMENT,
   `n_td` varchar(255) NOT NULL,
   PRIMARY KEY (`id_td`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `pessoa` (
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `emailgoogle` (`emailgoogle`),
   UNIQUE KEY `emailgoogle_2` (`emailgoogle`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
@@ -1033,6 +1033,281 @@ CREATE TABLE `ge_rg_tipo` (
   `descr_rt` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_rt`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_aluno_nsdp`;
+CREATE TABLE `ge_aluno_nsdp` (
+  `id_nsdp` int(11) NOT NULL AUTO_INCREMENT,
+  `status_nsdp` tinyint(1) NOT NULL DEFAULT '1',
+  `fk_id_pessoa` int(50) NOT NULL,
+  `n_pessoa` varchar(254) CHARACTER SET utf8 NOT NULL,
+  `n_social` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `dt_nasc` date DEFAULT NULL,
+  `email` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
+  `ativo` int(10) DEFAULT NULL,
+  `cpf` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `sexo` varchar(2) CHARACTER SET utf8 DEFAULT NULL,
+  `ra` varchar(20) DEFAULT NULL,
+  `ra_dig` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `ra_uf` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `rg` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `rg_dig` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `rg_oe` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `rg_uf` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `dt_rg` date DEFAULT NULL,
+  `certidao` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `sus` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `pai` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `cpf_pai` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `mae` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `cpf_mae` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `mae_rg` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `mae_rg_dig` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `mae_rg_oe` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `dt_mae_rg` date DEFAULT NULL,
+  `pai_rg` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `pai_rg_dig` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `pai_rg_oe` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `dt_pai_rg` date DEFAULT NULL,
+  `mae_rg_uf` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `pai_rg_uf` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `responsavel` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `dt_resp` date DEFAULT NULL,
+  `cpf_respons` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `email_respons` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `nacionalidade` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `uf_nasc` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `cidade_nasc` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `deficiencia` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `cor_pele` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `tel1` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `ddd1` int(11) DEFAULT NULL,
+  `tel2` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `ddd2` int(11) DEFAULT NULL,
+  `tel3` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `ddd3` int(11) DEFAULT NULL,
+  `obs` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `novacert_cartorio` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_acervo` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_regcivil` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_ano` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_tipolivro` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_numlivro` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_folha` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_termo` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `novacert_controle` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `dt_gdae` date DEFAULT NULL,
+  `nis` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `emailgoogle` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `google_user_id` varchar(100) DEFAULT NULL,
+  `duplicado_nome_data` int(11) DEFAULT NULL,
+  `inep` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_nsdp`),
+  UNIQUE KEY `ra` (`ra`),
+  UNIQUE KEY `cpf` (`cpf`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `ge_aluno_responsavel`;
+CREATE TABLE `ge_aluno_responsavel` (
+  `fk_id_pessoa_aluno` int(11) NOT NULL,
+  `fk_id_pessoa_resp` int(11) NOT NULL,
+  `fk_id_rt` int(11) DEFAULT NULL,
+  `responsavel` int(11) NOT NULL DEFAULT '0',
+  `bloqueado` int(2) DEFAULT NULL,
+  `retirada` int(11) DEFAULT '0',
+  `app` int(11) DEFAULT '0',
+  `atualizado` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `trabalho` varchar(255) DEFAULT NULL,
+  `trabalho_endereco` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`fk_id_pessoa_aluno`,`fk_id_pessoa_resp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `ge_responsavel_tipo`;
+CREATE TABLE `ge_responsavel_tipo` (
+  `id_rt` int(11) NOT NULL AUTO_INCREMENT,
+  `n_rt` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_rt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `estados`;
+CREATE TABLE `estados` (
+  `id_estado` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(4) NOT NULL,
+  `sigla` char(2) NOT NULL,
+  `n_estado` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_estado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(1, '12', 'AC', 'Acre');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(2, '27', 'AL', 'Alagoas');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(3, '13', 'AM', 'Amazonas');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(4, '16', 'AP', 'Amapá');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(5, '29', 'BA', 'Bahia');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(6, '23', 'CE', 'Ceará');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(7, '53', 'DF', 'Distrito Federal');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(8, '32', 'ES', 'Espírito Santo');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(9, '52', 'GO', 'Goiás');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(10, '21', 'MA', 'Maranhão');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(11, '31', 'MG', 'Minas Gerais');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(12, '50', 'MS', 'Mato Grosso do Sul');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(13, '51', 'MT', 'Mato Grosso');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(14, '15', 'PA', 'Pará');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(15, '25', 'PB', 'Paraíba');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(16, '26', 'PE', 'Pernambuco');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(17, '22', 'PI', 'Piauí');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(18, '41', 'PR', 'Paraná');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(19, '33', 'RJ', 'Rio de Janeiro');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(20, '24', 'RN', 'Rio Grande do Norte');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(21, '11', 'RO', 'Rondônia');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(22, '14', 'RR', 'Roraima');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(23, '43', 'RS', 'Rio Grande do Sul');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(24, '42', 'SC', 'Santa Catarina');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(25, '28', 'SE', 'Sergipe');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(26, '35', 'SP', 'São Paulo');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(27, '17', 'TO', 'Tocantins');
+INSERT INTO ge2.estados
+(id_estado, codigo_ibge, sigla, n_estado)
+VALUES(28, 'EX', 'EX', 'EX');
+
+DROP TABLE IF EXISTS `ge_situacao_final`;
+CREATE TABLE `ge_situacao_final` (
+  `id_sf` int(11) NOT NULL,
+  `n_sf` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_sf`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(0, 'Indefinida');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(1, 'Promovido');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(2, 'Promovido p/ Conselho');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(3, 'Retido p/ Rendimento');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(4, 'Retido p/ Frequência');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(5, 'Retido p/ Conselho');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(6, 'Aguardando Conselho');
+INSERT INTO ge2.ge_situacao_final
+(id_sf, n_sf)
+VALUES(7, 'Promovido (recurso)');
+
+
+ALTER TABLE ge2.ge_situacao_final MODIFY COLUMN id_sf int auto_increment NOT NULL;
+ALTER TABLE ge2.ge_situacao_final 
+AUTO_INCREMENT=8;
+
+
+DROP TABLE IF EXISTS `sed_prontuario`;
+CREATE TABLE `sed_prontuario` (
+  `id_pront` int(11) NOT NULL AUTO_INCREMENT,
+  `n_pront` varchar(255) NOT NULL,
+  `ordem` int(11) NOT NULL,
+  `at_pront` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_pront`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `sed_prontuario_up`;
+CREATE TABLE `sed_prontuario_up` (
+  `id_pu` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `n_pu` varchar(255) DEFAULT NULL,
+  `fk_id_pront` int(11) NOT NULL,
+  `end` text NOT NULL,
+  `dt_pu` date NOT NULL,
+  PRIMARY KEY (`id_pu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `gt_retirada`;
+CREATE TABLE `gt_retirada` (
+  `id_re` int(11) NOT NULL AUTO_INCREMENT,
+  `n_re` varchar(255) NOT NULL,
+  `parente` varchar(50) DEFAULT NULL,
+  `doc` varchar(255) DEFAULT NULL,
+  `fk_id_doc` int(11) DEFAULT NULL,
+  `fk_id_pessoa` int(11) NOT NULL,
+  `telefones` varchar(255) DEFAULT NULL,
+  `foto` varchar(1000) DEFAULT NULL,
+  `ativo` int(11) DEFAULT NULL,
+  `fk_id_pessoa_resp` int(11) DEFAULT NULL,
+  `fk_id_rt` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_re`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tipo_doc`;
+CREATE TABLE `tipo_doc` (
+  `id_doc` int(11) NOT NULL AUTO_INCREMENT,
+  `n_doc` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_doc`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO tipo_doc (id_doc, n_doc) VALUES
+   (1, 'CPF'),
+   (2, 'RG');
 
 INSERT INTO ge_rg_tipo (id_rt,n_rt,descr_rt) VALUES
    (1,'RG','Registro Geral'),
