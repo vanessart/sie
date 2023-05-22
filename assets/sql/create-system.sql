@@ -1026,6 +1026,19 @@ ALTER TABLE ge2.ge_ciclos MODIFY COLUMN aprova_automatico int NULL;
 ALTER TABLE ge2.ge_ciclos MODIFY COLUMN periodicidade varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL;
 ALTER TABLE ge2.ge_aloca_disc MODIFY COLUMN ordem int DEFAULT 0 NULL;
 
+DROP TABLE IF EXISTS `ge_rg_tipo`;
+CREATE TABLE `ge_rg_tipo` (
+  `id_rt` int(11) NOT NULL AUTO_INCREMENT,
+  `n_rt` varchar(10) NOT NULL,
+  `descr_rt` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_rt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO ge_rg_tipo (id_rt,n_rt,descr_rt) VALUES
+   (1,'RG','Registro Geral'),
+   (2,'RNE','Registro Nacional de Estrangeiro '),
+   (3,'RNM','Registro Nacional Migratório');
+
 INSERT INTO ge_tp_aval (id_ta, n_ta) VALUES
    (1, 'Disciplinas'),
    (2, 'Habilidades');
