@@ -2,10 +2,6 @@
 @$id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 $polos = sql::idNome('tdics_polo');
 $cursos = sql::idNome('tdics_curso');
-$h['M1'] = '7h20 às 9h20';
-$h['M2'] = '9h20 às 11h20';
-$h['T1'] = '13h50 às 15h50';
-$h['T2'] = '15h50 às 17h50';
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 if (!$id_inst) {
     $id_inst = toolErp::id_inst();
@@ -81,7 +77,7 @@ if (!empty($nucleos)) {
                         <?= $v['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
                     </td>
                     <td>
-                        <?= $h[$v['periodo'].$v['horario']] ?>
+                        <?= $model->horario($v['fk_id_polo'], $v['periodo'], $v['horario']) ?>
                     </td>
                 </tr>
                 <?php
