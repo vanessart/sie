@@ -1706,3 +1706,4 @@ INSERT INTO ge_disciplinas (id_disc,n_disc,sg_disc,fk_id_area,status_disc) VALUE
 INSERT INTO ge_situacao_sed (id_sit_sed, sit_sed,sit_sieb,sit_agrupamento,sit_layout) VALUES
    (1, 'FREQUENTE','Frequente',1,'Frequente');
 
+ALTER TABLE ge2.tdics_horarios ADD fk_id_polo INT NULL AFTER id_horarios;

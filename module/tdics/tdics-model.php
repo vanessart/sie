@@ -46,6 +46,8 @@ class tdicsModel extends MainModel {
             $this->apagaCh();
         } elseif ($this->db->tokenCheck('tdics_cursoSet')) {
             $this->tdics_cursoSet();
+        } elseif ($this->db->tokenCheck('novoPolo')) {
+            $this->novoPolo();
         }
     }
 
@@ -358,14 +360,14 @@ class tdicsModel extends MainModel {
         return $array;
     }
 
-    public function horario($periodo, $horario) {
-        $h['M1'] = '7h20 às 9h20';
-        $h['M2'] = '9h20 às 11h20';
-        $h['T1'] = '13h50 às 15h50';
-        $h['T2'] = '15h50 às 17h50';
-        if (!empty($h[$periodo . $horario])) {
-            return $h[$periodo . $horario];
+    public function horario($fk_id_polo, $periodo, $horario) {
+        $h = $this->getHorarios($fk_id_polo, $periodo, $horario);
+        if (empty($h)) {
+            return '';
         }
+
+        $h = current($h);
+        return $h['inicio'] .' às '. $h['termino'];
     }
 
     public function relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, $print = null) {
@@ -558,7 +560,7 @@ class tdicsModel extends MainModel {
             . " JOIN tdics_curso tc ON tt.fk_id_curso = tc.id_curso "
             . " JOIN tdics_pl pl ON tt.fk_id_pl = pl.id_pl "
             . " JOIN tdics_polo tp ON tt.fk_id_polo = tp.id_polo "
-            . " JOIN tdics_horarios th ON tt.periodo = th.periodo AND tt.horario = th.horario "
+            . " LEFT JOIN tdics_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
             . " , tdics_setup ts "
             . " WHERE pl.ativo = 1 $sqlAux ";
         return $sql;
@@ -632,7 +634,7 @@ class tdicsModel extends MainModel {
             . " JOIN tdics_curso tc ON tt.fk_id_curso = tc.id_curso "
             . " JOIN tdics_pl pl ON tt.fk_id_pl = pl.id_pl "
             . " JOIN tdics_polo tp ON tt.fk_id_polo = tp.id_polo "
-            . " JOIN tdics_horarios th ON tt.periodo = th.periodo AND tt.horario = th.horario "
+            . " LEFT JOIN tdics_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
             . " , tdics_setup ts "
             . " WHERE pl.ativo = 1 $sqlAux "
             . " GROUP BY tp.n_polo, tc.n_curso, tt.periodo ";
@@ -661,10 +663,74 @@ class tdicsModel extends MainModel {
             . " JOIN tdics_curso tc ON tt.fk_id_curso = tc.id_curso "
             . " JOIN tdics_pl pl ON tt.fk_id_pl = pl.id_pl "
             . " JOIN tdics_polo tp ON tt.fk_id_polo = tp.id_polo "
-            . " JOIN tdics_horarios th ON tt.periodo = th.periodo AND tt.horario = th.horario "
+            . " LEFT JOIN tdics_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
             . " , tdics_setup ts "
             . " WHERE pl.ativo = 1 $sqlAux ";
-        $array = pdoSis::fetch($sql);
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $r = [];
+        if (!empty($array)) {
+            $r = $array;
+        }
+        return $r;
+    }
+
+    public function novoPolo() {
+        if (!isset($_POST[1])) {
+            toolErp::alertModal("Algo de errado não está certo. Os dados esperados não foram enviados.");
+            return;
+        }
+
+        $horario = [];
+        $ins = $_POST[1];
+
+        if (!empty($ins['horario'])) {
+            $horario = $ins['horario'];
+            unset($ins['horario']);
+        }
+
+        $id_polo = $this->db->ireplace('tdics_polo', $ins);
+
+        if (!empty($id_polo)) {
+            foreach ($horario as $periodo => $value) {
+                foreach ($value as $horario => $horas) {
+                    $insH = [
+                        'id_horarios' => $horas['id_horarios']??null,
+                        'fk_id_polo' => $id_polo,
+                        'periodo' => $periodo,
+                        'horario' => $horario,
+                        'inicio' => $horas['inicio'],
+                        'termino' => $horas['termino'],
+                    ];
+
+                    $this->db->ireplace('tdics_horarios', $insH, 1);
+                }
+            }
+        }
+    }
+
+    public function getHorarios($fk_id_polo=NULL, $periodo=NULL, $horario=NULL)
+    {
+        $sqlAux = '';
+        if (!empty($fk_id_polo)) {
+            $sqlAux .= " AND th.fk_id_polo = $fk_id_polo ";
+        }
+        if (!empty($periodo)) {
+            $sqlAux .= " AND th.periodo = '$periodo' ";
+        }
+        if (!empty($horario)) {
+            $sqlAux .= " AND th.horario = $horario ";
+        }
+
+        $sql = "SELECT tp.id_polo, tp.n_polo, th.* "
+            . " FROM tdics_horarios th "
+            . " JOIN tdics_polo tp ON th.fk_id_polo = tp.id_polo "
+            . " WHERE th.ativo = 1 $sqlAux "
+            . " ORDER BY th.horario, th.periodo";
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+
         $r = [];
         if (!empty($array)) {
             $r = $array;

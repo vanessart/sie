@@ -124,7 +124,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
                         <?= $model->diaSemana($v['dia_sem']) ?>
                     </td>
                     <td>
-                        <?= $model->horario($v['periodo'], $v['horario']) ?>
+                        <?= $model->horario($v['fk_id_polo'], $v['periodo'], $v['horario']) ?>
                     </td>
                     <td>
                         <form action="<?= HOME_URI ?>/tdics/alunoCad" target="_parent" method="POST">

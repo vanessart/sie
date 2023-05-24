@@ -1,10 +1,6 @@
 <?php
 extract($_POST);
 
-$h['M1'] = '7h20 às 9h20';
-$h['M2'] = '9h20 às 11h20';
-$h['T1'] = '13h50 às 15h50';
-$h['T2'] = '15h50 às 17h50';
 ob_start();
 $pdf = new pdf();
 $pdf->headerSet = null;
@@ -69,7 +65,7 @@ $pdf->mgt = 0;
             HORÁRIO:
         </td>
         <td>
-            <?= $h[$periodo . $horario] ?>
+            <?= $model->horario($id_polo, $periodo, $horario) ?>
         </td>
     </tr>
 </table>

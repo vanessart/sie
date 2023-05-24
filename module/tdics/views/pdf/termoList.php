@@ -21,12 +21,6 @@ if ($a) {
         $a[$k]['n_curso'] = $cursos[$v['fk_id_curso']];
     }
 
-
-    $h['M1'] = '7h20 às 9h20';
-    $h['M2'] = '9h20 às 11h20';
-    $h['T1'] = '13h50 às 15h50';
-    $h['T2'] = '15h50 às 17h50';
-
     ob_start();
     $pdf = new pdf();
     $pdf->headerSet = null;
@@ -93,7 +87,7 @@ if ($a) {
                     HORÁRIO:
                 </td>
                 <td>
-                    <?= $h[$v['periodo'] . $v['horario']] ?>
+                    <?= $model->horario($v['id_polo'], $v['periodo'], $v['horario']) ?>
                 </td>
             </tr>
         </table>

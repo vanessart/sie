@@ -86,7 +86,7 @@ if ($id_pessoa) {
                             Horário
                         </td>
                         <td>
-                            <?= $model->horario($v['periodo'], $v['horario']) ?>
+                            <?= $model->horario($v['fk_id_polo'], $v['periodo'], $v['horario']) ?>
                         </td>
                     </tr>
 
