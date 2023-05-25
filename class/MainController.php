@@ -136,6 +136,8 @@ class MainController extends UserLogin {
         echo '<pre>';
         var_dump($this->permission_required); echo '<br>*****<br>';
         var_dump($this->userdata); echo '<br>*****<br>';
+        var_dump($this->check_permissions($this->permission_required, @$this->userdata['user_permissions'])); echo '<br>*****<br>';
+        die();
         if (!$this->check_permissions($this->permission_required, @$this->userdata['user_permissions'])) {
             ?>
             <script type="text/javascript"> window.location.href = "<?php echo HOME_URI; ?>/home";</script>                     
