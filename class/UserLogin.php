@@ -114,7 +114,6 @@ class UserLogin {
                         . " from pessoa "
                         . "join users on users.fk_id_pessoa = pessoa.id_pessoa "
                         . "where id_pessoa = " . $idx;
-                        echo '<br>'.$sql.'<br>';
                 $query = autenticador::getInstance()->query($sql);
                 $user_tmp = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -164,7 +163,6 @@ class UserLogin {
             $userdata['post'] = true;
         }
 
-        echo '<!-- 1 -->';
         // Verifica se existe algum dado de usuário para conferir
         if (!isset($userdata) || !is_array($userdata)) {
 
@@ -174,8 +172,6 @@ class UserLogin {
             return;
         }
 
-
-        echo '<!-- 2 -->';
         // Passa os dados do post para uma variável
         if ($userdata['post'] === true) {
             $post = true;
@@ -186,7 +182,6 @@ class UserLogin {
         // Remove a chave post do array userdata
         unset($userdata['post']);
 
-        echo '<!-- 3 -->';
         // Verifica se existe algo a conferir
         if (empty($userdata)) {
             $this->logged_in = false;
@@ -201,7 +196,6 @@ class UserLogin {
         // Extrai variáveis dos dados do usuário
         extract($userdata);
 
-        echo '<!-- 4 -->';
         // Verifica se existe um usuário e senha
         if (!isset($user) || !isset($user_password)) {
             $this->logged_in = false;
@@ -213,7 +207,6 @@ class UserLogin {
             return;
         }
 
-        echo '<!-- 5 -->';
         // Verifica se o usuário existe na base de dados
         //deu um erro ao mostrar a data 
         $fields = "`id_pessoa`, `n_pessoa`, `n_social`, `email`, `cpf`, `id_user`, `user_password`, users.`user_session_id`, `expira`, `horas`, emailgoogle, pessoa.google_user_id ";
@@ -224,7 +217,6 @@ class UserLogin {
                 . "OR (cpf = '$user' AND cpf NOT LIKE ''  ))"
                 . "AND users.ativo = 1 ";
         $query = autenticador::getInstance()->query($sql);
-        echo '<br>'.$sql.'<br>';
 
         // Verifica a consulta
         if (!$query) {

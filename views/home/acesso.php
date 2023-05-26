@@ -410,9 +410,6 @@
                                             ?>
                                             <?php echo current($v)['n_sistema'] ?>
                                         </a>
-                                        <!--div>
-                                            <?php var_dump($_SESSION['userdata']); ?>
-                                        </div-->
                                         <form id="<?php echo $k ?>" action="<?php echo $y['end_fr'] . '/' . $y['arquivo'] . '/'; ?>" method="POST">
                                             <input type="hidden" name="userdatasis[id_sistema]" value="<?php echo $y['id_fr'] == 1 ? $k : $y['fkid'] ?>" />
                                             <input type="hidden" name="userdatasis[id_nivel]" value="<?php echo $y['id_nivel'] ?>" />
