@@ -219,7 +219,7 @@ class UserLogin {
                 . "OR (cpf = '$user' AND cpf NOT LIKE ''  ))"
                 . "AND users.ativo = 1 ";
         $query = autenticador::getInstance()->query($sql);
-
+        echo '<br>'.$sql.'<br>';
 
         // Verifica a consulta
         if (!$query) {
