@@ -118,11 +118,9 @@ class UserLogin {
                 $user_tmp = $query->fetch(PDO::FETCH_ASSOC);
 
                 if (($user_tmp['user_session_id'] == substr(@$_POST['token'], 4)) || !empty($emailGoogle)) {
-                    echo '<br>validou session_id<br>';
                     $sql = "update users set user_session_id = '" . session_id() . "' where fk_id_pessoa = " . $idx;
                     $query = autenticador::getInstance()->query($sql);
                     if ($query) {
-                        echo '<br>atribuiu a Sessao<br>';
                         $_SESSION['userdata']['id_pessoa'] = $user_tmp['id_pessoa'];
                         $_SESSION['userdata']['n_pessoa'] = $user_tmp['n_pessoa'];
                         $_SESSION['userdata']['n_social'] = $user_tmp['n_social'];
@@ -135,13 +133,11 @@ class UserLogin {
                     }
                 }
             } else {
-                echo '<br>logout 1<br>';
                 $this->logout();
             }
         }
 
         if (@$_REQUEST['logout']) {
-            echo '<br>logout 2<br>';
             $this->logout();
         }
 
@@ -149,7 +145,6 @@ class UserLogin {
         // Tem que ser um array e não pode ser HTTP POST
         if (isset($_SESSION['userdata']) && !empty($_SESSION['userdata']) && is_array($_SESSION['userdata']) && !isset($_POST['userdata'])
         ) {
-            echo '<br>pegou da session<br>';
             // Configura os dados do usuário
             $userdata = $_SESSION['userdata'];
 
@@ -161,7 +156,6 @@ class UserLogin {
         // Tem que ser um array
         if (isset($_POST['userdata']) && !empty($_POST['userdata']) && is_array($_POST['userdata'])
         ) {
-            echo '<br>pegou do post<br>';
             // Configura os dados do usuário
             $userdata = $_POST['userdata'];
 
@@ -173,7 +167,6 @@ class UserLogin {
         if (!isset($userdata) || !is_array($userdata)) {
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
-            echo '<br>logout 3<br>';
             $this->logout();
 
             return;
@@ -195,7 +188,6 @@ class UserLogin {
             $this->login_error = null;
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
-            echo '<br>logout 4<br>';
             $this->logout();
 
             return;
@@ -210,7 +202,6 @@ class UserLogin {
             $this->login_error = null;
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
-            echo '<br>logout 5<br>';
             $this->logout();
 
             return;
@@ -233,7 +224,6 @@ class UserLogin {
             $this->login_error = 'Internal error.';
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
-            echo '<br>logout 6<br>';
             $this->logout();
 
             return;
@@ -261,12 +251,10 @@ class UserLogin {
             $this->login_error = 'Dados Incorretos';
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
-            echo '<br>logout 7<br>';
             $this->logout();
 
             return;
         }
-
 
         // Confere se a senha enviada pelo usuário bate com o hash do BD
         if ($this->phpass->CheckPassword($user_password, $fetch['user_password']) || isset($_SESSION['userdata']['user_session_id'])) {
@@ -277,7 +265,6 @@ class UserLogin {
                 $this->login_error = 'Erro ao indentificar a Sessão';
 
                 // Desconfigura qualquer sessão que possa existir sobre o usuário
-                echo '<br>logout 8<br>';
                 $this->logout();
 
                 return;
@@ -286,7 +273,6 @@ class UserLogin {
             // Se for um post
             if ($post) {
                 // Recria o ID da sessão
-                echo '<br>session_regenerate_id 3<br>';
                 @session_regenerate_id();
                 @$session_id = session_id();
 
@@ -403,7 +389,6 @@ class UserLogin {
             $this->login_error = 'A senha ou Usuário não confere';
 
             // Remove tudo
-            echo '<br>logout 9<br>';
             $this->logout();
 
             return;
@@ -427,7 +412,6 @@ class UserLogin {
         unset($_SESSION['userdata']);
 
         // Regenerates the session ID
-        echo '<br>session_regenerate_id 2<br>';
         @session_regenerate_id();
 
         if ($redirect === true) {
