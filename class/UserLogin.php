@@ -118,9 +118,11 @@ class UserLogin {
                 $user_tmp = $query->fetch(PDO::FETCH_ASSOC);
 
                 if (($user_tmp['user_session_id'] == substr(@$_POST['token'], 4)) || !empty($emailGoogle)) {
+                    echo '<br>validou session_id<br>';
                     $sql = "update users set user_session_id = '" . session_id() . "' where fk_id_pessoa = " . $idx;
                     $query = autenticador::getInstance()->query($sql);
                     if ($query) {
+                        echo '<br>atribuiu a Sessao<br>';
                         $_SESSION['userdata']['id_pessoa'] = $user_tmp['id_pessoa'];
                         $_SESSION['userdata']['n_pessoa'] = $user_tmp['n_pessoa'];
                         $_SESSION['userdata']['n_social'] = $user_tmp['n_social'];
@@ -147,6 +149,7 @@ class UserLogin {
         // Tem que ser um array e não pode ser HTTP POST
         if (isset($_SESSION['userdata']) && !empty($_SESSION['userdata']) && is_array($_SESSION['userdata']) && !isset($_POST['userdata'])
         ) {
+            echo '<br>pegou da session<br>';
             // Configura os dados do usuário
             $userdata = $_SESSION['userdata'];
 
@@ -158,6 +161,7 @@ class UserLogin {
         // Tem que ser um array
         if (isset($_POST['userdata']) && !empty($_POST['userdata']) && is_array($_POST['userdata'])
         ) {
+            echo '<br>pegou do post<br>';
             // Configura os dados do usuário
             $userdata = $_POST['userdata'];
 
