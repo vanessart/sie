@@ -37,6 +37,7 @@ class homeModel extends MainModel {
             unset($_SESSION['userdata']);
 
             // Regenerates the session ID
+            echo '<br>session_regenerate_id 1<br>';
             @session_regenerate_id();
 
             // Send the user to the login page

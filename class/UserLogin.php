@@ -274,6 +274,7 @@ class UserLogin {
             // Se for um post
             if ($post) {
                 // Recria o ID da sessão
+                echo '<br>session_regenerate_id 3<br>';
                 @session_regenerate_id();
                 @$session_id = session_id();
 
@@ -413,6 +414,7 @@ class UserLogin {
         unset($_SESSION['userdata']);
 
         // Regenerates the session ID
+        echo '<br>session_regenerate_id 2<br>';
         @session_regenerate_id();
 
         if ($redirect === true) {
