@@ -3,6 +3,12 @@
 class tdicsController extends MainController {
 
     public function index() {
+        echo '<pre>';
+        var_dump($_SESSION['userdata']);
+        echo '<br>****<br>';
+        var_dump($this->userdata);
+        die();
+
         $this->title = 'TDICS';
         $this->requiredPage('tdics/index');
         $this->requireLogin();
