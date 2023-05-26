@@ -133,11 +133,13 @@ class UserLogin {
                     }
                 }
             } else {
+                echo '<br>logout 1<br>';
                 $this->logout();
             }
         }
 
         if (@$_REQUEST['logout']) {
+            echo '<br>logout 2<br>';
             $this->logout();
         }
 
@@ -167,6 +169,7 @@ class UserLogin {
         if (!isset($userdata) || !is_array($userdata)) {
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
+            echo '<br>logout 3<br>';
             $this->logout();
 
             return;
@@ -188,6 +191,7 @@ class UserLogin {
             $this->login_error = null;
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
+            echo '<br>logout 4<br>';
             $this->logout();
 
             return;
@@ -202,6 +206,7 @@ class UserLogin {
             $this->login_error = null;
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
+            echo '<br>logout 5<br>';
             $this->logout();
 
             return;
@@ -224,6 +229,7 @@ class UserLogin {
             $this->login_error = 'Internal error.';
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
+            echo '<br>logout 6<br>';
             $this->logout();
 
             return;
@@ -251,6 +257,7 @@ class UserLogin {
             $this->login_error = 'Dados Incorretos';
 
             // Desconfigura qualquer sessão que possa existir sobre o usuário
+            echo '<br>logout 7<br>';
             $this->logout();
 
             return;
@@ -266,6 +273,7 @@ class UserLogin {
                 $this->login_error = 'Erro ao indentificar a Sessão';
 
                 // Desconfigura qualquer sessão que possa existir sobre o usuário
+                echo '<br>logout 8<br>';
                 $this->logout();
 
                 return;
@@ -391,6 +399,7 @@ class UserLogin {
             $this->login_error = 'A senha ou Usuário não confere';
 
             // Remove tudo
+            echo '<br>logout 9<br>';
             $this->logout();
 
             return;
