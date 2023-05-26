@@ -138,10 +138,12 @@ class UserLogin {
             }
         }
 
+        echo '<!-- 1 -->';
         if (@$_REQUEST['logout']) {
             $this->logout();
         }
 
+        echo '<!-- 2 -->';
         // Verifica se existe uma sessão com a chave userdata
         // Tem que ser um array e não pode ser HTTP POST
         if (isset($_SESSION['userdata']) && !empty($_SESSION['userdata']) && is_array($_SESSION['userdata']) && !isset($_POST['userdata'])
@@ -153,6 +155,7 @@ class UserLogin {
             $userdata['post'] = false;
         }
 
+        echo '<!-- 3 -->';
         // Verifica se existe um $_POST com a chave userdata
         // Tem que ser um array
         if (isset($_POST['userdata']) && !empty($_POST['userdata']) && is_array($_POST['userdata'])
