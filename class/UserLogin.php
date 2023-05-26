@@ -114,6 +114,7 @@ class UserLogin {
                         . " from pessoa "
                         . "join users on users.fk_id_pessoa = pessoa.id_pessoa "
                         . "where id_pessoa = " . $idx;
+                        echo '<br>'.$sql.'<br>';
                 $query = autenticador::getInstance()->query($sql);
                 $user_tmp = $query->fetch(PDO::FETCH_ASSOC);
 
