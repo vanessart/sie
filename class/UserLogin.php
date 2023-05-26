@@ -138,12 +138,10 @@ class UserLogin {
             }
         }
 
-        echo '<!-- 1 -->';
         if (@$_REQUEST['logout']) {
             $this->logout();
         }
 
-        echo '<!-- 2 -->';
         // Verifica se existe uma sessão com a chave userdata
         // Tem que ser um array e não pode ser HTTP POST
         if (isset($_SESSION['userdata']) && !empty($_SESSION['userdata']) && is_array($_SESSION['userdata']) && !isset($_POST['userdata'])
@@ -155,7 +153,6 @@ class UserLogin {
             $userdata['post'] = false;
         }
 
-        echo '<!-- 3 -->';
         // Verifica se existe um $_POST com a chave userdata
         // Tem que ser um array
         if (isset($_POST['userdata']) && !empty($_POST['userdata']) && is_array($_POST['userdata'])
@@ -167,6 +164,7 @@ class UserLogin {
             $userdata['post'] = true;
         }
 
+        echo '<!-- 1 -->';
         // Verifica se existe algum dado de usuário para conferir
         if (!isset($userdata) || !is_array($userdata)) {
 
@@ -177,6 +175,7 @@ class UserLogin {
         }
 
 
+        echo '<!-- 2 -->';
         // Passa os dados do post para uma variável
         if ($userdata['post'] === true) {
             $post = true;
@@ -187,6 +186,7 @@ class UserLogin {
         // Remove a chave post do array userdata
         unset($userdata['post']);
 
+        echo '<!-- 3 -->';
         // Verifica se existe algo a conferir
         if (empty($userdata)) {
             $this->logged_in = false;
@@ -201,6 +201,7 @@ class UserLogin {
         // Extrai variáveis dos dados do usuário
         extract($userdata);
 
+        echo '<!-- 4 -->';
         // Verifica se existe um usuário e senha
         if (!isset($user) || !isset($user_password)) {
             $this->logged_in = false;
@@ -212,6 +213,7 @@ class UserLogin {
             return;
         }
 
+        echo '<!-- 5 -->';
         // Verifica se o usuário existe na base de dados
         //deu um erro ao mostrar a data 
         $fields = "`id_pessoa`, `n_pessoa`, `n_social`, `email`, `cpf`, `id_user`, `user_password`, users.`user_session_id`, `expira`, `horas`, emailgoogle, pessoa.google_user_id ";
