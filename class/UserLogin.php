@@ -110,10 +110,10 @@ class UserLogin {
         if (isset($idx)) {
             if (is_numeric($idx)) {
 
-                $sql = "select user_session_id, id_pessoa, n_pessoa, n_social, emailgoogle as email, id_user, cpf "
-                        . " from pessoa "
-                        . "join users on users.fk_id_pessoa = pessoa.id_pessoa "
-                        . "where id_pessoa = " . $idx;
+                $sql = "SELECT user_session_id, id_pessoa, n_pessoa, n_social, emailgoogle AS email, id_user, cpf, emailgoogle AS mailGoogle "
+                        . " FROM pessoa "
+                        . "JOIN users ON users.fk_id_pessoa = pessoa.id_pessoa "
+                        . "WHERE id_pessoa = " . $idx;
                 $query = autenticador::getInstance()->query($sql);
                 $user_tmp = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -129,7 +129,7 @@ class UserLogin {
                         $_SESSION['userdata']['id_user'] = $user_tmp['id_user'];
                         $_SESSION['userdata']['user_password'] = '********';
                         $_SESSION['userdata']['user_session_id'] = session_id();
-                        $_SESSION['userdata']['user'] = !empty($user_tmp['cpf']) ? $user_tmp['cpf'] : $user_tmp['email'];
+                        $_SESSION['userdata']['user'] = !empty($user_tmp['cpf']) ? $user_tmp['cpf'] : ( !empty($user_tmp['email']) ? $user_tmp['email'] : $user_tmp['mailGoogle'] );
                     }
                 }
             } else {
