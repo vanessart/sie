@@ -228,6 +228,11 @@ function file_get_contents_by_curl($url, $method = "POST", $header = [], $data =
 
 	if (!empty($data)) {
 		$data = http_build_query($data);
+
+		if ($method == 'GET') {
+			$url .= '?'. $data;
+			$data = ''; 
+		}
 	}
 
     $curl = curl_init();

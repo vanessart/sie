@@ -722,7 +722,7 @@ class sedController extends MainController {
 
     public function integracaoAlunos() {
         $model = $this->load_model('sed/sed-model');
-        $model->integracaoAlunos(1);
+        $model->integracaoAlunos();
     }
 
     public function import() {

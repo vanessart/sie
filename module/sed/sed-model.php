@@ -1613,7 +1613,7 @@ class sedModel extends MainModel {
         return $sql;
     }
 
-    public function integracaoAlunos() 
+    public function integracaoAlunos($inCodColegio = null, $inNomeAluno = null, $inRa = null) 
     {
         try {
             $integracao = new integracao();
@@ -1626,12 +1626,12 @@ class sedModel extends MainModel {
                 throw new Exception($run['message'], $run['code']);
             }
 
-            $run = $integracao->turmas();
+            $run = $integracao->turmas($inCodColegio, true);
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
             }
 
-            $run = $integracao->alunos();
+            $run = $integracao->alunos($inCodColegio, $inNomeAluno, $inRa);
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
             }

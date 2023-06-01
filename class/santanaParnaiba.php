@@ -79,9 +79,12 @@ class santanaParnaiba extends integracao {
 		];
 	}
 
-	public function dadosAlunos($inCodColegio = null)
+	public function dadosAlunos($inCodColegio = null, $inNomeAluno = null, $inRa = null)
 	{
-		$dados = !empty($inCodColegio) ? ['inCodColegio' => $inCodColegio] : [];
+		$dados = [];
+		if (!empty($inCodColegio)) { $dados['inCodColegio'] = $inCodColegio; }
+		if (!empty($inNomeAluno)) { $dados['inNomeAluno'] = $inNomeAluno; }
+		if (!empty($inRa)) { $dados['inRa'] = $inRa; }
 		return [
 			'name' => "Alunos",
 			'url' => $this->url,

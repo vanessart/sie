@@ -115,7 +115,7 @@ class integracao {
 		return $ret;
 	}
 
-	public function turmas()
+	public function turmas($inCodColegio = null, $atualizaAluno = false)
 	{
 		try {
 			$a = $this->auth();
@@ -124,15 +124,15 @@ class integracao {
 			}
 
 			// atribui os dados do endpoint de escolas
-			$da = $this->cliente->dadosTurmas();
+			$da = $this->cliente->dadosTurmas($inCodColegio);
 
 			$dados = $this->setDados($da);
 
 			$r = $this->execCurl($dados);
 			
-			$this->turmasModel($r['Data']);
+			$dt = $this->turmasModel($r['Data'], $atualizaAluno);
 
-			$ret = self::defaultReturn();
+			$ret = self::defaultReturn(['resultado' => $dt]);
 
 		} catch (Exception $e) {
 			$ret = self::defaultReturnFail($e);
@@ -141,7 +141,7 @@ class integracao {
 		return $ret;
 	}
 
-	public function alunos()
+	public function alunos($inCodColegio = null, $inNomeAluno = null, $inRa = null)
 	{
 		try {
 			$a = $this->auth();
@@ -150,12 +150,12 @@ class integracao {
 			}
 
 			// atribui os dados do endpoint de escolas
-			$da = $this->cliente->dadosAlunos();
+			$da = $this->cliente->dadosAlunos($inCodColegio, $inNomeAluno, $inRa);
 
 			$dados = $this->setDados($da);
 
 			$r = $this->execCurl($dados);
-			
+
 			$this->alunosModel($r['Data']);
 
 			$ret = self::defaultReturn();
@@ -217,13 +217,17 @@ class integracao {
 		return $r;
 	}
 
-	public static function defaultReturn()
+	public static function defaultReturn($dados = [])
 	{
 		$ret = [
 			'status' => true,
 			'message' => 'Sucesso',
 			'code' => 0,
 		];
+
+		if (!empty($dados)) {
+			$ret = array_merge($ret, $dados);
+		}
 
 		return $ret;
 	}
@@ -270,12 +274,21 @@ class integracao {
 	    }
 	}
 
-	public function turmasModel($a=[])
+	public function turmasModel($a=[], $atualizaAluno = false)
 	{
 		$cont = 0;
 	    $max = 3;
+	    $idsTurmas = [];
 	    foreach ($a as $k => $v) {
 	        $cont++;
+
+			// limpa a chamada do aluno para não duplicar registros
+			if (!empty($atualizaAluno)) {
+				$sql = "UPDATE ge_turma_aluno "
+				. " SET chamada = NULL, situacao = NULL, fk_id_tas = NULL, fk_id_sit_sed = 0 "
+				. " WHERE fk_id_turma = " . $v['outCodTurma'];
+				$query = pdoSis::getInstance()->query($sql);
+			}
 
 	        $periodo = substr($v['outTurno'], 0, 1);    
 	        $letra = substr($v['outTurma'], -1);
@@ -299,19 +312,25 @@ class integracao {
 	            AND i.id_inst = ". $v['outCodColegio'] .";";
 	        // echo $sql;
 	        $query = pdoSis::getInstance()->query($sql);
+	        if ($query) {
+	        	$idsTurmas[] = $v['outCodTurma'];
+	        }
 
 	        // echo "<br><br>";
 	    }
+
+	    return $idsTurmas;
 	}
 
 	public function alunosModel($a=[])
 	{
 		$cont = 0;
 	    $max = 2;
+	    $alunosSie = [];
+
 	    echo '<pre>';
 	    foreach ($a as $k => $pes) {
 	        try {
-
 	            $cont++;
 	            // var_dump($pes);
 	            // echo "<br>";
@@ -364,14 +383,19 @@ class integracao {
 	            }
 
 	            // get _turmas
-	            $sql = "SELECT id_turma, codigo, periodo_letivo, fk_id_inst, prodesp, fk_id_pl from ge_turmas where id_turma = ". $pes['outCodTurma'];
-	            // print_r($sql);
-	            // echo "<br>";
-	            $query = pdoSis::getInstance()->query($sql);
-	            $turma = $query->fetch(PDO::FETCH_ASSOC);
-
+	            $turma = self::getTurmaErp($pes['outCodTurma']);
 	            if (empty($turma)) {
-	                throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
+
+	            	$r = $this->turmas($pes['outCodColegio'], true);
+	            	if (empty($r['status'])) {
+	                	throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
+	            	}
+
+	            	$turma = self::getTurmaErp($pes['outCodTurma']);
+	            }
+
+	            if ( !isset($alunosSie[$turma['id_turma']]) ) {
+	    			$alunosSie[$turma['id_turma']] = self::alunosTurmaErp($turma['id_turma']);
 	            }
 
 	            switch ($pes['outSituacao']) {
@@ -412,32 +436,90 @@ class integracao {
 	                    break;
 	            }
 
-	            $sql = "REPLACE INTO `ge_turma_aluno`("
-	            . " codigo_classe, fk_id_turma, periodo_letivo, fk_id_pessoa, fk_id_inst, chamada, situacao, dt_matricula, dt_gdae, fk_id_sit_sed, fk_id_tas"
-	            . " ) "
-	            . " VALUES ( "
-	            . "'" . $turma['codigo'] . "', " //codigo_classe
-	            . "'" . $turma['id_turma'] . "', " //fk_id_turma
-	            . "'" . $turma['periodo_letivo'] . "', " //periodo_letivo
-	            . "'" . $id_pessoa . "', " //fk_id_pessoa
-	            . "'" . $turma['fk_id_inst'] . "', " //fk_id_inst
-	            . "'" . $pes['outNumAlunoSalaDeAula'] . "', " //chamada
-	            . $situacao . ", " //situacao
-	            . "'" . date("Y-m-d") . "', " //dt_matricula
-	            . "'" . date("Y-m-d") . "', " //dt_gdae
-	            . $fk_id_sit_sed .", " //fk_id_sit_sed
-	            . $fk_id_tas //fk_id_tas
-	            . ")";
+	            $raSed = intval($pes['outNumRa']);
+                if (!empty($alunosSie[$turma['id_turma']][$raSed])) {
+                    $key = key($alunosSie[$turma['id_turma']][$raSed]);
+                    $aluno = $alunosSie[$turma['id_turma']][$raSed][$key];
+                    unset($alunosSie[$turma['id_turma']][$raSed][$key]);
+                    if (!current($alunosSie[$turma['id_turma']][$raSed])) {
+                        unset($alunosSie[$turma['id_turma']][$raSed]);
+                    }
+                } else {
+                    $aluno = [];
+                }
 
-	            // print_r($sql);
-	            // echo "<br>";
-	            $query = pdoSis::getInstance()->query($sql);
+                if (!empty($aluno))
+                {
+                	$sqlUp = '';
+                    if ($fk_id_sit_sed != $aluno['fk_id_sit_sed']) 
+                    {
+                        $sqlUp .= " , situacao = $situacao, "
+                                . " fk_id_sit_sed = $fk_id_sit_sed, "
+                                . " fk_id_tas = $fk_id_tas ";
+                    }
+
+                    $sql = "UPDATE ge_turma_aluno "
+                            . " SET chamada = '" . $pes['outNumAlunoSalaDeAula'] . "' "
+                            . $sqlUp
+                            . " WHERE id_turma_aluno = " . $aluno['id_turma_aluno'];
+                    $query = pdoSis::getInstance()->query($sql);
+
+				} else {
+
+		            $sql = "REPLACE INTO `ge_turma_aluno`("
+		            . " codigo_classe, fk_id_turma, periodo_letivo, fk_id_pessoa, fk_id_inst, chamada, situacao, dt_matricula, dt_gdae, fk_id_sit_sed, fk_id_tas"
+		            . " ) "
+		            . " VALUES ( "
+		            . "'" . $turma['codigo'] . "', " //codigo_classe
+		            . "'" . $turma['id_turma'] . "', " //fk_id_turma
+		            . "'" . $turma['periodo_letivo'] . "', " //periodo_letivo
+		            . "'" . $id_pessoa . "', " //fk_id_pessoa
+		            . "'" . $turma['fk_id_inst'] . "', " //fk_id_inst
+		            . "'" . $pes['outNumAlunoSalaDeAula'] . "', " //chamada
+		            . $situacao . ", " //situacao
+		            . "'" . date("Y-m-d") . "', " //dt_matricula
+		            . "'" . date("Y-m-d") . "', " //dt_gdae
+		            . $fk_id_sit_sed .", " //fk_id_sit_sed
+		            . $fk_id_tas //fk_id_tas
+		            . ")";
+
+		            // print_r($sql);
+		            // echo "<br>";
+		            $query = pdoSis::getInstance()->query($sql);
+
+		        }
 
 	        } catch (Exception $e) {
 	            echo "<span style='color: #f00'>";
 	            var_dump($e->getMessage(), $e->getCode(), $pes);
 	            echo "</span><br>";
 	        }
+
+	        $alunosSie = null;
+	        $aluno = null;
 	    }
 	}
+
+	public static function alunosTurmaErp($id_turma) {
+        $fields = 'id_turma_aluno, chamada, situacao, fk_id_turma, fk_id_sit_sed, fk_id_ciclo_aluno '
+                . ', id_pessoa, n_pessoa, dt_nasc, ra, ra_dig, ra_uf';
+        $aS = sql::get(['ge_turma_aluno', 'pessoa'], $fields, ['fk_id_turma' => $id_turma, '>' => 'chamada']);
+        foreach ($aS as $v) {
+            $alunosSie[$v['ra']][] = $v;
+        }
+        if (!empty($alunosSie)) {
+            return $alunosSie;
+        } else {
+            return [];
+        }
+    }
+
+    public static function getTurmaErp($id_turma) {
+        $sql = "SELECT id_turma, codigo, periodo_letivo, fk_id_inst, prodesp, fk_id_pl FROM ge_turmas WHERE id_turma = ". $id_turma;
+        // print_r($sql);
+        // echo "<br>";
+        $query = pdoSis::getInstance()->query($sql);
+        $turma = $query->fetch(PDO::FETCH_ASSOC);
+        return !empty($turma) ? $turma : [];
+    }
 }
