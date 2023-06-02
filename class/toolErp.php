@@ -1601,7 +1601,7 @@ class toolErp {
 
         // Save to file.
         $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($objPHPExcel);
-        $writer->save($nomearquivo.'xlsx');
+        $writer->save('php://output');
         exit;
     }
 
