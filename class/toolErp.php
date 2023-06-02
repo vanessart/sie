@@ -1547,53 +1547,47 @@ class toolErp {
         if (PHP_SAPI == 'cli')
             die('This example should only be run from a Web Browser');
 
-        /** Include PHPExcel */
-        require_once ABSPATH . '/app/excel/Classes/PHPExcel.php';
+        require_once ABSPATH . '/vendor/autoload.php';
 
         // Create new PHPExcel object
-        $objPHPExcel = new PHPExcel();
+        $objPHPExcel = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
-        // Set document properties
-        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-                ->setLastModifiedBy("dttie")
-                ->setTitle("arquivo")
-                ->setSubject("")
-                ->setDescription("")
-                ->setKeywords("office 2007 openxml php")
-                ->setCategory("");
-        $colu = 'A';
-        foreach ($dados[0] as $k => $v) {
-            $objPHPExcel->getActiveSheet()->getColumnDimension($colu)->setAutoSize(1);
-
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($colu . '1', $k);
-            $colu++;
-        }
-
-        $c = 2;
-        foreach ($dados as $key => $va) {
-            $col1 = 'A';
-            foreach ($dados[$key] as $key1 => $va1) {
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue($col1 . $c, $va1);
-                $col1++;
-            }
-
-            $c++;
-        }
+        // delete the default active sheet
+        $objPHPExcel->removeSheetByIndex(0);
 
         $nomearquivo = 'arquivo-'. date('YmdHis');
 
-        // Colocar uma borda em torno da área A1:A5
-        //$objPHPExcel->getActiveSheet()->getStyle('A2:E2')->getBorders()->getOutline()->setBorderStyle(PHPExcel_Style_Border::BORDER_MEDIUM);
-        // Rename worksheet
-        $objPHPExcel->getActiveSheet()->setTitle($nomearquivo);
+        // Create "Sheet 1" tab as the first worksheet.
+        // https://phpspreadsheet.readthedocs.io/en/latest/topics/worksheets/adding-a-new-worksheet
+        $worksheet1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($objPHPExcel, $nomearquivo);
+        $objPHPExcel->addSheet($worksheet1, 0);
 
-        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-        $objPHPExcel->setActiveSheetIndex(0);
+        $newData = array();
+        $firstLine = true;
+
+        foreach ($dados as $dataRow)
+        {
+            if ($firstLine)
+            {
+                $newData[] = array_keys($dataRow);
+                $firstLine = false;
+            }
+
+            $newData[] = array_values($dataRow);
+        }
+
+        $worksheet1->fromArray($newData);
+
+        // Change the widths of the columns to be appropriately large for the content in them.
+        foreach ($worksheet1->getColumnIterator() as $column)
+        {
+            $worksheet1->getColumnDimension($column->getColumnIndex())->setAutoSize(true);
+        }
 
         if ($download) {
             // Redirect output to a client’s web browser (Excel5)
             header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="' . $nomearquivo . '_' . date("Y_m_d") . '.xls"');
+            header('Content-Disposition: attachment;filename="' . $nomearquivo . '.xlsx"');
             header('Cache-Control: max-age=0');
             // If you're serving to IE 9, then the following may be needed
             header('Cache-Control: max-age=1');
@@ -1605,8 +1599,9 @@ class toolErp {
             header('Pragma: public'); // HTTP/1.0
         }
 
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-        $objWriter->save('php://output');
+        // Save to file.
+        $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($objPHPExcel);
+        $writer->save($nomearquivo.'xlsx');
         exit;
     }
 
@@ -1684,7 +1679,7 @@ class toolErp {
             }
        }
        return null;
-   }
+    }
 
     /**
      * Insere linha animada em CSS
