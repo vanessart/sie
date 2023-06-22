@@ -11,6 +11,8 @@ $periodo = filter_input(INPUT_POST, 'periodo');
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 $frequencia = filter_input(INPUT_POST, 'frequencia', FILTER_SANITIZE_NUMBER_INT);
 $buscar = filter_input(INPUT_POST, 'buscar', FILTER_SANITIZE_NUMBER_INT);
+$dataIni = filter_input(INPUT_POST, 'dataIni');
+$dataFim = filter_input(INPUT_POST, 'dataFim');
 $id_pl = $model->pl();
 $escolas = $model->escolaTdics($id_pl);
 $polos = sql::idNome('tdics_polo');
@@ -92,10 +94,18 @@ if (!empty($buscar)) {
             </div>
         </div>
         <br />
-        <div style="text-align: center; padding: 20px">
-            <button name="buscar" value="1" class="btn btn-success">
-                Buscar
-            </button>
+        <div class="row">
+            <div class="col-md">
+                <?= formErp::input('dataIni', 'Data Inicial', $dataIni, ' required', NULL, 'date') ?>
+            </div>
+            <div class="col-md">
+                <?= formErp::input('dataFim', 'Data Final', $dataFim, ' required', NULL, 'date') ?>
+            </div>
+            <div class="col-md">
+                <button name="buscar" value="1" class="btn btn-success">
+                    Buscar
+                </button>
+            </div>
         </div>
     </form>
     <div>

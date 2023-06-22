@@ -456,9 +456,11 @@ class tdicsModel extends MainModel {
         return $dados;
     }
 
-    public function frequeciaAluno($id_pl = null, $dataMaiorIgual = null) {
+    public function frequeciaAluno($id_pl = null, $dataMaiorIgual = null, $dataIni = null, $dataFim = null) {
         if ($dataMaiorIgual) {
             $filter = ['data' => ['$gt' => $dataMaiorIgual]];
+        } elseif (!empty($dataIni) && !empty($dataFim)) {
+            $filter = ['data' => ['$gte' => $dataIni, '$lte' => $dataFim]]; 
         } else {
             $filter = [];
         }
