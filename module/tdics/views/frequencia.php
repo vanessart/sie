@@ -51,6 +51,8 @@ if (!empty($buscar)) {
                         'id_inst_sieb' => $id_inst_sieb,
                         'id_polo' => $id_polo,
                         'periodo' => $periodo,
+                        'dataIni' => $dataIni,
+                        'dataFim' => $dataFim,
                         'id_curso' => $id_curso,
                         'frequencia' => $frequencia
                     ])
