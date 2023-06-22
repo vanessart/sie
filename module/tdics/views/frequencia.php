@@ -17,7 +17,7 @@ $id_pl = $model->pl();
 $escolas = $model->escolaTdics($id_pl);
 $polos = sql::idNome('tdics_polo');
 if (!empty($buscar)) {
-    $dados = $model->relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia);
+    $dados = $model->relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, null, $dataIni, $dataFim);
     if ($dados) {
         $id_polo = $dados['geral']['id_polo'];
         if (!empty($dados['alunos'])) {
@@ -96,10 +96,10 @@ if (!empty($buscar)) {
         <br />
         <div class="row">
             <div class="col-md">
-                <?= formErp::input('dataIni', 'Data Inicial', $dataIni, ' required', NULL, 'date') ?>
+                <?= formErp::input('dataIni', 'Data Inicial', $dataIni, NULL, NULL, 'date') ?>
             </div>
             <div class="col-md">
-                <?= formErp::input('dataFim', 'Data Final', $dataFim, ' required', NULL, 'date') ?>
+                <?= formErp::input('dataFim', 'Data Final', $dataFim, NULL, NULL, 'date') ?>
             </div>
             <div class="col-md">
                 <button name="buscar" value="1" class="btn btn-success">

@@ -370,7 +370,7 @@ class tdicsModel extends MainModel {
         return $h['inicio'] .' às '. $h['termino'];
     }
 
-    public function relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, $print = null) {
+    public function relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, $print = null, $dataIni = null, $dataFim = null) {
         $id_pl = $this->pl();
         if ($id_polo) {
             $id_polo_ = " and t.fk_id_polo = $id_polo ";
@@ -382,7 +382,7 @@ class tdicsModel extends MainModel {
             return;
         }
 
-        $ch = $this->frequeciaAluno();
+        $ch = $this->frequeciaAluno($dataIni, $dataFim);
 
         if ($periodo) {
             $periodo = " and t.periodo = '$periodo' ";
