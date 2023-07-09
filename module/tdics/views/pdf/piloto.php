@@ -12,7 +12,7 @@ ob_start();
 $pdf = new pdf();
 $pdf->mgt = '30';
 $pdf->orientation = 'L';
-$pdf->headerAlt = '<img style="height: 100px" src="' . ABSPATH . '/includes/images/topo.jpg"/>';
+$pdf->headerAlt = '<img style="height: 100px" src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>';
 
 if (!empty($turmas)) {
     $c = 1;

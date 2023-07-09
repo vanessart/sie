@@ -185,7 +185,7 @@ $token = DB::sqlKey('googleLogin');
             }
 
             .bg-login{
-                /*background-image: url('<?= HOME_URI ?>/includes/images/login/bg/bg-login.png');*/
+                /*background-image: url('<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/login/bg/bg-login.png');*/
                 height: 100vh;
                 background-position: bottom center;
                 background-size: cover;
@@ -374,7 +374,7 @@ $token = DB::sqlKey('googleLogin');
                         <div class="row">
                             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6 px-0 bg-card-inputs bg-card-gradient ">
                                 <div class="bg-white px-3 " style="border-right: 2px solid #333;border-radius: 4px 2px 0px 0px;">
-                                    <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo_Educ_PNG.png" class="w-100 img-logo" alt="">
+                                    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/login/logotipos/logo_Educ_PNG.png" class="w-100 img-logo" alt="">
                                 </div>
                                 <div class="px-4">
                                     <p class="text-white text-center mt-4 text-seja-bem ">
@@ -413,7 +413,7 @@ $token = DB::sqlKey('googleLogin');
                             <div class="col-12 col-md-6 py-3">
                                 <div class="">
                                     <div class="d-flex justify-content-end">
-                                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sie-vertical.png" class=" text-center img-logo-sie-topo" alt=""> -->
+                                        <!-- <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/login/logotipos/logo-sie-vertical.png" class=" text-center img-logo-sie-topo" alt=""> -->
                                     </div>
                                     <div id="g_id_onload"
                                          data-client_id="<?= API_GOOGLE ?>"
@@ -473,7 +473,7 @@ $token = DB::sqlKey('googleLogin');
                         </p>
                     </div>
                     <div class="col-md-1 pt-2 px-0 mt-2 align-logo-footer">
-                        <!-- <img src="<?= HOME_URI ?>/includes/images/login/logotipos/logo-sie-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sie-footer"> -->
+                        <!-- <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/login/logotipos/logo-sie-white.png" alt="Logotipo <?= SISTEMA_NOME ?>-ERP" class="logo-sie-footer"> -->
                     </div>
                 </div>
             </div>

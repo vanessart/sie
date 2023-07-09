@@ -40,7 +40,7 @@ class MVC {
      *
      * @access private
      */
-    private $not_found = '/includes/404.php';
+    private $not_found = '/'. INCLUDE_FOLDER .'/404.php';
 
     /**
      * Construtor para essa classe

@@ -44,7 +44,7 @@ if (!empty($_POST['selecao2'])) {
         </div>
         <div class="col-4" style="font-size: 20px; padding: 10px; text-align: center">
             <a href="#" onclick="$('#myModal').modal('show');">
-                <img src="<?= HOME_URI ?>/includes/images/video-help.png">
+                <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/video-help.png">
             </a>
         </div>
 
@@ -151,7 +151,7 @@ if (!empty($_POST['selecao2'])) {
                     if ($id_turma) {
                         ?>
                         <button class="btn btn-link" name= "selecao" value="Selecao" onclick="document.getElementById('sa').submit()" type="submit">                                   
-                            <img style="width: 35px" src="<?= HOME_URI ?>/includes/images/ir.png" alt="alt"/>
+                            <img style="width: 35px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/ir.png" alt="alt"/>
                         </button>
                         <?php
                     }
@@ -161,7 +161,7 @@ if (!empty($_POST['selecao2'])) {
                     if (!empty($esc_s)) {
                         ?>
                         <button class="btn btn-link" name= "selecao2" value="Selecao2" onclick="document.getElementById('al').submit()" type="submit">   
-                            <img style="width: 35px" src="<?= HOME_URI ?>/includes/images/voltar.png" alt="alt"/>       
+                            <img style="width: 35px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/voltar.png" alt="alt"/>       
                         </button>
                         <br /><br /><br /><br />
                         <button style="width: 100%" class="btn btn-primary" name= "lista" value="Lista" onclick="document.getElementById('lista').submit()" type="submit">   

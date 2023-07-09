@@ -138,7 +138,7 @@ if ($vidaE) {
                                                     . formErp::hiddenToken('ge_turma_aluno', 'ireplace')
                                                     ?>
                                                     <button class="btn btn-light">
-                                                        <img style="width: 20px" src="<?= HOME_URI ?>/includes/images/upload.png" alt="S"/>
+                                                        <img style="width: 20px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/upload.png" alt="S"/>
                                                     </button> 
                                                 </td>
                                             </tr>
@@ -170,7 +170,7 @@ if(!empty($v['dt_transferencia'])){
                                                     . formErp::hiddenToken('ge_turma_aluno', 'ireplace')
                                                     ?>
                                                     <button class="btn btn-light">
-                                                        <img style="width: 20px" src="<?= HOME_URI ?>/includes/images/upload.png" alt="S"/>
+                                                        <img style="width: 20px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/upload.png" alt="S"/>
                                                     </button> 
                                                 </td>
                                             </tr>

@@ -33,13 +33,13 @@
         <!-- CSS -->
         <link href="custom-sie.css" rel="stylesheet">
 
-        <script src="<?php echo HOME_URI; ?>/includes/js/jquery-3.6.0.min.js"></script>
-        <script src="<?php echo HOME_URI; ?>/includes/js/popper.min.js"></script>
-        <link href="<?php echo HOME_URI; ?>/includes/css/bootstrap5.min.css" rel="stylesheet">
-        <script src="<?php echo HOME_URI; ?>/includes/js/bootstrap.min.js"></script>
-        <script src="<?php echo HOME_URI; ?>/includes/js/bootstrap5.bundle.min.js"></script>      
-        <link rel="stylesheet" href="<?php echo HOME_URI; ?>/includes/css/bootstrap-select.min.css">
-        <script src="<?php echo HOME_URI; ?>/includes/js/bootstrap-select.min.js"></script>
+        <script src="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/js/jquery-3.6.0.min.js"></script>
+        <script src="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/js/popper.min.js"></script>
+        <link href="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/css/bootstrap5.min.css" rel="stylesheet">
+        <script src="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/js/bootstrap.min.js"></script>
+        <script src="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/js/bootstrap5.bundle.min.js"></script>      
+        <link rel="stylesheet" href="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/css/bootstrap-select.min.css">
+        <script src="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/js/bootstrap-select.min.js"></script>
         <style>
             .body-sie-erp {
                 font-family: 'Roboto', sans-serif !important;
@@ -253,7 +253,7 @@
         if (!defined('ABSPATH'))
             exit();
         if (empty($_SESSION['userdata']['foto'])) {
-            $foto = HOME_URI . '/includes/images/user-anonimo.jpg';
+            $foto = HOME_URI . '/'. INCLUDE_FOLDER .'/images/user-anonimo.jpg';
         } else {
             $foto = $_SESSION['userdata']['foto'];
         }
@@ -262,7 +262,7 @@
         <div class="container mb-2 mt-5">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5 col-xl-4">
-                    <img src="<?= HOME_URI ?>/includes/images/logo_Educ_PNG.png" alt="Logotipo <?= CLI_NOME ?>" class="img-logo-sie">
+                    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/logo_Educ_PNG.png" alt="Logotipo <?= CLI_NOME ?>" class="img-logo-sie">
                 </div>
                 <div class="col-8 col-sm-5 col-md-6 col-lg-5 col-xl-7 ">
                     <p class="text-acesso-integrado mb-0">Acesso Integrado Google For Education</p>
@@ -295,7 +295,7 @@
             <div class="container">
                 <div class="row mb-0 py-4 ">
                     <div class="col-12 col-sm-3 col-md-2 col-lg-3 col-xl-3 align-logo-faixa  px-0 ">
-                        <!-- <img src="<?= HOME_URI ?>/includes/images/logo-sie-white.png" alt="Logotipo sie-ERP" class="logo-sie-faixa"> -->
+                        <!-- <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/logo-sie-white.png" alt="Logotipo sie-ERP" class="logo-sie-faixa"> -->
                     </div>
                     <?php
                     @$acesso = $model->listSistemas();
@@ -489,7 +489,7 @@
                         </p>
                     </div>
                     <div class="col-12 col-sm-2 col-md-1 col-lg-1 col-xl-1 pt-2 px-0 mt-2 align-logo-footer">
-                        <!-- <img src="<?= HOME_URI ?>/includes/images/logo-sie-white.png" alt="Logotipo sie-ERP" class="logo-sie-footer"> -->
+                        <!-- <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/logo-sie-white.png" alt="Logotipo sie-ERP" class="logo-sie-footer"> -->
                     </div>
                 </div>
             </div>

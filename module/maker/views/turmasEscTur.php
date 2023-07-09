@@ -15,7 +15,7 @@ if ($polo) {
     $pdf = new pdf();
     $pdf->orientation = 'L';
     $pdf->mgt = 68;
-    $pdf->headerAlt = '<img src="' . ABSPATH . '/includes/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px">Lista Geral Interna da Escola<br>Salas Maker - Polo: ' . $nPolo . '<br>Escola de Origem: ' . toolErp::n_inst() . '</div>';
+    $pdf->headerAlt = '<img src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px">Lista Geral Interna da Escola<br>Salas Maker - Polo: ' . $nPolo . '<br>Escola de Origem: ' . toolErp::n_inst() . '</div>';
     $alunos = $model->interna($id_inst, 't.n_turma, p.n_pessoa');
     ?>
     <table style="width: 100%" border=1 cellspacing=0 cellpadding=2 bordercolor="666633"> 

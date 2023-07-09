@@ -4,7 +4,7 @@ $id_pessoa_resp = filter_input(INPUT_POST, 'id_pessoa_resp', FILTER_SANITIZE_NUM
 if ($id_pessoa_resp) {
     ?>
     <div> 
-        <script type="text/javascript" src="<?php echo HOME_URI ?>/includes/js/webcam.min.js"></script>
+        <script type="text/javascript" src="<?php echo HOME_URI ?>/<?php echo INCLUDE_FOLDER ?>/js/webcam.min.js"></script>
 
         <script language="JavaScript">
 

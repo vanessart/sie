@@ -18,7 +18,7 @@ class report {
      * @param type $form array [array, fields, titulo=null]
      */
     public static function simple($form) {
-        require ABSPATH . '/includes/views/report/simples.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/simples.php';
     }
 
     /**
@@ -30,7 +30,7 @@ class report {
      * @return type o valor inicial do limit 
      */
     public static function pagination($quant, $conta, $hidden = NULL, $buttons = 10) {
-        require ABSPATH . '/includes/views/report/pagination.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/pagination.php';
 
         return $pag;
     }
@@ -42,11 +42,11 @@ class report {
      * @param type $form array [array, fields, titulo=null]
      */
     public static function forms($form, $table = NULL, $hidden = NULL, $location = NULL, $target = NULL, $msg = NULL, $buttonName = NULL) {
-        require ABSPATH . '/includes/views/report/forms.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/forms.php';
     }
 
     public static function vertical($form) {
-        require ABSPATH . '/includes/views/report/relatVert.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/relatVert.php';
     }
 
     /*     * cria uma tabela de cadastro
@@ -58,7 +58,7 @@ class report {
      */
 
     public static function cad($form) {
-        require ABSPATH . '/includes/views/report/cad.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/cad.php';
     }
 
     public static function includeView($view) {
@@ -77,7 +77,7 @@ class report {
         if (empty($aba)) {
             $aba = 'activeNav';
         }
-        include ABSPATH . '/includes/views/tab/abas.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/tab/abas.php';
 
         return $activeNav;
     }
@@ -94,7 +94,7 @@ class report {
         if (empty($aba)) {
             $aba = 'activeNav';
         }
-        include ABSPATH . '/includes/views/tab/abasbs.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/tab/abasbs.php';
 
         return $activeNav;
     }
@@ -104,7 +104,7 @@ class report {
      * devolve $id_pl e $id_turma
      */
     public static function segmTurma($hidden) {
-        require ABSPATH . '/includes/views/form/segturma.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/form/segturma.php';
 
         return @$id_turma;
     }
@@ -118,7 +118,7 @@ class report {
         if (empty($btn)) {
             $btn = "btn btn-info";
         }
-        include ABSPATH . '/includes/views/tab/dropdown.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/tab/dropdown.php';
 
         return $activeNav;
     }

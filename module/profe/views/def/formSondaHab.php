@@ -33,7 +33,7 @@ if (empty($habAlu)) {
                         <?php if (file_exists(ABSPATH . '/pub/fotos/' . $v['id_pessoa'] . '.jpg')) { ?>
                             <img style="width: 100%" src="<?= HOME_URI . '/pub/fotos/' . $v['id_pessoa'] . '.jpg' ?>">
                         <?php } else { ?>
-                            <img style="width: 100%" src="<?= HOME_URI . '/includes/images/anonimo.jpg' ?>">
+                            <img style="width: 100%" src="<?= HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg' ?>">
                         <?php } ?>  
                     </td>
                     <td style="padding: 15px">

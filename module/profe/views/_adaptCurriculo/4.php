@@ -163,7 +163,7 @@ if (!empty($pdi) && !empty($bimestre)) {
                                                 <?php
                                             } else {
                                                 ?>
-                                                <img src="<?= HOME_URI ?>/includes/images/anonimo.jpg" width="100" height="120"/>
+                                                <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/anonimo.jpg" width="100" height="120"/>
                                                 
                                                 <?php
                                             }

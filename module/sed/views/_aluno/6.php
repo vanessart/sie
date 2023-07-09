@@ -83,7 +83,7 @@ css::switchButton();
                         <?php
                     } else {
                         ?>
-                        <img style="width: 60px" src="<?php echo HOME_URI ?>/includes/images/anonimo.jpg" alt = "aluno"/>
+                        <img style="width: 60px" src="<?php echo HOME_URI ?>/<?php echo INCLUDE_FOLDER ?>/images/anonimo.jpg" alt = "aluno"/>
                         <?php
                     }
                     ?>

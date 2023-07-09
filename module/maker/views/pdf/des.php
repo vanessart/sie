@@ -36,7 +36,7 @@ $token = base64_encode($n_pessoa);
 $pdf = new pdf();
 $pdf->mgt = 60;
 $pdf->id_inst = $id_inst;
-$pdf->headerAlt = '<div style="text-align: center; font-weight: bold; font-size: 1.4em"><img src="' . HOME_URI . '/includes/images/maker/img.jpg" width="234" height="94"/><br>PROJETO - SALA MAKER<br>' . $n_inst . '</div>';
+$pdf->headerAlt = '<div style="text-align: center; font-weight: bold; font-size: 1.4em"><img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/maker/img.jpg" width="234" height="94"/><br>PROJETO - SALA MAKER<br>' . $n_inst . '</div>';
 ?>
 <style>
     div{

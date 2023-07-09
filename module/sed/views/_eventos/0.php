@@ -107,7 +107,7 @@ foreach ($dados as $vv) {
         if (!empty($id_turma)) {
             ?>
             <button class="btn btn-link" name= "selecao" value="Selecao" onclick="document.getElementById('sa').submit()" type="submit">                                   
-                <img style="width: 35px" src="<?= HOME_URI ?>/includes/images/ir.png" alt="alt"/>
+                <img style="width: 35px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/ir.png" alt="alt"/>
             </button>
             <?php
         }
@@ -117,7 +117,7 @@ foreach ($dados as $vv) {
         if (!empty($dados)) {
             ?>
             <button class="btn btn-link" name= "selecao2" value="Selecao2" onclick="document.getElementById('al').submit()" type="submit">   
-                <img style="width: 35px" src="<?= HOME_URI ?>/includes/images/voltar.png" alt="alt"/>       
+                <img style="width: 35px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/voltar.png" alt="alt"/>       
             </button>  
             <?php
         }

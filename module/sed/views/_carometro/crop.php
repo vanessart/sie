@@ -21,7 +21,7 @@ $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/js/jquery.Jcrop.min.js" integrity="sha512-KKpgpD20ujD3yJ5gIJqfesYNuisuxguvTMcIrSnqGQP767QNHjEP+2s1WONIQ7j6zkdzGD4zgBHUwYmro5vMAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="<?php echo HOME_URI; ?>/includes/css/jquery.Jcrop.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo HOME_URI; ?>/<?php echo INCLUDE_FOLDER ?>/css/jquery.Jcrop.css" type="text/css" />
 <div style="margin-left: 10px">
     <table style="width: 100%">
         <tr>
@@ -34,7 +34,7 @@ $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
                     <input type="hidden" name="rotateImg" value="1" />
                     <!--
                     <button class="btn btn-link" style=" width: 100%; height: 69px">
-                        <img style="height: 30px" src="<?= HOME_URI ?>/includes/images/rotate.png"/>
+                        <img style="height: 30px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/rotate.png"/>
                     </button> 
                     -->
                 </form>        

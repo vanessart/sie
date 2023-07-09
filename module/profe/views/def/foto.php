@@ -11,7 +11,7 @@ $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
         <?php
     } else {
         ?>
-        <img style="width:100%;"src="<?= HOME_URI . '/includes/images/anonimo.jpg' ?>" alt="..." ><br><br>
+        <img style="width:100%;"src="<?= HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg' ?>" alt="..." ><br><br>
         <?php
     }
     ?>

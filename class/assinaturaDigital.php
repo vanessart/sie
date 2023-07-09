@@ -155,7 +155,7 @@ class assinaturaDigital {
             // SIGNATURE
             window.addEventListener("load", (event) => {
                 setTimeout(function(){
-                    loadScript("<?php echo HOME_URI ?>/includes/js/signature/jq-signature.min.js")
+                    loadScript("<?php echo HOME_URI ?>/<?php echo INCLUDE_FOLDER ?>/js/signature/jq-signature.min.js")
                     .then( data  => {
                         console.log("Script loaded successfully", data);
                         if (jQuery('.<?= $this->classIdentifier ?>').length) {

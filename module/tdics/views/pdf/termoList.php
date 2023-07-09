@@ -28,7 +28,7 @@ if ($a) {
     $ct = 1;
     foreach ($a as $v) {
         ?>
-        <img src="<?= HOME_URI ?>/includes/images/maker/tdics.png" alt="alt"/>
+        <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/maker/tdics.png" alt="alt"/>
         <br /><br />
         <div style="text-align: center; font-weight: bold; font-size: 20px">
             PROJETO - PARNAÍBA - MAKER LABS

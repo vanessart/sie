@@ -15,10 +15,10 @@ define( 'DB_PASSWORD', 'V0c3J@s@B3qU@l3' );
 define('API_GOOGLE', '791747530577-5iml28vrbbgg6sisbqla0832iui4ci4l.apps.googleusercontent.com');
 
 //mongoDB
-define('MONGO_HOSTNAME', 'localhost:27017');
+define('MONGO_HOSTNAME', 'mongo_sie:27017');
 define('MONGO_DB_NAME', 'gsp_ng');
-define('MONGO_DB_USER', null);
-define('MONGO_DB_PASSWORD', null);
+define('MONGO_DB_USER', 'sie_user');
+define('MONGO_DB_PASSWORD', 'sie_pwd');
 
 // SED / REST
 $sedHabiente = 'p';

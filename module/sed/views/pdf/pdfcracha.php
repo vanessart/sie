@@ -43,10 +43,10 @@ $dados = $model->pegaalunos($alunos, $id_turma);
             ?>  
             <div style="position: absolute; top: <?= $topo ?>px; left: 20px; border-style: solid; border-width: 0.5px; padding: 20px; width: 655px; height: 200px">
                 <div style="position: absolute; top: 25px; left: 20px">
-                    <img src="<?= HOME_URI ?>/includes/images/CarteiraFrente.png" width="320px" height="200px" alt="Carteirinha"/> 
+                    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/CarteiraFrente.png" width="320px" height="200px" alt="Carteirinha"/> 
                 </div>
                 <div style="position: absolute; top: 25px; left: 370px">
-                    <img src="<?= HOME_URI ?>/includes/images/CarteiraVerso.png" width="320px" height="200px" alt="Carteirinha">
+                    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/CarteiraVerso.png" width="320px" height="200px" alt="Carteirinha">
                 </div>
                 <div style="position:absolute; top: 175px; left: 395px; background-color: white; width: 280px; height: 30px; border: solid 1px black; border-radius: 10px">
                     <div style="font-size: 7px; font-weight: bold; text-align: center; padding-top: 10px ">

@@ -62,7 +62,7 @@ if (!empty($id_pf)) {
            <div class="row">
                 <div class="col" style="text-align:center;">
                     <a  target="_blank" href="<?= $dados['link_video'] ?>">
-                      <img style="width: 10%" src="<?= HOME_URI . '/includes/images/play.png' ?>" alt="foto"/>
+                      <img style="width: 10%" src="<?= HOME_URI . '/'. INCLUDE_FOLDER .'/images/play.png' ?>" alt="foto"/>
                     </a>
                 </div>
             </div>

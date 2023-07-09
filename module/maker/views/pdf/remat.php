@@ -57,7 +57,7 @@ if (!empty($alunos)) {
     </style>
     <?php
     $pdf = new pdf();
-    $pdf->headerAlt = '<div style="text-align: center; font-weight: bold; font-size: 1.8em"><img src="' . HOME_URI . '/includes/images/maker/img.jpg" width="234" height="94"/><br>PROJETO - SALA MAKER</div><div style="text-align: center; font-weight: bold">Termo de Requerimento de Inscrição / Rematrícula - de 30/05 a 11/06/2022</div>';
+    $pdf->headerAlt = '<div style="text-align: center; font-weight: bold; font-size: 1.8em"><img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/maker/img.jpg" width="234" height="94"/><br>PROJETO - SALA MAKER</div><div style="text-align: center; font-weight: bold">Termo de Requerimento de Inscrição / Rematrícula - de 30/05 a 11/06/2022</div>';
     $ct = 1;
     foreach ($alunos as $v) {
         ?>

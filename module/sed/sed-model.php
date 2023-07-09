@@ -955,7 +955,7 @@ class sedModel extends MainModel {
         } elseif (file_exists(ABSPATH . "/pub/fotos/" . $id_pessoa . ".png")) {
             return HOME_URI . '/pub/fotos/' . $id_pessoa . '.png?' . uniqid();
         } else {
-            return HOME_URI . '/includes/images/anonimo.jpg';
+            return HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg';
         }
     }
 

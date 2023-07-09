@@ -26,7 +26,7 @@ $query = pdoSis::getInstance()->query($sql);
 $hab = $query->fetchAll(PDO::FETCH_ASSOC);
 foreach ($hab as $k => $v) {
     $hab[$k]['descricao'] = $v['codigo'] . ' - ' . $v['descricao'];
-    $hab[$k]['set'] = '<button onclick="acSonda(' . $v['id_hab'] . ', ' . $v['fk_id_ce'] . ')" class="btn btn-outline-success" style="width: 40px; height: 40px; border-radius: 50%"><img style="width: 20px" src="' . HOME_URI . '/includes/images/ir.png" alt="alt"/></button>';
+    $hab[$k]['set'] = '<button onclick="acSonda(' . $v['id_hab'] . ', ' . $v['fk_id_ce'] . ')" class="btn btn-outline-success" style="width: 40px; height: 40px; border-radius: 50%"><img style="width: 20px" src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/ir.png" alt="alt"/></button>';
 }
 $form['array'] = $hab;
 $form['fields'] = [

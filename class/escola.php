@@ -244,7 +244,7 @@ class escola {
         }
 
         return '<table style="width: 100%">'
-                . '<tr><td rowspan="3"><img style="width: 80px" src="' . HOME_URI . '/includes/images/brasao.jpg"/></td><td style = "text-align: center"><div style="font-size: 15px; font-weight: bold">'. ucfirst(CLI_NOME) .'<br>SE - Secretaria de Educação</div><div style="font-size: 11px; text-align: center">' . $this->_nome . '<br>' . $this->_email . '</div></td><td rowspan="3" width: 200px><img style="width: 200px" src="' . HOME_URI . '/includes/images/topo.png"/></td></tr>'
+                . '<tr><td rowspan="3"><img style="width: 80px" src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/brasao.jpg"/></td><td style = "text-align: center"><div style="font-size: 15px; font-weight: bold">'. ucfirst(CLI_NOME) .'<br>SE - Secretaria de Educação</div><div style="font-size: 11px; text-align: center">' . $this->_nome . '<br>' . $this->_email . '</div></td><td rowspan="3" width: 200px><img style="width: 200px" src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/topo.png"/></td></tr>'
                 . '<tr><td style="font-size: 8px;text-align: center">' . $this->enderecoEstruturado(1) . '</td></tr>'
                 . '</table>' . @$ato;
     }

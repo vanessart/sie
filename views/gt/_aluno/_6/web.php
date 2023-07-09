@@ -5,7 +5,7 @@ $_SESSION['tmp']['id_re'] = @$_POST['id_re'];
 $name = md5(time());
 ?>
 <div style="height: 80vh"> 
-    <script type="text/javascript" src="<?php echo HOME_URI ?>/includes/js/webcam.min.js"></script>
+    <script type="text/javascript" src="<?php echo HOME_URI ?>/<?php echo INCLUDE_FOLDER ?>/js/webcam.min.js"></script>
 
     <script language="JavaScript">
 

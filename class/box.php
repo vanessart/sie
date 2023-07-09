@@ -128,13 +128,13 @@ class box {
         if (empty($aba)) {
             $aba = 'activeNav';
         }
-        include ABSPATH . '/includes/views/tab/abas.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/tab/abas.php';
 
         return $activeNav;
     }
 
     public static function title($title) {
-        include ABSPATH . '/includes/views/title.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/title.php';
     }
 
     /**
@@ -142,7 +142,7 @@ class box {
      * @param type $form array [array, fields, titulo=null]
      */
     public static function relatSimples($form) {
-        require ABSPATH . '/includes/views/report/simples.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/simples.php';
     }
 
     /**
@@ -152,11 +152,11 @@ class box {
      * @param type $form array [array, fields, titulo=null]
      */
     public static function relatForms($form, $table = NULL, $hidden = NULL, $location = NULL, $target = NULL, $msg = NULL) {
-        require ABSPATH . '/includes/views/report/forms.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/forms.php';
     }
 
     public static function relatVert($form) {
-        require ABSPATH . '/includes/views/report/relatVert.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/relatVert.php';
     }
 
     /**

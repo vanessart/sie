@@ -82,7 +82,7 @@ $tel = @$_REQUEST['tel'];
 <script>
     function verImg() {
         var uniqid = String.fromCharCode(Math.floor((Math.random() * 25) + 65));
-        document.getElementById('ass').innerHTML = '<img src="<?= HOME_URI . "/includes/images/prod_loading.gif" ?>" >';
+        document.getElementById('ass').innerHTML = '<img src="<?= HOME_URI . "/". INCLUDE_FOLDER ."/images/prod_loading.gif" ?>" >';
         nome = document.getElementById('nome').value;
         setTimeout(function () {
             document.getElementById('ass').innerHTML = '<img src="<?= HOME_URI ?>/pub/tmp/' + nome + '.jpeg?token=' + uniqid + '"/><br /><br /><br /><a class="btn btn-warning" href="<?= HOME_URI ?>/pub/tmp/' + nome + '.jpeg?id=<?= uniqid() ?>" download>Baixar Imagem</a>';

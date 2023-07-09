@@ -12,6 +12,9 @@ define('HOME_URI', '/sie');
 
 include ABSPATH . '/_config/settings.php';
 
+// pasta de includes
+define('INCLUDE_FOLDER', 'includes/'. NUM_SYS);
+
 // Charset da conexão PDO
 define('DB_CHARSET', 'utf8');
 
