@@ -1621,7 +1621,7 @@ class sedModel extends MainModel {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
             }
 
-            if (empty($integracao->dadosCLI['ret']['status'])) {
+            if (isset($integracao->dadosCLI['ret']) && empty($integracao->dadosCLI['ret']['status'])) {
                 throw new Exception($integracao->dadosCLI['ret']['message']);
             }
 
