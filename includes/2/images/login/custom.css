@@ -32,7 +32,7 @@ footer{
 	min-width: 0;
 	word-wrap: break-word;
 	background-clip: border-box;
-	border: 2px solid #324b73;
+	border: 2px solid #23a59e;
 	border-radius: 0.375rem;
 	box-shadow: 0 7px 14px 0 rgba(65, 69, 88, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);;
 }
@@ -50,19 +50,19 @@ footer{
 }
 
 .bg-card-inputs{
-	background-color: #324b73;
+	background-color: #23a59e;
 	color: #FFF !important;
 
 }
 .bg-color{
-	background-color: #324b73 !important;
+	background-color: #23a59e !important;
 	height: 0.5px;
-	color: #324b73 !important;
+	color: #23a59e !important;
 }
 
 .btn-erp{
 	/*border: 1px solid #000  !important;*/
-	background: #324b73 !important;
+	background: #23a59e !important;
 	color: #FFF !important;
 	font-size: 1.1em !important;
 }
@@ -72,12 +72,12 @@ footer{
 
 .link-senha a{
 	text-decoration: none;
-	color: #324b73;
+	color: #23a59e;
 }
 
 .link-senha a:hover{
 	text-decoration: none;
-	color: #324b73 !important;
+	color: #23a59e !important;
 	font-weight: 700;
 	text-decoration: underline;
 }
@@ -94,11 +94,11 @@ footer{
     display: inline-block;
     height: 50px;
 	margin: -1px 19px -1px -1px;
-    border: 1px solid #324b73;
+    border: 1px solid #23a59e;
 }
 
 .btn-login {
-	background: #324b73;
+	background: #23a59e;
 	padding: 15px;
 	color: #FFF;
 	font-size: 18px;
@@ -107,7 +107,7 @@ footer{
 
 label {
     display: inline-block;
-    color: #324b73;
+    color: #23a59e;
 }
 
 .text-seja-bem{
@@ -172,12 +172,12 @@ label {
 
 .bg-footer {
 	color: #FFF !important;
-	background-color: #324b73 !important;
+	background-color: #23a59e !important;
 }
 
 .bg-roxo {
 	color: #FFF !important;
-	background-color: #324b73 !important;
+	background-color: #23a59e !important;
 }
 
 .logo-sie-footer{

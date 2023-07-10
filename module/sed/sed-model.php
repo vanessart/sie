@@ -1617,8 +1617,12 @@ class sedModel extends MainModel {
     {
         try {
             $integracao = new integracao();
-            if (empty($integracao)) {
+            if (empty($integracao) || !isset($integracao->dadosCLI)) {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
+            }
+
+            if (empty($integracao->dadosCLI['ret']['status'])) {
+                throw new Exception($integracao->dadosCLI['ret']['message']);
             }
 
             $run = $integracao->escolas();
