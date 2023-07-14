@@ -382,10 +382,14 @@ class tdicsModel extends MainModel {
             return;
         }
 
-        if (!empty($dataFim)) {
-            $ch = $this->frequeciaAlunoTMP($dataIni, $dataFim);
-        } else {
-            $ch = $this->frequeciaAluno($dataIni, $dataFim);
+        // if (!empty($dataFim)) {
+        //     $ch = $this->frequeciaAlunoTMP($dataIni, $dataFim);
+        // } else {
+            $ch = $this->frequeciaAluno(NULL, NULL, $dataIni, $dataFim);
+        // }
+
+        if (toolErp::id_pessoa() == 1) {
+            pre($ch);
         }
 
         if ($periodo) {
@@ -745,7 +749,7 @@ class tdicsModel extends MainModel {
     }
 
     public function frequeciaAlunoTMP($id_pl = null, $dataMaiorIgual = null, $dataIni = null, $dataFim = null) {
-        
+
         $frenq = '[{"3349":"0","3351":"1","3352":"0","3354":"1","3386":"1","3387":"1","3409":"0","3358":"1","3359":"1","3389":"1","3390":"1","3363":"1","3392":"0","3394":"0","3366":"0","3367":"1","3369":"1","3398":"1","3400":"1","3372":"1","3374":"1","3403":"0"},
 {"3350":"1","3382":"0","3383":"1","3384":"1","3355":"1","3356":"0","3357":"1","3388":"0","3360":"1","3361":"1","3362":"1","3391":"1","3364":"1","3395":"0","3396":"1","3368":"0","3370":"0","3371":"1","3399":"0","3401":"1","3402":"1","3375":"0"},
 {"3893":"0","3922":"1","3897":"1","3953":"1","3977":"1","3899":"0","3978":"1","3906":"1","3963":"1","3911":"1","3943":"0","3974":"1","3994":"1"},
