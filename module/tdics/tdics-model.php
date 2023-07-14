@@ -476,10 +476,6 @@ class tdicsModel extends MainModel {
         $frenq = $mongo->query('presece_' . $id_pl, $filter);
         $ch = [];
 
-        if (toolErp::id_pessoa() == 1) {
-            pre($frenq);
-        }
-
         foreach ($frenq as $v) {
             if (!empty($v->ch)) {
                 foreach ($v->ch as $id_pessoa => $fp) {
