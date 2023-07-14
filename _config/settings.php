@@ -1,6 +1,6 @@
 <?php
 
-$set['localhost'] = 2;
+$set['localhost'] = 1;
 $set['parnaibamakerlabs.app.br'] = 1;
 $set['gasparmakerlabs.app.br'] = 2;
 
