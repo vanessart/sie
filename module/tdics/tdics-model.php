@@ -388,10 +388,6 @@ class tdicsModel extends MainModel {
             $ch = $this->frequeciaAluno(NULL, NULL, $dataIni, $dataFim);
         // }
 
-        if (toolErp::id_pessoa() == 1) {
-            pre($ch);
-        }
-
         if ($periodo) {
             $periodo = " and t.periodo = '$periodo' ";
         }
@@ -479,6 +475,11 @@ class tdicsModel extends MainModel {
         $mongo = new mongoCrude('Tdics');
         $frenq = $mongo->query('presece_' . $id_pl, $filter);
         $ch = [];
+
+        if (toolErp::id_pessoa() == 1) {
+            pre($frenq);
+        }
+
         foreach ($frenq as $v) {
             if (!empty($v->ch)) {
                 foreach ($v->ch as $id_pessoa => $fp) {
