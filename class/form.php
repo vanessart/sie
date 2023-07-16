@@ -181,7 +181,7 @@ class form {
 
         </style>
         <!-- Latest compiled and minified CSS -->
-        <!--<link rel="stylesheet" href="<?php echo HOME_URI; ?>/includes/css/bootstrap-select.min.css">-->
+        <!--<link rel="stylesheet" href="<?php echo HOME_URI; ?>/<?= INCLUDE_FOLDER ?>/css/bootstrap-select.min.css">-->
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">-->
         <!-- Latest compiled and minified JavaScript -->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>-->

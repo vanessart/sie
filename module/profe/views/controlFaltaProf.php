@@ -70,7 +70,7 @@ if ($horario) {
                             ])
                             ?>
                             <button class="btn btn-outline-info" >
-                                <img style="width: 30px" src="<?= HOME_URI ?>/includes/images/voltar.png" >
+                                <img style="width: 30px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/voltar.png" >
                             </button>
                         </form>
                         <?php
@@ -109,7 +109,7 @@ if ($horario) {
                             ])
                             ?>
                             <button class="btn btn-outline-info" >
-                                <img style="width: 30px" src="<?= HOME_URI ?>/includes/images/ir.png" >
+                                <img style="width: 30px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/ir.png" >
                             </button>
                         </form>
                         <?php
@@ -179,13 +179,13 @@ if ($horario) {
                                                 if (in_array($aulas[$aula][$numSem]['id_ciclo'], [1, 2, 3, 4, 5, 6, 7, 8, 9, 25, 26, 27, 28, 29, 30, 31, 34, 35, 36, 37])) {
                                                     ?>
                                                     <p>
-                                                        Conteúdo <img src="<?= HOME_URI ?>/includes/images/<?= $img ?>.png" width="16" height="16" alt="n"/>
+                                                        Conteúdo <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/<?= $img ?>.png" width="16" height="16" alt="n"/>
                                                     </p>
                                                     <?php
                                                 }
                                                 ?>
                                                 <p>
-                                                    Chamada <img src="<?= HOME_URI ?>/includes/images/<?= $img2 ?>.png" width="16" height="16" alt="n"/>
+                                                    Chamada <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/<?= $img2 ?>.png" width="16" height="16" alt="n"/>
                                                 </p>
                                             </div>
                                             <?php

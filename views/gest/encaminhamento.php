@@ -44,7 +44,7 @@ if (!empty($_POST['selecao2'])) {
     </div>
     <div class="col-4" style="font-size: 20px; padding: 10px; color: red; text-align: center">
             <a href="#" onclick="$('#myModal').modal('show');">
-                <img src="<?= HOME_URI ?>/includes/images/video-help.png">
+                <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/video-help.png">
             </a>
     </div>
 

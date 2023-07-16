@@ -87,9 +87,9 @@ class geralController extends MainController {
         $this->title = 'Conf. Usuário';
         $this->requireLogin();
         $model = $this->load_model('geral/geral-model');
-        require ABSPATH . '/includes/structure/header.php';
-        require ABSPATH . '/includes/structure/menu.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
         require_once ABSPATH . '/views/geral/userconfNew.php';
-        require ABSPATH . '/includes/structure/footer.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 }

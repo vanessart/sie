@@ -37,7 +37,7 @@ $dados = $model->pegaalunos($alunos, $id_turma);
             ?>  
             <div style="position: absolute; top: <?= $topo ?>px; left: 20px; border-style: solid; border-width: 0.5px; padding: 20px; width: 655px; height: 200px">
                 <div style="position: absolute; top: 25px; left: 20px">
-                    <img src="<?= HOME_URI ?>/includes/images/CarteiraFrente.png" width="320px" height="200px" alt="Carteirinha"/> 
+                    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/CarteiraFrente.png" width="320px" height="200px" alt="Carteirinha"/> 
                 </div>
                 <div style="position: absolute; top: 25px; left: 370px">
                     <?php
@@ -45,7 +45,7 @@ $dados = $model->pegaalunos($alunos, $id_turma);
                     $token = $password_hash->HashPassword($v['dt_nasc']);
                     $end = "https://portal.educ.net.br//ge/sed/pdf/declaracaoQr.php" . '?id=' . $v['id_pessoa'] . '&token=' . $token;
                     ?>
-                    <img src="<?= HOME_URI ?>/includes/images/CarteiraVerso.png" width="320px" height="200px" alt="Carteirinha">
+                    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/CarteiraVerso.png" width="320px" height="200px" alt="Carteirinha">
                     <div style="position: absolute; left: 30px; top: 10px">
                         <img src="<?= $model->fotoEnd($v['id_pessoa']) ?>" alt="foto" style="border-radius: 50%; width: 60px; height: 60px"/>                      
                     </div>

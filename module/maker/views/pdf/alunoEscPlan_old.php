@@ -9,7 +9,7 @@ if ($id_inst) {
         $pdf = new pdf();
         $pdf->id_inst = $id_inst;
         $pdf->mgt= '50';
-        $pdf->headerAlt = '<img src="' . ABSPATH . '/includes/images/topo.jpg"/>'.'<div style="text-align: center; font-weight: bold; font-size: 14px">Salas Maker'.(!empty($alunos)?'<br />Polo: ' . current($alunos)['Polo']:'').'</div>';
+        $pdf->headerAlt = '<img src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>'.'<div style="text-align: center; font-weight: bold; font-size: 14px">Salas Maker'.(!empty($alunos)?'<br />Polo: ' . current($alunos)['Polo']:'').'</div>';
       ?>
    
         <br />

@@ -10,9 +10,10 @@ define('UP_ABSPATH', ABSPATH . '/views/_uploads');
 define('SISTEMA_NOME', 'SIE');
 define('HOME_URI', '/sie');
 
-include ABSPATH . '/constantDb.php';
-include ABSPATH . '/constantCLI.php';
+include ABSPATH . '/_config/settings.php';
 
+// pasta de includes
+define('INCLUDE_FOLDER', 'includes/'. NUM_SYS);
 
 // Charset da conexão PDO
 define('DB_CHARSET', 'utf8');

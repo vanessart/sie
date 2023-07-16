@@ -41,7 +41,7 @@ if (!empty($ids)) {
     foreach ($a as $v) {
         ob_start();
         ?>
-        <img style="position: absolute;width: 1122px;height: 720px;" src="<?= HOME_URI ?>/includes/images/maker/A5_MAKER_DECLARACAO.png">
+        <img style="position: absolute;width: 1122px;height: 720px;" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/maker/A5_MAKER_DECLARACAO.png">
         <div style="position: absolute;top: 220px;left: 261px; width: 600px;text-align: center;font-size: 22px">
             Declaramos que
             <div style="font-weight: bold; font-style: italic;margin-top: 10px">

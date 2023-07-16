@@ -955,7 +955,7 @@ class sedModel extends MainModel {
         } elseif (file_exists(ABSPATH . "/pub/fotos/" . $id_pessoa . ".png")) {
             return HOME_URI . '/pub/fotos/' . $id_pessoa . '.png?' . uniqid();
         } else {
-            return HOME_URI . '/includes/images/anonimo.jpg';
+            return HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg';
         }
     }
 
@@ -1617,8 +1617,12 @@ class sedModel extends MainModel {
     {
         try {
             $integracao = new integracao();
-            if (empty($integracao)) {
+            if (empty($integracao) || !isset($integracao->dadosCLI)) {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
+            }
+
+            if (isset($integracao->dadosCLI['ret']) && empty($integracao->dadosCLI['ret']['status'])) {
+                throw new Exception($integracao->dadosCLI['ret']['message']);
             }
 
             $run = $integracao->escolas();

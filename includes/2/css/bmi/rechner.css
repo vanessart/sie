@@ -1,0 +1,586 @@
+/* Custom indentations are needed because the length of custom labels differs from
+ the length of the standard labels */
+.custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
+text-indent: -5.9em;
+}
+.custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
+text-indent: 0.5em;
+}
+/* Custom widths are needed because the length of custom labels differs from
+ the length of the standard labels */
+.custom-size-flipswitch.ui-flipswitch {
+width: 8.875em;
+}
+.custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
+padding-left: 7em;
+width: 1.875em;
+}
+@media (min-width: 28em) {
+/*Repeated from rule .ui-flipswitch above*/
+.ui-field-contain > label + .custom-size-flipswitch.ui-flipswitch {
+width: 1.875em;
+}
+}
+
+.mph-box {
+	float:left;
+	padding-top:0.3em;
+	padding-left:0.5em;
+	font-weight:bold;
+}
+
+.mph-infobox {
+	float:right;
+}
+
+.floatLeft {
+	float:left;
+	margin-left:10px;
+}
+
+.input-links {
+	min-width: 100px;
+	width: 60%;
+	display: inline-block
+}
+.ergebnis-sds {
+	width: 80px;
+	margin: 0 0 0 10px;
+	display: inline;
+	font-weight: normal;
+}
+.centerWrapper {
+	margin: 0 auto;
+	text-align: center
+}
+.bodyWrapper {
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+.resultTable, .resultTableSmall {
+	text-align: left;
+	width: 100%;
+	padding: 4px;
+ min-width:300px;
+	margin: 0 auto;
+}
+
+.resultTableArrow {
+	position:absolute;
+	font-size:3.5em;
+	margin-top:-0.5em;
+	}
+	
+	.mmodeInfoButton {
+		margin-left:3em;
+	}
+
+.resultTableSmall {
+	width: 70%;
+}
+.resultTableLabel {
+	width: 7em;
+}
+.resultTableLabelLarge {
+	width: 9em;
+}
+.resultTableResult {
+	width: 5em;
+}
+.perfusorDiv {
+	width: 88px;
+	float: left;
+	margin-right: 3px;
+	margin-left: 3px;
+	min-height: 80px;
+}
+
+.inputBox {
+	margin:0 auto;
+	width: 195px;
+}
+
+.resultDiv {
+	margin: 10px 0 0 0;
+	font-weight: bold;
+	min-height: 50px;
+}
+#bp_result_mean {
+	display: none;
+	margin: 30px 0;
+	font-weight: bold;
+	text-align: center;
+}
+#bp_result_mean table {
+	margin: 0 auto;
+	width: 200px;
+	font-size: small;
+}
+#bp_result_mean td {
+	text-align: left;
+	font-weight: normal;
+}
+.bpResultFirstRow th {
+	text-align: center;
+	padding-bottom: 0;
+	font-style: italic;
+}
+#bp_result_day table {
+	font-size: small;
+}
+#bp_result_day {
+	margin: 20px auto;
+	text-align: center;
+	width: 18em;
+}
+.bpResultHeader {
+	font-weight: bold;
+	text-align: center;
+}
+#bpMessageDiv {
+	margin: 20px auto;
+	font-weight: bold;
+}
+#ecgResult {
+	margin: 0 auto;
+	width: 250px;
+	font-size: small;
+}
+#fetal_radio {
+	width: 250px;
+}
+#indexGrid {
+	padding: 1px;
+	margin: 0px auto;
+	display:none;
+}
+#indexGrid li {
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin: 3px 5px 22px 5px;
+	list-style-type: none;
+}
+#indexGrid a img, #appgrid img {
+	border: 1px solid #AAA;
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	-khtml-border-radius: 10px; 
+	border-radius: 10px;
+}
+#indexGrid a:hover img, #indexGrid a:active img {
+	opacity: .5;
+}
+#indexGrid h3 {
+	position: relative;
+	margin: 0px;
+	top: -2px;
+	font-size: 12px;
+	color: rgba(0,0,0,.5);
+}
+#index_form {
+	text-align: right;
+	margin-right:20px;
+}
+#index_form .ui-slider-switch {
+	width: 7em;
+}
+
+.ui-content {
+	background: white url(icons/bg_image.png); 
+	background-repeat:repeat;
+background-position:center top; 
+background-size:contain;
+}
+
+
+
+
+.normalValueGrid .ui-bar {
+	font-size:small;
+}
+
+.zscoreinfo {
+	font-size:small;
+}
+
+.infoError {
+	color: red;
+	font-weight:bold;
+	font-size:small;
+}
+
+
+.zscoreinfo a {
+	text-decoration:none;	
+	font-style:italic;
+	display:block;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+/* CSS for z score calculators */
+
+.zs-form {
+	text-align: center;
+}
+
+.zs-list{
+	text-decoration:none;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+.zs-list li {
+	margin-top:20px;
+}
+
+.zs-box-left {
+	float: left;
+	width: 60px;
+
+}
+.zs-box-center {
+	padding-top: 20px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+	padding-left: 5px;
+	
+}
+.zs-box-right {
+	float:right;
+	padding:15px 0;	
+}
+
+.mph-box-left {
+	float: left;
+	width: 120px;
+}
+
+.mph-box-right {
+	float:left;
+	width:60px;	
+	padding: 2em 0 0 0.5em;
+}
+
+.zs-box-right a {
+	margin-left:2px;
+}
+
+.clearboth{
+	clear:both;
+}
+
+.zs-lln-marker{
+width:2px;
+height:12px;
+background-color:black;
+left:0px;
+top:-11px;
+position:absolute;
+}
+
+.zs-uln-marker{
+	
+width:2px;
+height:12px;
+background-color:black;
+left:100px;
+top:-11px;
+position:absolute;
+}
+
+.zs-result-marker{
+width:2px;
+height:8px;
+background-color:red;
+left:-1000px;
+top:-4px;
+position:absolute;
+}
+
+.zs-result-value {
+	position:absolute;
+	color:red;
+	font-size:13px;
+	top:-20px;
+	left:-20px;
+	width:4em;
+}
+
+.zs-result-perc-value {
+	position:absolute;
+	color:red;
+	font-size:13px;
+	top:-35px;
+	left:-20px;
+	width:5em;		
+}
+
+.zs-mean-marker{
+	width:2px;
+	border-radius:4px;
+height:7px;
+background-color:black;
+left:50px;
+top:-7px;
+position:absolute;
+}
+.zs-baseline{
+	width:102px;
+	height:1px;
+	background-color:black;
+	left:25px;
+	position:absolute;
+}
+.zs-diagram{
+	width:150px;
+	position:relative;
+	display:inline-block;
+	margin-top:25px;
+/*	color: #a482ee;*/
+/*	font-weight: bold;*/
+}
+
+.zs-uln-value, .zs-lln-value {
+	font-size:13px;
+	position:absolute;
+	top:15px;
+	left:-8px;
+}
+
+.zs-mean-value{
+	font-size:13px;
+	position:absolute;
+	top:11px;
+	left:-8px;
+}
+
+.zs-arrow-left, .zs-arrow-right {
+width: 0;
+  height: 0;
+  border-top:5px solid transparent;
+  border-bottom: 5px solid transparent;	
+  position:absolute;
+  top:-5px;
+}
+
+.zs-arrow-left{
+
+  border-left: 5px solid transparent;
+  border-right: 5px solid red;
+visibility:hidden;
+  left:-19px;
+}
+
+.zs-arrow-right {
+  border-left: 4px solid red;
+  border-right: 4px solid transparent;
+  left:110px;
+  visibility:hidden;
+}
+
+.pedzDate {
+	display:inline-block;
+}
+
+.pedzDate .pedZDateInput {
+	width:38px;
+	float:left;
+	margin-right:3px;
+}
+
+.pedzDate .pedZDateInput:last-child {
+	width:55px;
+}
+
+.pedzDate:first-child {
+padding-right:7px;	
+}
+
+#calculatedAgeYears {
+	margin-left:0.2em;
+
+}
+
+#calculatedAgeMonthsUpper {
+		position:relative;
+		font-size:small;
+	top:-5px;
+}
+
+#dateInputMobile .pedzDate {
+	width:100px;
+}
+
+#dateInputMobile .pedzDatetime {
+	width:200px;
+		margin: 0 auto;
+}
+
+#calculatedAgeMonthsLower {
+		position:relative;
+		font-size:small;
+	top:5px;
+	left:-2px;
+}
+
+#headerResult {
+	display:none;
+	margin:7px 0 12px 0;
+}
+
+.resultText {
+  display: inline-block;
+  font-size: large;
+  vertical-align:middle;
+  padding-bottom: 1em;
+  padding-left: 1em;
+}
+
+.stirIndex {
+	width:2em;
+	font-weight:bold;
+}
+
+.stirInput {
+	width:7em;
+}
+
+.stirResult {
+	width:9em;
+}
+
+.fixedParams {
+	font-size:medium;
+	display:block;
+}
+
+.fixedParamsInput {
+	display:inline;
+}
+
+.convertButtonDiv {
+	width: 200px;
+	float: left;
+	text-align:center;
+	margin-right: 10px;
+	margin-left: 10px;
+	min-height: 80px;
+}
+
+.smallInputBox {
+display:inline-block;
+width:90px;	
+margin: 0 auto;
+}
+
+.gfrList {
+	text-decoration:none;
+	list-style:none;
+	margin:0;
+	padding:0;
+	display:inline-block;
+	margin-top:20px;
+}
+	
+	
+
+.gfrSource {
+	width:150px;
+	float:left;
+	text-align:left;
+	font-style:italic;
+}
+
+.gfrResult {
+	width:110px;
+	float:left;
+	text-align:left;
+}
+
+.gfrResultHeader {
+	width:180px;
+	float:left;
+	text-align:left;
+}
+
+.bold {
+	font-weight:bold;
+	font-style:normal;
+}
+
+.gfrInfo {
+	width:50px;
+	float:left;
+	text-align:left;
+	position:relative;
+	top:-10px;
+}
+
+.gfrList li {
+	height:50px;
+}
+
+.circle {
+    background-color:transparent;
+    position:static;
+	display:inline-block;
+    width: 20px;
+    height: 20px;
+    border: 0px solid black;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.ckdgfr {
+width:80px;	
+display:inline-block;
+}
+
+.ckddescription {
+width:300px;	
+display:inline-block;
+}
+
+#ckd1 {
+	background-color: #088A08;
+}
+
+#ckd2 {
+	background-color: #AEB404;
+}
+
+#ckd3 {
+	background-color: #FFBF00;
+}
+
+#ckd4 {
+	background-color: #FF8000;
+}
+
+#ckd5 {
+	background-color: #FF0000;
+}
+
+.ckdlegend {
+	list-style-type:none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.alert {
+    color: darkorange;
+    padding-bottom: 15px;
+}

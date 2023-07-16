@@ -161,13 +161,13 @@ class toolErp {
         if (empty($aba)) {
             $aba = 'activeNav';
         }
-        include ABSPATH . '/includes/views/tab/abas.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/tab/abas.php';
 
         return $activeNav;
     }
 
     public static function title($title) {
-        include ABSPATH . '/includes/views/title.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/title.php';
     }
 
     /**
@@ -175,11 +175,11 @@ class toolErp {
      * @param type $form array [array, fields, titulo=null]
      */
     public static function relatSimples($form) {
-        require ABSPATH . '/includes/views/report/simples.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/simples.php';
     }
 
     public static function relatSimples1($form) {
-        require ABSPATH . '/includes/views/report/simples_1.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/simples_1.php';
     }
 
     /**
@@ -189,11 +189,11 @@ class toolErp {
      * @param type $form array [array, fields, titulo=null]
      */
     public static function relatForms($form, $table = NULL, $hidden = NULL, $location = NULL, $target = NULL, $msg = NULL) {
-        require ABSPATH . '/includes/views/report/forms.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/forms.php';
     }
 
     public static function relatVert($form) {
-        require ABSPATH . '/includes/views/report/relatVert.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/views/report/relatVert.php';
     }
 
     /**
@@ -795,10 +795,10 @@ class toolErp {
             }
         }
 
-        $bcode = '<img src="' . HOME_URI . '/includes/images/barcode/p.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
-        $bcode .= '<img src="' . HOME_URI . '/includes/images/barcode/b.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
-        $bcode .= '<img src="' . HOME_URI . '/includes/images/barcode/p.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
-        $bcode .= '<img src="' . HOME_URI . '/includes/images/barcode/b.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
+        $bcode = '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/p.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
+        $bcode .= '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/b.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
+        $bcode .= '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/p.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
+        $bcode .= '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/b.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
 
         $bcode .= '<img ';
 
@@ -823,7 +823,7 @@ class toolErp {
                     $f1 = $largo;
                 }
 
-                $bcode .= 'src="' . HOME_URI . '/includes/images/barcode/p.gif" width="' . $f1 . '" height="' . $altura . '" border="0">';
+                $bcode .= 'src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/p.gif" width="' . $f1 . '" height="' . $altura . '" border="0">';
                 $bcode .= '<img ';
 
                 if (substr($f, $i, 1) == '0') {
@@ -832,13 +832,13 @@ class toolErp {
                     $f2 = $largo;
                 }
 
-                $bcode .= 'src="' . HOME_URI . '/includes/images/barcode/b.gif" width="' . $f2 . '" height="' . $altura . '" border="0">';
+                $bcode .= 'src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/b.gif" width="' . $f2 . '" height="' . $altura . '" border="0">';
                 $bcode .= '<img ';
             }
         }
-        $bcode .= 'src="' . HOME_URI . '/includes/images/barcode/p.gif" width="' . $largo . '" height="' . $altura . '" border="0" />';
-        $bcode .= '<img src="' . HOME_URI . '/includes/images/barcode/b.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
-        $bcode .= '<img src="' . HOME_URI . '/includes/images/barcode/p.gif" width="1" height="' . $altura . '" border="0" />';
+        $bcode .= 'src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/p.gif" width="' . $largo . '" height="' . $altura . '" border="0" />';
+        $bcode .= '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/b.gif" width="' . $fino . '" height="' . $altura . '" border="0" />';
+        $bcode .= '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/barcode/p.gif" width="1" height="' . $altura . '" border="0" />';
 
 
         return $bcode;
@@ -1208,8 +1208,8 @@ class toolErp {
 
         $centerLoc = $location[0]['long'] .",". $location[0]['lat'];
         ?>
-            <link rel='stylesheet' type='text/css' href='<?= HOME_URI ?>/includes/css/maps.css'>
-            <script src="<?= HOME_URI ?>/includes/js/maps-web.min.js"></script>
+            <link rel='stylesheet' type='text/css' href='<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/css/maps.css'>
+            <script src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/js/maps-web.min.js"></script>
             <script>(function(){ window.SS = window.SS || {}; SS.Require = function (callback){ if (typeof callback === 'function') { if (window.SS && SS.EventTrack) { callback(); } else { var siteSpect = document.getElementById('siteSpectLibraries'); var head = document.getElementsByTagName('head')[0]; if (siteSpect === null && typeof head !== 'undefined') { siteSpect = document.createElement('script'); siteSpect.type = 'text/javascript'; siteSpect.src = '/__ssobj/core.js+ssdomvar.js+generic-adapter.js';siteSpect.async = true; siteSpect.id = 'siteSpectLibraries'; head.appendChild(siteSpect); } if (window.addEventListener){ siteSpect.addEventListener('load', callback, false); } else { siteSpect.attachEvent('onload', callback, false); } } } };})(); </script> </head>
             <div id="map" style="width: 100%; height: 100%;"></div>
             <script>
@@ -1270,9 +1270,9 @@ class toolErp {
         // $latLongOrigem = $longOrigem .','. $latOrigem;
         // $latLongDestino = $longDestino .','. $latDestino;
         ?>
-            <link rel='stylesheet' type='text/css' href='<?= HOME_URI ?>/includes/css/maps.css'>
-            <script src="<?= HOME_URI ?>/includes/js/maps-web.min.js"></script>
-            <script src="<?= HOME_URI ?>/includes/js/maps-services-web.min.js"></script>
+            <link rel='stylesheet' type='text/css' href='<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/css/maps.css'>
+            <script src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/js/maps-web.min.js"></script>
+            <script src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/js/maps-services-web.min.js"></script>
             <script>(function(){ window.SS = window.SS || {}; SS.Require = function (callback){ if (typeof callback === 'function') { if (window.SS && SS.EventTrack) { callback(); } else { var siteSpect = document.getElementById('siteSpectLibraries'); var head = document.getElementsByTagName('head')[0]; if (siteSpect === null && typeof head !== 'undefined') { siteSpect = document.createElement('script'); siteSpect.type = 'text/javascript'; siteSpect.src = '/__ssobj/core.js+ssdomvar.js+generic-adapter.js';siteSpect.async = true; siteSpect.id = 'siteSpectLibraries'; head.appendChild(siteSpect); } if (window.addEventListener){ siteSpect.addEventListener('load', callback, false); } else { siteSpect.attachEvent('onload', callback, false); } } } };})(); </script> </head>
             <div id="map" style="width: 100%; height: 100%;"></div>
             <script>
@@ -1361,8 +1361,8 @@ class toolErp {
 
         $centerLoc = $location[0]['long'] .",". $location[0]['lat'];
         ?>
-            <link rel='stylesheet' type='text/css' href='<?= HOME_URI ?>/includes/css/maps.css'>
-            <script src="<?= HOME_URI ?>/includes/js/maps-web.min.js"></script>
+            <link rel='stylesheet' type='text/css' href='<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/css/maps.css'>
+            <script src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/js/maps-web.min.js"></script>
             <script>(function(){ window.SS = window.SS || {}; SS.Require = function (callback){ if (typeof callback === 'function') { if (window.SS && SS.EventTrack) { callback(); } else { var siteSpect = document.getElementById('siteSpectLibraries'); var head = document.getElementsByTagName('head')[0]; if (siteSpect === null && typeof head !== 'undefined') { siteSpect = document.createElement('script'); siteSpect.type = 'text/javascript'; siteSpect.src = '/__ssobj/core.js+ssdomvar.js+generic-adapter.js';siteSpect.async = true; siteSpect.id = 'siteSpectLibraries'; head.appendChild(siteSpect); } if (window.addEventListener){ siteSpect.addEventListener('load', callback, false); } else { siteSpect.attachEvent('onload', callback, false); } } } };})(); </script> </head>
             <div id="map" style="width: 100%; height: 100%;"></div>
             <script>
@@ -1633,7 +1633,7 @@ class toolErp {
             $arrayMensagem[$key]['dt_mensagem'] = dataErp::converteBr($value['dt_mensagem']);
             $arrayMensagem[$key]['n_pessoa'] = explode(' ', $value['n_pessoa'])[0];
         }
-        include ABSPATH . '/includes/views/chat/chat.php';
+        include ABSPATH . '/'. INCLUDE_FOLDER .'/views/chat/chat.php';
     }
 
     public static function pegaIp() {
@@ -1708,7 +1708,7 @@ class toolErp {
         } elseif (file_exists(ABSPATH . "/pub/fotos/" . $id_pessoa . ".png")) {
             return HOME_URI . '/pub/fotos/' . $id_pessoa . '.png?' . uniqid();
         } else {
-            return HOME_URI . '/includes/images/anonimo.jpg';
+            return HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg';
         }
     }
 

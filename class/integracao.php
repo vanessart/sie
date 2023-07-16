@@ -4,7 +4,7 @@ class integracao {
 
 	public array $_data;
 	public static $token = NULL;
-	protected $dadosCLI = null;
+	public $dadosCLI = null;
 	protected $cliente = null;
 
 	public function __construct()
@@ -21,9 +21,14 @@ class integracao {
 			}
 
 			$class = $this->dadosCLI['class'];
-			$this->cliente = new $class();
+			if (class_exists($class)) {
+				$this->cliente = new $class();
+			} else {
+				throw new Exception("Class [$class] não Configurado", 1003);
+			}
 
 		} catch (Exception $e) {
+			$this->dadosCLI['ret'] = self::defaultReturnFail($e);
 			return self::defaultReturnFail($e);
 		}
 	}

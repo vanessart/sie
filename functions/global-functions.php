@@ -41,7 +41,7 @@ function m_autoload( $class_name ) {
 	    $file = ABSPATH.'/class/'.$class_name.'.php';
 
 	    if (!file_exists($file)) {
-	        require_once ABSPATH.'/includes/404.php';
+	        require_once ABSPATH.'/'.INCLUDE_FOLDER.'/404.php';
 
 	        return;
 	    }

@@ -263,7 +263,7 @@ $tel = ng_aluno::telefone($usuario['id_pessoa']);
                             <script>
                                 function verImg() {
                                     var uniqid = String.fromCharCode(Math.floor((Math.random() * 25) + 65));
-                                    document.getElementById('ass').innerHTML = '<img src="<?= HOME_URI . "/includes/images/prod_loading.gif" ?>" >';
+                                    document.getElementById('ass').innerHTML = '<img src="<?= HOME_URI . "/". INCLUDE_FOLDER ."/images/prod_loading.gif" ?>" >';
                                     nome = document.getElementById('nome').value;
                                     cargo = document.getElementById('cargo').value;
                                     email = document.getElementById('email').value;

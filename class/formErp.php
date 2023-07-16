@@ -479,10 +479,10 @@ class formErp {
 
     public static function glyphiconButton($value) {
         $gly = [
-            'Salvar' => '<img src="' . HOME_URI . '/includes/images/icons/check-circle.svg" alt = " "/>&nbsp;&nbsp;',
-            'Apagar' => '<img src="' . HOME_URI . '/includes/images/icons/x-circle.svg" alt = " "/>&nbsp;&nbsp;',
-            'Acessar' => '<img src="' . HOME_URI . '/includes/images/icons/arrow-right-circle.svg" alt = " "/>&nbsp;&nbsp;',
-            'Editar' => '<img src="' . HOME_URI . '/includes/images/icons/dash-circle.svg" alt = " "/>&nbsp;&nbsp;'
+            'Salvar' => '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/icons/check-circle.svg" alt = " "/>&nbsp;&nbsp;',
+            'Apagar' => '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/icons/x-circle.svg" alt = " "/>&nbsp;&nbsp;',
+            'Acessar' => '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/icons/arrow-right-circle.svg" alt = " "/>&nbsp;&nbsp;',
+            'Editar' => '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/icons/dash-circle.svg" alt = " "/>&nbsp;&nbsp;'
         ];
         // if (!empty($gly[$value]))
         //  return $gly[$value];
@@ -577,7 +577,7 @@ class formErp {
         if (empty($glyphicon)) {
             $glyphicon = formErp::glyphiconButton($text);
         } else {
-            $glyphicon = '<img src="' . HOME_URI . '/includes/images/icons/' . $glyphicon . '.svg" alt = " "/>';
+            $glyphicon = '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/icons/' . $glyphicon . '.svg" alt = " "/>';
         }
 
         if (!empty($onclick)) {
@@ -618,7 +618,7 @@ class formErp {
         if (empty($glyphicon)) {
             $glyphicon = formErp::glyphiconButton($text);
         } else {
-            $glyphicon = '<img src="' . HOME_URI . '/includes/images/icons/' . $glyphicon . '.svg" alt = " "/>';
+            $glyphicon = '<img src="' . HOME_URI . '/'. INCLUDE_FOLDER .'/images/icons/' . $glyphicon . '.svg" alt = " "/>';
         }
 
         if ($text == 'Salvar') {

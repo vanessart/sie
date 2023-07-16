@@ -16,7 +16,7 @@ $tel = @$_REQUEST['tel'];
     if ($nome && $cargo && $email) {
 
 // Carregar imagem já existente no servidor
-        $imagem = imagecreatefromjpeg(ABSPATH . "/includes/images/etiqueta.jpg");
+        $imagem = imagecreatefromjpeg(ABSPATH . INCLUDE_FOLDER ."/images/etiqueta.jpg");
         /* @Parametros
          * "foto.jpg" - Caminho relativo ou absoluto da imagem a ser carregada.
          */
@@ -31,8 +31,8 @@ $tel = @$_REQUEST['tel'];
          * -- No caso acima é branco
          */
  
-        $font = "/includes/font/arial.ttf";
-        $fontNegrito = "/includes/font/ArialNegrito.ttf";
+        $font = INCLUDE_FOLDER."/font/arial.ttf";
+        $fontNegrito = INCLUDE_FOLDER."/font/ArialNegrito.ttf";
         $nome = urldecode($nome);
         imagettftext($imagem, 13, 0, 240, 25, $cor, ABSPATH . $fontNegrito, $nome);
 

@@ -15,10 +15,10 @@ if ($token) {
     <table style="color: #004573; font-size: 20px; font-weight: bold;" >
         <tr>
             <td>
-                <img src="<?= HOME_URI ?>/includes/images/brasao.png"/>
+                <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/brasao.png"/>
             </td>
             <td>
-                <img src="<?= HOME_URI ?>/includes/images/topo.png"/>
+                <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/topo.png"/>
             </td>
         </tr>
     </table>

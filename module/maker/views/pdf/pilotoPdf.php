@@ -16,7 +16,7 @@ if ($id_turma) {
         $pdf->mgt = '60';
         $pdf->mgb ='30';
         $pdf->orientation = 'L';
-        $pdf->headerAlt = '<img src="' . ABSPATH . '/includes/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px">Salas Maker - Polo: ' . $n_polo . ' - Turma: ' . $n_turma . '</div>';
+        $pdf->headerAlt = '<img src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px">Salas Maker - Polo: ' . $n_polo . ' - Turma: ' . $n_turma . '</div>';
         $diaSem = [
             2 => 'Segunda',
             3 => 'Terça',

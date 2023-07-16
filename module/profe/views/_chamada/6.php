@@ -11,7 +11,7 @@ foreach ($alunos as $v) {
                     <?php if (file_exists(ABSPATH . '/pub/fotos/' . $v['id_pessoa'] . '.jpg')) { ?>
                         <img style="width: 100%" src="<?= HOME_URI . '/pub/fotos/' . $v['id_pessoa'] . '.jpg' ?>">
                     <?php } else { ?>
-                        <img style="width: 100%" src="<?= HOME_URI . '/includes/images/anonimo.jpg' ?>">
+                        <img style="width: 100%" src="<?= HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg' ?>">
                     <?php } ?>  
                 </td>
                 <td style="padding: 15px">
@@ -21,7 +21,7 @@ foreach ($alunos as $v) {
                 </td>
                 <td style="text-align: right; padding: 5px">
                     <button onclick="acSonda(<?= $v['id_pessoa'] ?>)" class="btn btn-outline-success" style="width: 50px; height: 50px; border-radius: 50%">
-                        <img style="width: 30px" src="<?= HOME_URI ?>/includes/images/ir.png" alt="alt"/>
+                        <img style="width: 30px" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/ir.png" alt="alt"/>
                     </button>
                 </td>
             </tr>

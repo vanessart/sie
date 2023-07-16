@@ -42,7 +42,7 @@ $fotos = sql::get('profe_projeto_foto', '*', ['fk_id_projeto' => $id_projeto, '>
                             }else{?>
                                 <a  target="_blank" href="<?= $v['link_video'] ?>">
 
-                                        <img style="width: 50%" src="<?= HOME_URI . '/includes/images/play.png' ?>" alt="foto"/>
+                                        <img style="width: 50%" src="<?= HOME_URI . '/'. INCLUDE_FOLDER .'/images/play.png' ?>" alt="foto"/>
                                     </a>
                                 <?php
                             }?>

@@ -96,7 +96,7 @@ if (empty($id_instSet)) {
 ob_start();
 $pdf = new pdf();
 $pdf->mgt = '35';
-$pdf->headerAlt = '<img style="height: 100px" src="' . ABSPATH . '/includes/images/topo.jpg"/>';
+$pdf->headerAlt = '<img style="height: 100px" src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>';
 
 foreach ($escolas as $id_inst => $n_inst) {
     if (!empty($faltas[$id_inst])) {

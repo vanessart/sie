@@ -121,7 +121,7 @@ class pdf {
             }
         }
         if (empty($senha)) {
-            require ABSPATH . '/includes/structure/header.php';
+            require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
             toolErp::modalInicio(1);
             if (!empty($erro)) {
                 ?>
@@ -208,9 +208,9 @@ class pdf {
             $footer = $this->autenticaSet . "<div style=\"padding: 8px; background-color: silver\" ><table width=\"1000\"><tr><td style=\" font-weight: bold;width: 300px\">".SISTEMA_NOME."</td><td style=\" text-align: center\">". CLI_CIDADE .", " . data::porExtenso(date("Y-m-d")) . "</td><td  style=\"width: 300px\" align=\"right\">{PAGENO}/{nb}</td></tr></table></div>";
         }
         $mpdf->SetHTMLFooter($footer);
-        $css = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/includes/css/style.css">');
+        $css = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/'. INCLUDE_FOLDER .'/css/style.css">');
         $mpdf->WriteHTML($css, 1);
-        $bootstrap = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/includes/css/bootstrap.min.css">');
+        $bootstrap = file_get_contents('<link rel="stylesheet" href="' . ABSPATH . '/'. INCLUDE_FOLDER .'/css/bootstrap.min.css">');
         $mpdf->WriteHTML($bootstrap, 1);
 
         if ($this->orientation == 'L' || $this->orientation == 'l') {

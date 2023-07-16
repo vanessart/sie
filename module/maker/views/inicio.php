@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-8">
             <div style="margin: auto; text-align: center">
-            <img style="width: 60%" src="<?= HOME_URI ?>/includes/images/codMaker.jpg">
+            <img style="width: 60%" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/codMaker.jpg">
         </div>
         </div>
         <div class="col-lg-4">

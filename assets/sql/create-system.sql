@@ -117,7 +117,7 @@ CREATE TABLE `users` (
   `horas` text DEFAULT NULL,
   `google_id` varchar(255) DEFAULT NULL,
   `google_token` text,
-  `fk_id_tp` int DEFAULT NULL
+  `fk_id_tp` int DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   KEY `fk_id_pessoa` (`fk_id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -1019,12 +1019,12 @@ CREATE TABLE `sed_carga_horaria_pl` (
   UNIQUE KEY `fk_id_ciclo` (`fk_id_ciclo`,`fk_id_pl`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE ge2.ge_cursos MODIFY COLUMN fk_id_ta int NULL;
-ALTER TABLE ge2.ge_cursos MODIFY COLUMN fk_id_calcaval int NULL;
-ALTER TABLE ge2.ge_cursos MODIFY COLUMN TipoEnsino int NULL;
-ALTER TABLE ge2.ge_ciclos MODIFY COLUMN aprova_automatico int NULL;
-ALTER TABLE ge2.ge_ciclos MODIFY COLUMN periodicidade varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL;
-ALTER TABLE ge2.ge_aloca_disc MODIFY COLUMN ordem int DEFAULT 0 NULL;
+ALTER TABLE ge_cursos MODIFY COLUMN fk_id_ta int NULL;
+ALTER TABLE ge_cursos MODIFY COLUMN fk_id_calcaval int NULL;
+ALTER TABLE ge_cursos MODIFY COLUMN TipoEnsino int NULL;
+ALTER TABLE ge_ciclos MODIFY COLUMN aprova_automatico int NULL;
+ALTER TABLE ge_ciclos MODIFY COLUMN periodicidade varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL;
+ALTER TABLE ge_aloca_disc MODIFY COLUMN ordem int DEFAULT 0 NULL;
 
 DROP TABLE IF EXISTS `ge_rg_tipo`;
 CREATE TABLE `ge_rg_tipo` (
@@ -1138,88 +1138,88 @@ CREATE TABLE `estados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(1, '12', 'AC', 'Acre');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(2, '27', 'AL', 'Alagoas');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(3, '13', 'AM', 'Amazonas');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(4, '16', 'AP', 'Amapá');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(5, '29', 'BA', 'Bahia');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(6, '23', 'CE', 'Ceará');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(7, '53', 'DF', 'Distrito Federal');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(8, '32', 'ES', 'Espírito Santo');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(9, '52', 'GO', 'Goiás');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(10, '21', 'MA', 'Maranhão');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(11, '31', 'MG', 'Minas Gerais');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(12, '50', 'MS', 'Mato Grosso do Sul');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(13, '51', 'MT', 'Mato Grosso');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(14, '15', 'PA', 'Pará');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(15, '25', 'PB', 'Paraíba');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(16, '26', 'PE', 'Pernambuco');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(17, '22', 'PI', 'Piauí');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(18, '41', 'PR', 'Paraná');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(19, '33', 'RJ', 'Rio de Janeiro');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(20, '24', 'RN', 'Rio Grande do Norte');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(21, '11', 'RO', 'Rondônia');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(22, '14', 'RR', 'Roraima');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(23, '43', 'RS', 'Rio Grande do Sul');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(24, '42', 'SC', 'Santa Catarina');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(25, '28', 'SE', 'Sergipe');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(26, '35', 'SP', 'São Paulo');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(27, '17', 'TO', 'Tocantins');
-INSERT INTO ge2.estados
+INSERT INTO estados
 (id_estado, codigo_ibge, sigla, n_estado)
 VALUES(28, 'EX', 'EX', 'EX');
 
@@ -1231,36 +1231,36 @@ CREATE TABLE `ge_situacao_final` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
-VALUES(0, 'Indefinida');
-INSERT INTO ge2.ge_situacao_final
+VALUES(-1, 'Indefinida'); #mudar para 0 depois de alterar a tabela
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(1, 'Promovido');
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(2, 'Promovido p/ Conselho');
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(3, 'Retido p/ Rendimento');
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(4, 'Retido p/ Frequência');
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(5, 'Retido p/ Conselho');
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(6, 'Aguardando Conselho');
-INSERT INTO ge2.ge_situacao_final
+INSERT INTO ge_situacao_final
 (id_sf, n_sf)
 VALUES(7, 'Promovido (recurso)');
 
 
-ALTER TABLE ge2.ge_situacao_final MODIFY COLUMN id_sf int auto_increment NOT NULL;
-ALTER TABLE ge2.ge_situacao_final 
-AUTO_INCREMENT=8;
+ALTER TABLE ge_situacao_final MODIFY COLUMN id_sf int auto_increment NOT NULL;
+ALTER TABLE ge_situacao_final AUTO_INCREMENT=8;
 
+UPDATE ge_situacao_final SET id_sf = 0 WHERE id_sf = -1;
 
 DROP TABLE IF EXISTS `sed_prontuario`;
 CREATE TABLE `sed_prontuario` (
@@ -1322,19 +1322,14 @@ INSERT INTO ge_aloca_disc_base (id_adb,n_adb,descr_adb,at_adb) VALUES
    (1,'BNCC','Base Nacional Comum Curricular',1),
    (2,'BD','Base Diversificada',1);
 
-
-INSERT INTO ge_ciclos (fk_id_curso,n_ciclo,sg_ciclo,aprova_automatico,fk_id_grade,periodicidade,ativo,SerieAno,aulas,dias_semana) VALUES
-   (1,'Pré Fase 1','1',1,1,'1',1,1,1,'1,2,3,4,5'),
-   (1,'Pré Fase 2','2',1,1,'1',1,2,1,'1,2,3,4,5');
-
-INSERT INTO ge2.pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
+INSERT INTO pessoa (id_pessoa, n_pessoa, n_social, dt_nasc, email, ativo, cpf, cpf_old, sexo, ra, ra_dig, ra_uf, rg, rg_dig, rg_oe, rg_uf, dt_rg, fk_id_rt, certidao, sus, pai, cpf_pai, mae, cpf_mae, mae_rg, mae_rg_dig, mae_rg_oe, dt_mae_rg, pai_rg, pai_rg_dig, pai_rg_oe, dt_pai_rg, mae_rg_uf, pai_rg_uf, responsavel, dt_resp, cpf_respons, rg_respons, email_respons, nacionalidade, uf_nasc, cidade_nasc, deficiencia, cor_pele, tel1, ddd1, tel2, ddd2, tel3, ddd3, obs, novacert_cartorio, novacert_acervo, novacert_regcivil, novacert_ano, novacert_tipolivro, novacert_numlivro, novacert_folha, novacert_termo, novacert_controle, dt_gdae, at_google, nis, emailgoogle, google_user_id, duplicado_nome_data, inep, trabalho_pai, end_trab_pai, trabalho_mae, end_trab_mae, update_at, parentesco)
 VALUES(1, 'CRISTIANO ARRUDA', NULL, '1986-07-27', 'crisarruda.silva@gmail.com', 1, '05330469988', NULL, 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'IVONETE ARRUDA DA SILVA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brasileiro', 'PR', 'Terra Rica', NULL, NULL, '981267738', 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'crisarruda.silva@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-04-02 16:05:17', NULL);
 
 
-INSERT INTO ge2.users (id_user, user_password, fk_id_pessoa, user_session_id, ativo, expira, horas, google_id, google_token)
+INSERT INTO users (id_user, user_password, fk_id_pessoa, user_session_id, ativo, expira, horas, google_id, google_token)
 VALUES(1, '$2a$08$3Xe1WzYN6snvza1d98EujOkRKJNKvII6iaFrZAtePiYH7bdZyBY9i', 1, '8ptrf5hldsmkt0aji3a3kr6cr8', 1, '2023-03-01', '', '107750209957574070253', '230452642a003cdd6a5');
 
-INSERT INTO ge2.grupo (id_gr, n_gr, at_gr)
+INSERT INTO grupo (id_gr, n_gr, at_gr)
 VALUES (1, 'MASTER', 1), (26, 'Supervisor', 1), (61, 'Suporte Técnico', 1);
 
 
@@ -1346,132 +1341,132 @@ INSERT INTO predio (n_predio,sigla,descricao,ativo,cep,logradouro,num,complement
 
 INSERT INTO instancia_predio values (null, 1, 1, 1);
 
-INSERT INTO ge2.ge_escolas (fk_id_inst,fk_id_tp_ens,classe,ato_cria,ato_municipa,vizualizar)
+INSERT INTO ge_escolas (fk_id_inst,fk_id_tp_ens,classe,ato_cria,ato_municipa,vizualizar)
   VALUES (1,'1|2',1,'','',1);
 
 
-INSERT INTO ge2.framework (id_fr, n_fr, end_fr, ativo)
+INSERT INTO framework (id_fr, n_fr, end_fr, ativo)
 VALUES(1, 'Autenticador', '/sie/', 1);
 
-INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(1, 'princ', 'Sistema Principal', 1, 'a:2:{i:0;s:1:"1";i:1;s:1:"2";}', '', 1, 0, '', 1);
-INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(2, 'admin', 'Administrador do Sistema (novo)', 1, 'a:1:{i:0;s:1:"2";}', '', 1, 0, NULL, NULL);
-INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(3, 'tdics', 'Núcleos WIT', 1, 'a:7:{i:0;s:1:"2";i:1;s:2:"39";i:2;s:1:"8";i:3;s:2:"10";i:4;s:2:"57";i:5;s:2:"24";i:6;s:2:"43";}', '', 1, 0, NULL, NULL);
-INSERT INTO ge2.sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
+INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(4, 'sed', 'Gestão Educacional', 1, 'a:6:{i:0;s:1:"2";i:1;s:1:"8";i:2;s:2:"10";i:3;s:2:"31";i:4;s:2:"43";i:5;s:2:"44";}', '', 1, 0, NULL, 0);
 
 
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(1, 'Desenvolvedor', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(2, 'Administrador', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(4, 'Atendente                     ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(6, 'Gestão de Processos           ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(7, 'DTTIE                         ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(8, 'Escola', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(9, 'Relatório                     ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(10, 'Gerente                       ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(11, 'Secretaria de Educação', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(12, 'Usuário                       ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(13, 'Avaliação                     ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(14, 'Gestão de Pessoal', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(15, 'Contabilidade                 ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(16, 'Banca Corretora               ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(17, 'Diretor', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(18, 'Avaliação In Loco             ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(19, 'Avaliação In Loco S.          ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(20, 'Abrangência                   ', 1, 20);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(21, 'Fundamental                   ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(22, 'Supervisor                    ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(23, 'Infantil                      ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(24, 'Professor(a)', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(25, 'Secretaria de Escola', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(26, 'Coordenadoria', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(27, 'Maternal', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(28, 'Pré', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(29, 'Apoio Pedagógico', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(30, 'Aluno', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(31, 'Informações', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(32, 'Responsáveis', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(34, 'DAE', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(35, 'Organização Social', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(36, 'Equipe de Gestão', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(37, 'Consulta', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(38, 'Exportação de Dados', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(39, 'Call Center', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(40, 'Validação Avaliação Global', 1, 10);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(41, 'Terceirizado', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(43, 'Professor(a) Volante', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(44, 'Vida Escolar', 1, 10);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(45, 'Apoio Secretaria', 1, 45);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(46, 'Administrador Email Google', 1, 10);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(47, 'Telefonia', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(48, 'Coordenador', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(49, 'Suporte Técnico', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(50, 'Professor Infantil', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(51, 'Transporte', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(52, 'Professor Maker', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(53, 'Coordenadoria Infantil ', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(54, 'Coordenadoria Fundamental', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(55, 'Coordenador Fundamental', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(56, 'Coordenador Infantil', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(57, 'Núcleo TDICS', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(58, 'Saúde Bucal', 1, 0);
-INSERT INTO ge2.nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
+INSERT INTO nivel (id_nivel, n_nivel, ativo, fk_id_nivel)
 VALUES(59, 'Lançamento de Dados', 1, 0);
 
 INSERT INTO acesso_gr VALUES(NULL, 1, 1, 2);
@@ -1492,14 +1487,14 @@ INSERT INTO acesso_gr VALUES(NULL, 1, 4, 10);
 
 INSERT INTO acesso_pessoa VALUES(NULL, 1, 1, 1);
 
-INSERT INTO ge2.tdics_pl (id_pl, n_pl, ativo)
+INSERT INTO tdics_pl (id_pl, n_pl, ativo)
 VALUES(2, '1º Semestre de 2023', 1);
 
-INSERT INTO ge2.tdics_setup (id_setup, qt_turma, matri, matri_prev, qt_curso_aluno, fk_id_pl_certificado, dt_certif)
+INSERT INTO tdics_setup (id_setup, qt_turma, matri, matri_prev, qt_curso_aluno, fk_id_pl_certificado, dt_certif)
 VALUES(1, 16, 0, 0, 1, 1, '2022-12-19');
 
 
-ALTER TABLE ge2.tdics_polo MODIFY COLUMN id_polo int auto_increment NOT NULL;
+ALTER TABLE tdics_polo MODIFY COLUMN id_polo int auto_increment NOT NULL;
 
 SET GLOBAL sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
 SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
@@ -1525,13 +1520,13 @@ insert into sis_nivel_pag
 select null, 1, 2, null, id_pag
 from pagina where fk_id_sistema = 1;
 
-INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+INSERT INTO telefones_tipo (id_tt, n_tt)
 VALUES(1, 'Celular');
-INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+INSERT INTO telefones_tipo (id_tt, n_tt)
 VALUES(2, 'Residencial');
-INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+INSERT INTO telefones_tipo (id_tt, n_tt)
 VALUES(3, 'Comercial');
-INSERT INTO ge2.telefones_tipo (id_tt, n_tt)
+INSERT INTO telefones_tipo (id_tt, n_tt)
 VALUES(4, 'Recados');
 
 
@@ -1706,4 +1701,4 @@ INSERT INTO ge_disciplinas (id_disc,n_disc,sg_disc,fk_id_area,status_disc) VALUE
 INSERT INTO ge_situacao_sed (id_sit_sed, sit_sed,sit_sieb,sit_agrupamento,sit_layout) VALUES
    (1, 'FREQUENTE','Frequente',1,'Frequente');
 
-ALTER TABLE ge2.tdics_horarios ADD fk_id_polo INT NULL AFTER id_horarios;
+ALTER TABLE tdics_horarios ADD fk_id_polo INT NULL AFTER id_horarios;

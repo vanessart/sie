@@ -156,7 +156,7 @@ foreach ($escolas as $k => $v) {
     $locations[] = [
         'lat' => $v['latitude'],
         'long' => $v['longitude'],
-        // 'img' => HOME_URI .'/includes/images/pessoa.png',
+        // 'img' => HOME_URI .'/'. INCLUDE_FOLDER .'/images/pessoa.png',
     ];
 }
 
@@ -167,7 +167,7 @@ if (!empty($id_tp_ens) && @$tipo == 'loc' && !empty($heat)) {
         $locations[] = [
             'lat' => $v['latitude'],
             'long' => $v['longitude'],
-            'img' => HOME_URI .'/includes/images/pessoa.png',
+            'img' => HOME_URI .'/'. INCLUDE_FOLDER .'/images/pessoa.png',
         ];
     }
 }

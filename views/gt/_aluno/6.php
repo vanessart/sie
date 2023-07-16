@@ -147,7 +147,7 @@ $autorizado = $aluno->responsaveis(@$_POST['desativados']);
                             <?php
                         } else {
                             ?>
-                            <img src="<?php echo HOME_URI ?>/includes/images/an.jpg" style="width: 100px"  alt = "aluno"/>
+                            <img src="<?php echo HOME_URI ?>/<?php echo INCLUDE_FOLDER ?>/images/an.jpg" style="width: 100px"  alt = "aluno"/>
                             <?php
                         }
                         ?>

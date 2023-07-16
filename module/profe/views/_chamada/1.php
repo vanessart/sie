@@ -124,7 +124,7 @@ if (empty($erro)) {
                         <?php
                     } else {
                         ?>
-                        <img onclick="foto()" style="width:100%; height: 120px; cursor: pointer"src="<?= HOME_URI . '/includes/images/anonimo.jpg' ?>" alt="..." ><br><br>
+                        <img onclick="foto()" style="width:100%; height: 120px; cursor: pointer"src="<?= HOME_URI . '/'. INCLUDE_FOLDER .'/images/anonimo.jpg' ?>" alt="..." ><br><br>
                         <?php
                     }
                     ?>

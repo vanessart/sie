@@ -40,7 +40,7 @@ if ($ga) {
                         . formErp::hiddenToken('excluiGA')
                         ?>
                         <button style="font-weight: bold" class="btn btn-light">
-                            <img src="<?= HOME_URI ?>/includes/images/close.png" alt="X"/>
+                            <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/close.png" alt="X"/>
                         </button>
                     </form>
                 </td>

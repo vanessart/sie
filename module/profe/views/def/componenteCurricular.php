@@ -337,5 +337,5 @@ if ($id_porte == 3) {?>
     }
 </script>
 <div id="load" style="position: fixed; top: 20%; left: 30%; display: none">
-    <img src="<?= HOME_URI ?>/includes/images/loading.gif" alt="alt"/>
+    <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/loading.gif" alt="alt"/>
 </div>

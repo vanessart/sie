@@ -29,7 +29,7 @@ if ($id_inst) {
         $sql = "SELECT * FROM `maker_horario` WHERE `periodo` LIKE '" . substr($t['n_turma'], 1, 1) . "' AND `aula` = " . substr($t['n_turma'], 3, 1) . " ";
         $query = pdoSis::getInstance()->query($sql);
         $h = $query->fetch(PDO::FETCH_ASSOC);
-        $pdf->headerAlt = '<img src="' . ABSPATH . '/includes/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px">Salas Maker - Polo: ' . $n_polo . '</div>';
+        $pdf->headerAlt = '<img src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px">Salas Maker - Polo: ' . $n_polo . '</div>';
         ?>
 
         <table style="width: 100%" border=1 cellspacing=0 cellpadding=2 bordercolor="666633"> 

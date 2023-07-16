@@ -14,7 +14,7 @@ if ($id_turma && $ano && $semestre) {
         $pdf = new pdf();
         $pdf->mgt = '50';
         $pdf->mgb = '30';
-        $pdf->headerAlt = '<img src="' . ABSPATH . '/includes/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px"><p>Acompanhamento Semestral do Desenvolvimento e da Aprendizagem</p></div>';
+        $pdf->headerAlt = '<img src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px"><p>Acompanhamento Semestral do Desenvolvimento e da Aprendizagem</p></div>';
 
         foreach ($dadosList as $dados) {
             $id_pessoaAlu = $dados['fk_id_pessoa_alu'];

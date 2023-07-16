@@ -22,7 +22,7 @@ ob_start();
 $pdf = new pdf();
 $pdf->mgt = '30';
 $pdf->orientation = 'L';
-$pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px" src="' . ABSPATH . '/includes/images/topo.jpg"/></td><td style="text-align: center; font-weight: bold; font-size: 14px">Controle de Lanches</td></tr></table>';
+$pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px" src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/></td><td style="text-align: center; font-weight: bold; font-size: 14px">Controle de Lanches</td></tr></table>';
 ?>
 <style>
     td{

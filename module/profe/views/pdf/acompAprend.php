@@ -22,7 +22,7 @@ if (!empty($dados['id_acomp'])) {
     $pdf = new pdf();
     $pdf->mgt = '50';
     $pdf->mgb = '30';
-    $pdf->headerAlt = '<img src="' . ABSPATH . '/includes/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px"><p>Acompanhamento Semestral do Desenvolvimento e da Aprendizagem</p></div>';
+    $pdf->headerAlt = '<img src="' . ABSPATH . '/'. INCLUDE_FOLDER .'/images/topo.jpg"/>' . '<div style="text-align: center; font-weight: bold; font-size: 14px"><p>Acompanhamento Semestral do Desenvolvimento e da Aprendizagem</p></div>';
     ?>
     <table style="width: 100%" border=1 cellspacing=0 cellpadding=2 bordercolor="666633"> 
         <tr>
