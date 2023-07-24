@@ -183,6 +183,9 @@ if ($id_polo) {
                 <?php
                 if ($id_turma && $id_inst) {
                     if (!$travaPorEscola || @$qtAlunos[$id_turma] < $setup['qt_turma']) {
+                        if (toolErp::id_pessoa() == 1){
+                            var_dump(in_array($id_pl, $libera), !$travaPorEscola, $id_pl, $libera);
+                        } 
                         if (in_array($id_pl, $libera) || !$travaPorEscola) {
                             ?>
                             <form action="<?= HOME_URI ?>/tdics/def/formNovoAluno" id="novoAluno" target="frame" method="POST">
