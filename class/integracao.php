@@ -455,9 +455,9 @@ class integracao {
 
                 if (!empty($aluno))
                 {
-                	echo '<pre>';
-                	print_r($aluno);
-                	echo '</pre>';
+                	// echo '<pre>';
+                	// print_r($aluno);
+                	// echo '</pre>';
                 	$sqlUp = '';
                     if ($fk_id_sit_sed != $aluno['fk_id_sit_sed']) 
                     {
@@ -470,7 +470,7 @@ class integracao {
                             . " SET chamada = '" . $pes['outNumAlunoSalaDeAula'] . "' "
                             . $sqlUp
                             . " WHERE id_turma_aluno = " . $aluno['id_turma_aluno'];
-                    print_r($sql);
+                    // print_r($sql);
                 	
                     $query = pdoSis::getInstance()->query($sql);
 
@@ -493,8 +493,8 @@ class integracao {
 		            . $fk_id_tas //fk_id_tas
 		            . ")";
 
-		            print_r($sql);
-		            echo "<br>";
+		            // print_r($sql);
+		            // echo "<br>";
 		            $query = pdoSis::getInstance()->query($sql);
 
 		        }
