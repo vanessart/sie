@@ -488,8 +488,8 @@ class integracao {
 		            . $fk_id_tas //fk_id_tas
 		            . ")";
 
-		            // print_r($sql);
-		            // echo "<br>";
+		            print_r($sql);
+		            echo "<br>";
 		            $query = pdoSis::getInstance()->query($sql);
 
 		        }
