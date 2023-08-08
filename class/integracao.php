@@ -503,6 +503,9 @@ class integracao {
 		        }
 
 	        } catch (Exception $e) {
+	        	$agora = new DateTime();
+	            error_log( $agora->format("Y-m-d H:i:s") . " - ". @$id_pessoa ." - error \n". print_r($pes, true) ."\n\n", 3, "/var/log/apache2/log-sp.log" );
+
 	            echo "<span style='color: #f00'>";
 	            var_dump($e->getMessage(), $e->getCode(), $pes);
 	            echo "</span><br>";
