@@ -438,6 +438,9 @@ class integracao {
 	                    $situacao = 'null';
 	                    $fk_id_tas = 'null';
 	                    $fk_id_sit_sed = 0;
+
+	                    $agora = new DateTime();
+	                    error_log( $agora->format("Y-m-d H:i:s") . " - $id_pessoa - situacao null\n". print_r($pes, true) ."\n\n", 3, "/var/log/apache2/log-sp.log" );
 	                    break;
 	            }
 
