@@ -7,28 +7,6 @@ $token = DB::sqlKey('googleLogin');
 <!DOCTYPE html>
 <html lang="pt-br" >
     <head>
-         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5JDQ6EKM6W"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'G-5JDQ6EKM6W');
-        </script>
-        <script type="text/javascript">
-            (function (c, l, a, r, i, t, y) {
-                c[a] = c[a] || function () {
-                    (c[a].q = c[a].q || []).push(arguments)
-                };
-                t = l.createElement(r);
-                t.async = 1;
-                t.src = "https://www.clarity.ms/tag/" + i;
-                y = l.getElementsByTagName(r)[0];
-                y.parentNode.insertBefore(t, y);
-            })(window, document, "clarity", "script", "dxu3040a9l");
-        </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
