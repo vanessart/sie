@@ -1620,6 +1620,7 @@ class sedModel extends MainModel {
 
             echo '<pre>integracao</pre>';
             error_log( $agora->format("Y-m-d H:i:s") . " - integracao\n", 3, "/var/log/apache2/log-sp.log" );
+            die('stop');
             $integracao = new integracao();
             if (empty($integracao) || !isset($integracao->dadosCLI)) {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
