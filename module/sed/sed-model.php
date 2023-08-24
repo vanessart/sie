@@ -1619,7 +1619,7 @@ class sedModel extends MainModel {
             $agora = new DateTime();
 
             echo '<pre>integracao</pre>';
-            die('stop');
+            // die('stop');
             error_log( $agora->format("Y-m-d H:i:s") . " - integracao\n", 3, "/var/www/html/log-sp.log" );
             $integracao = new integracao();
             if (empty($integracao) || !isset($integracao->dadosCLI)) {
@@ -1627,7 +1627,7 @@ class sedModel extends MainModel {
             }
 
             echo '<pre>dados</pre>';
-            die('stop');
+            // die('stop');
             error_log( $agora->format("Y-m-d H:i:s") . " - dados\n", 3, "/var/www/html/log-sp.log" );
             if (isset($integracao->dadosCLI['ret']) && empty($integracao->dadosCLI['ret']['status'])) {
                 throw new Exception($integracao->dadosCLI['ret']['message']);
