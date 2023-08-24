@@ -1619,8 +1619,8 @@ class sedModel extends MainModel {
             $agora = new DateTime();
 
             echo '<pre>integracao</pre>';
-            error_log( $agora->format("Y-m-d H:i:s") . " - integracao\n", 3, "/var/log/apache2/log-sp.log" );
             die('stop');
+            error_log( $agora->format("Y-m-d H:i:s") . " - integracao\n", 3, "/var/log/apache2/log-sp.log" );
             $integracao = new integracao();
             if (empty($integracao) || !isset($integracao->dadosCLI)) {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
