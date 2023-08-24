@@ -9,7 +9,7 @@ $pdf->mgt = 0;
 <img src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/maker/tdics.png" alt="alt"/>
 <br /><br />
 <div style="text-align: center; font-weight: bold; font-size: 20px">
-    PROJETO - PARNAÍBA - MAKER LABS
+    PROJETO - <?= CLI_CIDADE ?> - MAKER LABS
 </div>
 <br />
 <div style="text-align: center; font-weight: bold; font-size: 19px; color: red">

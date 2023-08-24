@@ -1330,7 +1330,15 @@ INSERT INTO users (id_user, user_password, fk_id_pessoa, user_session_id, ativo,
 VALUES(1, '$2a$08$3Xe1WzYN6snvza1d98EujOkRKJNKvII6iaFrZAtePiYH7bdZyBY9i', 1, '8ptrf5hldsmkt0aji3a3kr6cr8', 1, '2023-03-01', '', '107750209957574070253', '230452642a003cdd6a5');
 
 INSERT INTO grupo (id_gr, n_gr, at_gr)
-VALUES (1, 'MASTER', 1), (26, 'Supervisor', 1), (61, 'Suporte Técnico', 1);
+VALUES (1, 'MASTER', 1), 
+  (2,'Diretor de Fundamental',1),
+  (3,'Diretor de Ensino Médio',1),
+  (17,'Suporte Técnico',1),
+  (18,'Professor(a)',1),
+  (26,'Supervisor',1),
+  (62,'MakerLabs ADM',1),
+  (76,'Professor MakerLabs',1),
+  (77,'Núcleo MakerLabs',1);
 
 
 INSERT INTO instancia
@@ -1353,7 +1361,7 @@ VALUES(1, 'princ', 'Sistema Principal', 1, 'a:2:{i:0;s:1:"1";i:1;s:1:"2";}', '',
 INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(2, 'admin', 'Administrador do Sistema (novo)', 1, 'a:1:{i:0;s:1:"2";}', '', 1, 0, NULL, NULL);
 INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
-VALUES(3, 'tdics', 'Núcleos WIT', 1, 'a:7:{i:0;s:1:"2";i:1;s:2:"39";i:2;s:1:"8";i:3;s:2:"10";i:4;s:2:"57";i:5;s:2:"24";i:6;s:2:"43";}', '', 1, 0, NULL, NULL);
+VALUES(3, 'tdics', 'Maker Labs', 1, 'a:7:{i:0;s:1:"2";i:1;s:2:"39";i:2;s:1:"8";i:3;s:2:"10";i:4;s:2:"57";i:5;s:2:"24";i:6;s:2:"43";}', '', 1, 0, NULL, NULL);
 INSERT INTO sistema (id_sistema, arquivo, n_sistema, fk_id_fr, niveis, descr_sistema, ativo, fkid, msg, protegido)
 VALUES(4, 'sed', 'Gestão Educacional', 1, 'a:6:{i:0;s:1:"2";i:1;s:1:"8";i:2;s:2:"10";i:3;s:2:"31";i:4;s:2:"43";i:5;s:2:"44";}', '', 1, 0, NULL, 0);
 
@@ -1702,3 +1710,8 @@ INSERT INTO ge_situacao_sed (id_sit_sed, sit_sed,sit_sieb,sit_agrupamento,sit_la
    (1, 'FREQUENTE','Frequente',1,'Frequente');
 
 ALTER TABLE tdics_horarios ADD fk_id_polo INT NULL AFTER id_horarios;
+
+INSERT INTO ge_periodo_letivo (n_pl,at_pl,ano,semestre,preferencial) VALUES
+   ('2º Semestre de 2023',1,2023,2,1),
+   ('1º Semestre de 2024',2,2024,1,0);
+
