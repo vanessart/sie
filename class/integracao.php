@@ -438,6 +438,9 @@ class integracao {
 	                    $situacao = 'null';
 	                    $fk_id_tas = 'null';
 	                    $fk_id_sit_sed = 0;
+
+	                    $agora = new DateTime();
+	                    error_log( $agora->format("Y-m-d H:i:s") . " - $id_pessoa - situacao null\n". print_r($pes, true) ."\n\n", 3, "/var/log/apache2/log-sp.log" );
 	                    break;
 	            }
 
@@ -455,6 +458,9 @@ class integracao {
 
                 if (!empty($aluno))
                 {
+                	// echo '<pre>';
+                	// print_r($aluno);
+                	// echo '</pre>';
                 	$sqlUp = '';
                     if ($fk_id_sit_sed != $aluno['fk_id_sit_sed']) 
                     {
@@ -467,6 +473,8 @@ class integracao {
                             . " SET chamada = '" . $pes['outNumAlunoSalaDeAula'] . "' "
                             . $sqlUp
                             . " WHERE id_turma_aluno = " . $aluno['id_turma_aluno'];
+                    // print_r($sql);
+                	
                     $query = pdoSis::getInstance()->query($sql);
 
 				} else {
@@ -495,6 +503,9 @@ class integracao {
 		        }
 
 	        } catch (Exception $e) {
+	        	$agora = new DateTime();
+	            error_log( $agora->format("Y-m-d H:i:s") . " - ". @$id_pessoa ." - error - ". print_r($e->getMessage(), true) ." \n". print_r($pes, true) ."\n\n", 3, "/var/log/apache2/log-sp.log" );
+
 	            echo "<span style='color: #f00'>";
 	            var_dump($e->getMessage(), $e->getCode(), $pes);
 	            echo "</span><br>";

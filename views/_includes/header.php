@@ -15,30 +15,7 @@ if (!defined('ABSPATH')) {
 
 
     <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5JDQ6EKM6W"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-5JDQ6EKM6W');
-        </script>
-        <script type="text/javascript">
-            (function (c, l, a, r, i, t, y) {
-                c[a] = c[a] || function () {
-                    (c[a].q = c[a].q || []).push(arguments)
-                };
-                t = l.createElement(r);
-                t.async = 1;
-                t.src = "https://www.clarity.ms/tag/" + i;
-                y = l.getElementsByTagName(r)[0];
-                y.parentNode.insertBefore(t, y);
-            })(window, document, "clarity", "script", "dxu3040a9l");
-        </script>
-                <!-- <title><?php echo $this->title; ?> - SIEB - 26/12/2020</title> -->
+        <!-- <title><?php echo $this->title; ?> - SIEB - 26/12/2020</title> -->
         <title><?= CLI_CIDADE ?> - Educação - <?= SISTEMA_NOME ?></title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -113,17 +90,6 @@ if (@$_SESSION['userdata']['id_pessoa'] != 1 && @$_SESSION['userdata']['id_pesso
 ?>
             });
         </script>
-        <!--script async src="https://www.googletagmanager.com/gtag/js?id=G-NRJGB6T7DX"></script-->
-        <!--script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'G-NRJGB6T7DX');
-        </script-->
-
         <!-- Seta siebsed global para javascript -->
         <script async type="text/javascript"  crossorigin="anonymous">
             var HOME_URI = "<?php echo HOME_URI; ?>";

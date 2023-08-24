@@ -10,7 +10,7 @@ $atrib = '';
             <?= formErp::input(null, 'ID', @$pess['id_pessoa'], ' readonly ' . $atrib) ?>
         </div>
         <div class="col-9">
-            <?= formErp::input('1[n_pessoa]', 'Nome', @$pess['n_pessoa'], $atrib) ?>
+            <?= formErp::input('1[n_pessoa]', 'Nome', @$pess['n_pessoa'], ' required ' . $atrib) ?>
         </div>
     </div>
     <br />
