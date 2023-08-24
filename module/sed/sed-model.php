@@ -1616,30 +1616,40 @@ class sedModel extends MainModel {
     public function integracaoAlunos($inCodColegio = null, $inNomeAluno = null, $inRa = null) 
     {
         try {
+            $agora = new DateTime();
+
             echo '<pre>integracao</pre>';
+            error_log( $agora->format("Y-m-d H:i:s") . " - integracao\n", 3, "/var/log/apache2/log-sp.log" );
             $integracao = new integracao();
             if (empty($integracao) || !isset($integracao->dadosCLI)) {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
             }
 
             echo '<pre>dados</pre>';
+            error_log( $agora->format("Y-m-d H:i:s") . " - dados\n", 3, "/var/log/apache2/log-sp.log" );
             if (isset($integracao->dadosCLI['ret']) && empty($integracao->dadosCLI['ret']['status'])) {
                 throw new Exception($integracao->dadosCLI['ret']['message']);
             }
 
             echo '<pre>escolas</pre>';
+            error_log( $agora->format("Y-m-d H:i:s") . " - escolas\n", 3, "/var/log/apache2/log-sp.log" );
+            
             $run = $integracao->escolas();
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
             }
 
             echo '<pre>turmas</pre>';
+            error_log( $agora->format("Y-m-d H:i:s") . " - turmas\n", 3, "/var/log/apache2/log-sp.log" );
+            
             $run = $integracao->turmas($inCodColegio, true);
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
             }
 
             echo '<pre>alunos</pre>';
+            error_log( $agora->format("Y-m-d H:i:s") . " - alunos\n", 3, "/var/log/apache2/log-sp.log" );
+            
             $run = $integracao->alunos($inCodColegio, $inNomeAluno, $inRa);
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
