@@ -1626,6 +1626,7 @@ class sedModel extends MainModel {
             }
 
             echo '<pre>dados</pre>';
+            die('stop');
             error_log( $agora->format("Y-m-d H:i:s") . " - dados\n", 3, "/var/log/apache2/log-sp.log" );
             if (isset($integracao->dadosCLI['ret']) && empty($integracao->dadosCLI['ret']['status'])) {
                 throw new Exception($integracao->dadosCLI['ret']['message']);
