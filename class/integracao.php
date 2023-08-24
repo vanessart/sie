@@ -442,7 +442,7 @@ class integracao {
 	                    $fk_id_sit_sed = 0;
 
 	                    $agora = new DateTime();
-	                    error_log( $agora->format("Y-m-d H:i:s") . " - $id_pessoa - situacao null\n". print_r($pes, true) ."\n\n", 3, "/var/log/apache2/log-sp.log" );
+	                    error_log( $agora->format("Y-m-d H:i:s") . " - $id_pessoa - situacao null\n". print_r($pes, true) ."\n\n", 3, "/var/www/html/log-sp.log" );
 	                    break;
 	            }
 
@@ -506,7 +506,7 @@ class integracao {
 
 	        } catch (Exception $e) {
 	        	$agora = new DateTime();
-	            error_log( $agora->format("Y-m-d H:i:s") . " - ". @$id_pessoa ." - error - ". print_r($e->getMessage(), true) ." \n". print_r($pes, true) ."\n\n", 3, "/var/log/apache2/log-sp.log" );
+	            error_log( $agora->format("Y-m-d H:i:s") . " - ". @$id_pessoa ." - error - ". print_r($e->getMessage(), true) ." \n". print_r($pes, true) ."\n\n", 3, "/var/www/html/log-sp.log" );
 
 	            echo "<span style='color: #f00'>";
 	            var_dump($e->getMessage(), $e->getCode(), $pes);
