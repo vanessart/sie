@@ -1616,25 +1616,30 @@ class sedModel extends MainModel {
     public function integracaoAlunos($inCodColegio = null, $inNomeAluno = null, $inRa = null) 
     {
         try {
+            echo '<pre>integracao</pre>';
             $integracao = new integracao();
             if (empty($integracao) || !isset($integracao->dadosCLI)) {
                 throw new Exception("Nenhuma resposta da integracao de alunos");
             }
 
+            echo '<pre>dados</pre>';
             if (isset($integracao->dadosCLI['ret']) && empty($integracao->dadosCLI['ret']['status'])) {
                 throw new Exception($integracao->dadosCLI['ret']['message']);
             }
 
+            echo '<pre>escolas</pre>';
             $run = $integracao->escolas();
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
             }
 
+            echo '<pre>turmas</pre>';
             $run = $integracao->turmas($inCodColegio, true);
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
             }
 
+            echo '<pre>alunos</pre>';
             $run = $integracao->alunos($inCodColegio, $inNomeAluno, $inRa);
             if (empty($run['status'])) {
                 throw new Exception($run['message'], $run['code']);
