@@ -14,7 +14,7 @@ if ($id_pl && $id_polo) {
         $temAlu = toolErp::idName($array);
     }
 }
-$pls = sql::idNome('tdics_pl', 'where id_pl in (1,2)');
+$pls = sql::idNome('tdics_pl', 'where ativo in (1,2)');
 if (empty($id_pl)) {
     $id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 }
