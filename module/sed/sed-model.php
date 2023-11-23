@@ -1669,6 +1669,7 @@ class sedModel extends MainModel {
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
             ];
+            error_log( $agora->format("Y-m-d H:i:s") . " - catch (".$e->getCode()."): ".$e->getMessage()." \n", 3, "/var/www/html/log-sp.log" );
         }
 
         echo '<pre>';
