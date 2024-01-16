@@ -311,7 +311,7 @@ class integracao {
 	            FROM ge_tp_ensino te
 	            JOIN ge_cursos c ON te.id_tp_ens = c.fk_id_tp_ens 
 	            JOIN ge_ciclos gc ON c.id_curso = gc.fk_id_curso 
-	            JOIN ge_periodo_letivo pl ON pl.id_pl  = 1
+	            JOIN ge_periodo_letivo pl ON pl.at_pl = 1
 	            , instancia i 
 	            WHERE te.id_tp_ens IN(4, 7) AND gc.sg_ciclo between '1' AND '9'
 	            AND c.n_curso = '".$v['outCiclo']."'
