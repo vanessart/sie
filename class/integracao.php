@@ -335,8 +335,8 @@ class integracao {
 	    $max = 2;
 	    $alunosSie = [];
 
-	    echo '<pre>';
-	    print_r($a);
+	    // echo '<pre>';
+	    // print_r($a);
 	    foreach ($a as $k => $pes) {
 	        try {
 	            $cont++;
