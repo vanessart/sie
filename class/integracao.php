@@ -437,6 +437,18 @@ class integracao {
 	                    $fk_id_sit_sed = 2;
 	                    break;
 
+	                case 'Falecido':
+	                    $situacao = "'Falecido'";
+	                    $fk_id_tas = 4;
+	                    $fk_id_sit_sed = 8;
+	                    break;
+
+	                case 'Transf. - Conv. Abandono':
+	                    $situacao = "'Transferido Escola'";
+	                    $fk_id_tas = 2;
+	                    $fk_id_sit_sed = 21;
+	                    break;
+
 	                default:
 	                    $situacao = 'null';
 	                    $fk_id_tas = 'null';
