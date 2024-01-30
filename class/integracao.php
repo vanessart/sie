@@ -473,7 +473,8 @@ class integracao {
                     }
 
                     $sql = "UPDATE ge_turma_aluno "
-                            . " SET chamada = '" . $pes['outNumAlunoSalaDeAula'] . "' "
+                            // . " SET chamada = '" . $pes['outNumAlunoSalaDeAula'] . "' "
+                            . " SET chamada = NULL "
                             . $sqlUp
                             . " WHERE id_turma_aluno = " . $aluno['id_turma_aluno'];
                     // print_r($sql);
