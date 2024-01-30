@@ -22,7 +22,7 @@ if (toolErp::id_nilvel() == 8 || empty($todasTurmas)) {
     $periodos = null;
 }
 $sql = "SELECT t.*, p.n_polo, c.n_curso FROM tdics_turma o "
-        . " JOIN tdics_turma t on t.fk_id_curso = o.fk_id_pl and o.id_turma = $id_turma AND o.fk_id_pl= t.fk_id_pl $periodos "
+        . " JOIN tdics_turma t on t.fk_id_curso = o.fk_id_curso and o.id_turma = $id_turma AND o.fk_id_pl= t.fk_id_pl $periodos "
         . " JOIN tdics_polo p on p.id_polo = t.fk_id_polo "
         . " JOIN tdics_curso c on c.id_curso = t.fk_id_curso "
         . " order by id_polo, periodo, dia_sem, horario";
