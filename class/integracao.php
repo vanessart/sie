@@ -313,7 +313,9 @@ class integracao {
 	            JOIN ge_ciclos gc ON c.id_curso = gc.fk_id_curso 
 	            JOIN ge_periodo_letivo pl ON pl.at_pl = 1
 	            , instancia i 
-	            WHERE te.id_tp_ens IN(4, 7) AND gc.sg_ciclo between '1' AND '9'
+	            WHERE te.id_tp_ens IN(4, 7) 
+	            AND c.id_curso IN(1, 11)
+	            #AND gc.sg_ciclo between '1' AND '9'
 	            AND c.n_curso = '".$v['outCiclo']."'
 	            AND gc.sg_ciclo = '".$ciclo."'
 	            AND i.id_inst = ". $v['outCodColegio'] .";";
