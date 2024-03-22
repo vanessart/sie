@@ -9,7 +9,7 @@ if ($idName) {
             . " join ge_turma_aluno ta on ta.fk_id_pessoa = p.id_pessoa and ta.fk_id_tas = 0 "
             . " and (id_pessoa = '$idName' or n_pessoa like '%$idName%') "
             . " join ge_turmas t on t.id_turma = ta.fk_id_turma and fk_id_ciclo <> 32 "
-            . " AND fk_id_ciclo in (4, 5, 6, 7, 8, 9, 38, 39, 40, 41, 42, 43, 44, 45, 46)"
+            . " AND fk_id_ciclo in (3, 4, 5, 6, 7, 8, 9, 38, 39, 40, 41, 42, 43, 44, 45, 46)"
             . " join ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl and pl.at_pl = 1"
             . " join instancia i on i.id_inst = t.fk_id_inst ";
     $query = pdoSis::getInstance()->query($sql);
