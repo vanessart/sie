@@ -30,7 +30,7 @@ $sql = "select  $fields from ge_turma_aluno ta "
 $query = pdoSis::getInstance()->query($sql);
 $ae = $query->fetchAll(PDO::FETCH_ASSOC);
 foreach ($ae as $v) {
-    if (in_array($v['id_ciclo'], [4, 5, 6, 7, 8, 9, 38, 39, 40, 41, 42, 43, 44, 45, 46])) {
+    if (in_array($v['id_ciclo'], [3, 4, 5, 6, 7, 8, 9, 38, 39, 40, 41, 42, 43, 44, 45, 46])) {
             $alunos[$v['id_pessoa']] = $v['id_pessoa'] . '-' . $v['n_pessoa'] . ' (' . $v['codigo'] . ')';
     }
 }
