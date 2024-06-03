@@ -212,23 +212,25 @@ class tdicsModel extends MainModel {
         return toolErp::idName($array);
     }
 
-    public function alunos($id_pl, $id_polo = null, $id_turma = null) {
+    public function alunos($id_pl, $id_polo = null, $id_inst = null) {
         if ($id_polo) {
             $id_polo = " AND t.fk_id_polo = $id_polo ";
         }
-        if ($id_turma) {
-            $id_turma = " AND t.id_turma = $id_turma ";
+        if ($id_inst) {
+            $id_inst = " AND t2.fk_id_inst = $id_inst ";
         }
-          $sql = "SELECT "
+        $sql = "SELECT "
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, po.n_polo "
                 . " FROM tdics_turma_aluno ta "
                 . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
-                . " JOIN tdics_polo po on po.id_polo = t.fk_id_polo "
-                . " AND t.fk_id_pl = $id_pl "
+                . " JOIN tdics_polo po on po.id_polo = t.fk_id_polo AND t.fk_id_pl = $id_pl "
                 . $id_polo
-                . $id_turma
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
-                . " order by p.n_pessoa";
+                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
+                . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma AND t2.fk_id_ciclo <> 32"
+                . $id_inst
+                . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
+                . " ORDER BY p.n_pessoa";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
 

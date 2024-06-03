@@ -53,3 +53,4 @@ define('CLI_MAIL_PASSWORD', 'aptN@3@ui');
 define('CLI_MAIL_PORT', 587);
 
 define('CLI_INTEGRACAO', 'gaspar');
+define('PROJETO_TDICS', 'Projeto Gaspar Maker labs');

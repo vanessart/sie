@@ -50,7 +50,7 @@ if (!empty($ids)) {
                 <?= $v['n_pessoa'] ?>
             </div>
             <br />
-            Participou do Projeto Núcleo WIT, no curso 
+            Participou do <?= PROJETO_TDICS ?>, no curso 
             <div style="font-weight: bold;margin-top: 10px">
                 “<?= $v['n_curso'] ?>”,
             </div>

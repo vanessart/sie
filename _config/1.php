@@ -53,3 +53,4 @@ define('CLI_MAIL_PASSWORD', 'aptN@3@ui');
 define('CLI_MAIL_PORT', 587);
 
 define('CLI_INTEGRACAO', 'santanaParnaiba');
+define('PROJETO_TDICS', 'Projeto Parnaíba Maker labs');
