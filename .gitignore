@@ -2,6 +2,7 @@ constantDb.*
 constantDb.php
 constantCLI.php
 config.php
+_config/*
 
 *.pdf
 pub/
