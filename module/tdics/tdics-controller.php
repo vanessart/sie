@@ -2,16 +2,19 @@
 
 class tdicsController extends MainController {
 
+    public $title = 'TDICS';
+    public $id_sistema = 3;
+    public $sistema = 'tdics';
+
     public function index() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/index');
+        $this->requiredPage($this->sistema.'/index');
         $this->requireLogin();
 
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
         if (toolErp::id_nilvel() == 10) {
-            require_once ABSPATH . '/module/tdics/views/main.php';
+            require_once ABSPATH . '/module/'.$this->sistema.'/views/main.php';
         } else {
             require_once ABSPATH . '/views/geral/inicio.php';
         }
@@ -19,214 +22,196 @@ class tdicsController extends MainController {
     }
 
     public function run() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/run');
+        $this->requiredPage($this->sistema.'/run');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/run.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/run.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function poloCad() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/poloCad');
+        $this->requiredPage($this->sistema.'/poloCad');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/poloCad.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/poloCad.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function setup() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/setup');
+        $this->requiredPage($this->sistema.'/setup');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/setup.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/setup.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function chamada() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/chamada');
+        $this->requiredPage($this->sistema.'/chamada');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/chamada.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/chamada.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function alocaAlu() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/alocaAlu');
+        $this->requiredPage($this->sistema.'/alocaAlu');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/alocaAlu.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/alocaAlu.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function turmaCad() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/turmaCad');
+        $this->requiredPage($this->sistema.'/turmaCad');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/turmaCad.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/turmaCad.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function cursoCad() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/cursoCad');
+        $this->requiredPage($this->sistema.'/cursoCad');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/cursoCad.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/cursoCad.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function def() {
         $_data = func_get_args()[0][0];
-        $this->title = 'TDICS';
         $this->requireLogin();
-        $this->requiredPage('tdics/index');
+        $this->requiredPage($this->sistema.'/index');
 
-        if (file_exists(ABSPATH . '/module/tdics/views/def/' . $_data . '.php')) {
+        if (file_exists(ABSPATH . '/module/'.$this->sistema.'/views/def/' . $_data . '.php')) {
             require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-            $model = $this->load_model('/tdics/tdics-model');
-            require_once ABSPATH . '/module/tdics/views/def/' . $_data . '.php';
+            $model = $this->load_model('/'.$this->sistema.'/tdics-model');
+            require_once ABSPATH . '/module/'.$this->sistema.'/views/def/' . $_data . '.php';
             require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
         }
     }
 
     public function pdf() {
         $_data = func_get_args()[0][0];
-        $model = $this->load_model('/tdics/tdics-model');
-        require_once ABSPATH . '/module/tdics/views/pdf/' . $_data . '.php';
+        $model = $this->load_model('/'.$this->sistema.'/tdics-model');
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/pdf/' . $_data . '.php';
     }
 
     public function quadro() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/quadro');
+        $this->requiredPage($this->sistema.'/quadro');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/quadro.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/quadro.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function lanche() {
-        $model = $this->load_model('tdics/tdics-model');
-        require_once ABSPATH . '/module/tdics/views/lanche.php';
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/lanche.php';
     }
 
     public function listaPiloto() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/listaPiloto');
+        $this->requiredPage($this->sistema.'/listaPiloto');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/listaPiloto.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/listaPiloto.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function aee() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/aee');
+        $this->requiredPage($this->sistema.'/aee');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/aee.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/aee.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function vagas() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/vagas');
+        $this->requiredPage($this->sistema.'/vagas');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/vagas.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/vagas.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function termoList() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/termoList');
+        $this->requiredPage($this->sistema.'/termoList');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/termoList.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/termoList.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function alunoCad() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/alunoCad');
+        $this->requiredPage($this->sistema.'/alunoCad');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/alunoCad.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/alunoCad.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function frequencia() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/frequencia');
+        $this->requiredPage($this->sistema.'/frequencia');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/frequencia.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/frequencia.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
     
     public function freqCall() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/freqCall');
+        $this->requiredPage($this->sistema.'/freqCall');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/freqCall.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/freqCall.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
     public function inscricao() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/inscricao');
+        $this->requiredPage($this->sistema.'/inscricao');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/inscricao.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/inscricao.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
         public function certif() {
-        $this->title = 'TDICS';
-        $this->requiredPage('tdics/certif');
+        $this->requiredPage($this->sistema.'/certif');
         $this->requireLogin();
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
-        $model = $this->load_model('tdics/tdics-model');
+        $model = $this->load_model($this->sistema.'/tdics-model');
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
-        require_once ABSPATH . '/module/tdics/views/certif.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/certif.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 

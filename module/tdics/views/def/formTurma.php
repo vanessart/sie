@@ -19,7 +19,7 @@ $diaSem = $model->diaSemana();
         <br /><br />
         <?= sql::get('tdics_polo', 'n_polo', ['id_polo' => $id_polo], 'fetch')['n_polo'] ?> - <?= $pls[$id_pl] ?>
     </div>
-    <form action="<?= HOME_URI ?>/tdics/turmaCad" target="_parent" method="POST">
+    <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/turmaCad" target="_parent" method="POST">
         <div class="row">
             <div class="col">
                 <?= formErp::select('1[dia_sem]', $diaSem, 'Dia da Semana', @$t['dia_sem']) ?>

@@ -86,7 +86,7 @@ if ($id_polo) {
     }
     ?>
 </div>
-<form action="<?= HOME_URI ?>/tdics/def/formTurma" target="frame" id="form" method="POST">
+<form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formTurma" target="frame" id="form" method="POST">
     <input type="hidden" name="id_polo" value="<?= $id_polo ?>" />
     <input type="hidden" name="id_pl" value="<?= $id_pl ?>" />
     <input type="hidden" name="id_turma" id="id_turma" value="" />

@@ -3,6 +3,7 @@
 class tdicsModel extends MainModel {
 
     public $db;
+    public static $id_sistema;
 
     /**
 
@@ -20,6 +21,8 @@ class tdicsModel extends MainModel {
         $this->db = new crud();
         // Configura o controlador
         $this->controller = $controller;
+
+        self::$id_sistema = $this->controller->id_sistema;
 
         // Configura os parâmetros
         $this->parametros = $this->controller->parametros->variavel;

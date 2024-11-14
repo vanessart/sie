@@ -30,7 +30,7 @@ if ($id_polo) {
             <?php
             if ($id_polo) {
                 ?>
-                <form target="_blank" action="<?= HOME_URI ?>/tdics/pdf/piloto" method="POST">
+                <form target="_blank" action="<?= HOME_URI ?>/<?= $this->controller_name ?>/pdf/piloto" method="POST">
                     <?=
                     formErp::hidden([
                         'id_pl' => $id_pl,
@@ -56,7 +56,7 @@ if ($id_polo) {
             foreach ($turmas as $k => $v) {
                 ?>
             <div class="col-3" style="text-align: center">
-                    <form target="_blank" action="<?= HOME_URI ?>/tdics/pdf/piloto" method="POST">
+                    <form target="_blank" action="<?= HOME_URI ?>/<?= $this->controller_name ?>/pdf/piloto" method="POST">
                         <?=
                         formErp::hidden([
                             'id_pl' => $id_pl,

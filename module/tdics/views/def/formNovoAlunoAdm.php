@@ -127,7 +127,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
                         <?= $model->horario($v['fk_id_polo'], $v['periodo'], $v['horario']) ?>
                     </td>
                     <td>
-                        <form action="<?= HOME_URI ?>/tdics/alunoCad" target="_parent" method="POST">
+                        <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/alunoCad" target="_parent" method="POST">
                             <?=
                             formErp::hidden([
                                 'id_pessoa' => $id_pessoa,

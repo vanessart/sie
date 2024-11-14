@@ -78,7 +78,7 @@ if ($id_polo) {
                 $v['n_polo'] = @$polos[@$id_polo];
                 $v['n_curso'] = @$cursos[$turmaCurso['fk_id_curso']];
                 $v['dia'] = $model->diaSemana($turmaCurso['dia_sem']);
-             //   $alunos[$k]['termo'] = formErp::submit('Termo de Matrícula', null, $v, HOME_URI . '/tdics/pdf/termo', 1);
+             //   $alunos[$k]['termo'] = formErp::submit('Termo de Matrícula', null, $v, HOME_URI . '/'.$this->controller_name.'/pdf/termo', 1);
             }
         }
         $form['array'] = $alunos;
@@ -185,7 +185,7 @@ if ($id_polo) {
                     if (!$travaPorEscola || @$qtAlunos[$id_turma] < $setup['qt_turma']) {
                         if (in_array($id_pl, $libera) || !$travaPorEscola) {
                             ?>
-                            <form action="<?= HOME_URI ?>/tdics/def/formNovoAluno" id="novoAluno" target="frame" method="POST">
+                            <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formNovoAluno" id="novoAluno" target="frame" method="POST">
                                 <?=
                                 formErp::hidden($hidden)
                                 . formErp::hidden([
@@ -262,7 +262,7 @@ if ($id_polo) {
     }
     ?>
 </div>
-<form action="<?= HOME_URI ?>/tdics/def/formTransf" id="transfx" target="frame" method="POST">
+<form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formTransf" id="transfx" target="frame" method="POST">
     <?=
     formErp::hidden($hidden);
     ?>

@@ -9,9 +9,9 @@ if ($id_curso) {
 ?>
 <div class="body">
     <div class="fieldTop">
-        Cadastor de Curso
+        Cadastro de Curso
     </div>
-      <form action="<?= HOME_URI ?>/tdics/cursoCad" target="_parent" method="POST">
+      <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/cursoCad" target="_parent" method="POST">
         <div class="row">
             <div class="col">
                 <?= formErp::input('1[n_curso]', 'Curso', @$c['n_curso']) ?>

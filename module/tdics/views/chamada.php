@@ -10,7 +10,7 @@ if ($id_polo) {
     $turmas = sql::idNome('tdics_turma', ['fk_id_polo' => $id_polo, 'fk_id_pl' => $id_pl]);
 }
 if ($id_turma) {
-    $mongo = new mongoCrude('Tdics');
+    $mongo = new mongoCrude( ucfirst($this->sistema) );
     $pres = $mongo->query('presece_' . $id_pl, ['id_turma' => $id_turma]);
     $token = formErp::token('apagaCh');
     if (!empty($pres)) {
@@ -88,7 +88,7 @@ if ($id_turma) {
 <?php
 if ($id_turma) {
     ?>
-    <form action="<?= HOME_URI ?>/tdics/def/formChamada" target="frame" id="formCh" method="POST">
+    <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formChamada" target="frame" id="formCh" method="POST">
         <?=
         formErp::hidden([
             'id_turma' => $id_turma,

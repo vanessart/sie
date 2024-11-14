@@ -110,7 +110,7 @@ if ($id_pessoa) {
                         Núcleo
                     </td>
                     <td>
-                        Turma TDICS
+                        Turma <?= $this->title ?>
                     </td>
                     <td style="width: 100px">
                     </td>
@@ -156,7 +156,7 @@ if ($id_pessoa) {
         ?>
         <br /><br />
         <div style="text-align: center; padding: 50px">
-            <form action="<?= HOME_URI ?>/tdics/def/formNovoAlunoAdm" target="frame" method="POST">
+            <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formNovoAlunoAdm" target="frame" method="POST">
                 <?= formErp::hidden(['id_pessoa' => $id_pessoa]) ?>
                 <button class="btn btn-info"  onclick=" $('#myModal').modal('show');$('.form-class').val('')">
                     Nova Matrícula

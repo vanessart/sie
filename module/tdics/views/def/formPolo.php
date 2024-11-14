@@ -40,7 +40,7 @@ if (empty($h)) {
     <div class="fieldTop">
         Cadastro de Núcleo
     </div>
-    <form action="<?= HOME_URI ?>/tdics/poloCad" target="_parent" method="POST">
+    <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/poloCad" target="_parent" method="POST">
         <div class="row">
             <div class="col-md-8">
                 <?= formErp::input('1[n_polo]', 'Polo', @$p['n_polo']) ?>

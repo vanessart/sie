@@ -1,4 +1,5 @@
 <?php
+$system = isset($this->sistema) ? $this->sistema : 'tdics';
 
 /**
   2 	Administrador
@@ -6,79 +7,79 @@
  */
 //Administrador
 $menu[2] = [
-    'Início' => ['url' => '/tdics/index'],
-    'Run' => ['url' => '/tdics/run'],
+    'Início' => ['url' => '/'.$system.'/index'],
+    'Run' => ['url' => '/'.$system.'/run'],
 ];
 
 //gerente
 $menu[10] = [
-    'Início' => ['url' => '/tdics/index'],
-    'Gerenciar Alunos' => ['url' => '/tdics/alocaAlu'],
+    'Início' => ['url' => '/'.$system.'/index'],
+    'Gerenciar Alunos' => ['url' => '/'.$system.'/alocaAlu'],
     'Presença' => [
         'page' => [
-            'Chamada' => ['url' => '/tdics/chamada'],
-            'Frequência' => ['url' => '/tdics/frequencia'],
+            'Chamada' => ['url' => '/'.$system.'/chamada'],
+            'Frequência' => ['url' => '/'.$system.'/frequencia'],
         ]
     ],
     'Cadastro' => [
         'page' => [
-            'Núcleo' => ['url' => '/tdics/poloCad'],
-            'Cursos' => ['url' => '/tdics/cursoCad'],
-            'Turmas' => ['url' => '/tdics/turmaCad'],
-            'Alunos' => ['url' => '/tdics/alunoCad'],
+            'Núcleo' => ['url' => '/'.$system.'/poloCad'],
+            'Cursos' => ['url' => '/'.$system.'/cursoCad'],
+            'Turmas' => ['url' => '/'.$system.'/turmaCad'],
+            'Alunos' => ['url' => '/'.$system.'/alunoCad'],
         ]
     ],
     'Relatórios' => [
         'page' => [
-            "Quadro de Alunos" => ['url' => '/tdics/quadro'],
-            "Quadro de Vagas" => ['url' => '/tdics/vagas'],
-            'Lanche' => ['url' => '/tdics/lanche', 'target' => 1],
-            'Lista Piloto' => ['url' => '/tdics/listaPiloto'],
-            'Termo de Matrícula' => ['url' => '/tdics/termoList'],
-            'Alunos AEE' => ['url' => '/tdics/aee'],
-            'Inscrições' => ['url' => '/tdics/inscricao'],
-            'Cerfificados' => ['url' => '/tdics/certif']
+            "Quadro de Alunos" => ['url' => '/'.$system.'/quadro'],
+            "Quadro de Vagas" => ['url' => '/'.$system.'/vagas'],
+            'Lanche' => ['url' => '/'.$system.'/lanche', 'target' => 1],
+            'Lista Piloto' => ['url' => '/'.$system.'/listaPiloto'],
+            'Termo de Matrícula' => ['url' => '/'.$system.'/termoList'],
+            'Alunos AEE' => ['url' => '/'.$system.'/aee'],
+            'Inscrições' => ['url' => '/'.$system.'/inscricao'],
+            'Cerfificados' => ['url' => '/'.$system.'/certif']
         ]
     ],
-    'Configurações' => ['url' => '/tdics/setup'],
+    'Configurações' => ['url' => '/'.$system.'/setup'],
 ];
 
 //professor
 $menu[24] = [
-    'Início' => ['url' => '/tdics/index'],
-    'Gerenciar Alunos' => ['url' => '/tdics/alocaAlu'],
-    'Chamada' => ['url' => '/tdics/chamada'],
-    'Lista Piloto' => ['url' => '/tdics/listaPiloto'],
+    'Início' => ['url' => '/'.$system.'/index'],
+    'Gerenciar Alunos' => ['url' => '/'.$system.'/alocaAlu'],
+    'Chamada' => ['url' => '/'.$system.'/chamada'],
+    'Lista Piloto' => ['url' => '/'.$system.'/listaPiloto'],
 ];
 
 //Núcleo Tdics
 $menu[57] = [
-    'Início' => ['url' => '/tdics/index'],
-    'Lista Piloto' => ['url' => '/tdics/listaPiloto'],
+    'Início' => ['url' => '/'.$system.'/index'],
+    'Lista Piloto' => ['url' => '/'.$system.'/listaPiloto'],
 ];
 
 //Call Center
 $menu[39] = [
-    'Início' => ['url' => '/tdics/index'],
-    'Ausentes' => ['url' => '/tdics/freqCall'],
-    'Lista Piloto' => ['url' => '/tdics/listaPiloto'],
+    'Início' => ['url' => '/'.$system.'/index'],
+    'Ausentes' => ['url' => '/'.$system.'/freqCall'],
+    'Lista Piloto' => ['url' => '/'.$system.'/listaPiloto'],
 ];
 
 //professor de informática
 $menu[43] = [
-    'Início' => ['url' => '/tdics/index'],
+    'Início' => ['url' => '/'.$system.'/index'],
 ];
 
 //escola
 $menu[8] = [
-    'Início' => ['url' => '/tdics/index'],
-    'Gerenciar Alunos' => ['url' => '/tdics/alocaAlu'],
+    'Início' => ['url' => '/'.$system.'/index'],
+    'Gerenciar Alunos' => ['url' => '/'.$system.'/alocaAlu'],
     'Relatórios' => [
         'page' => [
-            'Lista de Alunos' => ['url' => '/tdics/pdf/listEsc', 'target' => 1],
-            'Termo de Matrícula' => ['url' => '/tdics/termoList'],
-            'Frequência' => ['url' => '/tdics/frequencia'],
-            'Cerfificados' => ['url' => '/tdics/certif']
+            'Lista de Alunos' => ['url' => '/'.$system.'/pdf/listEsc', 'target' => 1],
+            'Termo de Matrícula' => ['url' => '/'.$system.'/termoList'],
+            'Frequência' => ['url' => '/'.$system.'/frequencia'],
+            'Cerfificados' => ['url' => '/'.$system.'/certif']
         ]
     ],
 ];

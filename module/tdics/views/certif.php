@@ -41,7 +41,7 @@ if (toolErp::id_nilvel() != 8) {
             }
             if (!empty($form)) {
                 ?>
-            <form target="_blank" action="<?= HOME_URI ?>/tdics/pdf/cert" method="POST">
+            <form target="_blank" action="<?= HOME_URI ?>/<?= $this->controller_name ?>/pdf/cert" method="POST">
                 <br /><br />
                 <div class="row">
                     <div class="col">

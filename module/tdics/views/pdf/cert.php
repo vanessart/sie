@@ -43,7 +43,7 @@ if (!empty($ids)) {
     foreach ($a as $v) {
         ob_start();
         ?>
-        <img style="position: absolute;width: 1122px;height: 720px;" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/tdics/certificado.jpg">
+        <img style="position: absolute;width: 1122px;height: 720px;" src="<?= HOME_URI ?>/<?= INCLUDE_FOLDER ?>/images/<?= $this->controller_name ?>/certificado.jpg">
         <div style="position: absolute;top: 220px;left: 360px; width: 700px;text-align: center;font-size: 22px; line-height: 1.5">
             Declaramos que
             <div style="font-weight: bold; font-style: italic;margin-top: 10px">

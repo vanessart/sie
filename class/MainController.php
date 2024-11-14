@@ -54,6 +54,7 @@ class MainController extends UserLogin {
      */
     public $permission_required = 'any';
     public $parametros = array();
+    public $controller_name = '';
 
     /**
      * Construtor da classe
@@ -110,6 +111,7 @@ class MainController extends UserLogin {
             $model_name = explode('/', $model_name);
 
             // Pega só o nome final do caminho
+            $this->controller_name = $model_name[count($model_name)-2] ?? '';
             $model_name = end($model_name);
 
             // Remove caracteres inválidos do nome do arquivo

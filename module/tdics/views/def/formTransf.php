@@ -134,7 +134,7 @@ $hidden = [
     }
     ?>
 </div>
-<form action="<?= HOME_URI ?>/tdics/alocaAlu" id="trans" target="_parent" method="POST">
+<form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/alocaAlu" id="trans" target="_parent" method="POST">
     <input type="hidden" name="1[fk_id_turma]" id="id_turma" value="" />
     <?=
     formErp::hidden($hidden)

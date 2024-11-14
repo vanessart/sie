@@ -30,7 +30,7 @@ $form['fields'] = [
     }
     ?>
 </div>
-<form action="<?= HOME_URI ?>/tdics/def/formPolo" target="frame" id="form" method="POST">
+<form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formPolo" target="frame" id="form" method="POST">
     <input type="hidden" name="id_polo" id="id_polo" value="" />
 </form>
 <?php

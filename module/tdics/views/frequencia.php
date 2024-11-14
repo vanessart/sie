@@ -45,7 +45,7 @@ if (!empty($buscar)) {
             <?php
             if (!empty($dados['alunos'])) {
                 ?>
-                <form target="_blank" action="<?= HOME_URI ?>/tdics/pdf/freqPlan" method="POST">
+                <form target="_blank" action="<?= HOME_URI ?>/<?= $this->controller_name ?>/pdf/freqPlan" method="POST">
                     <?=
                     formErp::hidden([
                         'id_inst_sieb' => $id_inst_sieb,

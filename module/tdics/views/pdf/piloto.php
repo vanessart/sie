@@ -20,7 +20,7 @@ if (!empty($turmas)) {
         $t = current($v);
         ?>
         <div style="text-align: center; font-weight: bold; font-size: 1.2em">
-            Salas TDICS - Núcleo: <?= $n_polo ?> - Turma: <?= $k ?> 
+            Salas <?= $this->sistema ?>  - Núcleo: <?= $n_polo ?> - Turma: <?= $k ?> 
         </div>
         <br /><br />
         <table style="width: 100%" border=1 cellspacing=0 cellpadding=2 bordercolor="666633"> 

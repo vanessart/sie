@@ -22,7 +22,7 @@ if ($a && $id_inst) {
         $v['dia'] = $model->diaSemana($v['dia_sem']);
         $v['n_polo'] = $polos[$v['fk_id_polo']];
         $v['n_curso'] = $cursos[$v['fk_id_curso']];
-        $a[$k]['termo'] = formErp::submit('Termo de Matrícula', null, $v, HOME_URI . '/tdics/pdf/termo', 1);
+        $a[$k]['termo'] = formErp::submit('Termo de Matrícula', null, $v, HOME_URI . '/'. $this->controller_name .'/pdf/termo', 1);
     }
     $form['array'] = $a;
     $form['fields'] = [
@@ -51,7 +51,7 @@ if ($a && $id_inst) {
                 <?php
                 if ($id_inst) {
                     ?>
-                    <form action="<?= HOME_URI . '/tdics/pdf/termoList' ?>" target="_blank" method="POST">
+                    <form action="<?= HOME_URI . '/'. $this->controller_name .'/pdf/termoList' ?>" target="_blank" method="POST">
                         <button class="btn btn-info" type="submit">
                             Gerar todos os termos
                         </button>

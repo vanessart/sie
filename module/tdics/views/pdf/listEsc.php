@@ -22,7 +22,7 @@ if (!empty($nucleos)) {
     foreach ($nucleos as $kn => $n) {
         ?>
         <div style="text-align: center; font-weight: bold; font-size: 1.2em">
-            Salas TDICS - Núcleo: <?= $polos[$kn] ?> 
+            Salas <?= $this->sistema ?> - Núcleo: <?= $polos[$kn] ?> 
         </div>
         <br /><br />
         <style>

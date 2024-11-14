@@ -36,7 +36,7 @@ if ($alunos) {
             'Matrícula' => 'id_pessoa',
             'Nome' => 'n_pessoa',
             'Núcleo' => 'n_polo',
-            'Turma TDICS' => 'n_turma_tdics',
+            'Turma '. $this->title => 'n_turma_tdics',
             'Escola de Origem' => 'n_inst',
             'Turma de Origem' => 'n_turma',
             'Deficiência' => 'def',

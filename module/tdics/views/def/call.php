@@ -141,7 +141,7 @@ if ($id_pessoa) {
             </table>
         </div>
         <br /><br />
-        <form target="_parent" action="<?= HOME_URI ?>/tdics/freqCall" method="POST">
+        <form target="_parent" action="<?= HOME_URI ?>/<?= $this->controller_name ?>/freqCall" method="POST">
             <div class="row">
                 <div class="col">
                     <?= formErp::select('1[fk_id_sit]', $sit, 'Situação', $aluno[0]['fk_id_sit']) ?>

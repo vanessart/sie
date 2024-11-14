@@ -95,7 +95,7 @@ $hidden = [
             </td>
         </tr>
     </table>
-    <form action="<?= HOME_URI ?>/tdics/alocaAlu" target="_parent" method="POST">
+    <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/alocaAlu" target="_parent" method="POST">
         <div class="row">
             <div class="col-9">
                 <?php

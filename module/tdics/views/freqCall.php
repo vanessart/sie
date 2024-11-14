@@ -76,7 +76,7 @@ if (!empty($faltid)) {
     }
     ?>
 </div>
-<form action="<?= HOME_URI ?>/tdics/def/call" id="form" target="frame" method="POST">
+<form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/call" id="form" target="frame" method="POST">
     <input type="hidden" name="id_pessoa" id="id_pessoa" value="" />
     <?=
     formErp::hidden([

@@ -10,7 +10,7 @@ $n_turma = filter_input(INPUT_POST, 'n_turma', FILTER_UNSAFE_RAW);
 $n_polo = filter_input(INPUT_POST, 'n_polo', FILTER_UNSAFE_RAW);
 $alu = $model->alunoEsc($id_pl, null, null, $id_turma);
 
-$mongo = new mongoCrude('Tdics');
+$mongo = new mongoCrude( ucfirst($this->sistema) );
 @$presArr = (array) $mongo->query('presece_' . $id_pl, ['id_turma' => $id_turma, 'data' => $data])[0];
 if ($presArr) {
     $pres = !empty($presArr['ch']) ? (array) $presArr['ch'] : [];
@@ -21,7 +21,7 @@ if (empty($data)) {
 }
 ?>
 <div class="body">
-    <form action="<?= HOME_URI ?>/tdics/chamada" target="_parent" method="POST">
+    <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/chamada" target="_parent" method="POST">
         <table class="table table-bordered table-hover table-striped">
             <tr>
                 <td>

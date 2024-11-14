@@ -31,7 +31,7 @@ if ($cursos) {
     }
     ?>
 </div>
-<form action="<?= HOME_URI ?>/tdics/def/formCurso" target="frame" id="form" method="POST">
+<form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/def/formCurso" target="frame" id="form" method="POST">
     <input type="hidden" name="id_curso" id="id_curso" value="" />
 </form>
 <?php
