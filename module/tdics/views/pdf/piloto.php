@@ -2,9 +2,9 @@
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$n_polo = sql::get('tdics_polo', 'n_polo', ['id_polo' => $id_polo], 'fetch')['n_polo'];
+$n_polo = sql::get($model::$sistema . '_polo', 'n_polo', ['id_polo' => $id_polo], 'fetch')['n_polo'];
 $a = $model->alunoEsc($id_pl, null, $id_polo, $id_turma);
-$cursos = sql::idNome('tdics_curso');
+$cursos = sql::idNome($model::$sistema . '_curso');
 foreach ($a as $v) {
     $turmas[$v['n_turma']][$v['id_pessoa']] = $v;
 }

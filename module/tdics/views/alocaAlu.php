@@ -9,7 +9,7 @@ if ($travaPorEscola) {
 } else {
     $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 }
-$cursos = sql::idNome('tdics_curso');
+$cursos = sql::idNome($model::$sistema . '_curso');
 $escolas = ng_escolas::idEscolas([1]);
 if ($id_inst && empty($escolas[$id_inst])) {
     ?>
@@ -19,9 +19,9 @@ if ($id_inst && empty($escolas[$id_inst])) {
     <?php
     die();
 }
-$setup = sql::get('tdics_setup', '*', null, 'fetch');
+$setup = sql::get($model::$sistema . '_setup', '*', null, 'fetch');
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$plsArr = sql::get('tdics_pl', '*', ' where ativo in (1,2)');
+$plsArr = sql::get($model::$sistema . '_pl', '*', ' where ativo in (1,2)');
 $libera = [];
 $pls = [];
 foreach ($plsArr as $v) {
@@ -40,7 +40,7 @@ $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 if ($id_turma) {
-    $turmaCurso = sql::get(['tdics_turma', 'tdics_curso'], '*', ['id_turma' => $id_turma], 'fetch');
+    $turmaCurso = sql::get([$model::$sistema .'_turma', $model::$sistema .'_curso'], '*', ['id_turma' => $id_turma], 'fetch');
 }
 $hidden = [
     'id_pl' => $id_pl,
@@ -49,7 +49,7 @@ $hidden = [
     'id_turma' => $id_turma,
     'id_curso' => $id_curso
 ];
-$polos = sql::idNome('tdics_polo');
+$polos = sql::idNome($model::$sistema . '_polo');
 if ($id_polo) {
     $qtAlunos = $model->countAlunos($id_polo, $id_pl);
     if ($id_curso) {
@@ -57,7 +57,7 @@ if ($id_polo) {
     } else {
         $where = ['fk_id_polo' => $id_polo, 'fk_id_pl' => $id_pl];
     }
-    $turmas = sqlErp::get('tdics_turma', '*', $where);
+    $turmas = sqlErp::get($model::$sistema . '_turma', '*', $where);
     if ($turmas) {
         $turmas = toolErp::idName($turmas);
     } else {
@@ -68,7 +68,7 @@ if ($id_polo) {
     $alunos = $model->alunoEsc($id_pl, $id_inst, $id_polo, $id_turma);
 
     if (!empty($alunos)) {
-        $token = formErp::token('tdics_turma_aluno', 'delete');
+        $token = formErp::token($model::$sistema . '_turma_aluno', 'delete');
         foreach ($alunos as $k => $v) {
             if (in_array($id_pl, $libera) || !$travaPorEscola) {
                 $alunos[$k]['ac'] = '<button onclick="transf(' . $v['id_ta'] . ')" class="btn btn-info">Transferir</button>';

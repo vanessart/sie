@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$cursos = sql::get('tdics_curso');
+$cursos = sql::get($model::$sistema . '_curso');
 if ($cursos) {
     foreach ($cursos as $k => $v) {
         $cursos[$k]['ac'] = '<button class="btn btn-info" onclick="edit(' . $v['id_curso'] . ')">Editar</button>';

@@ -4,7 +4,7 @@ if (!defined('ABSPATH'))
 
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 if ($id_curso) {
-    $c = sql::get('tdics_curso', '*', ['id_curso' => $id_curso], 'fetch');
+    $c = sql::get($model::$sistema . '_curso', '*', ['id_curso' => $id_curso], 'fetch');
 }
 ?>
 <div class="body">
@@ -43,7 +43,7 @@ if ($id_curso) {
                     formErp::hidden([
                         '1[id_curso]' => $id_curso
                     ])
-                    . formErp::hiddenToken('tdics_cursoSet')
+                    . formErp::hiddenToken($model::$sistema . '_cursoSet')
                     . formErp::button('Salvar')
                     ?>
                 </div>

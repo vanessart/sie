@@ -15,7 +15,7 @@ $dataIni = filter_input(INPUT_POST, 'dataIni');
 $dataFim = filter_input(INPUT_POST, 'dataFim');
 $id_pl = $model->pl();
 $escolas = $model->escolaTdics($id_pl);
-$polos = sql::idNome('tdics_polo');
+$polos = sql::idNome($model::$sistema . '_polo');
 if (!empty($buscar)) {
     $dados = $model->relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, null, $dataIni, $dataFim);
     if ($dados) {
@@ -84,7 +84,7 @@ if (!empty($buscar)) {
                 <?= formErp::select('periodo', ['M' => 'Manhã', 'T' => 'Tarde'], 'Período', $periodo) ?>
             </div>
             <div class="col">
-                <?= formErp::selectDB('tdics_curso', 'id_curso', 'Curso', $id_curso) ?>
+                <?= formErp::selectDB($model::$sistema . '_curso', 'id_curso', 'Curso', $id_curso) ?>
             </div>
             <div class="col">
                 <?php

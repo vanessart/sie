@@ -3,9 +3,9 @@ if (!defined('ABSPATH'))
     exit;
 $sql = "SELECT "
         . " distinct tt.n_turma as n_turma_tdics, p.id_pessoa, p.n_pessoa, t.n_turma, i.n_inst, po.n_polo, np.n_porte "
-        . " FROM tdics_turma_aluno tat "
-        . " JOIN tdics_turma tt on tt.id_turma = tat.fk_id_turma "
-        . " JOIN tdics_polo po on po.id_polo = tt.fk_id_polo "
+        . " FROM " . $model::$sistema . "_turma_aluno tat "
+        . " JOIN " . $model::$sistema . "_turma tt on tt.id_turma = tat.fk_id_turma "
+        . " JOIN " . $model::$sistema . "_polo po on po.id_polo = tt.fk_id_polo "
         . " JOIN pessoa p on p.id_pessoa = tat.fk_id_pessoa "
         . " JOIN ge_aluno_necessidades_especiais ne on ne.fk_id_pessoa = tat.fk_id_pessoa "
         . " JOIN ge_aluno_necessidades_especiais_porte np on np.id_porte = ne.fk_id_porte "

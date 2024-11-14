@@ -1,9 +1,9 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-@$id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
+@$id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 
-$td = sqlErp::get(['tdics_turma', 'tdics_curso'], 'dia_sem, fk_id_polo, id_curso, n_curso, id_turma, periodo', ['fk_id_pl' => $id_pl]);
+$td = sqlErp::get([$model::$sistema . '_turma', $model::$sistema . '_curso'], 'dia_sem, fk_id_polo, id_curso, n_curso, id_turma, periodo', ['fk_id_pl' => $id_pl]);
 $cursos = [];
 foreach ($td as $v) {
     $cursos[$v['id_curso']] = $v['n_curso'];
@@ -19,12 +19,12 @@ foreach ($td as $v) {
     $diaCur[$v['fk_id_polo']][$v['dia_sem']] = $v['n_curso'];
 }
 
-$setup = sql::get('tdics_setup', '*', null, 'fetch');
+$setup = sql::get($model::$sistema . '_setup', '*', null, 'fetch');
 $qt_turma = $setup['qt_turma'];
-$polos = sql::idNome('tdics_polo');
+$polos = sql::idNome($model::$sistema . '_polo');
 
-$sql = "SELECT * FROM tdics_turma t "
-        . " JOIN tdics_curso c on c.id_curso = t.fk_id_curso "
+$sql = "SELECT * FROM " . $model::$sistema . "_turma t "
+        . " JOIN " . $model::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
         . " and t.fk_id_pl = $id_pl ";
 $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -34,10 +34,10 @@ if ($array) {
     }
 }
 
-$sql = "SELECT * FROM tdics_turma_aluno ta "
-        . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+$sql = "SELECT * FROM " . $model::$sistema . "_turma_aluno ta "
+        . " JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
         . " and t.fk_id_pl = $id_pl "
-        . " JOIN tdics_curso c on c.id_curso = t.fk_id_curso ";
+        . " JOIN " . $model::$sistema . "_curso c on c.id_curso = t.fk_id_curso ";
 $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);
 if ($array) {

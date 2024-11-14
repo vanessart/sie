@@ -3,7 +3,8 @@
 class tdicsModel extends MainModel {
 
     public $db;
-    public static $id_sistema;
+    public static $sistema;
+    public static $mongoDataBase;
 
     /**
 
@@ -22,7 +23,8 @@ class tdicsModel extends MainModel {
         // Configura o controlador
         $this->controller = $controller;
 
-        self::$id_sistema = $this->controller->id_sistema;
+        self::$sistema = $this->controller->controller_name;
+        self::$mongoDataBase = ucfirst(self::$sistema);
 
         // Configura os parâmetros
         $this->parametros = $this->controller->parametros->variavel;
@@ -55,16 +57,16 @@ class tdicsModel extends MainModel {
     }
 
     public function pl() {
-        $sql = "SELECT id_pl FROM `tdics_pl` WHERE `ativo` = 1 ";
+        $sql = "SELECT id_pl FROM `" . self::$sistema . "_pl` WHERE `ativo` = 1 ";
         $query = pdoSis::getInstance()->query($sql);
         return $query->fetch(PDO::FETCH_ASSOC)['id_pl'];
     }
 
     public function tdics_cursoSet() {
         $ins = @$_POST[1];
-        $id = $this->db->ireplace('tdics_curso', $ins);
+        $id = $this->db->ireplace(self::$sistema . '_curso', $ins);
         if ($id) {
-            $sql = "UPDATE tdics_turma t JOIN tdics_curso c on c.id_curso = t.fk_id_curso AND c.id_curso = $id SET t.n_turma = concat(c.abrev, substring(t.n_turma, 3));";
+            $sql = "UPDATE " . self::$sistema . "_turma t JOIN " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso AND c.id_curso = $id SET t.n_turma = concat(c.abrev, substring(t.n_turma, 3));";
             $query = pdoSis::getInstance()->query($sql);
         }
     }
@@ -73,7 +75,7 @@ class tdicsModel extends MainModel {
         $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
         $data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_NUMBER_INT);
         $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-        $mongo = new mongoCrude('Tdics');
+        $mongo = new mongoCrude( self::$mongoDataBase );
         $mongo->delete('presece_' . $id_pl, ['id_turma' => $id_turma, 'data' => $data]);
     }
 
@@ -81,24 +83,24 @@ class tdicsModel extends MainModel {
         $ins = @$_POST;
         unset($ins['path']);
         unset($ins['formToken']);
-        $mongo = new mongoCrude('Tdics');
+        $mongo = new mongoCrude( self::$mongoDataBase );
         $mongo->update('presece_' . $ins['id_pl'], ['data' => $ins['data'], 'id_turma' => $ins['id_turma']], $ins, null, 1);
     }
 
     public function novoAluno() {
-        $setup = sql::get('tdics_setup', '*', null, 'fetch');
+        $setup = sql::get(self::$sistema .  '_setup', '*', null, 'fetch');
 
         $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
         $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
         $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
         $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
         $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
-        $tem = sql::get(['tdics_turma_aluno', 'tdics_turma', 'pessoa', 'tdics_polo'], 'n_turma, n_pessoa, sexo, n_polo, periodo, dia_sem, horario', ['fk_id_pessoa' => $id_pessoa], 'fetch');
+        $tem = sql::get([self::$sistema . '_turma_aluno', self::$sistema . '_turma', 'pessoa', self::$sistema . '_polo'], 'n_turma, n_pessoa, sexo, n_polo, periodo, dia_sem, horario', ['fk_id_pessoa' => $id_pessoa], 'fetch');
         if (toolErp::id_nilvel() == 8 && $tem) {
             toolErp::alertModal(strtoupper(toolErp::sexoArt($tem['sexo'])) . ' alun' . toolErp::sexoArt($tem['sexo']) . ' ' . $tem['n_pessoa'] . ' está matriculad' . toolErp::sexoArt($tem['sexo']) . ' na turma ' . $tem['n_turma'] . ' do Núcleo ' . $tem['n_polo']);
             return;
         }
-        $sql = "SELECT COUNT(fk_id_pessoa) ct FROM `tdics_turma_aluno` WHERE fk_id_turma = $id_turma ";
+        $sql = "SELECT COUNT(fk_id_pessoa) ct FROM `" . self::$sistema . "_turma_aluno` WHERE fk_id_turma = $id_turma ";
         $query = pdoSis::getInstance()->query($sql);
         $ct = $query->fetch(PDO::FETCH_ASSOC)['ct'];
         if ($ct >= $setup['qt_turma'] && toolErp::id_nilvel() == 8) {
@@ -112,17 +114,17 @@ class tdicsModel extends MainModel {
         } else {
             $alert = null;
         }
-        $this->db->ireplace('tdics_turma_aluno', $ins, $alert);
+        $this->db->ireplace(self::$sistema . '_turma_aluno', $ins, $alert);
     }
 
     public function plAtPv() {
         $id_plAt = filter_input(INPUT_POST, 'id_plAt', FILTER_SANITIZE_NUMBER_INT);
         $id_plPv = filter_input(INPUT_POST, 'id_plPv', FILTER_SANITIZE_NUMBER_INT);
-        $sql = "UPDATE `tdics_pl` SET `ativo` = '0'";
+        $sql = "UPDATE `" . self::$sistema . "_pl` SET `ativo` = '0'";
         $query = pdoSis::getInstance()->query($sql);
-        $sql = "UPDATE `tdics_pl` SET `ativo` = '1' WHERE `tdics_pl`.`id_pl` = " . intval($id_plAt);
+        $sql = "UPDATE `" . self::$sistema . "_pl` SET `ativo` = '1' WHERE `id_pl` = " . intval($id_plAt);
         $query = pdoSis::getInstance()->query($sql);
-        $sql = "UPDATE `tdics_pl` SET `ativo` = '2' WHERE `tdics_pl`.`id_pl` = " . intval($id_plPv);
+        $sql = "UPDATE `" . self::$sistema . "_pl` SET `ativo` = '2' WHERE `id_pl` = " . intval($id_plPv);
         $query = pdoSis::getInstance()->query($sql);
         toolErp::alert("Concluido");
     }
@@ -135,16 +137,16 @@ class tdicsModel extends MainModel {
                 return;
             }
         }
-        $abrev = sql::get('tdics_curso', '*', ['id_curso' => $ins['fk_id_curso']], 'fetch')['abrev'];
+        $abrev = sql::get(self::$sistema . '_curso', '*', ['id_curso' => $ins['fk_id_curso']], 'fetch')['abrev'];
 
         $ins['n_turma'] = $abrev . $ins['periodo'] . $ins['dia_sem'] . $ins['horario'] . str_pad($ins['fk_id_polo'], 2, "0", STR_PAD_LEFT);
         if (empty($ins['id_turma'])) {
-            $jaTem = sql::get('tdics_turma', '*', ['n_turma' => $ins['n_turma'], 'fk_id_pl' => $ins['fk_id_pl']], 'fetch');
+            $jaTem = sql::get(self::$sistema . '_turma', '*', ['n_turma' => $ins['n_turma'], 'fk_id_pl' => $ins['fk_id_pl']], 'fetch');
         }
         if (!empty($jaTem)) {
             toolErp::alert('A turma ' . $ins['n_turma'] . ' já existe');
         } else {
-            $this->db->ireplace('tdics_turma', $ins);
+            $this->db->ireplace(self::$sistema . '_turma', $ins);
         }
     }
 
@@ -175,8 +177,8 @@ class tdicsModel extends MainModel {
         }
         $sql = "SELECT "
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, t2.n_turma as turmaEsc, i.id_inst, i.n_inst "
-                . " FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+                . " FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
                 . " AND t.fk_id_pl = $id_pl "
                 . $id_polo
                 . $id_turma
@@ -201,8 +203,8 @@ class tdicsModel extends MainModel {
 
         $sql = "SELECT "
                 . " distinct i.id_inst, i.n_inst "
-                . " FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+                . " FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
                 . " AND t.fk_id_pl = $id_pl "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
                 . " AND ta2.fk_id_tas = 0 "
@@ -224,9 +226,9 @@ class tdicsModel extends MainModel {
         }
         $sql = "SELECT "
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, po.n_polo "
-                . " FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
-                . " JOIN tdics_polo po on po.id_polo = t.fk_id_polo AND t.fk_id_pl = $id_pl "
+                . " FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
+                . " JOIN " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo AND t.fk_id_pl = $id_pl "
                 . $id_polo
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
@@ -241,8 +243,8 @@ class tdicsModel extends MainModel {
     }
 
     public function countAlunos($id_plo, $id_pl) {
-        $sql = "SELECT t.id_turma, COUNT(ta.id_ta) ct FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+        $sql = "SELECT t.id_turma, COUNT(ta.id_ta) ct FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
                 . " AND t.fk_id_polo = $id_plo and t.fk_id_pl = $id_pl"
                 . " GROUP BY t.id_turma ";
         $query = pdoSis::getInstance()->query($sql);
@@ -258,8 +260,8 @@ class tdicsModel extends MainModel {
     }
 
     public function countAlunosCurso($id_curso, $id_pl) {
-        $sql = "SELECT t.id_turma, COUNT(ta.id_ta) ct FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+        $sql = "SELECT t.id_turma, COUNT(ta.id_ta) ct FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
                 . " AND t.fk_id_curso = $id_curso "
                 . " GROUP BY t.id_turma ";
         $query = pdoSis::getInstance()->query($sql);
@@ -277,11 +279,11 @@ class tdicsModel extends MainModel {
     public function aluno($id_pessoa) {
         $sql = "SELECT "
                 . " ta.id_ta, t.n_turma, po.n_polo, p.id_pessoa, p.n_pessoa, p.sexo "
-                . " FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma AND `fk_id_pessoa` = $id_pessoa "
+                . " FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma AND `fk_id_pessoa` = $id_pessoa "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
-                . " JOIN tdics_polo po on po.id_polo = t.fk_id_polo "
-                . " JOIN tdics_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
+                . " JOIN " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "
+                . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
                 . " ORDER BY n_pessoa";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -305,18 +307,18 @@ class tdicsModel extends MainModel {
         $sql = "SELECT "
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, po.n_polo, "
                 . " t2.n_turma as turmaEsc, i.id_inst, i.n_inst, t.n_turma, c.n_curso, cc.fk_id_sit "
-                . " FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma and ta.fk_id_pessoa in ($ids) $id_curso $id_polo "
-                . " join tdics_polo po on po.id_polo = t.fk_id_polo "
-                . " join  tdics_curso c on c.id_curso = t.fk_id_curso "
-                . " JOIN tdics_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
+                . " FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma and ta.fk_id_pessoa in ($ids) $id_curso $id_polo "
+                . " join " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "
+                . " join  " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
+                . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
                 . " AND ta2.fk_id_tas = 0 "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl2 on pl2.id_pl = t2.fk_id_pl AND pl2.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
-                . " left join tdics_call_center cc on cc.id_pessoa = ta.fk_id_pessoa "
+                . " left join " . self::$sistema . "_call_center cc on cc.id_pessoa = ta.fk_id_pessoa "
                 . " where 1 "
                 . $id_sit
                 . " order by cc.fk_id_sit, n_pessoa ";
@@ -332,18 +334,18 @@ class tdicsModel extends MainModel {
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, po.n_polo, "
                 . " t2.n_turma as turmaEsc, i.id_inst, i.n_inst, t.n_turma, c.n_curso, cc.time_stamp,"
                 . " cc.obs, cc.contactou, fk_id_sit "
-                . " FROM tdics_turma_aluno ta "
-                . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma and ta.fk_id_pessoa in ($id_pessoa) "
-                . " join tdics_polo po on po.id_polo = t.fk_id_polo "
-                . " join  tdics_curso c on c.id_curso = t.fk_id_curso "
-                . " JOIN tdics_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
+                . " FROM " . self::$sistema . "_turma_aluno ta "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma and ta.fk_id_pessoa in ($id_pessoa) "
+                . " join " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "
+                . " join  " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
+                . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
                 . " AND ta2.fk_id_tas = 0 "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl2 on pl2.id_pl = t2.fk_id_pl AND pl2.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
-                . " left join tdics_call_center cc on cc.id_pessoa = ta.fk_id_pessoa "
+                . " left join " . self::$sistema . "_call_center cc on cc.id_pessoa = ta.fk_id_pessoa "
                 . " order by n_pessoa ";
 
         $query = pdoSis::getInstance()->query($sql);
@@ -353,9 +355,9 @@ class tdicsModel extends MainModel {
     }
 
     public function turmaPolo($id_polo) {
-        $sql = "SELECT t.*, c.n_curso FROM tdics_turma t "
-                . " JOIN tdics_pl pl on pl.id_pl = t.fk_id_pl "
-                . " JOIN tdics_curso c on c.id_curso = t.fk_id_curso "
+        $sql = "SELECT t.*, c.n_curso FROM " . self::$sistema . "_turma t "
+                . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl "
+                . " JOIN " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
                 . " AND pl.ativo = 1 "
                 . " AND t.fk_id_polo = $id_polo "
                 . " order by n_curso, periodo, horario ";
@@ -402,14 +404,14 @@ class tdicsModel extends MainModel {
         $fields = "p.id_pessoa , p.n_pessoa, i.n_inst, t.n_turma, c.n_curso ";
         $sql = "SELECT "
                 . $fields
-                . " FROM tdics_turma t "
-                . " join tdics_turma_aluno ta on ta.fk_id_turma = t.id_turma $id_polo_ and t.fk_id_pl = $id_pl"
+                . " FROM " . self::$sistema . "_turma t "
+                . " join " . self::$sistema . "_turma_aluno ta on ta.fk_id_turma = t.id_turma $id_polo_ and t.fk_id_pl = $id_pl"
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
-                . " join tdics_curso c on c.id_curso = t.fk_id_curso "
+                . " join " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
                 . $periodo
                 . $id_curso
                 . $id_inst_sieb
@@ -473,7 +475,7 @@ class tdicsModel extends MainModel {
         if (empty($id_pl)) {
             $id_pl = $this->pl();
         }
-        $mongo = new mongoCrude('Tdics');
+        $mongo = new mongoCrude(self::$mongoDataBase);
         $frenq = $mongo->query('presece_' . $id_pl, $filter);
         $ch = [];
 
@@ -490,7 +492,7 @@ class tdicsModel extends MainModel {
 
     public function freqGraf($periodo = null) {
         $id_pl = $this->pl();
-        $mongo = new mongoCrude('Tdics');
+        $mongo = new mongoCrude(self::$mongoDataBase);
         $frenq = $mongo->query('presece_' . $id_pl);
         $cht = [];
 
@@ -523,7 +525,7 @@ class tdicsModel extends MainModel {
 
     public function freqCurGraf($periodo = null) {
         $id_pl = $this->pl();
-        $mongo = new mongoCrude('Tdics');
+        $mongo = new mongoCrude(self::$mongoDataBase);
         $frenq = $mongo->query('presece_' . $id_pl);
         $cht = [];
         foreach ($frenq as $v) {
@@ -563,13 +565,13 @@ class tdicsModel extends MainModel {
         }
 
         $sql = "SELECT tt.*, tc.id_curso, tc.n_curso, tc.icone, tp.id_polo, tp.n_polo, DATE_FORMAT(ti.dt_inscricao, '%d/%m/%Y') AS data_inscricao, th.inicio, th.termino, ti.*, ts.qt_curso_aluno "
-            . " FROM tdics_inscricao ti "
-            . " JOIN tdics_turma tt ON ti.fk_id_turma = tt.id_turma "
-            . " JOIN tdics_curso tc ON tt.fk_id_curso = tc.id_curso "
-            . " JOIN tdics_pl pl ON tt.fk_id_pl = pl.id_pl "
-            . " JOIN tdics_polo tp ON tt.fk_id_polo = tp.id_polo "
-            . " LEFT JOIN tdics_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
-            . " , tdics_setup ts "
+            . " FROM " . self::$sistema . "_inscricao ti "
+            . " JOIN " . self::$sistema . "_turma tt ON ti.fk_id_turma = tt.id_turma "
+            . " JOIN " . self::$sistema . "_curso tc ON tt.fk_id_curso = tc.id_curso "
+            . " JOIN " . self::$sistema . "_pl pl ON tt.fk_id_pl = pl.id_pl "
+            . " JOIN " . self::$sistema . "_polo tp ON tt.fk_id_polo = tp.id_polo "
+            . " LEFT JOIN " . self::$sistema . "_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
+            . " , " . self::$sistema . "_setup ts "
             . " WHERE pl.ativo = 1 $sqlAux ";
         return $sql;
     }
@@ -637,13 +639,13 @@ class tdicsModel extends MainModel {
             $sqlAux .= " AND tt.id_turma = $id_turma ";
         }
 
-        $sql = "SELECT (ts.qt_turma * COUNT(tt.id_turma)) as vagas, SUM(IFNULL((SELECT COUNT(id_inscricao) FROM tdics_inscricao WHERE fk_id_turma = tt.id_turma),0)) AS inscritos, tp.id_polo, tp.n_polo, tc.id_curso, tc.n_curso, tt.periodo "
-            . " FROM tdics_turma tt "
-            . " JOIN tdics_curso tc ON tt.fk_id_curso = tc.id_curso "
-            . " JOIN tdics_pl pl ON tt.fk_id_pl = pl.id_pl "
-            . " JOIN tdics_polo tp ON tt.fk_id_polo = tp.id_polo "
-            . " LEFT JOIN tdics_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
-            . " , tdics_setup ts "
+        $sql = "SELECT (ts.qt_turma * COUNT(tt.id_turma)) as vagas, SUM(IFNULL((SELECT COUNT(id_inscricao) FROM " . self::$sistema . "_inscricao WHERE fk_id_turma = tt.id_turma),0)) AS inscritos, tp.id_polo, tp.n_polo, tc.id_curso, tc.n_curso, tt.periodo "
+            . " FROM " . self::$sistema . "_turma tt "
+            . " JOIN " . self::$sistema . "_curso tc ON tt.fk_id_curso = tc.id_curso "
+            . " JOIN " . self::$sistema . "_pl pl ON tt.fk_id_pl = pl.id_pl "
+            . " JOIN " . self::$sistema . "_polo tp ON tt.fk_id_polo = tp.id_polo "
+            . " LEFT JOIN " . self::$sistema . "_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
+            . " , " . self::$sistema . "_setup ts "
             . " WHERE pl.ativo = 1 $sqlAux "
             . " GROUP BY tp.n_polo, tc.n_curso, tt.periodo ";
 
@@ -666,13 +668,13 @@ class tdicsModel extends MainModel {
         }
 
         $sql = "SELECT tt.*, tc.id_curso, tc.n_curso, tc.icone, tp.id_polo, tp.n_polo, DATE_FORMAT(ti.dt_avise, '%d/%m/%Y') AS data_avise, th.inicio, th.termino, ti.*, ts.qt_curso_aluno "
-            . " FROM tdics_avise_me ti "
-            . " JOIN tdics_turma tt ON ti.fk_id_turma = tt.id_turma "
-            . " JOIN tdics_curso tc ON tt.fk_id_curso = tc.id_curso "
-            . " JOIN tdics_pl pl ON tt.fk_id_pl = pl.id_pl "
-            . " JOIN tdics_polo tp ON tt.fk_id_polo = tp.id_polo "
-            . " LEFT JOIN tdics_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
-            . " , tdics_setup ts "
+            . " FROM " . self::$sistema . "_avise_me ti "
+            . " JOIN " . self::$sistema . "_turma tt ON ti.fk_id_turma = tt.id_turma "
+            . " JOIN " . self::$sistema . "_curso tc ON tt.fk_id_curso = tc.id_curso "
+            . " JOIN " . self::$sistema . "_pl pl ON tt.fk_id_pl = pl.id_pl "
+            . " JOIN " . self::$sistema . "_polo tp ON tt.fk_id_polo = tp.id_polo "
+            . " LEFT JOIN " . self::$sistema . "_horarios th ON tt.fk_id_polo = th.fk_id_polo AND tt.periodo = th.periodo AND tt.horario = th.horario "
+            . " , " . self::$sistema . "_setup ts "
             . " WHERE pl.ativo = 1 $sqlAux ";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -698,7 +700,7 @@ class tdicsModel extends MainModel {
             unset($ins['horario']);
         }
 
-        $id_polo = $this->db->ireplace('tdics_polo', $ins);
+        $id_polo = $this->db->ireplace(self::$sistema . '_polo', $ins);
 
         if (!empty($id_polo)) {
             foreach ($horario as $periodo => $value) {
@@ -712,7 +714,7 @@ class tdicsModel extends MainModel {
                         'termino' => $horas['termino'],
                     ];
 
-                    $this->db->ireplace('tdics_horarios', $insH, 1);
+                    $this->db->ireplace(self::$sistema . '_horarios', $insH, 1);
                 }
             }
         }
@@ -732,8 +734,8 @@ class tdicsModel extends MainModel {
         }
 
         $sql = "SELECT tp.id_polo, tp.n_polo, th.* "
-            . " FROM tdics_horarios th "
-            . " JOIN tdics_polo tp ON th.fk_id_polo = tp.id_polo "
+            . " FROM " . self::$sistema . "_horarios th "
+            . " JOIN " . self::$sistema . "_polo tp ON th.fk_id_polo = tp.id_polo "
             . " WHERE th.ativo = 1 $sqlAux "
             . " ORDER BY th.horario, th.periodo";
         $query = pdoSis::getInstance()->query($sql);

@@ -1,10 +1,10 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$setup = sql::get('tdics_setup', '*', null, 'fetch');
-@$id_plAt = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
-@$id_plPv = sql::get('tdics_pl', 'id_pl', ['ativo' => 2], 'fetch')['id_pl'];
-$pls = sql::idNome('tdics_pl');
+$setup = sql::get($model::$sistema . '_setup', '*', null, 'fetch');
+@$id_plAt = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
+@$id_plPv = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 2], 'fetch')['id_pl'];
+$pls = sql::idNome($model::$sistema . '_pl');
 ?>
 <div class="body">
     <div class="fieldTop">
@@ -44,7 +44,7 @@ $pls = sql::idNome('tdics_pl');
                     formErp::hidden([
                         '1[id_setup]' => 1
                     ])
-                    . formErp::hiddenToken('tdics_setup', 'ireplace')
+                    . formErp::hiddenToken($model::$sistema . '_setup', 'ireplace')
                     . formErp::button('Salvar')
                     ?>
                 </div>
@@ -66,7 +66,7 @@ $pls = sql::idNome('tdics_pl');
                             formErp::hidden([
                                 '1[id_setup]' => 1
                             ])
-                            . formErp::hiddenToken('tdics_setup', 'ireplace')
+                            . formErp::hiddenToken($model::$sistema . '_setup', 'ireplace')
                             . formErp::button('Salvar')
                             ?>
                         </div>
@@ -87,7 +87,7 @@ $pls = sql::idNome('tdics_pl');
                             formErp::hidden([
                                 '1[id_setup]' => 1
                             ])
-                            . formErp::hiddenToken('tdics_setup', 'ireplace')
+                            . formErp::hiddenToken($model::$sistema . '_setup', 'ireplace')
                             . formErp::button('Salvar')
                             ?>
                         </div>

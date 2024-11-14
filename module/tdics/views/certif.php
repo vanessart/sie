@@ -2,9 +2,9 @@
 if (!defined('ABSPATH'))
     exit;
 
-$set = sql::get('tdics_setup', '*', null, 'fetch');
+$set = sql::get($model::$sistema . '_setup', '*', null, 'fetch');
 $id_pl = $set['fk_id_pl_certificado'];
-$periodo = sql::get('tdics_pl', 'n_pl', ['id_pl' => $id_pl], 'fetch')['n_pl'];
+$periodo = sql::get($model::$sistema . '_pl', 'n_pl', ['id_pl' => $id_pl], 'fetch')['n_pl'];
 $perTxt = ' do ' . $periodo;
 if (toolErp::id_nilvel() == 8) {
     $id_inst = toolErp::id_inst();

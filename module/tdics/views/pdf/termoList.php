@@ -1,7 +1,7 @@
 <?php
-@$id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
-$polos = sql::idNome('tdics_polo');
-$cursos = sql::idNome('tdics_curso');
+@$id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
+$polos = sql::idNome($model::$sistema . '_polo');
+$cursos = sql::idNome($model::$sistema . '_curso');
 
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 if (!$id_inst) {

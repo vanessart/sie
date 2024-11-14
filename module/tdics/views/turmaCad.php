@@ -4,8 +4,8 @@ if (!defined('ABSPATH'))
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 if ($id_pl && $id_polo) {
-    $sql = "SELECT t.id_turma, COUNT(ta.id_ta) n_ct FROM tdics_turma t "
-            . " JOIN tdics_turma_aluno ta on ta.fk_id_turma = t.id_turma "
+    $sql = "SELECT t.id_turma, COUNT(ta.id_ta) n_ct FROM " . $model::$sistema . "_turma t "
+            . " JOIN " . $model::$sistema . "_turma_aluno ta on ta.fk_id_turma = t.id_turma "
             . " and t.fk_id_pl = $id_pl AND t.fk_id_polo = $id_polo "
             . " GROUP BY t.id_turma ";
     $query = pdoSis::getInstance()->query($sql);
@@ -14,15 +14,15 @@ if ($id_pl && $id_polo) {
         $temAlu = toolErp::idName($array);
     }
 }
-$pls = sql::idNome('tdics_pl', 'where ativo in (1,2)');
+$pls = sql::idNome($model::$sistema . '_pl', 'where ativo in (1,2)');
 if (empty($id_pl)) {
-    $id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
+    $id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 }
-$polos = sql::idNome('tdics_polo');
+$polos = sql::idNome($model::$sistema . '_polo');
 if ($id_polo) {
-    $turmas = sql::get(['tdics_turma', 'tdics_curso'], '*', ['fk_id_polo' => $id_polo, '>' => 'n_turma', 'fk_id_pl' => $id_pl]);
+    $turmas = sql::get([$model::$sistema . '_turma', $model::$sistema . '_curso'], '*', ['fk_id_polo' => $id_polo, '>' => 'n_turma', 'fk_id_pl' => $id_pl]);
     if ($turmas) {
-        $tonkenDel = formErp::token('tdics_turma', 'delete');
+        $tonkenDel = formErp::token($model::$sistema . '_turma', 'delete');
         foreach ($turmas as $k => $v) {
             $turmas[$k]['ac'] = '<button class="btn btn-info" onclick="edit(' . $v['id_turma'] . ')">Editar</button>';
             $turmas[$k]['dia'] = $model->diaSemana($v['dia_sem']);

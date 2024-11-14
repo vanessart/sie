@@ -2,15 +2,15 @@
 if (!defined('ABSPATH'))
     exit;
 $todasTurmas = filter_input(INPUT_POST, 'todasTurmas', FILTER_SANITIZE_NUMBER_INT);
-$setup = sql::get('tdics_setup', '*', null, 'fetch');
+$setup = sql::get($model::$sistema . '_setup', '*', null, 'fetch');
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 $id_ta = filter_input(INPUT_POST, 'id_ta', FILTER_SANITIZE_NUMBER_INT);
 
-$sql = "SELECT p.id_pessoa, p.n_pessoa, p.sexo, ta.fk_id_turma, t.fk_id_curso FROM tdics_turma_aluno ta "
+$sql = "SELECT p.id_pessoa, p.n_pessoa, p.sexo, ta.fk_id_turma, t.fk_id_curso FROM " . $model::$sistema . "_turma_aluno ta "
         . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa AND ta.id_ta = $id_ta "
-        . " join tdics_turma t on t.id_turma = ta.fk_id_turma";
+        . " join " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma";
 $query = pdoSis::getInstance()->query($sql);
 $alu = $query->fetch(PDO::FETCH_ASSOC);
 $id_turma = $alu['fk_id_turma'];
@@ -21,10 +21,10 @@ if (toolErp::id_nilvel() == 8 || empty($todasTurmas)) {
 } else {
     $periodos = null;
 }
-$sql = "SELECT t.*, p.n_polo, c.n_curso FROM tdics_turma o "
-        . " JOIN tdics_turma t on t.fk_id_curso = o.fk_id_curso and o.id_turma = $id_turma AND o.fk_id_pl= t.fk_id_pl $periodos "
-        . " JOIN tdics_polo p on p.id_polo = t.fk_id_polo "
-        . " JOIN tdics_curso c on c.id_curso = t.fk_id_curso "
+$sql = "SELECT t.*, p.n_polo, c.n_curso FROM " . $model::$sistema . "_turma o "
+        . " JOIN " . $model::$sistema . "_turma t on t.fk_id_curso = o.fk_id_curso and o.id_turma = $id_turma AND o.fk_id_pl= t.fk_id_pl $periodos "
+        . " JOIN " . $model::$sistema . "_polo p on p.id_polo = t.fk_id_polo "
+        . " JOIN " . $model::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
         . " order by id_polo, periodo, dia_sem, horario";
 $query = pdoSis::getInstance()->query($sql);
 $turmas = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -141,7 +141,7 @@ $hidden = [
     . formErp::hidden([
         '1[id_ta]' => $id_ta
     ])
-    . formErp::hiddenToken('tdics_turma_aluno', 'ireplace')
+    . formErp::hiddenToken($model::$sistema . '_turma_aluno', 'ireplace')
     ?>
 </form>
 <script>

@@ -2,9 +2,9 @@
 if (!defined('ABSPATH'))
     exit;
 
-$polos = sql::idNome('tdics_polo');
-@$id_pl = sql::get('tdics_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
-$sql = "SELECT * FROM tdics_turma_aluno ta JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+$polos = sql::idNome($model::$sistema . '_polo');
+@$id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
+$sql = "SELECT * FROM " . $model::$sistema . "_turma_aluno ta JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
         . " and t.fk_id_pl = $id_pl";
 $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);

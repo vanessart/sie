@@ -139,7 +139,7 @@ if ($id_pessoa) {
                                     'idName' => $idName,
                                     '1[id_ta]' => $v['id_ta']
                                 ])
-                                . formErp::hiddenToken('tdics_turma_aluno', 'delete')
+                                . formErp::hiddenToken($model::$sistema . '_turma_aluno', 'delete')
                                 ?>
                                 <button class="btn btn-danger" type="submit">
                                     Excluir

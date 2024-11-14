@@ -1,13 +1,13 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$_pl = sql::get('tdics_pl', '*', ' where ativo in (1)', 'fetch');
+$_pl = sql::get($model::$sistema . '_pl', '*', ' where ativo in (1)', 'fetch');
 $id_pl = !empty($_pl) ? $_pl['id_pl'] : 0;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$polos = sql::idNome('tdics_polo');
+$polos = sql::idNome($model::$sistema . '_polo');
 if ($id_polo) {
-    $turmas = sql::idNome('tdics_turma', ['fk_id_polo' => $id_polo, 'fk_id_pl' => $id_pl]);
+    $turmas = sql::idNome($model::$sistema . '_turma', ['fk_id_polo' => $id_polo, 'fk_id_pl' => $id_pl]);
 }
 if ($id_turma) {
     $mongo = new mongoCrude( ucfirst($this->sistema) );

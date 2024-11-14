@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 if ($id_polo) {
-    $p = sql::get('tdics_polo', '*', ['id_polo' => $id_polo], 'fetch');
+    $p = sql::get($model::$sistema . '_polo', '*', ['id_polo' => $id_polo], 'fetch');
     $h = $model->getHorarios($id_polo);
 }
 

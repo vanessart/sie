@@ -5,9 +5,9 @@ $id_sit = filter_input(INPUT_POST, 'id_sit', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
 $frenq = $model->frequeciaAluno();
-$cursos = sql::idNome('tdics_curso');
-$polos = sql::idNome('tdics_polo');
-$sit = sql::idNome('tdics_call_center_sit');
+$cursos = sql::idNome($model::$sistema . '_curso');
+$polos = sql::idNome($model::$sistema . '_polo');
+$sit = sql::idNome($model::$sistema . '_call_center_sit');
 foreach ($frenq as $k => $v) {
     if (empty($v[1])) {
         $falt[$k] = $v[0];

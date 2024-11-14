@@ -67,7 +67,7 @@ $perTex = [
         <?php
         if ($tipo == 'curso') {
             $frenq = $model->freqCurGraf($periodo);
-            $c = sql::get('tdics_curso');
+            $c = sql::get($model::$sistema . '_curso');
             $cursos = toolErp::idName($c, 'abrev', 'n_curso');
             $cursoList = "'" . implode("', '", $cursos) . "'";
             ?>
@@ -105,7 +105,7 @@ $perTex = [
             <div id="curve_chart" style="width: 100%; height: 500px"></div>
             <?php
         } else {
-            $polos = sql::idNome('tdics_polo');
+            $polos = sql::idNome($model::$sistema . '_polo');
             $poloList = "'" . implode("', '", $polos) . "'";
             $frenq = $model->freqGraf($periodo);
             ?>

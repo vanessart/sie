@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$polos = sql::get('tdics_polo');
+$polos = sql::get($model::$sistema . '_polo');
 foreach ($polos as $k => $v) {
     $polos[$k]['ac'] = '<button class="btn btn-info" onclick="edit(' . $v['id_polo'] . ')">Editar</button>';
     $polos[$k]['at'] = toolErp::simnao($v['ativo']);

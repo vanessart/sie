@@ -9,7 +9,7 @@ $escola = filter_input(INPUT_POST, 'escola');
 $turma = filter_input(INPUT_POST, 'turma');
 $polo = filter_input(INPUT_POST, 'polo');
 
-$turmaCurso = sql::get(['tdics_turma', 'tdics_curso'], '*', ['id_turma' => $id_turma], 'fetch');
+$turmaCurso = sql::get([$model::$sistema . '_turma', $model::$sistema . '_curso'], '*', ['id_turma' => $id_turma], 'fetch');
 // if ($turmaCurso['periodo'] == 'M') {
 //     $periodoCurso = "'T', 'I', 'N'";
 // } else {

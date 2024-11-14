@@ -7,7 +7,7 @@ if ($id_pessoa) {
     $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
     $id_curso = filter_input(INPUT_POST, 'id_curso', FILTER_SANITIZE_NUMBER_INT);
     $aluno = $model->alunoCallCenter($id_pessoa);
-    $sit = sql::idNome('tdics_call_center_sit');
+    $sit = sql::idNome($model::$sistema . '_call_center_sit');
     $sql = "SELECT * FROM `telefones` WHERE `fk_id_pessoa` = $id_pessoa AND `num` IS NOT NULL";
     $query = pdoSis::getInstance()->query($sql);
     $tel = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -163,7 +163,7 @@ if ($id_pessoa) {
                     'id_polo' => $id_polo,
                     'id_curso' => $id_curso
                 ])
-                . formErp::hiddenToken('tdics_call_center', 'ireplace')
+                . formErp::hiddenToken($model::$sistema . '_call_center', 'ireplace')
                 . formErp::button('Salvar')
                 ?>
             </div>

@@ -71,7 +71,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
         </tr>
     </table>
     <br /><br />
-    <?= formErp::selectDB('tdics_polo', 'id_polo', 'Núcleo', $id_polo, 1, ['id_pessoa' => $id_pessoa]) ?>
+    <?= formErp::selectDB($model::$sistema . '_polo', 'id_polo', 'Núcleo', $id_polo, 1, ['id_pessoa' => $id_pessoa]) ?>
     <br /><br />
     <table class="table table-bordered table-hover table-responsive">
         <tr>
@@ -134,7 +134,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
                                 '1[fk_id_pessoa]' => $id_pessoa,
                                 '1[fk_id_turma]' => $v['id_turma']
                             ])
-                            . formErp::hiddenToken('tdics_turma_aluno', 'ireplace')
+                            . formErp::hiddenToken($model::$sistema . '_turma_aluno', 'ireplace')
                             . formErp::button('Matricular')
                             ?>
                         </form>  

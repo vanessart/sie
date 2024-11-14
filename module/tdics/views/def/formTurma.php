@@ -3,13 +3,13 @@ if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
-$cursos = sql::idNome('tdics_curso');
+$cursos = sql::idNome($model::$sistema . '_curso');
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 
-$pls = sql::idNome('tdics_pl');
+$pls = sql::idNome($model::$sistema . '_pl');
 
 if ($id_polo && $id_turma) {
-    $t = sql::get('tdics_turma', '*', ['id_turma' => $id_turma], 'fetch');
+    $t = sql::get($model::$sistema . '_turma', '*', ['id_turma' => $id_turma], 'fetch');
 }
 $diaSem = $model->diaSemana();
 ?>
@@ -17,7 +17,7 @@ $diaSem = $model->diaSemana();
     <div class="fieldTop">
         Cadastro de Turma
         <br /><br />
-        <?= sql::get('tdics_polo', 'n_polo', ['id_polo' => $id_polo], 'fetch')['n_polo'] ?> - <?= $pls[$id_pl] ?>
+        <?= sql::get($model::$sistema . '_polo', 'n_polo', ['id_polo' => $id_polo], 'fetch')['n_polo'] ?> - <?= $pls[$id_pl] ?>
     </div>
     <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/turmaCad" target="_parent" method="POST">
         <div class="row">
@@ -50,7 +50,7 @@ $diaSem = $model->diaSemana();
                 '1[fk_id_pl]' => $id_pl,
                 'id_pl' => $id_pl
             ])
-            . formErp::hiddenToken('tdics_turmaSet')
+            . formErp::hiddenToken($model::$sistema . '_turmaSet')
             . formErp::button('Salvar')
             ?>
         </div>

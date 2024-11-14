@@ -3,8 +3,8 @@ if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
-$polos = sql::idNome('tdics_polo');
-$plsArr = sql::get('tdics_pl', '*', ' where ativo in (1,2)');
+$polos = sql::idNome($model::$sistema . '_polo');
+$plsArr = sql::get($model::$sistema . '_pl', '*', ' where ativo in (1,2)');
 foreach ($plsArr as $v) {
     $pls[$v['id_pl']] = $v['n_pl'];
     if (empty($id_pl) && $v['ativo'] == 1) {
@@ -12,7 +12,7 @@ foreach ($plsArr as $v) {
     }
 }
 if ($id_polo) {
-    $turmas = sql::idNome('tdics_turma', ['fk_id_polo' => $id_polo, 'fk_id_pl'=>$id_pl]);
+    $turmas = sql::idNome($model::$sistema . '_turma', ['fk_id_polo' => $id_polo, 'fk_id_pl'=>$id_pl]);
 }
 ?>
 <div class="body">

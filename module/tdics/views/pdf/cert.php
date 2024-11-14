@@ -5,7 +5,7 @@ $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 $data = filter_input(INPUT_POST, 'data');
 $ck = @$_POST['ck'];
-$periodo = sql::get('tdics_pl', 'n_pl', ['id_pl' => $id_pl], 'fetch')['n_pl'];
+$periodo = sql::get($model::$sistema . '_pl', 'n_pl', ['id_pl' => $id_pl], 'fetch')['n_pl'];
 
 foreach ($ck as $k => $v) {
     if (!empty($v)) {
@@ -15,10 +15,10 @@ foreach ($ck as $k => $v) {
 if (!empty($ids)) {
     $sql = "SELECT "
             . " p.n_pessoa, c.n_curso, p.sexo "
-            . " FROM tdics_turma_aluno ta "
-            . " JOIN tdics_turma t on t.id_turma = ta.fk_id_turma "
+            . " FROM " . $model::$sistema . "_turma_aluno ta "
+            . " JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
             . " AND ta.fk_id_pessoa in (" . implode(', ', $ids) . ") "
-            . " JOIN tdics_curso c on c.id_curso = t.fk_id_curso "
+            . " JOIN " . $model::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
             . " AND t.fk_id_pl = $id_pl "
             . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
             . " order by p.n_pessoa";
@@ -50,7 +50,7 @@ if (!empty($ids)) {
                 <?= $v['n_pessoa'] ?>
             </div>
             <br />
-            Participou do <?= PROJETO_TDICS ?>, no curso 
+            Participou do <?= constant('PROJETO_' . strtoupper($model::$sistema)) ?>, no curso 
             <div style="font-weight: bold;margin-top: 10px">
                 “<?= $v['n_curso'] ?>”,
             </div>
