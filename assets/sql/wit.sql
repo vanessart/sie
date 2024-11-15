@@ -21,7 +21,7 @@ CREATE TABLE `wit_avise_me` (
   PRIMARY KEY (`id_avise`),
   UNIQUE KEY `fk_id_pessoa_2` (`fk_id_pessoa`,`fk_id_turma`),
   KEY `fk_id_pessoa` (`fk_id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 CREATE TABLE `wit_curso` (
@@ -32,7 +32,7 @@ CREATE TABLE `wit_curso` (
   `ativo` tinyint(4) NOT NULL DEFAULT '1',
   `descricao` text,
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_horarios` (
   `id_horarios` int(11) NOT NULL AUTO_INCREMENT,
@@ -44,7 +44,7 @@ CREATE TABLE `wit_horarios` (
   `ativo` tinyint(4) NOT NULL DEFAULT '1',
   `dt_horarios` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_horarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_inscricao` (
   `id_inscricao` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,21 +54,21 @@ CREATE TABLE `wit_inscricao` (
   PRIMARY KEY (`id_inscricao`),
   KEY `fk_id_turma` (`fk_id_turma`),
   KEY `fk_id_pessoa` (`fk_id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_pl` (
   `id_pl` int(11) NOT NULL AUTO_INCREMENT,
   `n_pl` varchar(100) NOT NULL,
   `ativo` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pl`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_polo` (
   `id_polo` int(11) NOT NULL AUTO_INCREMENT,
   `n_polo` varchar(255) NOT NULL,
   `ativo` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_polo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_setup` (
   `id_setup` int(11) NOT NULL AUTO_INCREMENT,
@@ -79,7 +79,7 @@ CREATE TABLE `wit_setup` (
   `fk_id_pl_certificado` int(11) DEFAULT NULL,
   `dt_certif` date DEFAULT NULL,
   PRIMARY KEY (`id_setup`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_turma` (
   `id_turma` int(11) NOT NULL AUTO_INCREMENT,
@@ -92,7 +92,7 @@ CREATE TABLE `wit_turma` (
   `dia_sem` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_turma`),
   UNIQUE KEY `n_turma` (`n_turma`,`fk_id_pl`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `wit_turma_aluno` (
   `id_ta` int(11) NOT NULL AUTO_INCREMENT,
@@ -101,7 +101,7 @@ CREATE TABLE `wit_turma_aluno` (
   `times_tamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_ta`),
   UNIQUE KEY `fk_id_pessoa` (`fk_id_pessoa`,`fk_id_turma`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 INSERT INTO wit_pl (n_pl,ativo) VALUES
