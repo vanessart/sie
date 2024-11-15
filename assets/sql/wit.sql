@@ -103,3 +103,22 @@ CREATE TABLE `wit_turma_aluno` (
   UNIQUE KEY `fk_id_pessoa` (`fk_id_pessoa`,`fk_id_turma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+INSERT INTO wit_pl (n_pl,ativo) VALUES
+   ('2º Semestre de 2024',1);
+
+INSERT INTO wit_setup (qt_turma,matri,matri_prev,qt_curso_aluno,fk_id_pl_certificado,dt_certif) VALUES
+   (30,1,1,1,1,'2024-12-19');
+
+INSERT INTO wit_polo (n_polo,ativo) VALUES
+   ('Wit Gaspar',1);
+
+INSERT INTO wit_horarios (fk_id_polo,periodo,horario,inicio,termino,ativo,dt_horarios) VALUES
+   (1,'M',1,'07h30','09h00',1,'2024-11-15 00:09:31'),
+   (1,'M',2,'9h30','11h00',1,'2024-11-15 00:09:31'),
+   (1,'T',1,'13h20','14h50',1,'2024-11-15 00:09:31'),
+   (1,'T',2,'15h10','16h40',1,'2024-11-15 00:09:31');
+
+INSERT INTO wit_curso (n_curso,abrev,icone,ativo,descricao) VALUES
+   ('WIT','WT',NULL,1,NULL);
+

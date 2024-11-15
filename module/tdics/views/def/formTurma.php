@@ -50,7 +50,7 @@ $diaSem = $model->diaSemana();
                 '1[fk_id_pl]' => $id_pl,
                 'id_pl' => $id_pl
             ])
-            . formErp::hiddenToken($model::$sistema . '_turmaSet')
+            . formErp::hiddenToken('tdics_turmaSet')
             . formErp::button('Salvar')
             ?>
         </div>

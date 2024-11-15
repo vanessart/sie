@@ -43,7 +43,7 @@ if ($id_curso) {
                     formErp::hidden([
                         '1[id_curso]' => $id_curso
                     ])
-                    . formErp::hiddenToken($model::$sistema . '_cursoSet')
+                    . formErp::hiddenToken('tdics_cursoSet')
                     . formErp::button('Salvar')
                     ?>
                 </div>
