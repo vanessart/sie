@@ -275,7 +275,7 @@ class integracao {
 	            // echo "<br><br>";
 	        } catch (Exception $e) {
 	            echo "<span style='color: #f00'>";
-	            var_dump($e->getMessage(), $e->getCode(), $v);
+	            var_dump($e->getMessage(), $e->getCode(), $e->getLine(), $v);
 	            echo "</span><br>";
 	        }
 	    }
@@ -525,7 +525,7 @@ class integracao {
 	            error_log( $agora->format("Y-m-d H:i:s") . " - ". @$id_pessoa ." - error - ". print_r($e->getMessage(), true) ." \n". print_r($pes, true) ."\n\n", 3, "/var/www/html/log-sp.log" );
 
 	            echo "<span style='color: #f00'>";
-	            var_dump($e->getMessage(), $e->getCode(), $pes);
+	            var_dump($e->getMessage(), $e->getCode(), $e->getLine(), $pes);
 	            echo "</span><br>";
 	        }
 
