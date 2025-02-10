@@ -1914,20 +1914,16 @@ class sedModel extends MainModel {
         $insInscricao['fk_id_pl'] = $id_pl;
         $insInscricao['fk_id_pessoa_lanc'] = tool::id_pessoa();
 
-        $sql = "SELECT `chamada` FROM `ge_turma_aluno` WHERE `fk_id_turma` = $id_turma ORDER BY `chamada` Desc LIMIT 0, 1;";
+        $sql = "SELECT t.codigo, ta.`chamada` FROM ge_turmas t LEFT JOIN `ge_turma_aluno` ta ON t.id_turma = ta.fk_id_turma WHERE t.`id_turma` = $id_turma ORDER BY ta.`chamada` DESC LIMIT 1";
         $ch = pdoSis::fetch($sql, "fetch");
-        if (!empty($ch['chamada'])) {
-            $chamada = $ch['chamada'] + 1;
-        } else {
-            $chamada = 1;
+        $chamada = 1;
+        if (!empty($ch)) {
+            if (!empty($ch['chamada'])) {
+                $chamada = $ch['chamada'] + 1;
+            }
+            $ins['codigo_classe'] = $ch['codigo'];
         }
         $ins['chamada'] = $chamada;
-
-        // if (tool::id_nilvel() == 10) {
-        //     $alert = 1;
-        // } else {
-        //     $alert = null;
-        // }
 
         if (isset($id_ta)) {
             $msg = strtoupper(tool::sexoArt($sexo)) . ' alun' . tool::sexoArt($sexo) . ' ' . $n_pessoa . ' foi transferid' . tool::sexoArt($sexo) . ' para a turma ' . $n_turma . ' <br>';
@@ -1939,7 +1935,7 @@ class sedModel extends MainModel {
         } else {
             $msg = strtoupper(tool::sexoArt($sexo)) . ' alun' . tool::sexoArt($sexo) . ' ' . $n_pessoa . ' foi cadastrad' . tool::sexoArt($sexo) . ' com sucesso na turma ' . $n_turma . ' <br>';
         }
-        $this->db->ireplace('ge_turma_aluno', $ins, 1);
+        $this->db->ireplace('ge_turma_aluno', $ins);
 
         // TODO: Verificar se irá enviar e-mail neste momento
         if (1 == 2) {
