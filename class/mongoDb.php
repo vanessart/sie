@@ -17,10 +17,17 @@ class mongoDb {
     public $bulk;
     public $mongoAccess;
 
-    public function __construct($_database  = 'coord') {
-        $this->database = $_database;
-        $this->mongoAccess = new MongoDB\Driver\Manager('mongodb://educ:aptN232ui@187.84.96.133:27017');
-//        $this->mongoAccess = new MongoDB\Driver\Manager('mongodb://educ:aptN232ui@187.84.96.133:27017');
+    public function __construct($_database = null) {
+        if (empty($_database)) {
+            $this->database = MONGO_DB_NAME;
+        } else {
+            $this->database = MONGO_DB_NAME.$_database;
+        }
+        if (empty(MONGO_DB_USER)) {
+            $this->mongoAccess = new MongoDB\Driver\Manager('mongodb://' . MONGO_HOSTNAME);
+        } else {
+            $this->mongoAccess = new MongoDB\Driver\Manager('mongodb://' . MONGO_DB_USER . ':' . MONGO_DB_PASSWORD . '@' . MONGO_HOSTNAME);
+        }
         $this->bulk = new MongoDB\Driver\BulkWrite();
     }
 
