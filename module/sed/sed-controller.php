@@ -735,5 +735,15 @@ class sedController extends MainController {
         require_once ABSPATH . '/module/sed/views/import.php';
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
+
+    public function alocaAlu() {
+        $this->title = 'Gestão Educacional';
+        $this->requireLogin();
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        $model = $this->load_model('sed/sed-model');
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
+        require_once ABSPATH . '/module/sed/views/alocaAlu.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
+    }
     
 }

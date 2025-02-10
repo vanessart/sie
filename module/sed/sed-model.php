@@ -97,6 +97,8 @@ class sedModel extends MainModel {
             $this->nono();
         } elseif ($this->db->tokenCheck('atualizarPat')) {
             $this->atualizarPat();
+        } elseif($this->db->tokenCheck('novoAluno')){
+            $this->novoAluno();
         }
     }
 
@@ -1674,5 +1676,340 @@ class sedModel extends MainModel {
 
         echo '<pre>';
         var_dump($r);
+    }
+
+    public function getTurmasCurso($id_curso = null, $id_inst = null, $id_pl = null, $id_turma = null, $idade = null) {
+        $WHERE = '';
+        $JOIN = '';
+        if (!empty($id_turma)) {
+            $WHERE .= "  AND t.id_turma = $id_turma ";
+        }
+        if (!empty($id_curso)) {
+            $WHERE .= " AND ci.fk_id_curso = $id_curso ";
+        }
+        if (!empty($id_inst)) {
+            $WHERE .= " AND t.fk_id_inst = $id_inst ";
+        }
+        if (!empty($id_pl)) {
+            $WHERE .= " AND t.fk_id_pl = $id_pl ";
+        }
+
+        if (tool::id_nivel() == 64) {
+            $WHERE .= " AND f.fk_id_pessoa = " . tool::id_pessoa();
+            $JOIN .= " JOIN ge_aloca_prof a ON t.id_turma = a.fk_id_turma "
+                    . " JOIN ge_funcionario f ON f.rm = a.rm ";
+        }
+
+        $sql = "SELECT DISTINCT i.id_inst, i.n_inst, cu.n_curso, cu.id_curso, t.id_turma, t.n_turma, pl.id_pl "
+                . " FROM ge_turmas t "
+                . " JOIN ge_ciclos ci ON ci.id_ciclo = t.fk_id_ciclo "
+                . " JOIN ge_cursos cu ON cu.id_curso = ci.fk_id_curso AND cu.extra <> 1"
+                . " JOIN instancia i ON t.fk_id_inst = i.id_inst "
+                . " JOIN ge_periodo_letivo pl ON t.fk_id_pl = pl.id_pl AND pl.at_pl = 1 "
+                . $JOIN
+                . " WHERE 1 = 1 "
+                . $WHERE;
+                
+                
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $turmas = [];
+        foreach ($array as $k => $v) {
+
+            $periodo = [];
+            $turmaFormatada = [
+                'n_turma' => $v['n_curso'] . ' - ' . $v['n_turma'],
+                'titulo_periodo' => '',
+                'periodo' => '',
+                'dia_hora' => ''
+            ];
+            $turmaFormatada['periodo'] = '';
+
+            if (substr($turmaFormatada['periodo'], -3) === ' e ') {
+                $turmaFormatada['periodo'] = substr($turmaFormatada['periodo'], 0, -3);
+            }
+            $turmaFormatada['titulo_periodo'] = count($periodo) > 1 ? 'Períodos ' : 'Período ';
+            $turmaFormatada['periodo'] = $turmaFormatada['periodo'];
+            $turmaFormatada['dia_hora'] = rtrim($turmaFormatada['dia_hora'], '<br><br>');
+
+            $qtAlunos = $this->countAlunos($v['id_pl'], $v['id_turma']);
+            if (!empty($qtAlunos[0])) {
+                $quantidadeAlunos = $qtAlunos[0];
+            } else {
+                $quantidadeAlunos = 0;
+            }
+
+            $turmas[] = [
+                'id_inst' => $v['id_inst'],
+                'n_inst' => $v['n_inst'],
+                'id_curso' => $v['id_curso'],
+                'n_curso' => $v['n_curso'],
+                'id_turma' => $v['id_turma'],
+                'n_turma' => $v['n_turma'],
+                'id_pl' => $v['id_pl'],
+                'quantidadeAlunos' => $quantidadeAlunos,
+                'botao' => $v['n_turma'] . '<br>',
+                'detalhesTurma' => $turmaFormatada
+            ];
+        }
+
+        return $turmas;
+    }
+
+    public function alunoEsc($id_pl, $id_inst = null, $id_turma = null, $id_curso = null, $idName = null, $dataIni = null, $dataFim = null) {
+        $sqlAux = "";
+        if ($id_turma) {
+            $id_turma = " AND t.id_turma = $id_turma ";
+        }
+        if ($id_pl) {
+            $id_pl = " AND pl.id_pl = $id_pl ";
+        }
+        if ($id_inst) {
+            $id_inst = " AND i.id_inst = $id_inst ";
+        }
+        if ($id_curso) {
+            $sqlAux = " AND cu.id_curso = $id_curso ";
+        }
+        if (!empty($idName)) {
+            $sqlAux .= " AND (p.id_pessoa = '$idName' OR p.n_pessoa LIKE '%" . trim($idName) . "%') ";
+        }
+        if (!empty($dataIni) && !empty($dataFim)) {
+            $sqlAux .= " AND ta.times_tamp BETWEEN '$dataIni 00:00' AND '$dataFim 23:59' ";
+        }
+        $sql = "SELECT "
+                . " distinct ta.id_turma_aluno, p.id_pessoa, p.n_pessoa, p.sexo, i.id_inst, i.n_inst, cu.n_curso, cu.id_curso, t.id_turma, t.n_turma, "
+                . " pl.id_pl, TIMESTAMPDIFF(YEAR, p.dt_nasc, CURDATE()) AS idade "
+                . " FROM ge_turma_aluno ta "
+                . " JOIN pessoa p ON p.id_pessoa = ta.fk_id_pessoa "
+                . " JOIN ge_turmas t on t.id_turma = ta.fk_id_turma "
+                . $id_turma
+                . " JOIN ge_ciclos ci ON ci.id_ciclo = t.fk_id_ciclo "
+                . " JOIN ge_cursos cu ON cu.id_curso = ci.fk_id_curso AND cu.extra <> 1 "
+                . " JOIN ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl AND pl.at_pl = 1 "
+                . $id_pl
+                . " JOIN instancia i on t.fk_id_inst = i.id_inst "
+                . $id_inst
+                . " WHERE ta.fk_id_tas = 0 $sqlAux "
+                . " ORDER BY p.n_pessoa ";
+
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return !empty($array) ? $array : [];
+    }
+
+    
+    public function countAlunos($id_pl, $id_turma) {
+
+        $sql = " SELECT "
+                . " COUNT(ta.id_turma_aluno) ct "
+                . " FROM ge_turmas t "
+                . " LEFT JOIN ge_turma_aluno ta ON ta.fk_id_turma = t.id_turma AND ta.fk_id_tas = 0"
+                . " JOIN ge_ciclos ci ON ci.id_ciclo = t.fk_id_ciclo  "
+                . " WHERE t.id_turma = $id_turma AND t.fk_id_pl = $id_pl ";
+
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (!empty($array)) {
+            return $array;
+        } else {
+            return [];
+        }
+    }
+
+    public static function podeMatricSemVaga() {
+        return (tool::id_nivel() == 10);
+    }
+
+    public function getVagas($id_turma = null) {
+        $sqlAux = '';
+        if (!empty($id_turma)) {
+            $sqlAux .= " AND tt.id_turma = $id_turma ";
+        }
+
+        $sql = " SELECT tt.id_turma, tt.n_turma, "
+                . " i.id_inst, i.n_inst, tc.id_curso, tc.n_curso, tt.periodo "
+                . " FROM ge_turmas tt "
+                . " JOIN ge_ciclos ci ON ci.id_ciclo = tt.fk_id_ciclo "
+                . " JOIN ge_cursos tc ON ci.fk_id_curso = tc.id_curso AND tc.extra <> 1"
+                . " JOIN instancia i ON tt.fk_id_inst = i.id_inst "
+                . " JOIN ge_periodo_letivo pl ON tt.fk_id_pl = pl.id_pl AND pl.at_pl = 1 "
+                . " WHERE pl.at_pl = 1 $sqlAux "
+                . " GROUP BY i.n_inst, tc.n_curso, tt.periodo ";
+
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $r = [];
+        if (!empty($array)) {
+            $r = $array;
+        }
+        return $r;
+    }
+
+    public function temPessoa($id_pessoa) {
+        $sql = " 
+            SELECT 
+                p.id_pessoa, 
+                p.n_pessoa, 
+                p.sexo, 
+                p.email, 
+                p.dt_nasc,
+                COALESCE(
+                    (
+                        SELECT COUNT(*)
+                        FROM ge_turma_aluno ta
+                        INNER JOIN ge_turmas t ON t.id_turma = ta.fk_id_turma
+                        INNER JOIN ge_periodo_letivo pl ON pl.id_pl = t.fk_id_pl AND pl.at_pl = 1
+                        WHERE ta.fk_id_pessoa = p.id_pessoa AND ta.fk_id_tas = 0
+                    ), 
+                    0
+                ) AS qt_turmas
+            FROM 
+                pessoa p
+            WHERE 
+                p.id_pessoa = $id_pessoa ";
+        
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetch(PDO::FETCH_ASSOC);
+        
+        return $array;
+    }
+
+    public function novoAluno() {
+        $id_pessoa = $_POST['id_pessoa'];
+        $id_pl = $_POST['id_pl'];
+        $id_inst = $_POST['id_inst'];
+        $id_turma = $_POST['id_turma'];
+        $n_turma = $_POST['n_turma'];
+        $transf = $_POST['transf'] ?? 0;
+
+        if (isset($_POST[1])) {
+            $id_ta = $_POST[1]['id_ta'];
+            $id_turma = $_POST[1]['fk_id_turma'];
+        }
+
+        $detalhesPessoa = $this->temPessoa($id_pessoa);
+        $sexo = $detalhesPessoa['sexo'];
+        $qt_turmas = $detalhesPessoa['qt_turmas'];
+        $n_pessoa = $detalhesPessoa['n_pessoa'];
+
+        $n_polos = "Escola";
+        $n_cursos = "Curso";
+        $n_cursos_artigo = "a";
+
+        $ins['fk_id_pessoa'] = $id_pessoa;
+        $ins['fk_id_turma'] = $id_turma;
+        $ins['fk_id_inst'] = $id_inst;
+        $ins['fk_id_tas'] = 0;
+        $ins['dt_matricula'] = date("Y-m-d H:i:s");
+        $insInscricao['fk_id_pessoa'] = $id_pessoa;
+        $insInscricao['fk_id_turma'] = $id_turma;
+        $insInscricao['fk_id_pl'] = $id_pl;
+        $insInscricao['fk_id_pessoa_lanc'] = tool::id_pessoa();
+
+        $sql = "SELECT `chamada` FROM `ge_turma_aluno` WHERE `fk_id_turma` = $id_turma ORDER BY `chamada` Desc LIMIT 0, 1;";
+        $ch = pdoSis::fetch($sql, "fetch");
+        if (!empty($ch['chamada'])) {
+            $chamada = $ch['chamada'] + 1;
+        } else {
+            $chamada = 1;
+        }
+        $ins['chamada'] = $chamada;
+
+        // if (tool::id_nilvel() == 10) {
+        //     $alert = 1;
+        // } else {
+        //     $alert = null;
+        // }
+
+        if (isset($id_ta)) {
+            $msg = strtoupper(tool::sexoArt($sexo)) . ' alun' . tool::sexoArt($sexo) . ' ' . $n_pessoa . ' foi transferid' . tool::sexoArt($sexo) . ' para a turma ' . $n_turma . ' <br>';
+            $upd['id_turma_aluno'] = $id_ta;
+            $upd['fk_id_tas'] = 9;
+            $upd['dt_transferencia'] = date("Y-m-d H:i:s");
+            $this->db->ireplace('ge_turma_aluno', $upd, 1);
+            ;
+        } else {
+            $msg = strtoupper(tool::sexoArt($sexo)) . ' alun' . tool::sexoArt($sexo) . ' ' . $n_pessoa . ' foi cadastrad' . tool::sexoArt($sexo) . ' com sucesso na turma ' . $n_turma . ' <br>';
+        }
+        $this->db->ireplace('ge_turma_aluno', $ins, 1);
+
+        // TODO: Verificar se irá enviar e-mail neste momento
+        if (1 == 2) {
+            $email = $detalhesPessoa['email'] ?? NULL;
+            if (empty($email)) {
+                tool::alertModal($msg . " O E-mail não está configurado ");
+                return;
+            }
+
+            $detalhesTurma = $this->getTurmasCurso(null, null, null, $id_turma);
+            $detalhesTurma = $detalhesTurma[0];
+            // Formata E-mail
+            $body = "Olá " . ucwords(strtolower($detalhesPessoa['n_pessoa'])) . ", <br><br>A sua inscrição n" . ($n_cursos_artigo == 'a' ? 'a' : 'o') . " " . $n_cursos . " <b>" . $detalhesTurma['n_curso'] . "</b> foi realizada com sucesso.<br><br>";
+            $body .= "<ul><li><b>LOCAL:</b> " . $detalhesTurma['n_inst'] . "</li>";
+            $body .= "<li><b>HORÁRIO:</b> " . $detalhesTurma['detalhesTurma']['dia_hora'] . "</li></ul>";
+            $body .= "<br /><br />Este e-mail foi enviado automaticamente e não recebe mensagens.<br /><br />";
+            if ($detalhesTurma['orientacao_inscricao']) {
+                $body .= urldecode($detalhesTurma['orientacao_inscricao']);
+            }
+            $subject = "Inscrição Cultura - " . $n_cursos . " " . $detalhesTurma['n_curso'];
+            $send = mailer::send($email, $subject, $body);
+
+            if ($send) {
+                tool::alertModal($msg . " Um e-mail foi enviado ao aluno ");
+            } else {
+                tool::alertModal($msg . " E-mail não enviado ");
+            }
+        }
+        return;
+    }
+
+    public function isAEE($id_pessoa, $porte = null, $apenasSIM = null) {
+
+        $sql = "SELECT "
+                . " porte.n_porte "
+                . " FROM ge_aluno_necessidades_especiais apd "
+                . " JOIN ge_turma_aluno ta ON ta.fk_id_pessoa = apd.fk_id_pessoa AND (ta.fk_id_tas = 0 OR ta.fk_id_tas IS NULL)"
+                . " JOIN ge_turmas t ON t.id_turma = ta.fk_id_turma "
+                . " JOIN ge_ciclos ci ON ci.id_ciclo = t.fk_id_ciclo"
+                . " JOIN ge_aluno_necessidades_especiais_porte porte ON apd.fk_id_porte = porte.id_porte AND apd.fk_id_porte <> 1"
+                . " JOIN ge_periodo_letivo pl ON pl.id_pl = t.fk_id_pl AND pl.at_pl = 1 "
+                . " JOIN pessoa p ON p.id_pessoa = apd.fk_id_pessoa "
+                . " WHERE p.id_pessoa = $id_pessoa ";
+        $array = pdoSis::fetch($sql);
+
+        if (!empty($porte)) {
+            return !empty($array) ? "SIM - " . $array['n_porte'] : "NÃO";
+        } else if (!empty($apenasSIM)) {
+            return !empty($array) ? "SIM - " . $array['n_porte'] : "";
+        } else {
+            return !empty($array) ? "SIM" : "NÃO";
+        }
+    }
+
+    public static function podeExcluirdaVaga() {
+        return (tool::id_nivel() == 10);
+    }
+
+    public function getPessoa($id_pessoa) {
+        $sql = "SELECT "
+                . " p.n_pessoa, p.sexo, t.id_turma, t.n_turma, t.periodo, i.n_inst, p.cpf, p.dt_nasc, IF(p.emailgoogle LIKE '%@%', p.emailgoogle, IF(p.email LIKE '%@%', p.email, NULL)) email "
+                . " FROM pessoa p  "
+                . " LEFT JOIN ge_turma_aluno ta ON ta.id_turma_aluno = ( "
+                . "     SELECT MAX(tax.id_turma_aluno) "
+                . "     FROM ge_turma_aluno tax  "
+                . "     JOIN ge_turmas tx on tx.id_turma = tax.fk_id_turma AND tax.fk_id_tas = 0 "
+                . "     JOIN ge_periodo_letivo plx on plx.id_pl = tx.fk_id_pl AND plx.at_pl = 1  "
+                . "     WHERE tax.fk_id_pessoa = p.id_pessoa  "
+                . " ) "
+                . " LEFT JOIN ge_turmas t on t.id_turma = ta.fk_id_turma"
+                . " LEFT JOIN instancia i on i.id_inst = t.fk_id_inst"
+                . " LEFT JOIN ge_ciclos ci ON ci.id_ciclo = t.fk_id_ciclo"
+                . " WHERE p.id_pessoa = $id_pessoa";
+        $dados = pdoSis::fetch($sql, "fetch");
+        return $dados;
     }
 }

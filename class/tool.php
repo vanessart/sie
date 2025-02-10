@@ -741,7 +741,7 @@ class tool {
 
                     <div class="modal-body">
                         <div style="text-align: right">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">X</button>
+                            <button onclick="$('#<?= $nome ?>').modal('hide');" type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <?php
                     }
@@ -841,8 +841,8 @@ class tool {
         }
     }
 
-    public static function alertModal($param) {
-        tool::modalInicio();
+    public static function alertModal($param, $style = 'width: 95%', $desativado = NULL, $nome = 'myModal') {
+        tool::modalInicio($style, $desativado, $nome);
         ?>
         <div style="text-align: center;font-size: 18px">
             <?php echo $param ?>
@@ -1171,4 +1171,29 @@ class tool {
         $mpdf->Output();
         exit;
     }
+
+    public static function divAlert($classe, $mensagem) {
+        ?>
+        <div class="alert alert-<?= $classe ?>" style="padding-top:  10px; padding-bottom: 0">
+            <div class="row" style="padding-bottom: 15px;">
+                <div class="col" style="font-weight: bold; text-align: center;">
+                    <?= $mensagem ?>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+
+    
+    public static function variavelVazia(...$variaveis) {
+        // Filtra as variáveis que estão vazias
+        $vazias = array_filter($variaveis, function ($variavel) {
+            return empty($variavel);
+        });
+
+        // Retorna true se houver alguma variável vazia
+        return !empty($vazias);
+    }
+
+    
 }

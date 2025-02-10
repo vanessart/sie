@@ -74,6 +74,7 @@ $menu[8] = [
         'page' => [
             'Turmas' => ['url' => '/sed/turmaSet'],
             'Nova Matrícula' => ['url' => '/sed/alunoNovo'],
+            'Alocar Alunos' => ['url' => '/sed/alocaAlu'],
             'Declaração Vagas/Comparecimento' => ['url' => '/sed/declaracaovaga'],
             'Convocação/Evento' => ['url' => '/sed/convocacao']
 //           'Sala de Aula'=>['url'=>'/sed/salaAula']
@@ -133,6 +134,7 @@ $menu[8] = [
     2 => ['url' => '/sed/historico'],
     3 => ['url' => '/historico/hist'],
     4 => ['url' => '/historico/index'],
+    5 => ['url' => '/sed/alocaAlu']
 ];
 if ($terceirizada) {
     $menu[8]['Cadastro']['page']['Funcionarios'] = ['url' => '/sed/cadFunc'];
