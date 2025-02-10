@@ -1904,7 +1904,11 @@ class sedModel extends MainModel {
         $ins['fk_id_turma'] = $id_turma;
         $ins['fk_id_inst'] = $id_inst;
         $ins['fk_id_tas'] = 0;
-        $ins['dt_matricula'] = date("Y-m-d H:i:s");
+        $ins['dt_matricula'] = date("Y-m-d");
+        $ins['dt_gdae'] = date("Y-m-d");
+        $ins['periodo_letivo'] = date("Y");
+        $ins['situacao'] = "Frequente";
+        $ins['fk_id_sit_sed'] = 1;
         $insInscricao['fk_id_pessoa'] = $id_pessoa;
         $insInscricao['fk_id_turma'] = $id_turma;
         $insInscricao['fk_id_pl'] = $id_pl;
