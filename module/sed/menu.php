@@ -134,7 +134,6 @@ $menu[8] = [
     2 => ['url' => '/sed/historico'],
     3 => ['url' => '/historico/hist'],
     4 => ['url' => '/historico/index'],
-    5 => ['url' => '/sed/alocaAlu']
 ];
 if ($terceirizada) {
     $menu[8]['Cadastro']['page']['Funcionarios'] = ['url' => '/sed/cadFunc'];
