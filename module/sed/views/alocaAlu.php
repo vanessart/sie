@@ -157,10 +157,11 @@ if ($id_inst) {
                             $class = 'primary';
                         // } elseif (@$v['quantidadeAlunos']['ct'] >= @$v['quantidadeAlunos']['qt_turma']) {
                         //     $class = 'danger';
-                        } elseif (@$v['quantidadeAlunos']['ct'] < @$v['quantidadeAlunos']['qt_turma']) {
-                            $class = 'warning';
+                        // } elseif (@$v['quantidadeAlunos']['ct'] < @$v['quantidadeAlunos']['qt_turma']) {
+                        //     $class = 'warning';
                         } else {
-                            $class = 'info';
+                            // $class = 'info';
+                            $class = 'warning';
                         }
                         ?>
                         <div class="col-3">
