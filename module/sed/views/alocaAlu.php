@@ -64,7 +64,7 @@ if ($id_inst) {
         $alunos = $model->alunoEsc($id_pl, $id_inst, $id_turma, $id_curso, null, null, null);
 
         if (!empty($alunos)) {
-            $token = form::token('ge_turma_aluno', 'delete');
+            $token = formErp::token('ge_turma_aluno', 'delete');
             foreach ($alunos as $k => $v) {
                 // if (!empty($model->isPublicoCultura($v['id_pessoa']))) {
                     // $alunos[$k]['ne'] = $model->isNecessidadeInscricao($v['id_pessoa'],1);
@@ -72,7 +72,7 @@ if ($id_inst) {
                     $alunos[$k]['ne'] = $model->isAEE($v['id_pessoa'],null,1);
                 // }
                // $alunos[$k]['ac'] = '<button onclick="transf(' . $v['id_turma_aluno'] . ',\'' . $v['n_pessoa'] . '\')" class="btn btn-outline-info">Transferir</button>';
-               // $alunos[$k]['ex'] = form::submit('Excluir', $token, $hidden + ['1[id_turma_aluno]' => $v['id_turma_aluno']]);
+               // $alunos[$k]['ex'] = formErp::submit('Excluir', $token, $hidden + ['1[id_turma_aluno]' => $v['id_turma_aluno']]);
                // $alunos[$k]['pr'] = '<button onclick="pront(' . $v['id_pessoa'] . ',\'' . $v['n_pessoa'] . '\')" class="btn btn-outline-info">Prontuário</button>';
             }
             $form['array'] = $alunos;
@@ -100,16 +100,16 @@ if ($id_inst) {
     </div>
     <div class="row">
         <div class="col">
-            <?= form::select('id_pl', $pls, 'Período Letivo', $id_pl, 1, $hidden2) ?>
+            <?= formErp::select('id_pl', $pls, 'Período Letivo', $id_pl, 1, $hidden2) ?>
         </div>
         <div class="col">
-            <?= form::select('id_curso', $cursos, $n_cursos, $id_curso, 1, $hidden2) ?>
+            <?= formErp::select('id_curso', $cursos, $n_cursos, $id_curso, 1, $hidden2) ?>
         </div>
         <div class="col">
             <form method="POST">
                 <?=
-                form::hidden($hidden)
-                . form::hidden(['id_turma' => null, 'id_curso' => null])
+                formErp::hidden($hidden)
+                . formErp::hidden(['id_turma' => null, 'id_curso' => null])
                 ?>
                 <?php
                 if ($id_inst && $id_turma) {
@@ -123,8 +123,8 @@ if ($id_inst) {
             </form>
             <form method="POST">
                 <?=
-                form::hidden($hidden)
-                . form::hidden(['id_pessoa' => null])
+                formErp::hidden($hidden)
+                . formErp::hidden(['id_pessoa' => null])
                 ?>
                 <?php
                 if ($id_pessoa) {
@@ -166,8 +166,8 @@ if ($id_inst) {
                         <div class="col-3">
                             <form method="POST">
                                 <?=
-                                form::hidden($hidden)
-                                . form::hidden([
+                                formErp::hidden($hidden)
+                                . formErp::hidden([
                                     'id_turma' => $v['id_turma'] 
                                 ])
                                 ?>
@@ -292,21 +292,21 @@ if ($id_inst) {
 </div>
 <form action="<?= HOME_URI ?>/sed/def/formTransf.php" id="transfx" target="frame" method="POST">
     <?=
-    form::hidden($hidden);
+    formErp::hidden($hidden);
     ?>
     <input type="hidden" name="id_ta" id="id_ta" value="" />
 </form>
 <form action="<?= HOME_URI ?>/sed/prontuario" id="pront" target="frame" method="POST">
     <?=
-    form::hidden($hidden);
+    formErp::hidden($hidden);
     ?>
     <input type="hidden" name="id_pessoa" id="id_pessoa" value="" />
     <input type="hidden" name="id_curso" id="id_curso" value="<?= $id_curso?>" />
 </form>
 <form action="<?= HOME_URI ?>/sed/def/formNovoAluno.php" id="novoAluno" target="frame" method="POST">
 <?=
-    form::hidden($hidden) . 
-    form::hidden($hiddenFields)
+    formErp::hidden($hidden) . 
+    formErp::hidden($hiddenFields)
 ?>
     <input type="hidden" name="id_aluno" id="id_aluno" value="" />
 </form>
