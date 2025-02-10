@@ -311,11 +311,11 @@ if ($id_inst) {
     <input type="hidden" name="id_aluno" id="id_aluno" value="" />
 </form>
 <?php
-tool::modalInicio(null, 1);
+toolErp::modalInicio();
 ?>
 <iframe style="width: 100%; height: 80vh; border: none" name="frame"></iframe>
 <?php
-tool::modalFim();
+toolErp::modalFim();
 ?>
 <script>
     function transf(id,n_pessoa) {
