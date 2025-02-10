@@ -145,7 +145,7 @@ if ($id_inst) {
         ?>
         <br />
         <fieldset class="add-border">
-            <legend class="add-border">Turmas <span class="text-muted" style="font-size: 12px;font-weight: normal;">( alunos na turma / qtde de vagas )</span></legend>
+            <legend class="add-border">Turmas</legend>
             <div class="row">
                 <?php
                 $ct = 1;
@@ -155,8 +155,8 @@ if ($id_inst) {
                         // Verifica o estado da turma para definir a classe
                         if ($v['id_turma'] == $id_turma) {
                             $class = 'primary';
-                        } elseif (@$v['quantidadeAlunos']['ct'] >= @$v['quantidadeAlunos']['qt_turma']) {
-                            $class = 'danger';
+                        // } elseif (@$v['quantidadeAlunos']['ct'] >= @$v['quantidadeAlunos']['qt_turma']) {
+                        //     $class = 'danger';
                         } elseif (@$v['quantidadeAlunos']['ct'] < @$v['quantidadeAlunos']['qt_turma']) {
                             $class = 'warning';
                         } else {
