@@ -9,7 +9,7 @@ if ($travaPorEscola) {
 } else {
     $id_inst = filter_input(INPUT_POST, 'id_inst', FILTER_SANITIZE_NUMBER_INT);
 }
-$cursos = sql::idNome($model::$sistema . '_curso');
+$cursos = sql::idNome($model::$sistema . '_curso', ['ativo' => 1]);
 $escolas = ng_escolas::idEscolas([1]);
 if ($id_inst && empty($escolas[$id_inst])) {
     ?>
@@ -49,7 +49,7 @@ $hidden = [
     'id_turma' => $id_turma,
     'id_curso' => $id_curso
 ];
-$polos = sql::idNome($model::$sistema . '_polo');
+$polos = sql::idNome($model::$sistema . '_polo', ['ativo' => 1]);
 if ($id_polo) {
     $qtAlunos = $model->countAlunos($id_polo, $id_pl);
     if ($id_curso) {

@@ -7,7 +7,7 @@ class geralController extends MainController {
     }
 
     public function userconf() {
-// Título da página
+        // Título da página
         $this->title = 'Conf. Usuário';
         // $this->requiredPage('geral');
 
@@ -24,7 +24,7 @@ class geralController extends MainController {
     }
 
     public function submenu() {
-// Título da página
+        // Título da página
         $this->title = 'SIEB';
 
         $this->requireLogin();
@@ -40,7 +40,7 @@ class geralController extends MainController {
     }
 
     public function msg() {
-// Título da página
+        // Título da página
         $this->title = 'SIEB';
 
         $this->requireLogin();
@@ -79,7 +79,7 @@ class geralController extends MainController {
     public function resp() {
         require_once ABSPATH . '/views/geral/resp.php';
     }
-    
+
     public function branco() {
     }
 
