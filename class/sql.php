@@ -177,7 +177,7 @@ class sql {
          */
         $fields = $id . ', ' . $n;
         $tb = self::get($table, $fields, $where);
-
+        $idN = [];
         foreach ($tb as $v) {
             $idN[$v[$id]] = $v[$n];
         }
@@ -185,7 +185,7 @@ class sql {
         return $idN;
     }
 
-       public static function debugPdo($stmt, $values) {
+    public static function debugPdo($stmt, $values) {
         $stmtBreak = explode('?', $stmt);
         $vl = 0;
         foreach ($stmtBreak as $v) {
