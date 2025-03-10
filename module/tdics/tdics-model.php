@@ -280,7 +280,7 @@ class tdicsModel extends MainModel {
         $sql = "SELECT "
                 . " ta.id_ta, t.n_turma, po.n_polo, p.id_pessoa, p.n_pessoa, p.sexo, p.dt_nasc, p.cpf "
                 . " FROM " . self::$sistema . "_turma_aluno ta "
-                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma AND `fk_id_pessoa` = $id_pessoa "
+                . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma AND ta.fk_id_pessoa = $id_pessoa "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "
                 . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "

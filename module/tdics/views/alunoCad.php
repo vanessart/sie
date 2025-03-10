@@ -80,7 +80,7 @@ if ($id_pessoa) {
                             <?= dataErp::converteBr($v['dt_nasc']) ?>
                         </td>
                         <td>
-                            <?= $v['cpf'] ?>
+                            <?= toolErp::esconderCPF($v['cpf']) ?>
                         </td>
                         <td>
                             <?= $v['n_inst'] ?>
@@ -147,7 +147,7 @@ if ($id_pessoa) {
                             <?= dataErp::converteBr($v['dt_nasc']) ?>
                         </td>
                         <td>
-                            <?= $v['cpf'] ?>
+                            <?= toolErp::esconderCPF($v['cpf']) ?>
                         </td>
                         <td>
                             <?= $v['n_polo'] ?>

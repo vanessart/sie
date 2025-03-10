@@ -1730,4 +1730,21 @@ class toolErp {
             return $entry[$campo];
         }, $array));
     }
+
+    function esconderCPF($cpf = null) {
+        if (empty($cpf)) {
+            return '-';
+        }
+
+        // Remove qualquer caractere que não seja número
+        $cpf = preg_replace('/\D/', '', $cpf);
+
+        // Verifica se o CPF tem 11 dígitos
+        if (strlen($cpf) !== 11) {
+            return '-';
+        }
+
+        // Aplica a máscara no formato XXX.***.***-XX
+        return substr($cpf, 0, 3) . '.***.***-' . substr($cpf, 9, 2);
+    }
 }
