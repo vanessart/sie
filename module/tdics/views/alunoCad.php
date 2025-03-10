@@ -5,7 +5,7 @@ if (!defined('ABSPATH'))
 $idName = filter_input(INPUT_POST, 'idName');
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
 if ($idName) {
-    $sql = "select id_pessoa, n_pessoa, n_turma, n_inst from pessoa p "
+    $sql = "SELECT p.id_pessoa, p.n_pessoa, t.n_turma, i.n_inst, p.dt_nasc, p.cpf FROM pessoa p "
             . " join ge_turma_aluno ta on ta.fk_id_pessoa = p.id_pessoa and ta.fk_id_tas = 0 "
             . " and (id_pessoa = '$idName' or n_pessoa like '%$idName%') "
             . " join ge_turmas t on t.id_turma = ta.fk_id_turma and fk_id_ciclo <> 32 "
@@ -52,6 +52,12 @@ if ($id_pessoa) {
                         Nome
                     </td>
                     <td>
+                        Dt. Nascimento
+                    </td>
+                    <td>
+                        CPF
+                    </td>
+                    <td>
                         Escola
                     </td>
                     <td>
@@ -69,6 +75,12 @@ if ($id_pessoa) {
                         </td>
                         <td>
                             <?= $v['n_pessoa'] ?>
+                        </td>
+                        <td>
+                            <?= dataErp::converteBr($v['dt_nasc']) ?>
+                        </td>
+                        <td>
+                            <?= $v['cpf'] ?>
                         </td>
                         <td>
                             <?= $v['n_inst'] ?>
@@ -107,6 +119,12 @@ if ($id_pessoa) {
                         Nome
                     </td>
                     <td>
+                        Dt. Nascimento
+                    </td>
+                    <td>
+                        CPF
+                    </td>
+                    <td>
                         Núcleo
                     </td>
                     <td>
@@ -124,6 +142,12 @@ if ($id_pessoa) {
                         </td>
                         <td>
                             <?= $v['n_pessoa'] ?>
+                        </td>
+                        <td>
+                            <?= dataErp::converteBr($v['dt_nasc']) ?>
+                        </td>
+                        <td>
+                            <?= $v['cpf'] ?>
                         </td>
                         <td>
                             <?= $v['n_polo'] ?>

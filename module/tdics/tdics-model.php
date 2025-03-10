@@ -278,7 +278,7 @@ class tdicsModel extends MainModel {
 
     public function aluno($id_pessoa) {
         $sql = "SELECT "
-                . " ta.id_ta, t.n_turma, po.n_polo, p.id_pessoa, p.n_pessoa, p.sexo "
+                . " ta.id_ta, t.n_turma, po.n_polo, p.id_pessoa, p.n_pessoa, p.sexo, p.dt_nasc, p.cpf "
                 . " FROM " . self::$sistema . "_turma_aluno ta "
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma AND `fk_id_pessoa` = $id_pessoa "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
