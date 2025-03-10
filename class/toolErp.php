@@ -1731,7 +1731,7 @@ class toolErp {
         }, $array));
     }
 
-    pulbic static function esconderCPF($cpf = null) {
+    public static function esconderCPF($cpf = null) {
         if (empty($cpf)) {
             return '-';
         }
