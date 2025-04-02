@@ -13,11 +13,15 @@ $frequencia = filter_input(INPUT_POST, 'frequencia', FILTER_SANITIZE_NUMBER_INT)
 $buscar = filter_input(INPUT_POST, 'buscar', FILTER_SANITIZE_NUMBER_INT);
 $dataIni = filter_input(INPUT_POST, 'dataIni');
 $dataFim = filter_input(INPUT_POST, 'dataFim');
-$id_pl = $model->pl();
+$id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
+if (empty($id_pl)) {
+    $id_pl = $model->pl();
+}
 $escolas = $model->escolaTdics($id_pl);
+$pls = $model->periodoLetivos();
 $polos = sql::idNome($model::$sistema . '_polo');
 if (!empty($buscar)) {
-    $dados = $model->relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, null, $dataIni, $dataFim);
+    $dados = $model->relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, null, $dataIni, $dataFim, $id_pl);
     if ($dados) {
         $id_polo = $dados['geral']['id_polo'];
         if (!empty($dados['alunos'])) {
@@ -54,7 +58,8 @@ if (!empty($buscar)) {
                         'dataIni' => $dataIni,
                         'dataFim' => $dataFim,
                         'id_curso' => $id_curso,
-                        'frequencia' => $frequencia
+                        'frequencia' => $frequencia,
+                        'id_pl' => $id_pl,
                     ])
                     . formErp::button('Exportar')
                     ?>
@@ -67,6 +72,9 @@ if (!empty($buscar)) {
     <br />
     <form method="POST">
         <div class="row">
+            <div class="col">
+                <?= formErp::select('id_pl', $pls, 'Período Letivo', $id_pl) ?>
+            </div>
             <div class="col">
                 <?= formErp::select('id_polo', $polos, 'Núcleo', $id_polo) ?>
             </div>

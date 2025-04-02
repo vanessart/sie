@@ -377,8 +377,10 @@ class tdicsModel extends MainModel {
         return $h['inicio'] .' às '. $h['termino'];
     }
 
-    public function relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, $print = null, $dataIni = null, $dataFim = null) {
-        $id_pl = $this->pl();
+    public function relatFerq($id_polo, $id_inst_sieb, $periodo, $id_curso, $frequencia, $print = null, $dataIni = null, $dataFim = null, $id_pl = null) {
+        if (empty($id_pl)) {
+            $id_pl = $this->pl();
+        }
         if ($id_polo) {
             $id_polo_ = " and t.fk_id_polo = $id_polo ";
         } else {
@@ -748,4 +750,25 @@ class tdicsModel extends MainModel {
         return $r;
     }
 
+    public function periodoLetivos($ativo = null) {
+        $where = "";
+        if (!empty($ativo)){
+            if (is_array($ativo)){
+                $where .= " AND ativo IN(" . implode(",", $ativo) . ") ";
+            } else {
+                $where .= " AND ativo = {$ativo}";
+            }
+        }
+
+        $sql = "SELECT id_pl FROM `" . self::$sistema . "_pl` WHERE 1 {$where} ";
+        $query = pdoSis::getInstance()->query($sql);
+        $r = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($r)) {
+            $r = toolErp::idName($r);
+        } else {
+            $r = [];
+        }
+
+        return $r;
+    }
 }
