@@ -760,7 +760,7 @@ class tdicsModel extends MainModel {
             }
         }
 
-        $sql = "SELECT id_pl FROM `" . self::$sistema . "_pl` WHERE 1 {$where} ";
+        $sql = "SELECT id_pl, n_pl FROM `" . self::$sistema . "_pl` WHERE 1 {$where} ";
         $query = pdoSis::getInstance()->query($sql);
         $r = $query->fetchAll(PDO::FETCH_ASSOC);
         if (!empty($r)) {
