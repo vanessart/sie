@@ -391,7 +391,7 @@ class tdicsModel extends MainModel {
             return;
         }
 
-        $ch = $this->frequeciaAluno(NULL, NULL, $dataIni, $dataFim);
+        $ch = $this->frequeciaAluno($id_pl, NULL, $dataIni, $dataFim);
 
         if ($periodo) {
             $periodo = " and t.periodo = '$periodo' ";
