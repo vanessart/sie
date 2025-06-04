@@ -7,9 +7,9 @@ $id_turma = filter_input(INPUT_POST, 'id_turma', FILTER_SANITIZE_NUMBER_INT);
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
 $id_ag = filter_input(INPUT_POST, 'id_ag', FILTER_SANITIZE_NUMBER_INT);
 $id_aval = filter_input(INPUT_POST, 'id_aval', FILTER_SANITIZE_NUMBER_INT);
-$aval = sql::get('tdics_aval', '*', ['id_aval' => $id_aval], 'fetch');
-$quest = sql::get('tdics_aval_quest', '*', ['fk_id_aval' => $id_aval, '>' => 'ordem']);
-$sql = "SELECT * FROM `tdics_aval_resp` WHERE `fk_id_turma` = $id_turma and fk_id_pessoa = $id_pessoa and fk_id_aval = $id_aval ";
+$aval = sql::get($model::$sistema . '_aval', '*', ['id_aval' => $id_aval], 'fetch');
+$quest = sql::get($model::$sistema . '_aval_quest', '*', ['fk_id_aval' => $id_aval, '>' => 'ordem']);
+$sql = "SELECT * FROM `{$model::$sistema}_aval_resp` WHERE `fk_id_turma` = $id_turma and fk_id_pessoa = $id_pessoa and fk_id_aval = $id_aval ";
 $query = pdoSis::getInstance()->query($sql);
 $ar = $query->fetch(PDO::FETCH_ASSOC);
 if ($ar) {

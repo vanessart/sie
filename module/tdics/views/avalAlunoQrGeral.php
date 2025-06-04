@@ -31,9 +31,9 @@ if (empty($id_polo)) {
 }
 $sql = "SELECT "
         . " p.id_pessoa, p.n_pessoa, t.n_turma, po.n_polo "
-        . " FROM tdics_turma_aluno ta "
-        . " join tdics_turma t on t.id_turma = ta.fk_id_turma "
-        . " join tdics_polo po on po.id_polo = t.fk_id_polo"
+        . " FROM {$model::$sistema}_turma_aluno ta "
+        . " JOIN {$model::$sistema}_turma t on t.id_turma = ta.fk_id_turma "
+        . " JOIN {$model::$sistema}_polo po on po.id_polo = t.fk_id_polo"
         . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
         . " WHERE po.id_polo = $id_polo "
         . " ORDER BY p.n_pessoa ";
@@ -41,7 +41,7 @@ $query = pdoSis::getInstance()->query($sql);
 $aluno = $query->fetchAll(PDO::FETCH_ASSOC);
 
 if (!empty($aluno)) {
-    $sql = "SELECT fk_id_pessoa FROM `tdics_aval_resp` WHERE `fk_id_pessoa` IN (" . (implode(', ', array_column($aluno, 'id_pessoa'))) . ") ";
+    $sql = "SELECT fk_id_pessoa FROM `{$model::$sistema}_aval_resp` WHERE `fk_id_pessoa` IN (" . (implode(', ', array_column($aluno, 'id_pessoa'))) . ") ";
     $query = pdoSis::getInstance()->query($sql);
     $array = $query->fetchAll(PDO::FETCH_ASSOC);
     if ($array) {

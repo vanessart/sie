@@ -18,7 +18,7 @@ if ($model->db->tokenCheck('tdics_avalx')) {
             }
             $in['fk_id_curso'] = implode(',', $ic);
 
-            $id_aval = $model->db->ireplace('tdics_aval', $in);
+            $id_aval = $model->db->ireplace($model::$sistema . '_aval', $in);
         }
     }
 }
@@ -34,7 +34,7 @@ if (empty($id_ag) || empty($id_pl)) {
     die();
 }
 if ($id_aval) {
-    $aval = sqlErp::get('tdics_aval', '*', ['id_aval' => $id_aval], 'fetch');
+    $aval = sqlErp::get($model::$sistema . '_aval', '*', ['id_aval' => $id_aval], 'fetch');
     $desable = 1;
 } else {
     $desable = null;

@@ -7,7 +7,7 @@ $per = $model->periodoLetivos(1);
 $id_pl = $model->pl($id_pl);
 $gr = [];
 if ($id_pl) {
-    $sql = "SELECT * FROM `tdics_aval_group` WHERE `fk_id_pl` = $id_pl ";
+    $sql = "SELECT * FROM `{$model::$sistema}_aval_group` WHERE `fk_id_pl` = $id_pl ";
     $query = pdoSis::getInstance()->query($sql);
     $array = $query->fetchAll(PDO::FETCH_ASSOC);
     if ($array) {
@@ -15,11 +15,11 @@ if ($id_pl) {
     }
 }
 if ($id_ag) {
-    $sql = " SELECT a.id_aval, a.n_aval, p.n_pl, g.n_ag, c.n_curso FROM tdics_aval a "
-            . " JOIN tdics_aval_group g on g.id_ag = a.fk_id_ag "
+    $sql = " SELECT a.id_aval, a.n_aval, p.n_pl, g.n_ag, c.n_curso FROM {$model::$sistema}_aval a "
+            . " JOIN {$model::$sistema}_aval_group g on g.id_ag = a.fk_id_ag "
             . " and g.id_ag = $id_ag "
-            . " JOIN tdics_pl p on p.id_pl = g.fk_id_pl "
-            . " JOIN tdics_curso c on c.id_curso = a.fk_id_curso ";
+            . " JOIN {$model::$sistema}_pl p on p.id_pl = g.fk_id_pl "
+            . " JOIN {$model::$sistema}_curso c on c.id_curso = a.fk_id_curso ";
     $query = pdoSis::getInstance()->query($sql);
     $avals = $query->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -28,7 +28,7 @@ if (!empty($avals)) {
         'id_ag' => $id_ag,
         'id_pl' => $id_pl,
     ];
-    $token = formErp::token('tdics_aval', 'delete');
+    $token = formErp::token($model::$sistema . '_aval', 'delete');
     foreach ($avals as $k => $v) {
         $hidden['id_aval'] = $v['id_aval'];
         $avals[$k]['ed'] = formErp::submit('Acessar', null, $hidden, HOME_URI . '/' . $this->controller_name . '/avalConf');

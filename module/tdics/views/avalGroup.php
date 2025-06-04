@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $per = $model->periodoLetivos(1);
 
-$ag = sqlErp::get('tdics_aval_group');
+$ag = sqlErp::get($model::$sistema . '_aval_group');
 if ($ag) {
     foreach ($ag as $k => $v) {
         $ag[$k]['ed'] = '<button class="btn btn-primary" onclick="edit(' . ($v['id_ag']) . ')">Editar</button>';

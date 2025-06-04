@@ -7,7 +7,7 @@ $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
 $id_ag = filter_input(INPUT_POST, 'id_ag', FILTER_SANITIZE_NUMBER_INT);
 $id_quest = filter_input(INPUT_POST, 'id_quest', FILTER_SANITIZE_NUMBER_INT);
 if ($id_quest) {
-    $qt = sqlErp::get('tdics_aval_quest', '*', ['id_quest' => $id_quest], 'fetch');
+    $qt = sqlErp::get($model::$sistema . '_aval_quest', '*', ['id_quest' => $id_quest], 'fetch');
 }
 $hidden = [
     'id_ag' => $id_ag,
@@ -64,7 +64,7 @@ $hidden = [
                 '1[id_quest]' => $id_quest
             ])
             . formErp::hidden($hidden)
-            . formErp::hiddenToken('tdics_aval_quest', 'ireplace')
+            . formErp::hiddenToken($model::$sistema . '_aval_quest', 'ireplace')
             . formErp::button('Salvar')
             ?>
         </div>

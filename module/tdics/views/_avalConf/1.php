@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH'))
     exit;
-$ci = sqlErp::idNome('tdics_curso');
+$ci = sqlErp::idNome($model::$sistema . '_curso');
 if(!empty($aval['fk_id_curso'])){
     $cursos = explode(',', $aval['fk_id_curso']);
 } else {

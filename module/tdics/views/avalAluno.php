@@ -22,9 +22,9 @@ if (empty($id_pessoa)) {
 }
 $sql = "SELECT "
         . " p.id_pessoa, p.n_pessoa, t.n_turma, po.n_polo "
-        . " FROM tdics_turma_aluno ta "
-        . " join tdics_turma t on t.id_turma = ta.fk_id_turma "
-        . " join tdics_polo po on po.id_polo = t.fk_id_polo"
+        . " FROM {$model::$sistema}_turma_aluno ta "
+        . " JOIN {$model::$sistema}_turma t on t.id_turma = ta.fk_id_turma "
+        . " JOIN {$model::$sistema}_polo po on po.id_polo = t.fk_id_polo"
         . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
         . " WHERE p.id_pessoa in ( $id_pessoa) "
         . " ORDER BY p.n_pessoa ";
@@ -37,9 +37,9 @@ $pdf = new pdf();
 $pdf->headerSet = null;
 $pdf->mgt = 0;
 $pdf->orientation = 'L';
-$sql = " SELECT a.n_aval, a.id_aval, g.dt_ag, r.* FROM tdics_aval_resp r "
-        . " JOIN tdics_aval a on a.id_aval = r.fk_id_aval "
-        . " join tdics_aval_group g on g.id_ag = a.fk_id_ag "
+$sql = " SELECT a.n_aval, a.id_aval, g.dt_ag, r.* FROM {$model::$sistema}_aval_resp r "
+        . " JOIN {$model::$sistema}_aval a on a.id_aval = r.fk_id_aval "
+        . " JOIN {$model::$sistema}_aval_group g on g.id_ag = a.fk_id_ag "
         . " WHERE `fk_id_pessoa` = $id_pessoa "
         . " ORDER by a.id_aval ";
 $query = pdoSis::getInstance()->query($sql);
@@ -55,7 +55,7 @@ if (empty($resp)) {
             $prof[$v['fk_id_pessoa_prof']] = $v['fk_id_pessoa_prof'];
         }
     }
-    $sql = "SELECT * FROM `tdics_aval_quest` WHERE `fk_id_aval` IN (" . (implode(', ', $aval)) . ") ORDER BY `ordem` DESC ";
+    $sql = "SELECT * FROM `{$model::$sistema}_aval_quest` WHERE `fk_id_aval` IN (" . (implode(', ', $aval)) . ") ORDER BY `ordem` DESC ";
     $query = pdoSis::getInstance()->query($sql);
     $r = $query->fetchAll(PDO::FETCH_ASSOC);
     foreach ($r as $v) {

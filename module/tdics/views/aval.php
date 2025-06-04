@@ -9,7 +9,7 @@ $id_aval = filter_input(INPUT_POST, 'id_aval', FILTER_SANITIZE_NUMBER_INT);
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
 if ($model->db->tokenCheck('registraNota')) {
     if (!empty($_POST['resp'])) {
-        $sql = "SELECT `id_quest`, `valor_1`, `valor_2`, `valor_3`, `valor_4`, `valor_5` FROM `tdics_aval_quest` "
+        $sql = "SELECT `id_quest`, `valor_1`, `valor_2`, `valor_3`, `valor_4`, `valor_5` FROM `{$model::$sistema}_aval_quest` "
                 . " WHERE `fk_id_aval` = $id_aval";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ if ($model->db->tokenCheck('registraNota')) {
         }
         $_id_ar = filter_input(INPUT_POST, 'id_ar', FILTER_SANITIZE_NUMBER_INT);
         if (empty($_id_ar)) {
-            $sql = "SELECT `id_ar` FROM `tdics_aval_resp` "
+            $sql = "SELECT `id_ar` FROM `{$model::$sistema}_aval_resp` "
                 . " WHERE `fk_id_aval` = $id_aval"
                 . " AND `fk_id_pessoa` = $id_pessoa"
                 . " AND `fk_id_turma` = $id_turma";
@@ -44,15 +44,15 @@ if ($model->db->tokenCheck('registraNota')) {
         $in['respostas'] = json_encode($_POST['resp']);
         $in['nota'] = $nota;
         $in['fk_id_pessoa_prof'] = toolErp::id_pessoa();
-        $model->db->ireplace('tdics_aval_resp', $in, 1);
+        $model->db->ireplace($model::$sistema .'_aval_resp', $in, 1);
     }
 }
 
 $polo = $model->getPolos();
-$ag = sqlErp::idNome('tdics_aval_group', ['at_ag' => 1]);
+$ag = sqlErp::idNome($model::$sistema . '_aval_group', ['at_ag' => 1]);
 $av = [];
 if ($id_ag) {
-    $sql = "SELECT `id_aval`, `n_aval`, fk_id_curso FROM `tdics_aval` WHERE `fk_id_ag` = $id_ag ";
+    $sql = "SELECT `id_aval`, `n_aval`, fk_id_curso FROM `{$model::$sistema}_aval` WHERE `fk_id_ag` = $id_ag ";
     $query = pdoSis::getInstance()->query($sql);
     $array = $query->fetchAll(PDO::FETCH_ASSOC);
     if ($array) {
@@ -63,9 +63,9 @@ if ($id_ag) {
     }
 }
 if ($id_aval && !empty($id_polo)) {
-    $id_pl = sql::get('tdics_aval_group', 'fk_id_pl', ['id_ag' => $id_ag], 'fetch')['fk_id_pl'];
+    $id_pl = sql::get($model::$sistema . '_aval_group', 'fk_id_pl', ['id_ag' => $id_ag], 'fetch')['fk_id_pl'];
     $cursos = $idCursos[$id_aval];
-    $sql = "SELECT id_turma, n_turma FROM `tdics_turma` "
+    $sql = "SELECT id_turma, n_turma FROM `{$model::$sistema}_turma` "
             . " WHERE `fk_id_polo` = $id_polo "
             . " AND `fk_id_curso` IN ($cursos) "
             . " AND `fk_id_pl` = $id_pl "
@@ -74,10 +74,10 @@ if ($id_aval && !empty($id_polo)) {
     $turmas = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 if ($id_turma) {
-    $sql = " SELECT p.n_pessoa, p.id_pessoa, n.nota FROM tdics_turma_aluno ta "
+    $sql = " SELECT p.n_pessoa, p.id_pessoa, n.nota FROM {$model::$sistema}_turma_aluno ta "
             . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
             . " and ta.fk_id_turma = $id_turma "
-            . " left join tdics_aval_resp n on n.fk_id_pessoa = ta.fk_id_pessoa "
+            . " LEFT JOIN {$model::$sistema}_aval_resp n on n.fk_id_pessoa = ta.fk_id_pessoa "
             . " and n.fk_id_aval = $id_aval "
             . " ORDER BY p.n_pessoa ";
     $query = pdoSis::getInstance()->query($sql);

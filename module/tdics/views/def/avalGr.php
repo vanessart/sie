@@ -3,7 +3,7 @@ if (!defined('ABSPATH'))
     exit;
 $id_ag = filter_input(INPUT_POST, 'id_ag', FILTER_SANITIZE_NUMBER_INT);
 if ($id_ag) {
-    $ag = sqlErp::get('tdics_aval_group', '*', ['id_ag' => $id_ag], 'fetch');
+    $ag = sqlErp::get($model::$sistema . '_aval_group', '*', ['id_ag' => $id_ag], 'fetch');
 }
 $per = $model->periodoLetivos(1);
 $id_pl = ng_main::periodoSet();
@@ -40,7 +40,7 @@ $id_pl = ng_main::periodoSet();
             formErp::hidden([
                 '1[id_ag]' => $id_ag
             ])
-            . formErp::hiddenToken('tdics_aval_group', 'ireplace')
+            . formErp::hiddenToken($model::$sistema . '_aval_group', 'ireplace')
             . formErp::button('Salvar')
             ?>
         </div>

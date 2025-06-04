@@ -7,11 +7,11 @@ $hidden = [
     'id_aval' => $id_aval,
     'activeNav' => 2,
 ];
-$sql = "SELECT * FROM `tdics_aval_quest` WHERE `fk_id_aval` = $id_aval ORDER BY `ordem` ASC ";
+$sql = "SELECT * FROM `{$model::$sistema}_aval_quest` WHERE `fk_id_aval` = $id_aval ORDER BY `ordem` ASC ";
 $query = pdoSis::getInstance()->query($sql);
 $quest = $query->fetchAll(PDO::FETCH_ASSOC);
 if ($quest) {
-    $token = formErp::token('tdics_aval_quest', 'delete');
+    $token = formErp::token($model::$sistema . '_aval_quest', 'delete');
     foreach ($quest as $k => $v) {
         $quest[$k]['ed'] = '<button class="btn btn-success" onclick="edit(' . ($v['id_quest']) . ')">Editar</button>';
         $hidden['1[id_quest]'] = $v['id_quest'];

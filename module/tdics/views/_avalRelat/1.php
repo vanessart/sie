@@ -4,7 +4,7 @@ if (!defined('ABSPATH'))
 if ($id_turma) {
     $sql = "SELECT "
             . " p.id_pessoa, p.n_pessoa "
-            . " FROM tdics_turma_aluno ta "
+            . " FROM {$model::$sistema}_turma_aluno ta "
             . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
             . " WHERE `fk_id_turma` = $id_turma "
             . " ORDER by p.n_pessoa ";
@@ -12,7 +12,7 @@ if ($id_turma) {
     $aluno = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 if (!empty($aluno)) {
-    $sql = "SELECT fk_id_pessoa FROM `tdics_aval_resp` WHERE `fk_id_pessoa` IN (" . (implode(', ', array_column($aluno, 'id_pessoa'))) . ") ";
+    $sql = "SELECT fk_id_pessoa FROM `{$model::$sistema}_aval_resp` WHERE `fk_id_pessoa` IN (" . (implode(', ', array_column($aluno, 'id_pessoa'))) . ") ";
     $query = pdoSis::getInstance()->query($sql);
     $array = $query->fetchAll(PDO::FETCH_ASSOC);
     if ($array) {
