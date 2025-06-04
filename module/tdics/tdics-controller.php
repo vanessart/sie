@@ -215,5 +215,68 @@ class tdicsController extends MainController {
         require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
     }
 
-    
+    public function avalGroup() {
+        $this->requiredPage($this->sistema.'/avalGroup');
+        $this->requireLogin();
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalGroup.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
+    }
+
+    public function avalCad() {
+        $this->requiredPage($this->sistema.'/avalCad');
+        $this->requireLogin();
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalCad.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
+    }
+
+    public function aval() {
+        $this->requiredPage($this->sistema.'/aval');
+        $this->requireLogin();
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/aval.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
+    }
+
+    public function avalConf() {
+        $this->requiredPage($this->sistema.'/aval');
+        $this->requireLogin();
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalConf.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
+    }
+
+    public function avalRelat() {
+        $this->requiredPage($this->sistema.'/aval');
+        $this->requireLogin();
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/header.php';
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/menu.php';
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalRelat.php';
+        require ABSPATH . '/'. INCLUDE_FOLDER .'/structure/footer.php';
+    }
+
+    public function avalAluno() {
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalAluno.php';
+    }
+
+    public function avalAlunoQr() {
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalAlunoQr.php';
+    }
+
+    public function avalAlunoQrGeral() {
+        $model = $this->load_model($this->sistema.'/tdics-model');
+        require_once ABSPATH . '/module/'.$this->sistema.'/views/avalAlunoQrGeral.php';
+    }
 }

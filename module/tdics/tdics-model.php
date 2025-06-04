@@ -56,7 +56,11 @@ class tdicsModel extends MainModel {
         }
     }
 
-    public function pl() {
+    public function pl($id_pl = null) {
+        if (!empty($id_pl)) {
+            return $id_pl;
+        }
+
         $sql = "SELECT id_pl FROM `" . self::$sistema . "_pl` WHERE `ativo` = 1 ";
         $query = pdoSis::getInstance()->query($sql);
         return $query->fetch(PDO::FETCH_ASSOC)['id_pl'];
@@ -770,5 +774,69 @@ class tdicsModel extends MainModel {
         }
 
         return $r;
+    }
+
+    public function getPolos() {
+        $sql = "SELECT id_polo, n_polo FROM `" . self::$sistema . "_polo` WHERE `ativo` = 1 ";
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!empty($array)) {
+            $r = toolErp::idName($array);
+        } else {
+            $r = [];
+        }
+        return $r;
+    }
+
+    public function turmasPolo($id_polo = null, $periodo = null, $diaSem = null, $id_pl = null, $fk_id_curso = null, $limit = null, $exibeTransp = false) {
+        if (empty($id_pl)) {
+            $id_pl = $this->pl();
+        }
+        if ($periodo) {
+            $periodo = "AND periodo LIKE '$periodo' ";
+        }
+        if ($diaSem) {
+            $diaSem = " AND dia_semana like '$diaSem' ";
+        }
+        if ($fk_id_curso) {
+            $fk_id_curso = " AND fk_id_curso = '$fk_id_curso' ";
+        }
+        if (!empty($limit)) {
+            $sql = "SELECT t.id_turma, count(`id_ta`) ct FROM " . self::$sistema . "_turma_aluno ta "
+                    . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
+                    . " WHERE fk_id_pl = $id_pl "
+                    . $periodo
+                    . $fk_id_curso
+                    . " GROUP BY `fk_id_turma` "
+                    . " HAVING ct >= $limit ";
+            $query = pdoSis::getInstance()->query($sql);
+            $arr = $query->fetchAll(PDO::FETCH_ASSOC);
+            if ($arr) {
+                $turmasSim = array_column($arr, 'id_turma');
+            }
+        }
+        if (!empty($turmasSim)) {
+            $turmas = " AND id_turma NOT IN (" . implode(', ', $turmasSim) . ") ";
+        } else {
+            $turmas = null;
+        }
+
+        $n_turma = 'n_turma';
+        if (!empty($exibeTransp)) {
+            $n_turma = " CONCAT(n_turma, IF(transporte = 1, ' (com transporte)', '')) AS n_turma ";
+        }
+        $sql = "SELECT id_turma, $n_turma FROM " . self::$sistema . "_turma "
+                . " WHERE fk_id_polo = $id_polo "
+                . " AND fk_id_pl = $id_pl "
+                . $turmas
+                . $periodo
+                . $diaSem
+                . $fk_id_curso;
+        $query = pdoSis::getInstance()->query($sql);
+        $array = $query->fetchAll(PDO::FETCH_ASSOC);
+        if ($array) {
+            return toolErp::idName($array);
+        }
     }
 }

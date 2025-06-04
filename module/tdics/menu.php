@@ -8,7 +8,15 @@ $system = isset($this->sistema) ? $this->sistema : 'tdics';
 //Administrador
 $menu[2] = [
     'Início' => ['url' => '/'.$system.'/index'],
-    'Run' => ['url' => '/'.$system.'/run'],
+    // 'Run' => ['url' => '/'.$system.'/run'],
+    "Avaliações" => [
+        'page' => [
+            'Cadastro de Grupo' => ['url' => '/'.$system.'/avalGroup'],
+            'Cadastro de Avaliação' => ['url' => '/'.$system.'/avalCad'],
+            'Ficha de Avaliação' => ['url' => '/'.$system.'/aval'],
+            'Relatório' => ['url' => '/'.$system.'/avalRelat'],
+        ],
+    ],
 ];
 
 //gerente
