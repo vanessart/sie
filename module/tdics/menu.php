@@ -58,6 +58,12 @@ $menu[24] = [
     'Gerenciar Alunos' => ['url' => '/'.$system.'/alocaAlu'],
     'Chamada' => ['url' => '/'.$system.'/chamada'],
     'Lista Piloto' => ['url' => '/'.$system.'/listaPiloto'],
+    "Avaliações" => [
+        'page' => [
+            'Ficha de Avaliação' => ['url' => '/'.$system.'/aval'],
+            'Relatório' => ['url' => '/'.$system.'/avalRelat'],
+        ],
+    ],
 ];
 
 //Núcleo Tdics
