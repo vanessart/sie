@@ -54,9 +54,11 @@ if (!empty($ids)) {
             <div style="font-weight: bold;margin-top: 10px">
                 “<?= $v['n_curso'] ?>”,
             </div>
-            no <?= $periodo ?>, com carga horária de 25 horas, realizado
+            no ano de <?= $periodo ?>, com carga horária de 200 horas, 
             <br />
-            por iniciativa da Secretaria de Educação de <?= CLI_CIDADE ?>
+            realizado por iniciativa da Secretaria de Educação de 
+            <br />
+            <?= CLI_CIDADE ?>
             <br /><br />
             <?= CLI_CIDADE ?>, <?= data::porExtenso($data) ?>
         </div>
