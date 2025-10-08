@@ -410,17 +410,17 @@ class tdicsModel extends MainModel {
             $id_inst_sieb = " and t2.fk_id_inst = $id_inst_sieb ";
         }
 
-        $fields = "p.id_pessoa , p.n_pessoa, i.n_inst, t.n_turma, c.n_curso ";
+        $fields = "p.id_pessoa , p.n_pessoa, i.n_inst, t.n_turma, c.n_curso, DATE_FORMAT(ta.times_tamp, '%d/%m/%Y') AS data_matricula ";
         $sql = "SELECT "
                 . $fields
                 . " FROM " . self::$sistema . "_turma t "
-                . " join " . self::$sistema . "_turma_aluno ta on ta.fk_id_turma = t.id_turma $id_polo_ and t.fk_id_pl = $id_pl"
+                . " JOIN " . self::$sistema . "_turma_aluno ta on ta.fk_id_turma = t.id_turma $id_polo_ and t.fk_id_pl = $id_pl"
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
-                . " join " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
+                . " JOIN " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
                 . $periodo
                 . $id_curso
                 . $id_inst_sieb
@@ -444,6 +444,9 @@ class tdicsModel extends MainModel {
                 } else {
                     $porc = 0;
                 }
+
+                $array[$k]['aulas_frequentadas'] = $f[0] ?? 0;
+
                 if (empty($print)) {
                     if ($porc < 0.7) {
                         $cor = 'red';
