@@ -5,7 +5,10 @@ if (!defined('ABSPATH'))
 $polos = sql::idNome($model::$sistema . '_polo');
 @$id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
 $sql = "SELECT * FROM " . $model::$sistema . "_turma_aluno ta JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
-        . " and t.fk_id_pl = $id_pl";
+        . " AND t.fk_id_pl = $id_pl"
+        . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
+        . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
+        . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 ";
 $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);
 if ($array) {

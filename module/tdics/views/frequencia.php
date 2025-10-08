@@ -118,7 +118,7 @@ if (!empty($buscar)) {
             </div>
         </div>
     </form>
-    <div>
+    <div class="mt-2">
         <?php
         if (!empty($form)) {
             report::simple($form);

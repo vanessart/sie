@@ -390,9 +390,12 @@ class tdicsModel extends MainModel {
         } else {
             $id_polo_ = null;
         }
-        if (empty($id_polo) && empty($id_inst_sieb)) {
-            toolErp::alertModal('Selecione uma escola ou um Núcleo');
-            return;
+
+        if ( !in_array(toolErp::id_nilvel(), [2, 10]) ) {
+            if (empty($id_polo) && empty($id_inst_sieb)) {
+                toolErp::alertModal('Selecione uma escola ou um Núcleo');
+                return;
+            }
         }
 
         $ch = $this->frequeciaAluno($id_pl, NULL, $dataIni, $dataFim);
@@ -447,9 +450,9 @@ class tdicsModel extends MainModel {
                     } else {
                         $cor = 'blue';
                     }
-                    $array[$k]['frenq'] = '<span style="font-weight: bold; color: ' . $cor . '">' . ceil($porc * 100) . '%</span>';
+                    $array[$k]['frenq'] = '<span style="font-weight: bold; color: ' . $cor . '">' . number_format($porc * 100, 2) . '%</span>';
                 } else {
-                    $array[$k]['frenq'] = (string) ceil($porc * 100);
+                    $array[$k]['frenq'] = (string) number_format($porc * 100, 2);
                 }
                 $array[$k]['tel'] = @$tel[$v['id_pessoa']];
                 if ($frequencia && $porc < ($frequencia / 10)) {
