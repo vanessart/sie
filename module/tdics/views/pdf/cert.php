@@ -54,7 +54,7 @@ if (!empty($ids)) {
             <div style="font-weight: bold;margin-top: 10px">
                 “<?= $v['n_curso'] ?>”,
             </div>
-            no ano de <?= $periodo ?>, com carga horária de 200 horas, 
+            no período de <?= $periodo ?>, com carga horária de 200 horas, 
             <br />
             realizado por iniciativa da Secretaria de Educação de 
             <br />
