@@ -7,6 +7,10 @@ $data = filter_input(INPUT_POST, 'data');
 $ck = @$_POST['ck'];
 $periodo = sql::get($model::$sistema . '_pl', 'n_pl', ['id_pl' => $id_pl], 'fetch')['n_pl'];
 
+$cargaHoraria = 200;
+if (CLI_INTEGRACAO == 'gaspar' && $id_pl == 6) {
+    $cargaHoraria = 40;
+}
 foreach ($ck as $k => $v) {
     if (!empty($v)) {
         $ids[$k] = $k;
@@ -21,7 +25,7 @@ if (!empty($ids)) {
             . " JOIN " . $model::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
             . " AND t.fk_id_pl = $id_pl "
             . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
-            . " order by p.n_pessoa";
+            . " ORDER BY p.n_pessoa";
     $query = pdoSis::getInstance()->query($sql);
     $a = $query->fetchAll(PDO::FETCH_ASSOC);
     require_once ABSPATH . '/vendor/autoload.php';
@@ -54,7 +58,7 @@ if (!empty($ids)) {
             <div style="font-weight: bold;margin-top: 10px">
                 “<?= $v['n_curso'] ?>”,
             </div>
-            no período de <?= $periodo ?>, com carga horária de 200 horas, 
+            no período de <?= $periodo ?>, com carga horária de <?= $cargaHoraria ?> horas, 
             <br />
             realizado por iniciativa da Secretaria de Educação de 
             <br />
