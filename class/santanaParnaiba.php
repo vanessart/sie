@@ -8,7 +8,7 @@ class santanaParnaiba extends integracao {
 		// $this->method = $this->dadosCLI[$element]['method'] ?? null;
 		$this->url = "https://intranet.santanadeparnaiba.sp.gov.br/";
 		// $this->header = $this->dadosCLI[$element]['header'] ?? null;
-
+		$this->UserAgent = "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_14 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148";
 		// $dados = $this->dadosCLI[$element]['dados']	
 	}
 
@@ -45,7 +45,10 @@ class santanaParnaiba extends integracao {
 			'url' => $this->url,
 			'endpoint' => "APIFramework/token",
 			'method' => "POST",
-			'header' => [ "Content-Type: application/x-www-form-urlencoded" ],
+			'header' => [
+				"Content-Type: application/x-www-form-urlencoded", 
+				$this->UserAgent
+			],
 			'dados' => [
 				"username" => "59959338000118",
 				"password" => "575uYp+K",
@@ -61,7 +64,7 @@ class santanaParnaiba extends integracao {
 			'url' => $this->url,
 			'endpoint' => "SisEduc-API/integracao/lm/colegio",
 			'method' => "GET",
-			'header' => [ "Authorization: Bearer ".  $this->getToken() ],
+			'header' => [ "Authorization: Bearer ".  $this->getToken(), $this->UserAgent ],
 			'dados' => [],
 		];
 	}
@@ -74,7 +77,7 @@ class santanaParnaiba extends integracao {
 			'url' => $this->url,
 			'endpoint' => "SisEduc-API/integracao/lm/turma",
 			'method' => "GET",
-			'header' => [ "Authorization: Bearer ".  $this->getToken() ],
+			'header' => [ "Authorization: Bearer ".  $this->getToken(), $this->UserAgent ],
 			'dados' => $dados,
 		];
 	}
@@ -90,7 +93,7 @@ class santanaParnaiba extends integracao {
 			'url' => $this->url,
 			'endpoint' => "SisEduc-API/integracao/lm/aluno",
 			'method' => "GET",
-			'header' => [ "Authorization: Bearer ".  $this->getToken() ],
+			'header' => [ "Authorization: Bearer ".  $this->getToken(), $this->UserAgent ],
 			'dados' => $dados,
 		];
 	}
