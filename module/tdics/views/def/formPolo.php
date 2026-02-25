@@ -2,38 +2,83 @@
 if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
+$hor = [];
 if ($id_polo) {
     $p = sql::get($model::$sistema . '_polo', '*', ['id_polo' => $id_polo], 'fetch');
-    $h = $model->getHorarios($id_polo);
+    $hor = $model->getHorarios($id_polo);
 }
 
-if (empty($h)) {
-    $h = [
-        [
-            'horario' => '1',
-            'periodo' => 'M',
-            'inicio' => '',
-            'termino' => '',
-        ],
-        [
-            'horario' => '1',
-            'periodo' => 'T',
-            'inicio' => '',
-            'termino' => '',
-        ],
-        [
-            'horario' => '2',
-            'periodo' => 'M',
-            'inicio' => '',
-            'termino' => '',
-        ],
-        [
-            'horario' => '2',
-            'periodo' => 'T',
-            'inicio' => '',
-            'termino' => '',
-        ],
-    ];
+$h = [
+    [
+        'horario' => '1',
+        'periodo' => 'M',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '1',
+        'periodo' => 'T',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '2',
+        'periodo' => 'M',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '2',
+        'periodo' => 'T',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '3',
+        'periodo' => 'M',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '3',
+        'periodo' => 'T',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '4',
+        'periodo' => 'M',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '4',
+        'periodo' => 'T',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '5',
+        'periodo' => 'M',
+        'inicio' => '',
+        'termino' => '',
+    ],
+    [
+        'horario' => '5',
+        'periodo' => 'T',
+        'inicio' => '',
+        'termino' => '',
+    ],
+];
+
+if (!empty($hor)) {
+    foreach ($hor as $key => $value) {
+        foreach ($h as $k => $v) {
+            if ($v['horario'] == $value['horario'] && $v['periodo'] == $value['periodo']) {
+                $h[$k] = array_merge($v, $value);
+            }
+        }
+    }
 }
 ?>
 <div class="body">
@@ -43,10 +88,10 @@ if (empty($h)) {
     <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/poloCad" target="_parent" method="POST">
         <div class="row">
             <div class="col-md-8">
-                <?= formErp::input('1[n_polo]', 'Polo', @$p['n_polo']) ?>
+                <?= formErp::input('1[n_polo]', 'Polo', @$p['n_polo'], 'required') ?>
             </div>
             <div class="col-md-4">
-                <?= formErp::select('1[ativo]', [1 => 'Sim', 2 => 'Não'], 'Ativo', @$p['ativo']) ?>
+                <?= formErp::select('1[ativo]', [1 => 'Sim', 2 => 'Não'], 'Ativo', $id_polo ? @$p['ativo'] : 1, null, null, 'required') ?>
             </div>
         </div>
         <br />

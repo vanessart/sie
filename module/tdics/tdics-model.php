@@ -717,6 +717,10 @@ class tdicsModel extends MainModel {
         if (!empty($id_polo)) {
             foreach ($horario as $periodo => $value) {
                 foreach ($value as $horario => $horas) {
+                    if (empty($horas['inicio']) || empty($horas['termino'])) {
+                        continue;
+                    }
+
                     $insH = [
                         'id_horarios' => $horas['id_horarios']??null,
                         'fk_id_polo' => $id_polo,
