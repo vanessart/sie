@@ -404,6 +404,10 @@ class integracao {
 	            	$turma = self::getTurmaErp($pes['outCodTurma']);
 	            }
 
+	            if (empty($turma)) {
+                	throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
+            	}
+
 	            if ( !isset($alunosSie[$turma['id_turma']]) ) {
 	    			$alunosSie[$turma['id_turma']] = self::alunosTurmaErp($turma['id_turma']);
 	            }

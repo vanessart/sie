@@ -17,8 +17,8 @@ ge.sql
 vendor/*
 nbproject/
 tmp/
+app/
 
 #Docker
 .env
 docker-compose.yml
-
