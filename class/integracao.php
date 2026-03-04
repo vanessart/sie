@@ -347,6 +347,24 @@ class integracao {
 
 	            // if ($cont >= $max) die();
 
+	            // get _turmas
+	            $turma = self::getTurmaErp($pes['outCodTurma']);
+	            if (empty($turma)) {
+
+	            	$r = $this->turmas($pes['outCodColegio'], true);
+	            	if (empty($r['status'])) {
+	                	// throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
+	                	continue;
+	            	}
+
+	            	$turma = self::getTurmaErp($pes['outCodTurma']);
+	            }
+
+	            if (empty($turma)) {
+                	// throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
+                	continue;
+            	}
+
 	            $dt = DateTime::createFromFormat('d/m/Y H:i:s', $pes['outDataNascimento']);
 	            $outDataNascimento = $dt->format('Y-m-d');
 
@@ -391,22 +409,6 @@ class integracao {
 	            if (empty($id_pessoa)) {
 	                throw new Exception("Id da Pessoa não identificado");
 	            }
-
-	            // get _turmas
-	            $turma = self::getTurmaErp($pes['outCodTurma']);
-	            if (empty($turma)) {
-
-	            	$r = $this->turmas($pes['outCodColegio'], true);
-	            	if (empty($r['status'])) {
-	                	throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
-	            	}
-
-	            	$turma = self::getTurmaErp($pes['outCodTurma']);
-	            }
-
-	            if (empty($turma)) {
-                	throw new Exception("Turma não identificada: ". $pes['outCodTurma']);
-            	}
 
 	            if ( !isset($alunosSie[$turma['id_turma']]) ) {
 	    			$alunosSie[$turma['id_turma']] = self::alunosTurmaErp($turma['id_turma']);
