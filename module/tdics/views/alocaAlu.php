@@ -119,8 +119,7 @@ if ($id_polo) {
                 <?=
                 formErp::hidden($hidden)
                 . formErp::hidden(['id_turma' => null, 'id_curso' => null])
-                ?>
-                <?php
+
                 if ($id_polo && $id_turma) {
                     ?>
                     <button class="btn btn-warning">

@@ -421,6 +421,7 @@ class integracao {
 	                    $fk_id_sit_sed = 1;
 	                    break;
 
+	                case 'Não Compareceu':
 	                case 'Não Comp. - Fora Prazo':
 	                    $situacao = "'Não Compareceu'";
 	                    $fk_id_tas = 5;
