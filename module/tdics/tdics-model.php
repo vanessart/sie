@@ -188,12 +188,12 @@ class tdicsModel extends MainModel {
                 . $id_turma
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
-                . " AND ta2.fk_id_tas = 0 "
+                #. " AND (ta2.fk_id_tas ISNULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . $id_inst
-                . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
+                . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.id_pl = $id_pl "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
-                . " order by p.n_pessoa";
+                . " ORDER BY p.n_pessoa";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
 
