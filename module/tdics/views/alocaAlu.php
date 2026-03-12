@@ -118,7 +118,7 @@ if ($id_polo) {
             <form method="POST">
                 <?=
                 formErp::hidden($hidden)
-                . formErp::hidden(['id_turma' => null, 'id_curso' => null])
+                . formErp::hidden(['id_turma' => null, 'id_curso' => null]);
 
                 if ($id_polo && $id_turma) {
                     ?>
