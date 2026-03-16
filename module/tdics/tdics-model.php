@@ -211,7 +211,7 @@ class tdicsModel extends MainModel {
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
                 . " AND t.fk_id_pl = $id_pl "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
-                . " AND ta2.fk_id_tas = 0 "
+                . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst ";
@@ -235,7 +235,7 @@ class tdicsModel extends MainModel {
                 . " JOIN " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo AND t.fk_id_pl = $id_pl "
                 . $id_polo
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
-                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
+                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma AND t2.fk_id_ciclo <> 32"
                 . $id_inst
                 . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
@@ -249,7 +249,7 @@ class tdicsModel extends MainModel {
     public function countAlunos($id_plo, $id_pl) {
         $sql = "SELECT t.id_turma, COUNT(ta.id_ta) ct FROM " . self::$sistema . "_turma_aluno ta "
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
-                . " AND t.fk_id_polo = $id_plo and t.fk_id_pl = $id_pl"
+                . " AND t.fk_id_polo = $id_plo AND t.fk_id_pl = $id_pl"
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
                 . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
@@ -270,7 +270,11 @@ class tdicsModel extends MainModel {
     public function countAlunosCurso($id_curso, $id_pl) {
         $sql = "SELECT t.id_turma, COUNT(ta.id_ta) ct FROM " . self::$sistema . "_turma_aluno ta "
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
-                . " AND t.fk_id_curso = $id_curso "
+                . " AND t.fk_id_curso = $id_curso AND t.fk_id_pl = $id_pl"
+                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
+                . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
+                . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
+                . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.id_pl = $id_pl "
                 . " GROUP BY t.id_turma ";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -292,7 +296,10 @@ class tdicsModel extends MainModel {
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "
                 . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
-                . " ORDER BY n_pessoa";
+                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
+                . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
+                . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma AND pl.id_pl = t2.fk_id_pl "
+                . " ORDER BY p.n_pessoa";
         $query = pdoSis::getInstance()->query($sql);
         $array = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -322,7 +329,7 @@ class tdicsModel extends MainModel {
                 . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
-                . " AND ta2.fk_id_tas = 0 "
+                . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl2 on pl2.id_pl = t2.fk_id_pl AND pl2.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
@@ -349,7 +356,7 @@ class tdicsModel extends MainModel {
                 . " JOIN " . self::$sistema . "_pl pl on pl.id_pl = t.fk_id_pl and pl.ativo = 1 "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
-                . " AND ta2.fk_id_tas = 0 "
+                . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
                 . " JOIN ge_periodo_letivo pl2 on pl2.id_pl = t2.fk_id_pl AND pl2.at_pl = 1 "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
@@ -419,9 +426,9 @@ class tdicsModel extends MainModel {
                 . $fields
                 . " FROM " . self::$sistema . "_turma t "
                 . " JOIN " . self::$sistema . "_turma_aluno ta on ta.fk_id_turma = t.id_turma $id_polo_ and t.fk_id_pl = $id_pl"
-                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
+                . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
                 . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
-                . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 "
+                . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.id_pl = $id_pl "
                 . " JOIN instancia i on i.id_inst = t2.fk_id_inst "
                 . " JOIN pessoa p on p.id_pessoa = ta.fk_id_pessoa "
                 . " JOIN " . self::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
@@ -808,18 +815,21 @@ class tdicsModel extends MainModel {
             $id_pl = $this->pl();
         }
         if ($periodo) {
-            $periodo = "AND periodo LIKE '$periodo' ";
+            $periodo = "AND t.periodo LIKE '$periodo' ";
         }
         if ($diaSem) {
-            $diaSem = " AND dia_semana like '$diaSem' ";
+            $diaSem = " AND t.dia_semana like '$diaSem' ";
         }
         if ($fk_id_curso) {
-            $fk_id_curso = " AND fk_id_curso = '$fk_id_curso' ";
+            $fk_id_curso = " AND t.fk_id_curso = '$fk_id_curso' ";
         }
         if (!empty($limit)) {
             $sql = "SELECT t.id_turma, count(`id_ta`) ct FROM " . self::$sistema . "_turma_aluno ta "
                     . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
-                    . " WHERE fk_id_pl = $id_pl "
+                    . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
+                    . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
+                    . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma AND t.fk_id_pl = t2.fk_id_pl "
+                    . " WHERE t.fk_id_pl = $id_pl "
                     . $periodo
                     . $fk_id_curso
                     . " GROUP BY `fk_id_turma` "
@@ -840,7 +850,7 @@ class tdicsModel extends MainModel {
         if (!empty($exibeTransp)) {
             $n_turma = " CONCAT(n_turma, IF(transporte = 1, ' (com transporte)', '')) AS n_turma ";
         }
-        $sql = "SELECT id_turma, $n_turma FROM " . self::$sistema . "_turma "
+        $sql = "SELECT id_turma, $n_turma FROM " . self::$sistema . "_turma t "
                 . " WHERE fk_id_polo = $id_polo "
                 . " AND fk_id_pl = $id_pl "
                 . $turmas
