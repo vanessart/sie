@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
@@ -8,68 +10,20 @@ if ($id_polo) {
     $hor = $model->getHorarios($id_polo);
 }
 
-$h = [
-    [
-        'horario' => '1',
-        'periodo' => 'M',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '1',
-        'periodo' => 'T',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '2',
-        'periodo' => 'M',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '2',
-        'periodo' => 'T',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '3',
-        'periodo' => 'M',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '3',
-        'periodo' => 'T',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '4',
-        'periodo' => 'M',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '4',
-        'periodo' => 'T',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '5',
-        'periodo' => 'M',
-        'inicio' => '',
-        'termino' => '',
-    ],
-    [
-        'horario' => '5',
-        'periodo' => 'T',
-        'inicio' => '',
-        'termino' => '',
-    ],
-];
+
+$h = [];
+if (!empty($model::$horarios) && !empty($model::$periodos)) {
+    foreach ($model::$horarios as $hr => $horario) {
+        foreach ($model::$periodos as $per => $periodo) {
+            $h[] = [
+                'horario' => $hr,
+                'periodo' => $per,
+                'inicio' => '',
+                'termino' => '',
+            ];
+        }
+    }
+}
 
 if (!empty($hor)) {
     foreach ($hor as $key => $value) {

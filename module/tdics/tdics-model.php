@@ -5,9 +5,16 @@ class tdicsModel extends MainModel {
     public $db;
     public static $sistema;
     public static $mongoDataBase;
+    public static $periodos = ['M' => 'Manhã', 'T' => 'Tarde'];
+    public static $horarios = [
+        1 => '1º Horário',
+        2 => '2º Horário',
+        3 => '3º Horário',
+        4 => '4º Horário',
+        5 => '5º Horário',
+    ];
 
     /**
-
      * Construtor para essa classe
      *
      * Configura o DB, o controlador, os parâmetros e dados do usuário.

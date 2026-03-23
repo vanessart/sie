@@ -1,14 +1,18 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 
 $polos = sql::idNome($model::$sistema . '_polo');
 @$id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
-$sql = "SELECT * FROM " . $model::$sistema . "_turma_aluno ta JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
-        . " AND t.fk_id_pl = $id_pl"
-        . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0 "
-        . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma "
-        . " JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1 ";
+$sql = "SELECT t.* 
+        FROM " . $model::$sistema . "_turma_aluno ta
+        JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma
+        AND t.fk_id_pl = $id_pl
+        JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND (ta2.fk_id_tas = 0 OR ta2.fk_id_tas IS NULL)
+        JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma 
+        JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1";
 $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);
 if ($array) {
@@ -23,18 +27,22 @@ if ($array) {
         @$qp[$v['fk_id_polo']]['totalPer'][$v['periodo']][$v['dia_sem']]++;
         @$qp[$v['fk_id_polo']]['totalhorario'][$v['periodo']][$v['dia_sem']][$v['horario']]++;
     }
-    ksort($qp);
-
+    ksort($qp ?? []);
 }
-?>
-<div class="body">
-    <div class="fieldTop">
-        Quadro de Alunos
-    </div>
+
+$diasSemana = $model->diaSemana();
+$periodos = !empty($model::$periodos) ? $model::$periodos : [];
+$horarios = !empty($model::$horarios) ? $model::$horarios : [];
+$colspanTitulo = count($diasSemana) + 2;
+$colspanTotal = max(1, count($diasSemana));
+
+$renderQuadro = function ($titulo, $dados = []) use ($diasSemana, $periodos, $horarios, $colspanTitulo, $colspanTotal) {
+    $rowspanPeriodo = count($horarios) + 1;
+    ?>
     <table class="table table-bordered table-hover table-responsive border">
         <tr>
-            <td colspan="7" style="text-align: center; font-weight: bold; font-size: 1.4em">
-                Quadro Geral
+            <td colspan="<?= $colspanTitulo ?>" style="text-align: center; font-weight: bold; font-size: 1.4em">
+                <?= $titulo ?>
             </td>
         </tr>
         <tr>
@@ -42,82 +50,61 @@ if ($array) {
 
             </td>
             <?php
-            foreach ($model->diaSemana() as $v) {
+            foreach ($diasSemana as $dia) {
                 ?>
                 <td>
-                    <?= $v ?>
+                    <?= $dia ?>
                 </td>
                 <?php
             }
             ?>
         </tr>
         <?php
-        foreach (['M' => 'Manhã', 'T' => 'Tarde'] as $kper => $per) {
+        foreach ($periodos as $kPeriodo => $periodo) {
+            $linhaHorario = 0;
+            foreach ($horarios as $kHorario => $horario) {
+                ?>
+                <tr>
+                    <?php
+                    if ($linhaHorario === 0) {
+                        ?>
+                        <td rowspan="<?= $rowspanPeriodo ?>">
+                            <?= $periodo ?>
+                        </td>
+                        <?php
+                    }
+                    ?>
+                    <td>
+                        <?= $horario ?>
+                    </td>
+                    <?php
+                    foreach ($diasSemana as $kDia => $dia) {
+                        ?>
+                        <td style="font-weight: initial;">
+                            <?= $dados['totalhorario'][$kPeriodo][$kDia][$kHorario] ?? 0 ?>
+                        </td>
+                        <?php
+                    }
+                    ?>
+                </tr>
+                <?php
+                $linhaHorario++;
+            }
             ?>
             <tr>
-                <td rowspan="3">
-                    <?= $per ?>
-                </td>
                 <td>
-                    1º Horário
+                    Total da <?= $periodo ?>
                 </td>
                 <?php
-                foreach ($model->diaSemana() as $k => $v) {
+                foreach ($diasSemana as $kDia => $dia) {
                     ?>
                     <td>
-                        <?php
-                        if (!empty($q['totalhorario'][$kper][$k][1])) {
-                            echo $q['totalhorario'][$kper][$k][1];
-                        } else {
-                            echo '0';
-                        }
-                        ?>
+                        <?= $dados['totalPer'][$kPeriodo][$kDia] ?? 0 ?>
                     </td>
                     <?php
                 }
                 ?>
             </tr>
-            <tr>
-                <td>
-                    2º Horário
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    ?>
-                    <td>
-                        <?php
-                        if (!empty($q['totalhorario'][$kper][$k][2])) {
-                            echo $q['totalhorario'][$kper][$k][2];
-                        } else {
-                            echo '0';
-                        }
-                        ?>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <tr>
-                <td>
-                    Total da <?= $per ?>
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    ?>
-                    <td>
-                        <?php
-                        if (!empty($q['totalPer'][$kper][$k])) {
-                            echo $q['totalPer'][$kper][$k];
-                        } else {
-                            echo '0';
-                        }
-                        ?>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-
             <?php
         }
         ?>
@@ -126,16 +113,10 @@ if ($array) {
                 Total do Dia da Semana
             </td>
             <?php
-            foreach ($model->diaSemana() as $k => $v) {
+            foreach ($diasSemana as $kDia => $dia) {
                 ?>
                 <td>
-                    <?php
-                    if (!empty($q['totalDiaSem'][$k])) {
-                        echo $q['totalDiaSem'][$k];
-                    } else {
-                        echo '0';
-                    }
-                    ?>
+                    <?= $dados['totalDiaSem'][$kDia] ?? 0 ?>
                 </td>
                 <?php
             }
@@ -145,135 +126,23 @@ if ($array) {
             <td colspan="2">
                 Total Geral
             </td>
-            <td colspan="5">
-                <?= @$q['total'] ?>
+            <td colspan="<?= $colspanTotal ?>">
+                <?= $dados['total'] ?? 0 ?>
             </td>
         </tr>
     </table>
+    <?php
+};
+?>
+<div class="body">
+    <div class="fieldTop">
+        Quadro de Alunos
+    </div>
+    <?php $renderQuadro('Quadro Geral', $q ?? []); ?>
     <br /><br />
     <?php
     foreach ($polos as $id_polo => $n_polo) {
-        ?>
-        <table class="table table-bordered table-hover table-responsive border">
-            <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 1.4em">
-                    Quadro do Núcleo <?= $n_polo ?>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $v) {
-                    ?>
-                    <td>
-                        <?= $v ?>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <?php
-            foreach (['M' => 'Manhã', 'T' => 'Tarde'] as $kper => $per) {
-                ?>
-                <tr>
-                    <td rowspan="3">
-                        <?= $per ?>
-                    </td>
-                    <td>
-                        1º Horário
-                    </td>
-                    <?php
-                    foreach ($model->diaSemana() as $k => $v) {
-                        ?>
-                        <td>
-                            <?php
-                            if (!empty($qp[$id_polo]['totalhorario'][$kper][$k][1])) {
-                                echo $qp[$id_polo]['totalhorario'][$kper][$k][1];
-                            } else {
-                                echo '0';
-                            }
-                            ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
-                </tr>
-                <tr>
-                    <td>
-                        2º Horário
-                    </td>
-                    <?php
-                    foreach ($model->diaSemana() as $k => $v) {
-                        ?>
-                        <td>
-                            <?php
-                            if (!empty($qp[$id_polo]['totalhorario'][$kper][$k][2])) {
-                                echo $qp[$id_polo]['totalhorario'][$kper][$k][2];
-                            } else {
-                                echo '0';
-                            }
-                            ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
-                </tr>
-                <tr>
-                    <td>
-                        Total da <?= $per ?>
-                    </td>
-                    <?php
-                    foreach ($model->diaSemana() as $k => $v) {
-                        ?>
-                        <td>
-                            <?php
-                            if (!empty($qp[$id_polo]['totalPer'][$kper][$k])) {
-                                echo $qp[$id_polo]['totalPer'][$kper][$k];
-                            } else {
-                                echo '0';
-                            }
-                            ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
-                </tr>
-
-                <?php
-            }
-            ?>
-            <tr>
-                <td colspan="2">
-                    Total do Dia da Semana
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    ?>
-                    <td>
-                        <?php
-                        if (!empty($qp[$id_polo]['totalDiaSem'][$k])) {
-                            echo $qp[$id_polo]['totalDiaSem'][$k];
-                        } else {
-                            echo '0';
-                        }
-                        ?>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Total Geral
-                </td>
-                <td colspan="5">
-                    <?= @$qp[$id_polo]['total'] ?>
-                </td>
-            </tr>
-        </table>
-        <?php
+        $renderQuadro('Quadro do Núcleo ' . $n_polo, $qp[$id_polo] ?? []);
     }
     ?>
 </div>

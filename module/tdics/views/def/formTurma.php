@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 $id_polo = filter_input(INPUT_POST, 'id_polo', FILTER_SANITIZE_NUMBER_INT);
@@ -34,10 +36,10 @@ $diaSem = $model->diaSemana();
         <br />
         <div class="row">
             <div class="col">
-                <?= formErp::select('1[periodo]', ['M' => 'Manhã', 'T' => 'Tarde'], 'Período do Dia', @$t['periodo']) ?>
+                <?= formErp::select('1[periodo]', $model::$periodos, 'Período do Dia', @$t['periodo']) ?>
             </div>
             <div class="col">
-                <?= formErp::select('1[horario]', [1 => '1º Horário', 2 => '2º Horário', 3 => '3º Horário', 4 => '4º Horário', 5 => '5º Horário'], 'Horário', @$t['horario']) ?>
+                <?= formErp::select('1[horario]', $model::$horarios, 'Horário', @$t['horario']) ?>
             </div>
         </div>
         <br />

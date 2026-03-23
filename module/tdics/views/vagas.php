@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 @$id_pl = sql::get($model::$sistema . '_pl', 'id_pl', ['ativo' => 1], 'fetch')['id_pl'];
@@ -8,11 +10,7 @@ $cursos = [];
 foreach ($td as $v) {
     $cursos[$v['id_curso']] = $v['n_curso'];
     $qtCur[$v['id_curso']][$v['id_turma']] = $v['id_turma'];
-    if ($v['periodo'] == 'M') {
-        $qtCur['M'][$v['id_curso']][$v['id_turma']] = $v['id_turma'];
-    } elseif ($v['periodo'] == 'T') {
-        $qtCur['T'][$v['id_curso']][$v['id_turma']] = $v['id_turma'];
-    }
+    $qtCur[$v['periodo']][$v['id_curso']][$v['id_turma']] = $v['id_turma'];
     if ($v['n_curso'] == 'Resolução Inovadora de Problemas - Machine Learning') {
         $v['n_curso'] = 'Machine Learning';
     }
@@ -45,11 +43,7 @@ $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);
 if ($array) {
     foreach ($array as $v) {
-        if ($v['periodo'] == 'M') {
-            @$aluPorCur['M'][$v['fk_id_curso']]++;
-        } elseif ($v['periodo'] == 'T') {
-            @$aluPorCur['T'][$v['fk_id_curso']]++;
-        }
+        @$aluPorCur[$v['periodo']][$v['fk_id_curso']]++;
         @$aluPorCur[$v['fk_id_curso']]++;
         @$q['total']++;
         @$q['totalDiaSem'][$v['dia_sem']]++;
@@ -61,9 +55,140 @@ if ($array) {
         @$qp[$v['fk_id_polo']]['totalPer'][$v['periodo']][$v['dia_sem']]++;
         @$qp[$v['fk_id_polo']]['totalhorario'][$v['periodo']][$v['dia_sem']][$v['horario']]++;
     }
-    ksort($qp);
+    ksort($qp ?? []);
 }
+
 $tg = $qt_turma * count($polos);
+$diasSemana = $model->diaSemana();
+$periodos = !empty($model::$periodos) ? $model::$periodos : [];
+$horarios = !empty($model::$horarios) ? $model::$horarios : [];
+$colspanTitulo = count($diasSemana) + 2;
+$colspanTotal = max(1, count($diasSemana));
+$capacidadePorPeriodoDia = $tg * count($horarios);
+$capacidadePorDia = $tg * count($horarios) * count($periodos);
+$capacidadeTotal = $capacidadePorDia * count($diasSemana);
+$capacidadePoloPeriodoDia = $qt_turma * count($horarios);
+$capacidadePoloDia = $qt_turma * count($horarios) * count($periodos);
+$capacidadePoloTotal = $capacidadePoloDia * count($diasSemana);
+
+$renderQuadroVagas = function ($titulo, $dados, $capacidadeHorario, $capacidadePeriodoDia, $capacidadeDia, $capacidadeTotal, $mostrarCurso = false) use ($diasSemana, $periodos, $horarios, $colspanTitulo, $colspanTotal) {
+    $rowspanPeriodo = count($horarios) + 1;
+    ?>
+    <table class="table table-bordered table-hover table-responsive border">
+        <tr>
+            <td colspan="<?= $colspanTitulo ?>" style="text-align: center; font-weight: bold; font-size: 1.4em">
+                <?= $titulo ?>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+
+            </td>
+            <?php
+            foreach ($diasSemana as $kDia => $dia) {
+                ?>
+                <td>
+                    <?= $dia ?>
+                    <?php
+                    if ($mostrarCurso) {
+                        ?>
+                        <br />
+                        <?= '' // @$diaCur[$id_polo][$kDia] ?>
+                        <?php
+                    }
+                    ?>
+                </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <?php
+        foreach ($periodos as $kPeriodo => $periodo) {
+            $linhaHorario = 0;
+            foreach ($horarios as $kHorario => $horario) {
+                ?>
+                <tr>
+                    <?php
+                    if ($linhaHorario === 0) {
+                        ?>
+                        <td rowspan="<?= $rowspanPeriodo ?>">
+                            <?= $periodo ?>
+                        </td>
+                        <?php
+                    }
+                    ?>
+                    <td>
+                        <?= $horario ?>
+                    </td>
+                    <?php
+                    foreach ($diasSemana as $kDia => $dia) {
+                        $qta = intval($capacidadeHorario - ($dados['totalhorario'][$kPeriodo][$kDia][$kHorario] ?? 0));
+                        ?>
+                        <td>
+                            <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
+                            <?php
+                            if ($mostrarCurso) {
+                                ?>
+                                : <?= empty($dados['abrevCurso'][$kPeriodo][$kDia][$kHorario]) ? 'Vazia' : $dados['abrevCurso'][$kPeriodo][$kDia][$kHorario] ?>
+                                <?php
+                            }
+                            ?>
+                        </td>
+                        <?php
+                    }
+                    ?>
+                </tr>
+                <?php
+                $linhaHorario++;
+            }
+            ?>
+            <tr>
+                <td>
+                    Total da <?= $periodo ?>
+                </td>
+                <?php
+                foreach ($diasSemana as $kDia => $dia) {
+                    $qta = intval($capacidadePeriodoDia - ($dados['totalPer'][$kPeriodo][$kDia] ?? 0));
+                    ?>
+                    <td>
+                        <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
+                    </td>
+                    <?php
+                }
+                ?>
+            </tr>
+            <?php
+        }
+        ?>
+        <tr>
+            <td colspan="2">
+                Total do Dia da Semana
+            </td>
+            <?php
+            foreach ($diasSemana as $kDia => $dia) {
+                $qta = intval($capacidadeDia - ($dados['totalDiaSem'][$kDia] ?? 0));
+                ?>
+                <td>
+                    <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
+                </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Total Geral
+            </td>
+            <td colspan="<?= $colspanTotal ?>">
+                <?php
+                $qta = intval($capacidadeTotal - ($dados['total'] ?? 0));
+                ?>
+                <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
+            </td>
+        </tr>
+    </table>
+    <?php
+};
 ?>
 <div class="body">
     <div class="fieldTop">
@@ -123,7 +248,7 @@ $tg = $qt_turma * count($polos);
     </table>
     <br /><br /> 
     <?php
-    foreach (['M' => 'Manhã', 'T' => 'Tarde'] as $p => $n_p) {
+    foreach ($model::$periodos as $p => $n_p) {
         ?>
         <table class="table table-bordered table-hover table-responsive border">
             <tr>
@@ -180,212 +305,12 @@ $tg = $qt_turma * count($polos);
         <?php
     }
     ?>
-    <table class="table table-bordered table-hover table-responsive border">
-        <tr>
-            <td colspan="7" style="text-align: center; font-weight: bold; font-size: 1.4em">
-                Quadro Geral
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-
-            </td>
-            <?php
-            foreach ($model->diaSemana() as $v) {
-                ?>
-                <td>
-                    <?= $v ?>
-                </td>
-                <?php
-            }
-            ?>
-        </tr>
-        <?php
-        foreach (['M' => 'Manhã', 'T' => 'Tarde'] as $kper => $per) {
-            ?>
-            <tr>
-                <td rowspan="3">
-                    <?= $per ?>
-                </td>
-                <td>
-                    1º Horário
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    $qta = intval($tg - @$q['totalhorario'][$kper][$k][1]);
-                    ?>
-                    <td>
-                        <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <tr>
-                <td>
-                    2º Horário
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    $qta = intval($tg - @$q['totalhorario'][$kper][$k][2]);
-                    ?>
-                    <td>
-                        <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <tr>
-                <td>
-                    Total da <?= $per ?>
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    $qta = intval(($tg * 2) - @$q['totalPer'][$kper][$k]);
-                    ?>
-                    <td>
-                        <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-
-            <?php
-        }
-        ?>
-        <tr>
-            <td colspan="2">
-                Total do Dia da Semana
-            </td>
-            <?php
-            foreach ($model->diaSemana() as $k => $v) {
-                ?>
-                <td>
-                    <span style="color: blue; font-weight: bold"><?= intval(($tg * 4) - @$q['totalDiaSem'][$k]) ?></span>
-                </td>
-                <?php
-            }
-            ?>
-        </tr>
-        <tr>
-            <td colspan="2">
-                Total Geral
-            </td>
-            <td colspan="5">
-                <span style="color: blue; font-weight: bold"><?= intval(($tg * 20) - @$q['total']) ?></span>
-            </td>
-        </tr>
-    </table>
+    <?php $renderQuadroVagas('Quadro Geral', $q ?? [], $tg, $capacidadePorPeriodoDia, $capacidadePorDia, $capacidadeTotal); ?>
     <br /><br />
     <?php
     foreach ($polos as $id_polo => $n_polo) {
         ?>
-        <table class="table table-bordered table-hover table-responsive border">
-            <tr>
-                <td colspan="7" style="text-align: center; font-weight: bold; font-size: 1.4em">
-                    Quadro do Núcleo <?= $n_polo ?>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    ?>
-                    <td>
-                        <?= $v ?>
-                        <br />
-                        <?= ''// @$diaCur[$id_polo][$k] ?>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <?php
-            foreach (['M' => 'Manhã', 'T' => 'Tarde'] as $kper => $per) {
-                ?>
-                <tr>
-                    <td rowspan="3">
-                        <?= $per ?>
-                    </td>
-                    <td>
-                        1º Horário
-                    </td>
-                    <?php
-                    foreach ($model->diaSemana() as $k => $v) {
-                        $qta = intval($qt_turma - @$qp[$id_polo]['totalhorario'][$kper][$k][1]);
-                        ?>
-                        <td>
-                            <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span> : <?= empty($qp[$id_polo]['abrevCurso'][$kper][$k][1]) ? 'Vazia' : $qp[$id_polo]['abrevCurso'][$kper][$k][1] ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
-                </tr>
-                <tr>
-                    <td>
-                        2º Horário
-                    </td>
-                    <?php
-                    foreach ($model->diaSemana() as $k => $v) {
-                        $qta = intval($qt_turma - @$qp[$id_polo]['totalhorario'][$kper][$k][2]);
-                        ?>
-                        <td>
-                            <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span> : <?= empty($qp[$id_polo]['abrevCurso'][$kper][$k][2]) ? 'Vazia' : $qp[$id_polo]['abrevCurso'][$kper][$k][2] ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
-                </tr>
-                <tr>
-                    <td>
-                        Total da <?= $per ?>
-                    </td>
-                    <?php
-                    foreach ($model->diaSemana() as $k => $v) {
-                        $qta = intval(($qt_turma * 2) - @$qp[$id_polo]['totalPer'][$kper][$k]);
-                        ?>
-                        <td>
-                            <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
-                        </td>
-                        <?php
-                    }
-                    ?>
-                </tr>
-
-                <?php
-            }
-            ?>
-            <tr>
-                <td colspan="2">
-                    Total do Dia da Semana
-                </td>
-                <?php
-                foreach ($model->diaSemana() as $k => $v) {
-                    $qta = intval(($qt_turma * 4) - @$qp[$id_polo]['totalDiaSem'][$k]);
-                    ?>
-                    <td>
-                        <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
-                    </td>
-                    <?php
-                }
-                ?>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Total Geral
-                </td>
-                <td colspan="5">
-                    <?php
-                    $qta = intval(($qt_turma * 20) - @$qp[$id_polo]['total']);
-                    ?>
-                    <span style="color: <?= $qta > 0 ? 'blue' : 'red' ?>; font-weight: bold"><?= $qta ?></span>
-                </td>
-            </tr>
-        </table>
+        <?php $renderQuadroVagas('Quadro do Núcleo ' . $n_polo, $qp[$id_polo] ?? [], $qt_turma, $capacidadePoloPeriodoDia, $capacidadePoloDia, $capacidadePoloTotal, true); ?>
         <?php
     }
     ?>

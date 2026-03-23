@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 if (toolErp::id_nilvel() == 8) {
@@ -89,7 +91,7 @@ if (!empty($buscar)) {
         <br />
         <div class="row">
             <div class="col">
-                <?= formErp::select('periodo', ['M' => 'Manhã', 'T' => 'Tarde'], 'Período', $periodo) ?>
+                <?= formErp::select('periodo', $model::$periodos, 'Período', $periodo) ?>
             </div>
             <div class="col">
                 <?= formErp::selectDB($model::$sistema . '_curso', 'id_curso', 'Curso', $id_curso) ?>

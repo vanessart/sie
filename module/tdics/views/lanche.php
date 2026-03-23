@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 
@@ -38,7 +40,7 @@ $pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px"
         <?php
         foreach ($model->diaSemana() as $k => $v) {
             ?>
-            <td colspan="2">
+            <td colspan="<?= count($model::$periodos) ?>">
                 <?= $v ?>
             </td>
             <?php
@@ -48,14 +50,13 @@ $pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px"
     <tr>
         <?php
         foreach ($model->diaSemana() as $k => $v) {
-            ?>
-            <td>
-                Manhã
-            </td>
-            <td>
-                Tarde
-            </td>
-            <?php
+            foreach ($model::$periodos as $kper => $per) {
+                ?>
+                <td>
+                    <?= $per ?>
+                </td>
+                <?php
+            }
         }
         ?>
     </tr>
@@ -68,7 +69,7 @@ $pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px"
             </td>
             <?php
             foreach ($model->diaSemana() as $k => $v) {
-                foreach (['M' => 'Manhã', 'T' => 'Tarde'] as $kper => $per) {
+                foreach ($model::$periodos as $kper => $per) {
                     ?>
                     <td>
                         <?php
@@ -95,14 +96,26 @@ $pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px"
         </td>
         <?php
         foreach ($model->diaSemana() as $k => $v) {
-            ?>
-            <td>
-                Manhã
-            </td>
-            <td>
-                Tarde
-            </td>
-            <?php
+            foreach ($model::$periodos as $kper => $per) {
+                ?>
+                <td>
+                    <?= $per ?>
+                </td>
+                <?php
+            }
+        }
+        ?>
+    </tr>
+    <tr>
+        <?php
+        foreach ($model->diaSemana() as $k => $v) {
+            foreach ($model::$periodos as $kper => $per) {
+                ?>
+                <td>
+                    <?= intval(@$q['totalPer'][$kper][$k]) ?>
+                </td>
+                <?php
+            }
         }
         ?>
     </tr>
@@ -110,21 +123,7 @@ $pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px"
         <?php
         foreach ($model->diaSemana() as $k => $v) {
             ?>
-            <td>
-                <?= intval(@$q['totalPer']['M'][$k]) ?>
-            </td>
-            <td>
-               <?= intval(@$q['totalPer']['T'][$k]) ?>
-            </td>
-            <?php
-        }
-        ?>
-    </tr>
-    <tr>
-        <?php
-        foreach ($model->diaSemana() as $k => $v) {
-            ?>
-        <td colspan="2">
+        <td colspan="<?= count($model::$periodos) ?>">
                 <?= intval(@$q['totalDiaSem'][$k]) ?>
             </td>
             <?php
@@ -132,7 +131,7 @@ $pdf->headerAlt = '<table style="width: 100%"><tr><td><img style="height: 100px"
         ?>
     </tr>
     <tr>
-        <td colspan="10">
+        <td colspan="<?= count($model->diaSemana()) * count($model::$periodos) ?>">
             <?= intval(@$q['total']) ?>
         </td>
     </tr>
