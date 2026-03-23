@@ -39,6 +39,9 @@ if (!empty($nucleos)) {
                     Turma de Origem
                 </td>
                 <td>
+                    Período de Origem
+                </td>
+                <td>
                     Nome
                 </td>
                 <td>
@@ -65,6 +68,9 @@ if (!empty($nucleos)) {
                         <?= $v['turmaEsc'] ?>
                     </td>
                     <td>
+                        <?= dataErp::periodoDoDia($v['periodoRegular']) ?>
+                    </td>
+                    <td>
                         <?= $v['n_pessoa'] ?>
                     </td>
                     <td>
@@ -74,7 +80,7 @@ if (!empty($nucleos)) {
                         <?= $model->diaSemana($v['dia_sem']) ?>
                     </td>
                     <td>
-                        <?= $v['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
+                        <?= dataErp::periodoDoDia($v['periodo']) ?>
                     </td>
                     <td>
                         <?= $model->horario($v['fk_id_polo'], $v['periodo'], $v['horario']) ?>

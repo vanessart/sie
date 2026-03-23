@@ -26,7 +26,7 @@ if ($id_polo) {
         foreach ($turmas as $k => $v) {
             $turmas[$k]['ac'] = '<button class="btn btn-info" onclick="edit(' . $v['id_turma'] . ')">Editar</button>';
             $turmas[$k]['dia'] = $model->diaSemana($v['dia_sem']);
-            $turmas[$k]['periodo'] = $v['periodo'] == 'M' ? 'Manhã' : 'Tarde';
+            $turmas[$k]['periodo'] = dataErp::periodoDoDia($v['periodo']);
             $turmas[$k]['horario'] = $v['horario'] . 'º Horário';
             if (empty($temAlu[$v['id_turma']])) {
                 $turmas[$k]['del'] = formErp::submit('Excluir', $tonkenDel, ['1[id_turma]' => $v['id_turma'], 'id_pl' => $id_pl, 'id_polo' => $id_polo]);

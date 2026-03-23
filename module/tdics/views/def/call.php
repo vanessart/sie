@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 $id_pessoa = filter_input(INPUT_POST, 'id_pessoa', FILTER_SANITIZE_NUMBER_INT);
@@ -48,6 +50,14 @@ if ($id_pessoa) {
                     <?= $aluno[0]['turmaEsc'] ?>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Período de Origem
+                </td>
+                <td>
+                    <?= dataErp::periodoDoDia($aluno[0]['periodoRegular']) ?>
+                </td>
+            </tr>
         </table>
         <br /><br />       
 
@@ -78,7 +88,7 @@ if ($id_pessoa) {
                             Período
                         </td>
                         <td>
-                            <?= $v['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
+                            <?= dataErp::periodoDoDia($v['periodo']) ?>
                         </td>
                     </tr>
                     <tr>

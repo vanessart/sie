@@ -29,7 +29,7 @@ if (!empty($turmas)) {
                     Curso: <?= $cursos[$t['fk_id_curso']] ?>
                 </td>
                 <td>
-                    <?= $model->diaSemana($t['dia_sem']) ?> de <?= $t['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?> no <?= $t['horario'] ?>º horário
+                    <?= $model->diaSemana($t['dia_sem']) ?> de <?= dataErp::periodoDoDia($t['periodo']) ?> no <?= $t['horario'] ?>º horário
                 </td>
             </tr>
         </table>
@@ -47,6 +47,9 @@ if (!empty($turmas)) {
                 <td>
                     Turma de Origem
                 </td>
+                <td>
+                    Período de Origem
+                </td>
             </tr>
             <?php
             foreach ($v as $y) {
@@ -63,6 +66,9 @@ if (!empty($turmas)) {
                     </td>
                     <td>
                         <?= $y['turmaEsc'] ?>
+                    </td>
+                    <td>
+                        <?= dataErp::periodoDoDia($y['periodoRegular']) ?>
                     </td>
                 </tr>
                 <?php

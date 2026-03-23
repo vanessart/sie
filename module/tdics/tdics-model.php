@@ -180,7 +180,7 @@ class tdicsModel extends MainModel {
             $id_inst = " AND t2.fk_id_inst = $id_inst ";
         }
         $sql = "SELECT "
-                . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, t2.n_turma as turmaEsc, i.id_inst, i.n_inst "
+                . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, t2.n_turma as turmaEsc, i.id_inst, i.n_inst, t2.periodo AS periodoRegular "
                 . " FROM " . self::$sistema . "_turma_aluno ta "
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma "
                 . " AND t.fk_id_pl = $id_pl "
@@ -321,7 +321,7 @@ class tdicsModel extends MainModel {
         $ids = implode(', ', $idsPessoa);
         $sql = "SELECT "
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, po.n_polo, "
-                . " t2.n_turma as turmaEsc, i.id_inst, i.n_inst, t.n_turma, c.n_curso, cc.fk_id_sit "
+                . " t2.n_turma as turmaEsc, i.id_inst, i.n_inst, t.n_turma, c.n_curso, cc.fk_id_sit, t2.periodo AS periodoRegular "
                 . " FROM " . self::$sistema . "_turma_aluno ta "
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma and ta.fk_id_pessoa in ($ids) $id_curso $id_polo "
                 . " join " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "
@@ -348,7 +348,7 @@ class tdicsModel extends MainModel {
         $sql = "SELECT "
                 . " t.*, ta.id_ta , p.id_pessoa, p.n_pessoa, p.sexo, po.n_polo, "
                 . " t2.n_turma as turmaEsc, i.id_inst, i.n_inst, t.n_turma, c.n_curso, cc.time_stamp,"
-                . " cc.obs, cc.contactou, fk_id_sit "
+                . " cc.obs, cc.contactou, fk_id_sit, t2.periodo AS periodoRegular "
                 . " FROM " . self::$sistema . "_turma_aluno ta "
                 . " JOIN " . self::$sistema . "_turma t on t.id_turma = ta.fk_id_turma and ta.fk_id_pessoa in ($id_pessoa) "
                 . " join " . self::$sistema . "_polo po on po.id_polo = t.fk_id_polo "

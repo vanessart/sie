@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 $todasTurmas = filter_input(INPUT_POST, 'todasTurmas', FILTER_SANITIZE_NUMBER_INT);
@@ -16,10 +18,12 @@ $alu = $query->fetch(PDO::FETCH_ASSOC);
 $id_turma = $alu['fk_id_turma'];
 $qtAlunos = $model->countAlunosCurso($alu['fk_id_curso'], $id_pl);
 
-if (toolErp::id_nilvel() == 8 || empty($todasTurmas)) {
+if (empty($todasTurmas)) {
     $periodos = " and o.periodo = t.periodo ";
-} else {
+} elseif ($todasTurmas == 1) {
     $periodos = null;
+} elseif ($todasTurmas == 2) {
+    $periodos = " and o.periodo <> t.periodo ";
 }
 $sql = "SELECT t.*, p.n_polo, c.n_curso FROM " . $model::$sistema . "_turma o "
         . " JOIN " . $model::$sistema . "_turma t on t.fk_id_curso = o.fk_id_curso and o.id_turma = $id_turma AND o.fk_id_pl= t.fk_id_pl $periodos "
@@ -37,7 +41,7 @@ if ($turmas) {
             $turmas[$k]['qt'] = intval(@$qtAlunos[$v['id_turma']]);
             $turmas[$k]['dia_sem'] = $v['dia_sem'] . 'ª Feira';
             $turmas[$k]['horario'] = $v['horario'] . 'º Horário';
-            $turmas[$k]['periodo'] = $v['periodo'] == 'M' ? 'Manhã' : 'Tarde';
+            $turmas[$k]['periodo'] = dataErp::periodoDoDia($v['periodo']);
             if (toolErp::id_nilvel() != 8 || @$qtAlunos[$v['id_turma']] < $setup['qt_turma']) {
                 $turmas[$k]['ac'] = '<button onclick="tr(' . $v['id_turma'] . ', \'' . $v['n_turma'] . '\')" class="btn btn-info" >Transferir</button>';
             } else {
@@ -95,36 +99,57 @@ $hidden = [
         </tr>
     </table>
     <div class="row">
-        <div class="col">
+        <div class="col-4">
             <div class="alert alert-info" style="font-weight: bold">
                 Para qual turma deseja transferir?
             </div>
         </div>
-        <div class="col">
+        <div class="col-8">
+            <div class="row">
             <?php
-            if (toolErp::id_nilvel() != 8) {
-                if (empty($todasTurmas)) {
+            // if (toolErp::id_nilvel() != 8) {
+                if ($todasTurmas != 1) {
                     ?>
+                    <div class="col-6">
                     <form method="POST">
                         <?=
                         formErp::hidden($hidden)
                         . formErp::hidden(['todasTurmas' => 1, 'id_ta' => $id_ta])
-                        . formErp::button('Mostar Todas as Turmas')
+                        . formErp::button('Mostrar todas as Turmas', null, null, 'warning')
                         ?>
                     </form>
+                    </div>
                     <?php
-                } else {
+                }
+
+                if (!empty($todasTurmas)) {
                     ?>
+                    <div class="col-6">
                     <form method="POST">
                         <?=
                         formErp::hidden($hidden)
                         . formErp::hidden(['todasTurmas' => null, 'id_ta' => $id_ta])
-                        . formErp::button('Mostar só as Turmas do Contraturno')
+                        . formErp::button('Mostrar só as Turmas do mesmo Turno', null, null, 'info')
                         ?>
                     </form>
+                    </div>
+                    <?php
+                } 
+
+                if ($todasTurmas != 2) {
+                    ?>
+                    <div class="col-6">
+                    <form method="POST">
+                        <?=
+                        formErp::hidden($hidden)
+                        . formErp::hidden(['todasTurmas' => 2, 'id_ta' => $id_ta])
+                        . formErp::button('Mostrar só as Turmas do Contraturno', null, null, 'primary')
+                        ?>
+                    </form>
+                    </div>
                     <?php
                 }
-            }
+            // }
             ?>
         </div>
     </div>

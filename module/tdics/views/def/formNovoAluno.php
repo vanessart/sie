@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 $id_pl = filter_input(INPUT_POST, 'id_pl', FILTER_SANITIZE_NUMBER_INT);
@@ -15,10 +17,10 @@ $turmaCurso = sql::get([$model::$sistema . '_turma', $model::$sistema . '_curso'
 // } else {
 //     $periodoCurso = "'M', 'I', 'N'";
 // }
-$fields = " p.id_pessoa, p.n_pessoa, t.codigo, ta.chamada, id_ciclo";
+$fields = " p.id_pessoa, p.n_pessoa, t.codigo, t.periodo, ta.chamada, id_ciclo";
 $sql = "select  $fields from ge_turma_aluno ta "
         . " join ge_turmas t on t.id_turma = ta.fk_id_turma and fk_id_ciclo not in (32) "
-        . " and periodo <> '". $turmaCurso['periodo'] ."' "
+        #. " and periodo <> '". $turmaCurso['periodo'] ."' "
         . " join ge_ciclos ci on ci.id_ciclo = t.fk_id_ciclo "
         . " join pessoa p on p.id_pessoa = ta.fk_id_pessoa "
         . " join ge_periodo_letivo pl on pl.id_pl = t.fk_id_pl "
@@ -31,7 +33,8 @@ $query = pdoSis::getInstance()->query($sql);
 $ae = $query->fetchAll(PDO::FETCH_ASSOC);
 foreach ($ae as $v) {
     if (in_array($v['id_ciclo'], [1, 2, 3, 4, 5, 6, 7, 8, 9, 38, 39, 40, 41, 42, 43, 44, 45, 46])) {
-            $alunos[$v['id_pessoa']] = $v['id_pessoa'] . '-' . $v['n_pessoa'] . ' (' . $v['codigo'] . ')';
+        $alunos[$v['id_pessoa']] = $v['id_pessoa'] . '-' . $v['n_pessoa'] . ' (' . $v['codigo'] . ')';
+        $periodoRegular[$v['id_pessoa']] = $v['periodo'];
     }
 }
 $hidden = [
@@ -83,7 +86,7 @@ $hidden = [
                 Período do Curso
             </td>
             <td>
-                <?= $turmaCurso['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
+                <?= dataErp::periodoDoDia($turmaCurso['periodo']) ?>
             </td>
         </tr>
         <tr>
@@ -95,7 +98,7 @@ $hidden = [
             </td>
         </tr>
     </table>
-    <form action="<?= HOME_URI ?>/<?= $this->controller_name ?>/alocaAlu" target="_parent" method="POST">
+    <form id="formNovoAluno" action="<?= HOME_URI ?>/<?= $this->controller_name ?>/alocaAlu" target="_parent" method="POST">
         <div class="row">
             <div class="col-9">
                 <?php
@@ -104,7 +107,7 @@ $hidden = [
                 } else {
                     ?>
                     <div class="alert alert-danger">
-                        Não há alunos para este período
+                        Não foi encontrado alunos para alocar nessa turma
                     </div>
                     <?php
                 }
@@ -115,10 +118,43 @@ $hidden = [
                 if (!empty($alunos)) {
                     echo formErp::hidden($hidden)
                     . formErp::hiddenToken('novoAluno')
-                    . formErp::button('Salvar');
+                    . formErp::button('Salvar', null, 'salvarAluno()');
                 } ?>
             </div>
         </div>
         <br />
     </form>
 </div>
+<script>
+function salvarAluno() {
+    <?php if (!empty($periodoRegular)) { ?>
+        const form = document.getElementById('formNovoAluno');
+        const alunoField = form ? form.querySelector('[name="id_pessoa"]') : null;
+        const periodoTurma = <?= json_encode($turmaCurso['periodo']) ?>;
+        const periodoTurmaTxt = <?= json_encode(dataErp::periodoDoDia($turmaCurso['periodo'])) ?>;
+        const periodoRegular = <?= json_encode($periodoRegular) ?>;
+
+        if (!form || !alunoField) {
+            form.submit();
+            return;
+        }
+
+        const idPessoa = alunoField.value;
+
+        if (!idPessoa || periodoRegular[idPessoa] !== periodoTurma) {
+            form.submit();
+            return;
+        }
+
+        const mensagem = 'O aluno selecionado está matriculado em uma turma regular no período '
+            + periodoTurmaTxt
+            + '. Deseja prosseguir com a matrícula nesta turma?';
+
+        if (confirm(mensagem)) {
+            form.submit();
+        }
+        <?php
+    }
+?>
+}
+</script>

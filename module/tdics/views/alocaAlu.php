@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 
@@ -79,7 +81,8 @@ if ($id_polo) {
                 $v['n_curso'] = @$cursos[$turmaCurso['fk_id_curso']];
                 $v['dia'] = $model->diaSemana($turmaCurso['dia_sem']);
              //   $alunos[$k]['termo'] = formErp::submit('Termo de Matrícula', null, $v, HOME_URI . '/'.$this->controller_name.'/pdf/termo', 1);
-            }
+             }
+             $alunos[$k]['periodoRegular'] = dataErp::periodoDoDia($v['periodoRegular']);
         }
         $form['array'] = $alunos;
         $form['fields'] = [
@@ -88,6 +91,7 @@ if ($id_polo) {
             'Turma' => 'n_turma',
             'Escola' => 'n_inst',
             'Turma Origem' => 'turmaEsc',
+            'Periodo Origem' => 'periodoRegular',
             '||1' => 'ex',
             '||2' => 'ac',
          //   '||3' => 'termo'
@@ -238,7 +242,7 @@ if ($id_polo) {
                                 <?= $turmaCurso['n_curso'] ?>
                             </td>
                             <td style="width: 20%">
-                                Período da <?= $turmaCurso['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
+                                Período da <?= dataErp::periodoDoDia($turmaCurso['periodo']) ?>
                             </td>
                             <td style="width: 20%">
                                 <?= $model->diaSemana($turmaCurso['dia_sem']) ?>

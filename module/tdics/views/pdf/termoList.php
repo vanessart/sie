@@ -11,7 +11,7 @@ $a = $model->alunoEsc($id_pl, $id_inst);
 if ($a) {
     foreach ($a as $k => $v) {
         $a[$k]['diaSem'] = $model->diaSemana($v['dia_sem']);
-        $a[$k]['periodoSet'] = $v['periodo'] == 'M' ? 'Manhã' : 'Tarde';
+        $a[$k]['periodoSet'] = dataErp::periodoDoDia($v['periodo']);
         $a[$k]['horarioSet'] = $v['horario'] . 'º Horário';
         $a[$k]['id_pl'] = $v['fk_id_pl'];
         $a[$k]['id_polo'] = $v['fk_id_polo'];

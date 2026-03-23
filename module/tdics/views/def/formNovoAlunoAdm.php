@@ -66,7 +66,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
                 Período da turma de Origem
             </td>
             <td>
-                <?= $dados['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
+                <?= dataErp::periodoDoDia($dados['periodo']) ?>
             </td>
         </tr>
     </table>
@@ -117,7 +117,7 @@ $dados = $query->fetch(PDO::FETCH_ASSOC);
                     </td>
                     <td>
                         <span style="font-weight: bold; color: <?= $color ?>">
-                            <?= $v['periodo'] == 'M' ? 'Manhã' : 'Tarde' ?>
+                            <?= dataErp::periodoDoDia($v['periodo']) ?>
                         </span>
                     </td>
                     <td>

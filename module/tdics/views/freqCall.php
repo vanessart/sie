@@ -1,4 +1,6 @@
 <?php
+/** @var tdicsModel $model */
+
 if (!defined('ABSPATH'))
     exit;
 $id_sit = filter_input(INPUT_POST, 'id_sit', FILTER_SANITIZE_NUMBER_INT);
@@ -27,6 +29,7 @@ if (!empty($faltid)) {
             $color = 'black';
         }
         $alunos[$k]['sit'] = '<span style="color: ' . $color . '">' . $sit[intval($v['fk_id_sit'])] . '</span>';
+        $alunos[$k]['periodoRegular'] = dataErp::periodoDoDia($v['periodoRegular']);
     }
     $form['array'] = $alunos;
     $form['fields'] = [
@@ -38,6 +41,7 @@ if (!empty($faltid)) {
         'Turma' => 'n_turma',
         'Escola de Origem' => 'n_inst',
         'Turma de Origem' => 'turmaEsc',
+        'Periodo Origem' => 'periodoRegular',
         'Faltas' => 'falt',
         'Situação' => 'sit',
         '||1' => 'ac'
