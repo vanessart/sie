@@ -27,7 +27,9 @@ if ($array) {
         @$qp[$v['fk_id_polo']]['totalPer'][$v['periodo']][$v['dia_sem']]++;
         @$qp[$v['fk_id_polo']]['totalhorario'][$v['periodo']][$v['dia_sem']][$v['horario']]++;
     }
-    ksort($qp ?? []);
+    if ($qp) {
+        ksort($qp);
+    }
 }
 
 $diasSemana = $model->diaSemana();
