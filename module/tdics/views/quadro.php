@@ -10,7 +10,7 @@ $sql = "SELECT t.*
         FROM " . $model::$sistema . "_turma_aluno ta
         JOIN " . $model::$sistema . "_turma t on t.id_turma = ta.fk_id_turma
         AND t.fk_id_pl = $id_pl
-        JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND (ta2.fk_id_tas = 0 OR ta2.fk_id_tas IS NULL)
+        JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa AND ta2.fk_id_tas = 0
         JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma 
         JOIN ge_periodo_letivo pl on pl.id_pl = t2.fk_id_pl AND pl.at_pl = 1";
 $query = pdoSis::getInstance()->query($sql);

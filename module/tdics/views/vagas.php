@@ -37,7 +37,7 @@ $sql = "SELECT * FROM " . $model::$sistema . "_turma_aluno ta "
         . " and t.fk_id_pl = $id_pl "
         . " JOIN " . $model::$sistema . "_curso c on c.id_curso = t.fk_id_curso "
         . " JOIN ge_turma_aluno ta2 on ta2.fk_id_pessoa = ta.fk_id_pessoa "
-        . " AND (ta2.fk_id_tas IS NULL OR ta2.fk_id_tas = 0) "
+        . " AND ta2.fk_id_tas = 0 "
         . " JOIN ge_turmas t2 on t2.id_turma = ta2.fk_id_turma AND t.fk_id_pl = t2.fk_id_pl ";
 $query = pdoSis::getInstance()->query($sql);
 $array = $query->fetchAll(PDO::FETCH_ASSOC);
